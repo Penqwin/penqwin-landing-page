@@ -1,0 +1,194 @@
+---
+import ArrowIcon from "../assets/svg/arrow.astro";
+import DocumentIcon from "../assets/svg/document.astro";
+import FolderIcon from "../assets/svg/folder.astro";
+import AddIcon from "../assets/svg/add.astro";
+import SettingsIcon from "../assets/svg/settings.astro";
+import SaveIcon from "../assets/svg/save.astro";
+import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
+---
+
+<!-- Dashboard Showcase -->
+<div class="dashboard-preview relative group px-2 md:px-0">
+  <!-- Decorative Glow Border -->
+  <div
+    class="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-accent/30 rounded-2xl blur-[10px] opacity-20 group-hover:opacity-40 transition duration-1000"
+  >
+  </div>
+
+  <!-- Browser Frame -->
+  <div
+    class="relative bg-bg-secondary w-full aspect-[16/10] border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-700"
+  >
+    <!-- Browser Header -->
+    <div
+      class="h-10 bg-bg-secondary/80 backdrop-blur-md border-b border-white/5 flex items-center px-4 gap-2"
+    >
+      <div class="flex gap-1.5">
+        <div class="w-3 h-3 rounded-full bg-error/40"></div>
+        <div class="w-3 h-3 rounded-full bg-warning/40"></div>
+        <div class="w-3 h-3 rounded-full bg-success/40"></div>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="w-full h-full text-text-primary flex">
+      <!-- sidebar -->
+      <div
+        class="px-6 py-4 bg-bg-secondary w-1/4 h-full flex flex-col items-start justify-start select-none"
+      >
+        <picture>
+          <source
+            srcset="/src/assets/images/penqwin-primary.webp"
+            type="image/webp"
+          />
+          <img
+            src="/src/assets/images/penqwin-primary.png"
+            alt="Penqwin Logo"
+            class="w-16 h-auto"
+          />
+        </picture>
+        <h3
+          class="mt-4 text-text-primary text-[11px] flex gap-1 items-center justify-center font-medium"
+        >
+          Acme Corp <ArrowIcon
+            class="w-auto h-2.5 rotate-90 text-text-secondary"
+          />
+        </h3>
+
+        <!-- sidebar entities -->
+        <div class="mt-4 flex flex-col text-[10px] tracking-tight">
+          <div class="text-text-secondary flex gap-2 pb-2 items-center">
+            <DocumentIcon class="w-auto h-3" /> Overview
+          </div>
+          <div class="text-text-secondary flex gap-2 pb-2 items-center">
+            <DocumentIcon class="w-auto h-3" /> Quick Start
+          </div>
+
+          <!-- api references -->
+          <div class="text-text-secondary flex gap-2 pb-1 items-center">
+            <FolderIcon class="w-auto h-3" /> API References <ArrowIcon
+              class="w-auto h-2.5 -rotate-90 text-text-secondary"
+            />
+          </div>
+          <!-- <div
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-2 border-l border-solid border-border pt-1 pb-2"
+          >
+            <DocumentIcon class="w-auto h-3" /> Authentication
+          </div> -->
+          <div
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pt-1 pb-2"
+          >
+            <DocumentIcon class="w-auto h-3" /> Endpoints
+          </div>
+          <div
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pb-1"
+          >
+            <DocumentIcon class="w-auto h-3" /> Webhooks
+          </div>
+
+          <!-- features -->
+          <div class="text-text-secondary flex gap-2 pt-2 pb-1 items-center">
+            <FolderIcon class="w-auto h-3" /> Features <ArrowIcon
+              class="w-auto h-2.5 -rotate-90 text-text-secondary"
+            />
+          </div>
+          <div
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pt-1 pb-2"
+          >
+            <DocumentIcon class="w-auto h-3" /> Authentication
+          </div>
+          <div
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pb-1"
+          >
+            <FolderIcon class="w-auto h-3" /> Monetization <ArrowIcon
+              class="w-auto h-2.5 rotate-90 text-text-secondary"
+            />
+          </div>
+        </div>
+
+        <!-- <div
+          class="w-full h-auto bg-border rounded-md mt-4 px-3 py-1 flex items-center justify-center gap-1 text-[11px] font-normal text-text-secondary"
+        >
+          <AddIcon class="w-3 h-3" />
+          Create
+        </div> -->
+        <div
+          class="absolute bottom-4 flex items-center justify-center gap-1 text-[10px] font-normal text-text-secondary"
+        >
+          <SettingsIcon class="w-3 h-3" />
+          Settings
+        </div>
+      </div>
+
+      <!-- editor -->
+      <div
+        class="bg-bg-main w-3/4 h-full flex flex-col overflow-hidden border-l border-white/5"
+      >
+        <!-- editor actions -->
+        <div class="h-14 px-6 flex items-center justify-between select-none">
+          <div
+            class="bg-bg-secondary rounded-sm px-3 py-1 flex items-center gap-1 text-text-secondary text-[10px]"
+          >
+            <AiGenerateIcon class="w-3 h-3" />Generate Doc
+          </div>
+          <div
+            class="bg-primary rounded-sm px-3 py-1 flex items-center gap-1 text-text-primary text-[10px]"
+          >
+            <SaveIcon class="w-3 h-3" />Save
+          </div>
+        </div>
+
+        <!-- editor content -->
+        <div class="flex-1 overflow-hidden px-8 custom-scrollbar">
+          <div class="text-editor w-full h-full max-w-2xl">
+            <div class="section">
+              <h3>High-Level Flow</h3>
+              <ol>
+                <li>User submits authentication credentials.</li>
+                <li>Authentication Service validates credentials.</li>
+                <li>User identity is retrieved from the User Store.</li>
+                <li>Token Service generates authentication tokens.</li>
+                <li>Client uses issued tokens to access protected services.</li>
+              </ol>
+            </div>
+
+            <div class="section">
+              <h4>4. User Identity Model</h4>
+
+              <p>
+                Each authenticated user in ACME’s platform is represented by a <strong
+                  class="text-text-primary font-semibold"
+                  >User Identity record</strong
+                >.
+              </p>
+
+              <div class="section">
+                <p><code>user_id</code> - Unique identifier for the user.</p>
+
+                <p><code>email</code> - Primary login identifier.</p>
+
+                <p>
+                  <code>password_hash</code> - Securely hashed password stored by
+                  the system.
+                </p>
+
+                <p>
+                  <code>account_status</code> - Current state (active, locked, suspended).
+                </p>
+
+                <p>
+                  <code>tenant_id</code> - Organization associated with the user.
+                </p>
+
+                <p>
+                  <code>mfa_enabled</code> - Indicates if MFA is active.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

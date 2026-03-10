@@ -1,0 +1,36 @@
+---
+---
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-center p-6 pointer-events-none">
+    <nav class="w-full max-w-5xl px-6 py-3 flex items-center justify-between pointer-events-auto bg-bg-secondary/40 backdrop-blur-xl border border-white/5 rounded-2xl shadow-2xl">
+        <div class="flex items-center gap-2">
+            <picture>
+                <source srcset="/src/assets/images/penqwin-primary.webp" type="image/webp">
+                <img src="/src/assets/images/penqwin-primary.png" alt="Penqwin Logo" class="w-16 h-auto">
+            </picture>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#features" class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200">Features</a>
+            <a href="#showcase" class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200">Showcase</a>
+            <a href="#pricing" class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200">Pricing</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="/login" class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200">Sign In</a>
+            <a href="#get-started" class="px-4 py-2 bg-text-primary text-bg-main rounded-xl text-sm font-semibold hover:bg-white transition-all duration-300 shadow-sm">
+                Join Beta
+            </a>
+        </div>
+    </nav>
+</header>
+
+<style>
+    /* Subtle glow effect on hover for the nav */
+    nav {
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav:hover {
+        border-color: rgba(139, 92, 246, 0.2);
+        box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.1);
+    }
+</style>
