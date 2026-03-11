@@ -55,6 +55,9 @@ body {
     --bg-secondary: #0a0a16;
     --text-primary: #ffffff;
     --text-secondary: #94a3b8;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 }
 
 @layer utilities {
@@ -84,11 +87,6 @@ body {
     animation: pulse-slow 8s ease-in-out infinite;
 }
 
-:root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-}
 
 .text-editor {
     @apply font-sans;

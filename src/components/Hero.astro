@@ -10,17 +10,29 @@ import ArrowIcon from "../assets/svg/arrow.astro";
   <!-- Background Effects -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
     <!-- Grid Pattern -->
-    <div class="absolute inset-0 bg-grid opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
-    
+    <div
+      class="absolute inset-0 bg-grid opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"
+    >
+    </div>
+
     <!-- Ambient Glows -->
-    <div class="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full animate-pulse-slow"></div>
-    <div class="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full animate-float"></div>
-    
+    <div
+      class="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full animate-pulse-slow"
+    >
+    </div>
+    <div
+      class="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full animate-float"
+    >
+    </div>
+
     <!-- Darkened Vignette -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(4,4,13,0.4)_100%)]"></div>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(4,4,13,0.4)_100%)]"
+    >
+    </div>
   </div>
 
-  <div class="relative z-10 max-w-4xl px-6 mt-52 text-center">
+  <div class="relative z-10 max-w-4xl px-6 mt-48 text-center">
     <h1
       class="font-serif text-5xl md:text-7xl text-text-primary tracking-tight leading-[1.1] mb-6"
     >
@@ -33,22 +45,14 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         href="#get-started"
         class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/[0.03] backdrop-blur-md border border-white/10 text-white rounded-full font-medium transition-all duration-500 hover:bg-white/[0.08] hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.3)]"
       >
-        <span>Sync Now</span>
-        <span
-          class="text-text-secondary group-hover:text-primary transition-colors duration-300"
-          >|</span
-        >
-        <span
-          class="text-sm text-text-secondary group-hover:text-text-primary transition-colors duration-300"
-          >It's free</span
-        >
+        <span>Join Beta</span>
         <ArrowIcon
           class="w-6 inline-block transform group-hover:translate-x-1 transition-transform duration-300 text-lg"
         />
       </a>
     </div>
   </div>
-  <div class="w-1/2 mt-10 mb-20">
+  <div class="w-1/2 mt-16 mb-32 relative z-10">
     <DashboardPreview />
   </div>
 </section>

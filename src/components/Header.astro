@@ -1,5 +1,6 @@
 ---
-
+import penqwinWebp from "../assets/images/penqwin-primary.webp";
+import penqwinPng from "../assets/images/penqwin-primary.png";
 ---
 
 <header
@@ -11,12 +12,9 @@
   >
     <a href="/" class="flex items-center gap-2">
       <picture>
-        <source
-          srcset="/src/assets/images/penqwin-primary.webp"
-          type="image/webp"
-        />
+        <source srcset={penqwinWebp.src} type="image/webp" />
         <img
-          src="/src/assets/images/penqwin-primary.png"
+          src={penqwinPng.src}
           alt="Penqwin Logo"
           class="w-16 h-auto"
         />
@@ -59,29 +57,33 @@
 
 <script>
   let lastScrollY = window.pageYOffset;
-  const header = document.getElementById('main-header');
+  const header = document.getElementById("main-header");
   const scrollThreshold = 10; // min scroll amount to trigger logic
 
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.pageYOffset;
-    
-    // Ignore small scrolls
-    if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
-      return;
-    }
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScrollY = window.pageYOffset;
 
-    if (header) {
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down - hide
-        header.classList.add('header-hidden');
-      } else {
-        // Scrolling up - show
-        header.classList.remove('header-hidden');
+      // Ignore small scrolls
+      if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
+        return;
       }
-    }
-    
-    lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY; // For Mobile or negative scrolling
-  }, { passive: true });
+
+      if (header) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down - hide
+          header.classList.add("header-hidden");
+        } else {
+          // Scrolling up - show
+          header.classList.remove("header-hidden");
+        }
+      }
+
+      lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY; // For Mobile or negative scrolling
+    },
+    { passive: true },
+  );
 </script>
 
 <style>

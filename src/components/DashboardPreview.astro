@@ -13,6 +13,9 @@ import UnderlineIcon from "../assets/svg/text-formatting/underline.astro";
 import StrikethroughIcon from "../assets/svg/text-formatting/strikethrough.astro";
 import CodeIcon from "../assets/svg/text-formatting/code.astro";
 import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
+import FloatingMenu from "./FloatingMenu.astro";
+import penqwinWebp from "../assets/images/penqwin-primary.webp";
+import penqwinPng from "../assets/images/penqwin-primary.png";
 ---
 
 <!-- Dashboard Showcase -->
@@ -46,11 +49,11 @@ import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
       >
         <picture>
           <source
-            srcset="/src/assets/images/penqwin-primary.webp"
+            srcset={penqwinWebp.src}
             type="image/webp"
           />
           <img
-            src="/src/assets/images/penqwin-primary.png"
+            src={penqwinPng.src}
             alt="Penqwin Logo"
             class="w-16 h-auto"
           />
@@ -81,11 +84,6 @@ import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
             </div>
             <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
           </div>
-          <!-- <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-2 border-l border-solid border-border pt-1 pb-2"
-          >
-            <DocumentIcon class="w-auto h-3" /> Authentication
-          </div> -->
           <div
             class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pt-1 pb-2"
           >
@@ -125,12 +123,6 @@ import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
           </div>
         </div>
 
-        <!-- <div
-          class="w-full h-auto bg-border rounded-md mt-4 px-3 py-1 flex items-center justify-center gap-1 text-[11px] font-normal text-text-secondary"
-        >
-          <AddIcon class="w-3 h-3" />
-          Create
-        </div> -->
         <div
           class="absolute bottom-4 flex items-center justify-center gap-1 text-[10px] font-normal text-text-secondary"
         >
