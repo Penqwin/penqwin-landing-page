@@ -1,0 +1,207 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ArrowIcon from "../assets/svg/arrow.astro";
+---
+
+<Layout>
+  <Header />
+  <main class="relative min-h-screen bg-bg-main pt-32 pb-24 overflow-hidden">
+    <!-- Background Effects (Matching Hero) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div
+        class="absolute inset-0 bg-grid opacity-[0.02] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"
+      >
+      </div>
+      <div
+        class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full animate-pulse-slow"
+      >
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6">
+      <!-- Back Link -->
+      <div class="mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors duration-300 group"
+        >
+          <ArrowIcon
+            class="w-4 h-4 rotate-180 transform group-hover:-translate-x-1 transition-transform"
+          />
+          <span class="text-sm font-medium">Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="mb-16">
+        <h1
+          class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-4"
+        >
+          Terms of Service
+        </h1>
+        <p class="text-text-secondary font-medium">
+          Effective Date: <span class="text-text-primary">March 2026</span>
+        </p>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-invert max-w-none space-y-12">
+        <section>
+          <p
+            class="text-lg text-text-secondary leading-relaxed first-letter:text-4xl first-letter:font-serif first-letter:text-primary first-letter:mr-2 first-letter:float-left"
+          >
+            These Terms of Service (“Terms”) govern your access to and use of
+            Penqwin (“the Platform”). By accessing our Public Preview, you agree
+            to be bound by these Terms.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >01.</span
+            >
+            Global License & Access
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            Penqwin grants you a non-exclusive, worldwide, royalty-free license
+            to use the Platform during our Public Preview phase. We aim to
+            empower developers everywhere to automate the most tedious parts of
+            the software lifecycle.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >02.</span
+            >
+            Intellectual Property & Data Privacy
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            You retain full ownership of all source code, repository metadata,
+            and generated documentation. Penqwin acts as a processor to
+            transform your technical inputs into structured knowledge. We do not
+            claim any rights to your proprietary intellectual property.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3 mb-4"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >03.</span
+            >
+            Service Standards & Evolution
+          </h2>
+          <div class="space-y-4 text-text-secondary leading-relaxed">
+            <p>
+              We are committed to rapid innovation. To maintain this pace, the
+              Platform is provided on an "as-is" basis.
+            </p>
+            <p>
+              As we utilize experimental, preview-grade AI models, users may
+              occasionally encounter technical discrepancies, document
+              hallucinations, or parsing errors. By using the Preview, you
+              acknowledge that Penqwin is a tool for professional assistance and
+              that all generated documentation should be verified for accuracy
+              before production use.
+            </p>
+            <p>
+              We reserve the right to evolve, update, or retire preview features
+              as we transition toward our high-stability production release.
+            </p>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >04.</span
+            >
+            User Responsibilities
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            You represent that you have the legal right to access and process
+            any repository URLs provided to the Platform. You agree not to use
+            Penqwin for any unauthorized data extraction or to violate the
+            security of third-party platforms like GitHub.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >05.</span
+            >
+            Limitation of Liability
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            To the maximum extent permitted by applicable law, Penqwin and its
+            creators shall not be liable for any indirect, incidental, or
+            consequential damages resulting from your use of the service. This
+            includes, without limitation, any loss of data, service
+            interruptions, or inaccuracies in AI-generated content. Our total
+            liability for any claim arising out of these terms shall be limited
+            to the amount paid by you to use the service during the preview
+            (currently $0).
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >06.</span
+            >
+            Universal Jurisdiction
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            Penqwin is a global platform. These Terms shall be governed by and
+            construed in accordance with the laws of the jurisdiction where the
+            primary developer is based (India), without regard to its conflict
+            of law provisions. Any legal action or proceeding arising under
+            these Terms will be brought exclusively in the courts of that
+            jurisdiction.
+          </p>
+        </section>
+      </div>
+
+      <!-- Contact/Support -->
+      <!-- <div class="mt-24 pt-12 border-t border-white/10 text-center">
+        <p class="text-text-secondary text-sm">
+          Questions about our Terms? <a
+            href="mailto:support@penqwin.com"
+            class="text-primary hover:underline transition-all">Get in touch</a
+          >
+        </p>
+      </div> -->
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Custom prose-like styles for minimal control */
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(139, 92, 246, 0.2);
+    color: #fff;
+  }
+</style>

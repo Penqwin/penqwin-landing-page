@@ -1,0 +1,257 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ArrowIcon from "../assets/svg/arrow.astro";
+---
+
+<Layout>
+  <Header />
+  <main class="relative min-h-screen bg-bg-main pt-32 pb-24 overflow-hidden">
+    <!-- Background Effects (Matching Hero) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div
+        class="absolute inset-0 bg-grid opacity-[0.02] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"
+      >
+      </div>
+      <div
+        class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full animate-pulse-slow"
+      >
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6">
+      <!-- Back Link -->
+      <div class="mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors duration-300 group"
+        >
+          <ArrowIcon
+            class="w-4 h-4 rotate-180 transform group-hover:-translate-x-1 transition-transform"
+          />
+          <span class="text-sm font-medium">Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="mb-16">
+        <h1
+          class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-4"
+        >
+          Privacy Policy
+        </h1>
+        <p class="text-text-secondary font-medium">
+          Effective Date: <span class="text-text-primary">March 2026</span>
+        </p>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-invert max-w-none space-y-12">
+        <section>
+          <p
+            class="text-lg text-text-secondary leading-relaxed first-letter:text-4xl first-letter:font-serif first-letter:text-primary first-letter:mr-2 first-letter:float-left"
+          >
+            Penqwin is built on the belief that developer trust starts with
+            transparency. This policy outlines what data we collect, how we use
+            it, and the measures we take to keep it secure when you use our
+            documentation platform.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >01.</span
+            >
+            Data We Collect
+          </h2>
+          <div class="text-text-secondary leading-relaxed space-y-4">
+            <p>
+              We minimize data collection to only what is functionally
+              necessary:
+            </p>
+            <ul class="list-disc list-outside ml-6 space-y-2">
+              <li>
+                <strong class="text-text-primary">Account Information:</strong> When
+                you sign in via GitHub, we receive your GitHub ID, username, and primary
+                email address.
+              </li>
+              <li>
+                <strong class="text-text-primary">Repository Metadata:</strong> When
+                you provide a URL, we access the repository’s public metadata (name,
+                description, and file structure) and relevant code diffs to generate
+                documentation.
+              </li>
+              <li>
+                <strong class="text-text-primary">Usage Data:</strong> We collect
+                basic telemetry (browser type, timestamp, and feature usage) to improve
+                the platform’s performance.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >02.</span
+            >
+            How We Process Your Code (The AI Engine)
+          </h2>
+          <div class="text-text-secondary leading-relaxed space-y-4">
+            <p>Penqwin acts as an ephemeral processor.</p>
+            <ul class="list-disc list-outside ml-6 space-y-2">
+              <li>
+                <strong class="text-text-primary">AI Synthesis:</strong> To generate
+                documentation, we send specific code fragments and diffs to our AI
+                model providers.
+              </li>
+              <li>
+                <strong class="text-text-primary">Preview Phase Notice:</strong> During
+                this Public Preview, we utilize experimental and preview-grade AI
+                models to provide the latest documentation features. Please be aware
+                that, depending on the specific preview model in use, data processed
+                during this phase may be utilized by the model providers for research
+                and training purposes to improve future AI capabilities.
+              </li>
+              <!-- <li>
+                <strong class="text-text-primary">No Training:</strong> We do not
+                use your proprietary code to train our AI models or any third-party
+                models. Your code is processed to generate a response and then discarded
+                from the model’s active session.
+              </li> -->
+              <li>
+                <strong class="text-text-primary">Ephemeral Analysis:</strong> We
+                do not store a permanent copy of your source code on our servers.
+                We only store the generated documentation that you save within the
+                Penqwin editor.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >03.</span
+            >
+            Your Rights (GDPR & Global Standards)
+          </h2>
+          <div class="text-text-secondary leading-relaxed space-y-4">
+            <p>
+              Regardless of where you live, we provide the same high standard of
+              data rights:
+            </p>
+            <ul class="list-disc list-outside ml-6 space-y-2">
+              <li>
+                <strong class="text-text-primary">Access & Export:</strong> You can
+                request a copy of all data we hold about you.
+              </li>
+              <li>
+                <strong class="text-text-primary">Deletion:</strong> You can delete
+                your account at any time. This will instantly remove your profile
+                and all documentation stored in our database.
+              </li>
+              <li>
+                <strong class="text-text-primary">Revoke Access:</strong> You can
+                revoke Penqwin’s access to your GitHub account at any time through
+                your GitHub settings.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >04.</span
+            >
+            Third-Party Services
+          </h2>
+          <div class="text-text-secondary leading-relaxed space-y-4">
+            <p>
+              We use a small number of trusted partners to help run Penqwin:
+            </p>
+            <ul class="list-disc list-outside ml-6 space-y-2">
+              <li>
+                <strong class="text-text-primary">Hosting:</strong> Vercel / AWS (for
+                infrastructure).
+              </li>
+              <li>
+                <strong class="text-text-primary">AI Models:</strong> Google / OpenAI
+                (for documentation synthesis).
+              </li>
+              <li>
+                <strong class="text-text-primary">Authentication:</strong> GitHub
+                OAuth (for secure login).
+              </li>
+              <!-- <li>
+                <strong class="text-text-primary">Payments:</strong> Stripe (for future
+                billing; we never see your credit card details).
+              </li> -->
+            </ul>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >05.</span
+            >
+            Security
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            We implement industry-standard encryption (TLS 1.3) for all data in
+            transit. Since Penqwin is built for engineers, we ensure that our
+            GitHub App permissions are "Least Privilege," meaning we only ask
+            for the minimum access required to read your code diffs.
+          </p>
+        </section>
+
+        <!-- <section class="space-y-4">
+          <h2
+            class="font-serif text-2xl text-text-primary flex items-center gap-3"
+          >
+            <span class="text-text-muted text-sm font-mono tracking-tighter"
+              >06.</span
+            >
+            Contact Us
+          </h2>
+          <p class="text-text-secondary leading-relaxed">
+            If you have questions about your data or want to exercise your
+            privacy rights, please contact us at <a
+              href="mailto:privacy@penqwin.app"
+              class="text-primary hover:underline transition-all"
+              >privacy@penqwin.app</a
+            >.
+          </p>
+        </section> -->
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Custom prose-like styles for minimal control */
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(139, 92, 246, 0.2);
+    color: #fff;
+  }
+</style>
