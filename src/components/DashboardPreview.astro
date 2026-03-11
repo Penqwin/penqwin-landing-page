@@ -6,6 +6,13 @@ import AddIcon from "../assets/svg/add.astro";
 import SettingsIcon from "../assets/svg/settings.astro";
 import SaveIcon from "../assets/svg/save.astro";
 import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
+// text formatting icons
+import BoldIcon from "../assets/svg/text-formatting/bold.astro";
+import ItalicIcon from "../assets/svg/text-formatting/italic.astro";
+import UnderlineIcon from "../assets/svg/text-formatting/underline.astro";
+import StrikethroughIcon from "../assets/svg/text-formatting/strikethrough.astro";
+import CodeIcon from "../assets/svg/text-formatting/code.astro";
+import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
 ---
 
 <!-- Dashboard Showcase -->
@@ -18,11 +25,11 @@ import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
 
   <!-- Browser Frame -->
   <div
-    class="relative bg-bg-secondary w-full aspect-[16/10] border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-700"
+    class="relative bg-[#222222] w-full aspect-[16/10] border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-700"
   >
     <!-- Browser Header -->
     <div
-      class="h-10 bg-bg-secondary/80 backdrop-blur-md border-b border-white/5 flex items-center px-4 gap-2"
+      class="h-10 bg-[#222222] backdrop-blur-md border-b border-white/5 flex items-center px-4 gap-2"
     >
       <div class="flex gap-1.5">
         <div class="w-3 h-3 rounded-full bg-error/40"></div>
@@ -66,10 +73,13 @@ import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
           </div>
 
           <!-- api references -->
-          <div class="text-text-secondary flex gap-2 pb-1 items-center">
-            <FolderIcon class="w-auto h-3" /> API References <ArrowIcon
-              class="w-auto h-2.5 -rotate-90 text-text-secondary"
-            />
+          <div
+            class="text-text-secondary w-full flex justify-between gap-2 pb-1 items-center"
+          >
+            <div class="flex items-center gap-2">
+              <FolderIcon class="w-auto h-3" /> API references
+            </div>
+            <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
           </div>
           <!-- <div
             class="text-text-secondary flex items-center gap-2 pl-2 ml-2 border-l border-solid border-border pt-1 pb-2"
@@ -88,22 +98,30 @@ import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
           </div>
 
           <!-- features -->
-          <div class="text-text-secondary flex gap-2 pt-2 pb-1 items-center">
-            <FolderIcon class="w-auto h-3" /> Features <ArrowIcon
-              class="w-auto h-2.5 -rotate-90 text-text-secondary"
-            />
+          <div
+            class="text-text-secondary w-full flex justify-between gap-2 pt-2 pb-1 items-center"
+          >
+            <div class="flex items-center gap-2">
+              <FolderIcon class="w-auto h-3" /> Features
+            </div>
+            <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
           </div>
           <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pt-1 pb-2"
+            class="text-primary w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-border pt-1 pb-2"
           >
-            <DocumentIcon class="w-auto h-3" /> Authentication
+            <div
+              class="bg-border px-1 py-1 w-full rounded-md flex items-center justify-start gap-2"
+            >
+              <DocumentIcon class="w-auto h-3" /> Authentication
+            </div>
           </div>
           <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pb-1"
+            class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-border pb-1"
           >
-            <FolderIcon class="w-auto h-3" /> Monetization <ArrowIcon
-              class="w-auto h-2.5 rotate-90 text-text-secondary"
-            />
+            <div class="flex items-center gap-2">
+              <FolderIcon class="w-auto h-3" /> Monetization
+            </div>
+            <ArrowIcon class="w-auto h-2.5 rotate-90 text-text-secondary" />
           </div>
         </div>
 
@@ -156,12 +174,48 @@ import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
             <div class="section">
               <h4>4. User Identity Model</h4>
 
-              <p>
-                Each authenticated user in ACME’s platform is represented by a <strong
-                  class="text-text-primary font-semibold"
-                  >User Identity record</strong
-                >.
-              </p>
+              <div class="flex inline-flex text-[10px] mb-4">
+                Each authenticated user in ACME’s platform is represented by a
+                &nbsp;
+                <div
+                  class="text-text-primary font-semibold relative bg-accent flex items-center justify-center"
+                >
+                  User Identity record
+                  <div
+                    class="floating-menu select-none absolute -top-10 w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-main text-text-secondary px-1.5 py-1 border border-border rounded-lg"
+                  >
+                    <div
+                      class="border border-border pl-2 pr-1 py-1 text-[8px] rounded-md flex items-center gap-1"
+                    >
+                      Paragraph <ArrowIcon
+                        class="w-auto h-2.5 rotate-90 text-text-secondary"
+                      />
+                    </div>
+
+                    <div
+                      class="flex text-text-primary items-center justify-center w-4 h-4"
+                    >
+                      <BoldIcon class="w-3 h-3" />
+                    </div>
+                    <div class="flex items-center justify-center w-4 h-4">
+                      <ItalicIcon class="w-3 h-3" />
+                    </div>
+                    <div class="flex items-center justify-center w-4 h-4">
+                      <UnderlineIcon class="w-3 h-3" />
+                    </div>
+                    <div class="flex items-center justify-center w-4 h-4">
+                      <StrikethroughIcon class="w-3 h-3" />
+                    </div>
+                    <div class="flex items-center justify-center w-4 h-4">
+                      <CodeIcon class="w-3 h-3" />
+                    </div>
+                    <div class="flex items-center justify-center w-4 h-4">
+                      <QuoteIcon class="w-3 h-3" />
+                    </div>
+                  </div>
+                </div>
+                .
+              </div>
 
               <div class="section">
                 <p><code>user_id</code> - Unique identifier for the user.</p>

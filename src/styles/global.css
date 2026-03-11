@@ -56,7 +56,7 @@ body {
     }
     
     p {
-        @apply text-[11px] leading-relaxed text-text-secondary mb-4;
+        @apply text-[11px] leading-relaxed text-text-primary mb-4;
     }
     
     code {
