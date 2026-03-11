@@ -1,0 +1,42 @@
+---
+interface Props {
+  step: string;
+  title: string;
+  description: string;
+  class?: string;
+}
+
+const { step, title, description, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "group select-none relative flex flex-col items-center text-center p-8 bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.04] hover:border-primary/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] overflow-hidden animate-fade-in-up",
+    className,
+  ]}
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  >
+  </div>
+
+  <div class="relative z-10 flex flex-col items-center">
+    <div
+      class="w-16 h-16 mb-8 rounded-2xl bg-primary/10 flex items-center justify-center"
+    >
+      <div class="text-primary">
+        <slot name="icon" />
+      </div>
+    </div>
+    <div class="flex flex-col items-center">
+      <span
+        class="text-[10px] font-bold tracking-[0.2em] text-primary/60 uppercase mb-2"
+        >Step {step}</span
+      >
+      <h3 class="text-2xl font-serif text-text-primary mb-4">{title}</h3>
+      <p class="text-text-secondary leading-relaxed">
+        {description}
+      </p>
+    </div>
+  </div>
+</div>

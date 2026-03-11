@@ -13,12 +13,13 @@
     --font-serif: 'Instrument Serif', serif;
 
     /* colors */
-    --color-primary: #8B5CF6;
-    --color-bg-main: #0B0E14;
-    --color-bg-secondary: #161B22;
+    --color-primary: var(--primary);
+    --color-primary-light: var(--primary-light);
+    --color-bg-main: var(--bg-main);
+    --color-bg-secondary: var(--bg-secondary);
     --color-border: #1E293B;
-    --color-text-primary: #F8FAFC;
-    --color-text-secondary: #94A3B8;
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
     --color-text-muted: #64748B;
     --color-accent: #3B82F6;
     --color-success: #10B981;
@@ -27,11 +28,60 @@
     --color-danger: #EF4444;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 9999;
+}
+
 html,
 body {
     margin: 0;
     width: 100%;
     height: 100%;
+    scroll-behavior: smooth;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+:root {
+    --primary: #8b5cf6;
+    --primary-light: #a78bfa;
+    --bg-main: #04040d;
+    --bg-secondary: #0a0a16;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+}
+
+@layer utilities {
+    .bg-grid {
+        background-image: 
+            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -20px); }
+}
+
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-float {
+    animation: float 10s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
 }
 
 :root {

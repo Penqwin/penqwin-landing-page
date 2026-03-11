@@ -1,0 +1,87 @@
+---
+import WorkflowCard from "./WorkflowCard.astro";
+import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
+import DocumentIcon from "../assets/svg/document.astro";
+import CodeIcon from "../assets/svg/text-formatting/code.astro";
+import GitCommitIcon from "../assets/svg/gitCommit.astro";
+import AddLinkIcon from "../assets/svg/addLink.astro";
+---
+
+<section id="workflow" class="w-full py-24 bg-bg-main relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-20 animate-fade-in-up">
+      <h2
+        class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight mb-4"
+      >
+        Documentation <span class="text-primary italic">reimagined</span>
+      </h2>
+      <p class="text-text-secondary text-lg max-w-xl mx-auto">
+        Technical writing is no more a second thought.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <!-- Connecting Lines (Desktop) -->
+      <div
+        class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 z-0"
+      >
+      </div>
+
+      <WorkflowCard
+        step="01"
+        title="Input"
+        description="Insert a pull request or commit URL and let the system inspect the update."
+      >
+        <AddLinkIcon slot="icon" class="w-8 h-8" />
+      </WorkflowCard>
+
+      <WorkflowCard
+        step="02"
+        title="Process"
+        description="Code changes analyzed to surface real engineering impact."
+        class="delay-150"
+      >
+        <AiGenerateIcon slot="icon" class="w-8 h-8" />
+      </WorkflowCard>
+
+      <WorkflowCard
+        step="03"
+        title="Output"
+        description="Produces engineering documentation, ready for review and personalization."
+        class="delay-300"
+      >
+        <DocumentIcon slot="icon" class="w-8 h-8" />
+      </WorkflowCard>
+    </div>
+  </div>
+
+  <!-- Background Decorative Glow -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full z-0 opacity-50"
+  >
+  </div>
+</section>
+
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .delay-150 {
+    animation-delay: 0.15s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+import CodeIcon from "../assets/svg/text-formatting/code.astro";
+import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
+import FeatureCard from "./FeatureCard.astro";
+import WorkspaceIcon from "../assets/svg/workspace.astro";
+---
+
+<section id="features" class="w-full py-32 bg-bg-main relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-24 reveal-on-scroll">
+      <h2
+        class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-6"
+      >
+        Everything you need to <span class="text-primary italic">scale</span>
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Powering the next generation of technical teams with tools that feel
+        like magic.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <FeatureCard
+        title="Smart Doc Generation"
+        description="Transform your codebase or raw ideas into structured documentation automatically. Let AI handle the heavy lifting of drafting READMEs and technical guides."
+      >
+        <AiGenerateIcon slot="icon" class="w-7 h-7" />
+      </FeatureCard>
+
+      <FeatureCard
+        title="Developer-First Editor"
+        description="A high-performance writing experience designed for technical content, featuring native code block support and a minimalist interface."
+        class="delay-150"
+      >
+        <CodeIcon slot="icon" class="w-7 h-7" />
+      </FeatureCard>
+
+      <FeatureCard
+        title="Organization-Centric Docs"
+        description="No more 'lost files.' Group your documentation by project, team, or internal hierarchy so everyone finds exactly what they need, instantly."
+        class="delay-300"
+      >
+        <WorkspaceIcon slot="icon" class="w-7 h-7" />
+      </FeatureCard>
+    </div>
+  </div>
+
+  <!-- Decorative Accents -->
+  <div
+    class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 opacity-20 pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 opacity-20 pointer-events-none"
+  >
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  .feature-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const featureObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          featureObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+    featureObserver.observe(el);
+  });
+</script>

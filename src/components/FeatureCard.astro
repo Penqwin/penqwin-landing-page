@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  class?: string;
+}
+
+const { title, description, class: className } = Astro.props;
+
+const activeVariant =
+  "hover:border-primary/20 from-primary/5 text-primary bg-primary/10";
+---
+
+<div
+  class:list={[
+    "feature-card select-none group relative p-8 bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.04] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] overflow-hidden",
+    activeVariant.split(" ")[0], // hover:border part
+    className,
+  ]}
+>
+  <div
+    class:list={[
+      "absolute inset-0 bg-gradient-to-br via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+      activeVariant.split(" ")[1], // from- variant part
+    ]}
+  >
+  </div>
+
+  <div class="relative z-10">
+    <div
+      class:list={[
+        "w-14 h-14 mb-8 rounded-2xl flex items-center justify-center",
+        activeVariant.split(" ")[2], // text- variant part
+        activeVariant.split(" ")[3], // bg- variant part
+      ]}
+    >
+      <slot name="icon" />
+    </div>
+
+    <h3 class="text-2xl font-serif text-text-primary mb-4">
+      {title}
+    </h3>
+    <p class="text-text-secondary leading-relaxed mb-6">
+      {description}
+    </p>
+  </div>
+</div>

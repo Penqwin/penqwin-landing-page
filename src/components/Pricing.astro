@@ -1,0 +1,134 @@
+---
+import TickIcon from "../assets/svg/tick.astro";
+---
+
+<section id="pricing" class="w-full py-32 bg-bg-main relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16 reveal-on-scroll">
+      <h2
+        class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-6"
+      >
+        Simple, <span class="text-primary italic">transparent</span> pricing
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Start building better documentation today. Join the public preview.
+      </p>
+    </div>
+
+    <div class="flex justify-center reveal-on-scroll delay-150">
+      <div
+        class="pricing-card select-nones group relative w-full max-w-lg p-6 md:p-10 bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[3rem] transition-all duration-700 hover:bg-white/[0.04] hover:border-primary/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
+      >
+        <!-- Floating Accent -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+        >
+        </div>
+
+        <div class="relative z-10 flex flex-col items-start">
+          <div
+            class="absolute top-0 right-0 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-8"
+          >
+            Beta Preview
+          </div>
+
+          <div class="flex items-baseline gap-1 mb-8">
+            <span
+              class="text-6xl md:text-8xl font-serif text-text-primary tracking-tighter"
+              >$0</span
+            >
+            <span class="text-text-secondary font-medium"
+              >/mo <span class="text-regular font-serif text-xs tracking-wide"
+                >( preview )</span
+              ></span
+            >
+          </div>
+
+          <div class="w-full space-y-3 mb-12">
+            {
+              [
+                "AI-Powered Doc Generation",
+                "Multiple Workspaces",
+                "Unlimited Documentation",
+              ].map((feature) => (
+                <div class="flex items-center gap-4 text-text-primary/90">
+                  <TickIcon class="w-5 h-5 text-primary flex-shrink-0" />
+                  <span class="text-base">{feature}</span>
+                </div>
+              ))
+            }
+          </div>
+
+          <a
+            href="#get-started"
+            class="w-full group/anchor py-4 flex items-center justify-center gap-3 bg-text-primary hover:bg-text-primary text-bg-main rounded-2xl font-bold transition-all duration-300 active:scale-[0.98] shadow-xl"
+          >
+            Claim Your Spot
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 transform group-hover/anchor:translate-x-1 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+
+          <p
+            class="mt-6 w-full text-text-secondary text-xs text-center leading-relaxed"
+          >
+            Join the preview and be among the first to try new features.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Orbs -->
+  <div
+    class="absolute top-1/2 left-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none"
+  >
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  .pricing-card {
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const pricingObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          pricingObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+    pricingObserver.observe(el);
+  });
+</script>
