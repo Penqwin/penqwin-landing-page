@@ -1,5 +1,21 @@
 ---
 import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Penqwin | Engineering Documentation Sync",
+  description = "Penqwin is the most advanced documentation platform for engineering teams. Sync your documentation directly with your codebase and automate technical writing.",
+  image = "/og-image.png",
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const siteName = "Penqwin";
 ---
 
 <!doctype html>
@@ -10,9 +26,76 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Penqwin | Engineering Documentation</title>
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:site_name" content={siteName} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Penqwin",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "description": "Engineering documentation sync platform that automates technical writing and keeps docs up to date with code changes.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body class="bg-bg-main scroll-smooth">
     <slot />
+    <script is:inline>
+      document.addEventListener(
+        "click",
+        (e) => {
+          const target = e.target.closest("a, button");
+          if (!target || !("vibrate" in navigator)) return;
+
+          // Heuristic: CTAs have background colors and padding or are full-width
+          const classList = target.classList;
+          const className =
+            typeof target.className === "string" ? target.className : "";
+
+          const isCTA =
+            classList.contains("bg-text-primary") ||
+            classList.contains("bg-primary") ||
+            className.includes("bg-white/") ||
+            (className.includes("bg-") &&
+              (className.includes("px-") ||
+                className.includes("py-") ||
+                classList.contains("w-full")));
+
+          if (isCTA) {
+            navigator.vibrate(30);
+          } else {
+            navigator.vibrate(10);
+          }
+        },
+        { passive: true },
+      );
+    </script>
   </body>
 </html>

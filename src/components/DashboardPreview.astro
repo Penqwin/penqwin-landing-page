@@ -13,7 +13,6 @@ import UnderlineIcon from "../assets/svg/text-formatting/underline.astro";
 import StrikethroughIcon from "../assets/svg/text-formatting/strikethrough.astro";
 import CodeIcon from "../assets/svg/text-formatting/code.astro";
 import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
-import FloatingMenu from "./FloatingMenu.astro";
 import penqwinWebp from "../assets/images/penqwin-primary.webp";
 import penqwinPng from "../assets/images/penqwin-primary.png";
 ---
@@ -48,36 +47,37 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
         class="px-6 py-4 bg-bg-secondary w-1/4 h-full flex flex-col items-start justify-start select-none"
       >
         <picture>
-          <source
-            srcset={penqwinWebp.src}
-            type="image/webp"
-          />
+          <source srcset={penqwinWebp.src} type="image/webp" />
           <img
             src={penqwinPng.src}
-            alt="Penqwin Logo"
-            class="w-16 h-auto"
+            alt="Penqwin - Professional Engineering Documentation Platform"
+            class="w-14 h-auto opacity-80"
           />
         </picture>
         <h3
-          class="mt-4 text-text-primary text-[11px] flex gap-1 items-center justify-center font-medium"
+          class="mt-4 text-text-primary text-[9.5px] flex gap-1 items-center justify-center font-semibold tracking-wide opacity-70"
         >
           Acme Corp <ArrowIcon
-            class="w-auto h-2.5 rotate-90 text-text-secondary"
+            class="w-auto h-2 rotate-90 text-text-secondary"
           />
         </h3>
 
         <!-- sidebar entities -->
-        <div class="mt-4 w-full flex flex-col text-[10px] tracking-tight">
-          <div class="text-text-secondary flex gap-2 pb-2 items-center">
-            <DocumentIcon class="w-auto h-3" /> Overview
+        <div class="mt-4 w-full flex flex-col text-[9px] tracking-tight">
+          <div
+            class="text-text-secondary flex gap-2 pb-2 items-center hover:text-text-primary cursor-pointer transition-colors"
+          >
+            <DocumentIcon class="w-auto h-2.5" /> Overview
           </div>
-          <div class="text-text-secondary flex gap-2 pb-2 items-center">
-            <DocumentIcon class="w-auto h-3" /> Quick Start
+          <div
+            class="text-text-secondary flex gap-2 pb-2 items-center hover:text-text-primary cursor-pointer transition-colors"
+          >
+            <DocumentIcon class="w-auto h-2.5" /> Quick Start
           </div>
 
           <!-- api references -->
           <div
-            class="text-text-secondary w-full flex justify-between gap-2 pb-1 items-center"
+            class="text-text-secondary w-full flex justify-between gap-2 pb-1 items-center hover:text-text-primary cursor-pointer transition-colors"
           >
             <div class="flex items-center gap-2">
               <FolderIcon class="w-auto h-3" /> API references
@@ -85,19 +85,19 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
             <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
           </div>
           <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pt-1 pb-2"
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary cursor-pointer transition-colors"
           >
-            <DocumentIcon class="w-auto h-3" /> Endpoints
+            <DocumentIcon class="w-auto h-2.5" /> Endpoints
           </div>
           <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-border pb-1"
+            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pb-1 hover:text-text-primary cursor-pointer transition-colors"
           >
-            <DocumentIcon class="w-auto h-3" /> Webhooks
+            <DocumentIcon class="w-auto h-2.5" /> Webhooks
           </div>
 
           <!-- features -->
           <div
-            class="text-text-secondary w-full flex justify-between gap-2 pt-2 pb-1 items-center"
+            class="text-text-secondary w-full flex justify-between gap-2 pt-2 pb-1 items-center hover:text-text-primary cursor-pointer transition-colors"
           >
             <div class="flex items-center gap-2">
               <FolderIcon class="w-auto h-3" /> Features
@@ -105,28 +105,28 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
             <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
           </div>
           <div
-            class="text-primary w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-border pt-1 pb-2"
+            class="text-primary w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-primary/20 pt-1 pb-2"
           >
             <div
-              class="bg-border px-1 py-1 w-full rounded-md flex items-center justify-start gap-2"
+              class="bg-primary/10 px-1.5 py-1 w-full rounded-md flex items-center justify-start gap-2 font-medium"
             >
-              <DocumentIcon class="w-auto h-3" /> Authentication
+              <DocumentIcon class="w-auto h-2.5" /> Authentication
             </div>
           </div>
           <div
-            class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-border pb-1"
+            class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pb-1 hover:text-text-primary cursor-pointer transition-colors"
           >
             <div class="flex items-center gap-2">
-              <FolderIcon class="w-auto h-3" /> Monetization
+              <FolderIcon class="w-auto h-2.5" /> Monetization
             </div>
-            <ArrowIcon class="w-auto h-2.5 rotate-90 text-text-secondary" />
+            <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
           </div>
         </div>
 
         <div
-          class="absolute bottom-4 flex items-center justify-center gap-1 text-[10px] font-normal text-text-secondary"
+          class="absolute bottom-4 flex items-center justify-center gap-1.5 text-[9px] font-medium text-text-secondary hover:text-text-primary cursor-pointer transition-colors"
         >
-          <SettingsIcon class="w-3 h-3" />
+          <SettingsIcon class="w-2.5 h-2.5" />
           Settings
         </div>
       </div>
@@ -136,25 +136,31 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
         class="bg-bg-main w-3/4 h-full flex flex-col overflow-hidden border-l border-white/5"
       >
         <!-- editor actions -->
-        <div class="h-14 px-6 flex items-center justify-between select-none">
+        <div class="h-10 px-6 flex items-center justify-between select-none">
           <div
-            class="bg-bg-secondary rounded-sm px-3 py-1 flex items-center gap-1 text-text-secondary text-[10px]"
+            class="bg-bg-secondary hover:bg-white/5 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-secondary text-[9px] font-medium cursor-pointer"
           >
-            <AiGenerateIcon class="w-3 h-3" />Generate Doc
+            <AiGenerateIcon class="w-2.5 h-2.5" />Generate
           </div>
           <div
-            class="bg-primary rounded-sm px-3 py-1 flex items-center gap-1 text-text-primary text-[10px]"
+            class="bg-primary hover:bg-primary/90 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-primary text-[9px] font-semibold cursor-pointer shadow-sm shadow-primary/20"
           >
-            <SaveIcon class="w-3 h-3" />Save
+            <SaveIcon class="w-2.5 h-2.5" />Save
           </div>
         </div>
 
         <!-- editor content -->
-        <div class="flex-1 overflow-hidden px-8 custom-scrollbar">
-          <div class="text-editor w-full h-full max-w-2xl">
-            <div class="section">
-              <h3>High-Level Flow</h3>
-              <ol>
+        <div class="flex-1 overflow-hidden px-10 py-8 custom-scrollbar">
+          <div
+            class="text-editor w-full h-full max-w-2xl text-[10px] text-text-primary leading-relaxed"
+          >
+            <div class="section mb-6">
+              <h3
+                class="text-sm font-semibold mb-3 text-text-primary tracking-tight"
+              >
+                High-Level Flow
+              </h3>
+              <ol class="space-y-1.5 list-decimal pl-4">
                 <li>User submits authentication credentials.</li>
                 <li>Authentication Service validates credentials.</li>
                 <li>User identity is retrieved from the User Store.</li>
@@ -163,73 +169,93 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
               </ol>
             </div>
 
-            <div class="section">
-              <h4>4. User Identity Model</h4>
+            <div class="section mb-6">
+              <h4
+                class="text-[11px] font-semibold mb-3 text-text-primary tracking-tight"
+              >
+                4. User Identity Model
+              </h4>
 
-              <div class="flex inline-flex text-[10px] mb-4">
+              <div class="flex inline-flex items-center flex-wrap mb-4">
                 Each authenticated user in ACME’s platform is represented by a
                 &nbsp;
                 <div
-                  class="text-text-primary font-semibold relative bg-accent flex items-center justify-center"
+                  class="text-text-primary font-semibold relative group-hover:bg-accent flex items-center justify-center"
                 >
                   User Identity record
                   <div
-                    class="floating-menu select-none absolute -top-10 w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-main text-text-secondary px-1.5 py-1 border border-border rounded-lg"
+                    class="floating-menu select-none absolute -top-10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary backdrop-blur-md text-text-secondary px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-20"
                   >
                     <div
-                      class="border border-border pl-2 pr-1 py-1 text-[8px] rounded-md flex items-center gap-1"
+                      class="border border-white/5 pl-2 pr-1 py-0.5 text-[8px] rounded-md flex items-center gap-1 font-medium bg-white/5"
                     >
                       Paragraph <ArrowIcon
-                        class="w-auto h-2.5 rotate-90 text-text-secondary"
+                        class="w-auto h-2 rotate-90 text-text-secondary"
                       />
                     </div>
 
                     <div
-                      class="flex text-text-primary items-center justify-center w-4 h-4"
+                      class="flex gap-2 items-center px-1 border-l border-white/5"
                     >
-                      <BoldIcon class="w-3 h-3" />
-                    </div>
-                    <div class="flex items-center justify-center w-4 h-4">
-                      <ItalicIcon class="w-3 h-3" />
-                    </div>
-                    <div class="flex items-center justify-center w-4 h-4">
-                      <UnderlineIcon class="w-3 h-3" />
-                    </div>
-                    <div class="flex items-center justify-center w-4 h-4">
-                      <StrikethroughIcon class="w-3 h-3" />
-                    </div>
-                    <div class="flex items-center justify-center w-4 h-4">
-                      <CodeIcon class="w-3 h-3" />
-                    </div>
-                    <div class="flex items-center justify-center w-4 h-4">
-                      <QuoteIcon class="w-3 h-3" />
+                      <div
+                        class="text-text-primary transition-colors cursor-pointer"
+                      >
+                        <BoldIcon class="w-2.5 h-2.5" />
+                      </div>
+                      <div
+                        class="hover:text-text-primary transition-colors cursor-pointer"
+                      >
+                        <ItalicIcon class="w-2.5 h-2.5" />
+                      </div>
+                      <div
+                        class="hover:text-text-primary transition-colors cursor-pointer"
+                      >
+                        <UnderlineIcon class="w-2.5 h-2.5" />
+                      </div>
+                      <div
+                        class="hover:text-text-primary transition-colors cursor-pointer"
+                      >
+                        <StrikethroughIcon class="w-2.5 h-2.5" />
+                      </div>
+                      <div
+                        class="hover:text-text-primary transition-colors cursor-pointer"
+                      >
+                        <CodeIcon class="w-2.5 h-2.5" />
+                      </div>
+                      <div
+                        class="hover:text-text-primary transition-colors cursor-pointer"
+                      >
+                        <QuoteIcon class="w-3 h-3" />
+                      </div>
                     </div>
                   </div>
+                  .
                 </div>
-                .
-              </div>
 
-              <div class="section">
-                <p><code>user_id</code> - Unique identifier for the user.</p>
+                <div class="section mt-2">
+                  <p>
+                    <code>user_id</code> - Unique identifier for the user.
+                  </p>
 
-                <p><code>email</code> - Primary login identifier.</p>
+                  <p><code>email</code> - Primary login identifier.</p>
 
-                <p>
-                  <code>password_hash</code> - Securely hashed password stored by
-                  the system.
-                </p>
+                  <p>
+                    <code>password_hash</code> - Securely hashed password stored by
+                    the system.
+                  </p>
 
-                <p>
-                  <code>account_status</code> - Current state (active, locked, suspended).
-                </p>
+                  <p>
+                    <code>account_status</code> - Current state (active, locked, suspended).
+                  </p>
 
-                <p>
-                  <code>tenant_id</code> - Organization associated with the user.
-                </p>
+                  <p>
+                    <code>tenant_id</code> - Organization associated with the user.
+                  </p>
 
-                <p>
-                  <code>mfa_enabled</code> - Indicates if MFA is active.
-                </p>
+                  <p>
+                    <code>mfa_enabled</code> - Indicates if MFA is active.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

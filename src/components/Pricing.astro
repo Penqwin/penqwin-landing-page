@@ -2,7 +2,10 @@
 import TickIcon from "../assets/svg/tick.astro";
 ---
 
-<section id="pricing" class="w-full py-32 bg-bg-main relative overflow-hidden">
+<section
+  id="pricing"
+  class="w-full py-16 md:py-32 bg-bg-main relative overflow-hidden"
+>
   <div class="max-w-6xl mx-auto px-6 relative z-10">
     <div class="text-center mb-16 reveal-on-scroll">
       <h2
@@ -27,7 +30,7 @@ import TickIcon from "../assets/svg/tick.astro";
 
         <div class="relative z-10 flex flex-col items-start">
           <div
-            class="absolute select-none top-0 right-0 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-8"
+            class="absolute select-none top-0 right-0 inline-flex items-center justify-center gap-2 px-2 md:px-4 py-1 md:py-1.5 rounded-md bg-primary/10 border border-primary/20 text-primary text-[8px] md:text-xs font-bold tracking-widest uppercase"
           >
             Beta Preview
           </div>
@@ -51,16 +54,16 @@ import TickIcon from "../assets/svg/tick.astro";
                 "Multiple Workspaces",
                 "Unlimited Documentation",
               ].map((feature) => (
-                <div class="flex items-center gap-4 text-text-primary/90">
+                <div class="flex items-center gap-4 text-text-secondary">
                   <TickIcon class="w-5 h-5 text-primary flex-shrink-0" />
-                  <span class="text-base">{feature}</span>
+                  <span class="text-sm md:text-base">{feature}</span>
                 </div>
               ))
             }
           </div>
 
           <a
-            href="#get-started"
+            href="https://app.penqwin.com"
             class="w-full select-none group/anchor py-4 flex items-center justify-center gap-3 bg-text-primary hover:bg-text-primary text-bg-main rounded-2xl font-bold transition-all duration-300 active:scale-[0.98] shadow-xl"
           >
             Claim Your Spot
