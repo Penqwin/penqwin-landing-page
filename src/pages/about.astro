@@ -1,0 +1,187 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SnowflakeIcon from "../assets/svg/snowflake.astro";
+---
+
+<Layout
+  title="About Penqwin | Engineering Documentation Sync"
+  description="Learn about Penqwin, the platform that turns pull requests and commits into structured engineering documentation."
+>
+  <Header />
+
+  <main class="relative pt-32 pb-24 overflow-hidden">
+    <!-- Background Decor -->
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none -z-10"
+    >
+      <div
+        class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full opacity-30 animate-pulse-slow"
+      >
+      </div>
+      <div
+        class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/5 blur-[100px] rounded-full opacity-20"
+      >
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6">
+      <!-- Hero Section -->
+      <section class="mb-24">
+        <h1
+          class="text-5xl md:text-7xl font-serif text-white mb-8 tracking-tight leading-tight"
+        >
+          About Penqwin
+        </h1>
+        <div class="space-y-6">
+          <p
+            class="text-xl md:text-2xl text-text-secondary leading-relaxed font-light"
+          >
+            Let’s be honest, most developers don’t <span
+              class="italic text-white">hate</span
+            > documentation. They just hate writing it after the fact.
+          </p>
+          <p class="text-lg text-text-secondary/80 leading-relaxed">
+            You build a feature, merge the PR, ship it to production… and then
+            someone asks, “Is this documented?” Suddenly you’re staring at a
+            blank page trying to explain something you already solved in code.
+          </p>
+        </div>
+      </section>
+
+      <!-- Content Sections -->
+      <div class="space-y-32">
+        <section class="relative">
+          <div class="absolute -left-8 top-0 text-primary/20 select-none">
+            <span class="text-8xl font-serif">01</span>
+          </div>
+          <div class="relative pt-4">
+            <h2 class="text-3xl font-serif text-white mb-6">
+              Documentation that starts with your code
+            </h2>
+            <div class="space-y-4 text-text-secondary leading-relaxed">
+              <p>
+                Penqwin turns pull requests and commits into structured
+                engineering documentation. Instead of starting with an empty
+                editor, you get a generated draft that explains what changed,
+                why it changed, and how it fits into the system.
+              </p>
+              <p>
+                From there, your team can review, polish, and expand the
+                documentation together.
+              </p>
+              <div class="flex flex-col gap-2 pt-4">
+                <!-- <span class="text-white font-medium">No blank pages.</span>
+                <span class="text-white font-medium"
+                  >No “I’ll write the docs later.”</span
+                > -->
+                <span class="text-primary font-medium tracking-wide"
+                  >The simplest path from code changes to clear documentation.</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="relative">
+          <div class="absolute -left-8 top-0 text-primary/20 select-none">
+            <span class="text-8xl font-serif">02</span>
+          </div>
+          <div class="relative pt-4">
+            <h2 class="text-3xl font-serif text-white mb-6">
+              Built for the way engineers actually work
+            </h2>
+            <div class="space-y-4 text-text-secondary leading-relaxed">
+              <p>
+                Engineering teams move quickly. Documentation often doesn’t keep
+                up.
+              </p>
+              <p>
+                Penqwin fits directly into that workflow by helping teams turn
+                real development activity into living documentation. When code
+                evolves, documentation can evolve with it — instead of slowly
+                drifting out of date.
+              </p>
+              <p>
+                The platform combines AI-generated documentation with a clean
+                editing environment so teams can refine and maintain docs
+                without friction.
+              </p>
+              <p class="text-white font-medium italic pt-2">
+                Think of it as a starting point for your documentation, not
+                another task on your checklist.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="bg-bg-secondary/30 border border-white/5 p-8 rounded-3xl backdrop-blur-sm relative overflow-hidden group"
+        >
+          <div
+            class="absolute -right-8 -bottom-8 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500"
+          >
+            <SnowflakeIcon class="w-48 h-48" />
+          </div>
+          <div
+            class="space-y-4 text-text-secondary leading-relaxed relative z-10"
+          >
+            <p class="pr-16">
+              Penguins survive harsh conditions by staying close together and
+              sharing knowledge within the group. Software teams work the same
+              way, things run smoother when everyone understands what’s
+              happening in the codebase.
+            </p>
+            <p>Penqwin exists to keep that shared understanding alive.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="mt-24 text-center">
+        <p
+          class="text-sm text-text-muted font-medium tracking-[0.2em] uppercase"
+        >
+          Great software deserves documentation that keeps up with it.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  main {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  section {
+    opacity: 0;
+    animation: fade-in-up 1s ease-out forwards;
+  }
+
+  section:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  section:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  section:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  section:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+</style>

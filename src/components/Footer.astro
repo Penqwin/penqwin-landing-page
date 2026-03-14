@@ -6,7 +6,7 @@ import SnowflakeIcon from "../assets/svg/snowflake.astro";
   <!-- Main Footer Container -->
   <div class="max-w-6xl mx-auto px-6 relative z-10">
     <div
-      class="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/5"
+      class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/5"
     >
       <!-- Logo & Credit -->
       <div class="flex flex-col items-center md:items-start gap-4">
@@ -37,20 +37,24 @@ import SnowflakeIcon from "../assets/svg/snowflake.astro";
           >Terms</a
         >
         <a
+          href="/about"
+          class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
+          >About</a
+        >
+        <span class="hidden md:block border-r border-border h-4"></span>
+        <a
           href="https://x.com/penqwinai"
           target="_blank"
           rel="noopener noreferrer"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
-          aria-label="Follow Penqwin on Twitter/X"
-          >Twitter/X</a
+          aria-label="Follow Penqwin on Twitter/X">X/Twitter</a
         >
         <a
           href="https://reddit.com/r/penqwin"
           target="_blank"
           rel="noopener noreferrer"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
-          aria-label="Join our community on Reddit"
-          >Reddit</a
+          aria-label="Join our community on Reddit">Reddit</a
         >
       </nav>
     </div>
