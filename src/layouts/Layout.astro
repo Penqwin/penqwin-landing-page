@@ -9,11 +9,11 @@ interface Props {
 }
 
 const {
-  title = "Penqwin | Engineering Documentation",
-  description = "Penqwin is the most advanced documentation platform for engineering teams. Sync your documentation directly with your codebase and automate technical writing.",
+  title = "Penqwin | PR-Driven Engineering Documentation",
+  description = "Transform GitHub PRs and Commits into structured docs instantly. Penqwin combines AI-powered generation with a specialized documentation workspace for modern dev teams.",
   image = "/og-image.png",
   canonicalURL = Astro.url.href,
-} = Astro.props;
+} = Astro.props; // The title and description is passed from each page.
 
 const siteName = "Penqwin";
 ---
@@ -56,12 +56,19 @@ const siteName = "Penqwin";
         "name": "Penqwin",
         "operatingSystem": "Web",
         "applicationCategory": "DeveloperApplication",
-        "description": "Engineering documentation sync platform that automates technical writing and keeps docs up to date with code changes.",
+        "description": "An intelligent platform that transforms code changes into engineering documentation via a purpose-built documentation editor.",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
-        }
+        },
+        "featureList": [
+          "AI Documentation Generation",
+          "GitHub PR & Commit Integration",
+          "Specialized Documentation Workspace",
+          "Multiple Workspace",
+          "Unlimited Documentation"
+        ]
       }
     </script>
 
