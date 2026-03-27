@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-    site: 'https://penqwin.com',
+    site: 'https://www.penqwin.com',
     trailingSlash: 'never',
     integrations: [sitemap()],
     vite: {
