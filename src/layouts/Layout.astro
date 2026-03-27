@@ -12,7 +12,7 @@ const {
   title = "Penqwin | PR-Driven Engineering Documentation",
   description = "Transform GitHub PRs and Commits into structured docs instantly. Penqwin combines AI-powered generation with a specialized documentation workspace for modern dev teams.",
   image = "/og-image.png",
-  canonicalURL = Astro.url.href,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props; // The title and description is passed from each page.
 
 const siteName = "Penqwin";
