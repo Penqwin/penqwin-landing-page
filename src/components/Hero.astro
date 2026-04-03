@@ -33,20 +33,32 @@ import ArrowIcon from "../assets/svg/arrow.astro";
   </div>
 
   <div class="relative z-10 max-w-4xl px-6 mt-32 md:mt-48 text-center">
+    <!-- H1 – keyword-rich, benefit-led -->
     <h1
       class="font-serif text-4xl md:text-7xl text-text-primary tracking-tight leading-[1.5] md:leading-[1.1] mb-6"
     >
-      Stop writing docs.<br />
-      <em class="text-primary">Start syncing it.</em>
+      Automate <em class="text-primary">engineering documentation</em> from GitHub
+      PRs.
     </h1>
 
-    <div class="my-16 md:my-10">
+    <!-- Subtitle – problem/solution, secondary keywords -->
+    <p
+      class="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
+    >
+      Penqwin turns pull requests and commits into structured, up-to-date
+      developer documentation.
+    </p>
+
+    <!-- Primary CTA -->
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center gap-4 my-10 md:my-8"
+    >
       <a
+        id="hero-cta-primary"
         href="https://app.penqwin.com"
         class="group select-none relative inline-flex items-center active:scale-95 justify-center gap-3 px-8 py-4 bg-white/[0.03] backdrop-blur-md border border-white/10 text-white rounded-full font-medium transition-all duration-500 hover:bg-white/[0.08] hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.3)]"
       >
-        <span>Generate Your First Doc</span>
-        <!-- <span>Join Beta</span> -->
+        <span>Turn Your PR into Docs</span>
         <ArrowIcon
           class="w-6 inline-block transform group-hover:translate-x-1 transition-transform duration-300 text-lg"
         />
@@ -54,7 +66,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
     </div>
   </div>
   <div
-    class="hidden md:block w-full md:w-1/2 max-w-5xl mt-12 md:mt-16 mb-20 md:mb-32 px-4 md:px-6 relative z-10"
+    class="hidden md:block w-full md:w-2/3 max-w-5xl mt-12 md:mt-16 mb-20 md:mb-32 px-4 md:px-6 relative z-10"
   >
     <DashboardPreview />
   </div>

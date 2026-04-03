@@ -2,19 +2,20 @@
 import ArrowIcon from "../assets/svg/arrow.astro";
 import DocumentIcon from "../assets/svg/document.astro";
 import FolderIcon from "../assets/svg/folder.astro";
-import AddIcon from "../assets/svg/add.astro";
 import SettingsIcon from "../assets/svg/settings.astro";
 import SaveIcon from "../assets/svg/save.astro";
 import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
+import SearchIcon from "../assets/svg/search.astro";
 // text formatting icons
 import BoldIcon from "../assets/svg/text-formatting/bold.astro";
 import ItalicIcon from "../assets/svg/text-formatting/italic.astro";
 import UnderlineIcon from "../assets/svg/text-formatting/underline.astro";
 import StrikethroughIcon from "../assets/svg/text-formatting/strikethrough.astro";
 import CodeIcon from "../assets/svg/text-formatting/code.astro";
-import QuoteIcon from "../assets/svg/text-formatting/quote.astro";
 import penqwinWebp from "../assets/images/penqwin-primary.webp";
 import penqwinPng from "../assets/images/penqwin-primary.png";
+import Bullet from "../assets/svg/text-formatting/bullet.astro";
+import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
 ---
 
 <!-- Dashboard Showcase -->
@@ -51,7 +52,7 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
           <img
             src={penqwinPng.src}
             alt="Penqwin - Professional Engineering Documentation Platform"
-            class="w-14 h-auto opacity-80"
+            class="w-8 h-auto opacity-80"
           />
         </picture>
         <h3
@@ -62,8 +63,19 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
           />
         </h3>
 
+        <!-- Search bar -->
+        <div
+          class="border border-border/50 hover:border-border px-2 py-1 rounded-full w-full mt-2 flex items-center justify-between text-text-muted hover:text-text-secondary transition-colors cursor-pointer"
+        >
+          <div class="flex items-center gap-2">
+            <SearchIcon class="w-auto h-2" />
+            <span class="text-[6px]">Global Search</span>
+          </div>
+          <span class="text-[6px]">⌘ + K</span>
+        </div>
+
         <!-- sidebar entities -->
-        <div class="mt-4 w-full flex flex-col text-[9px] tracking-tight">
+        <div class="mt-3 w-full flex flex-col text-[9px] tracking-tight">
           <div
             class="text-text-secondary flex gap-2 pb-2 items-center hover:text-text-primary cursor-pointer transition-colors"
           >
@@ -133,14 +145,14 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
 
       <!-- editor -->
       <div
-        class="bg-bg-main w-3/4 h-full flex flex-col overflow-hidden border-l border-white/5"
+        class="bg-bg-main w-3/4 h-full flex flex-col border-l border-white/5"
       >
         <!-- editor actions -->
         <div class="h-10 px-6 flex items-center justify-between select-none">
           <div
             class="bg-bg-secondary hover:bg-white/5 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-secondary text-[9px] font-medium cursor-pointer"
           >
-            <AiGenerateIcon class="w-2.5 h-2.5" />Generate
+            <AiGenerateIcon class="w-2.5 h-2.5" />Generate Doc
           </div>
           <div
             class="bg-primary hover:bg-primary/90 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-primary text-[9px] font-semibold cursor-pointer shadow-sm shadow-primary/20"
@@ -150,7 +162,7 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
         </div>
 
         <!-- editor content -->
-        <div class="flex-1 overflow-hidden px-10 py-8 custom-scrollbar">
+        <div class="flex-1 px-10 py-8 custom-scrollbar">
           <div
             class="text-editor w-full h-full max-w-2xl text-[10px] text-text-primary leading-relaxed"
           >
@@ -184,7 +196,7 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
                 >
                   User Identity record
                   <div
-                    class="floating-menu select-none absolute -top-10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary backdrop-blur-md text-text-secondary px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-20"
+                    class="floating-menu select-none absolute -top-10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary backdrop-blur-md text-text-secondary px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-999"
                   >
                     <div
                       class="border border-white/5 pl-2 pr-1 py-0.5 text-[8px] rounded-md flex items-center gap-1 font-medium bg-white/5"
@@ -225,7 +237,12 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
                       <div
                         class="hover:text-text-primary transition-colors cursor-pointer"
                       >
-                        <QuoteIcon class="w-3 h-3" />
+                        <Bullet class="w-2.5 h-2.5" />
+                      </div>
+                      <div
+                        class="hover:text-text-primary transition-colors cursor-pointer border border-border rounded-sm w-3 h-3 flex items-center justify-center"
+                      >
+                        <MoreVert class="w-2 h-2" />
                       </div>
                     </div>
                   </div>
