@@ -7,50 +7,50 @@ import TickIcon from "../assets/svg/tick.astro";
   class="w-full py-16 md:py-32 bg-bg-main relative overflow-hidden"
 >
   <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 reveal-on-scroll">
+    <div class="text-center mb-16">
       <h2
         class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-6"
       >
         Simple, <span class="text-primary italic">transparent</span> pricing
       </h2>
       <p class="text-text-secondary text-lg max-w-2xl mx-auto">
-        Start building better documentation today. Join the public preview.
+        Start building better documentation today.
       </p>
     </div>
 
-    <div class="flex justify-center reveal-on-scroll delay-150">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto relative bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.04] hover:border-primary/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] overflow-hidden group"
+    >
+      <!-- Hover Gradient overlay -->
       <div
-        class="pricing-card select-nones group relative w-full max-w-lg p-6 md:p-10 bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[3rem] transition-all duration-700 hover:bg-white/[0.04] hover:border-primary/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
+        class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
       >
-        <!-- Floating Accent -->
+      </div>
+      <!-- Free Card -->
+      <div class="relative z-10 w-full p-8 md:p-10 flex flex-col">
         <div
-          class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+          class="flex flex-col items-start flex-1 pb-8 md:pb-0 md:pr-8 border-b md:border-r md:border-b-0 border-white/10"
         >
-        </div>
-
-        <div class="relative z-10 flex flex-col items-start">
           <div
-            class="absolute select-none top-0 right-0 inline-flex items-center justify-center gap-2 px-2 md:px-4 py-1 md:py-1.5 rounded-md bg-primary/10 border border-primary/20 text-primary text-[8px] md:text-xs font-bold tracking-widest uppercase"
+            class="select-none text-text-primary mb-2 text-sm md:text-base font-bold tracking-widest uppercase"
           >
-            Beta Preview
+            Free Plan
           </div>
 
           <div class="flex items-baseline gap-1 mb-8">
             <span
-              class="text-6xl md:text-8xl font-serif text-text-primary tracking-tighter"
+              class="text-4xl md:text-6xl font-serif font-bold text-text-primary tracking-tighter"
               >$0</span
             >
-            <span class="text-text-secondary font-medium"
-              >/mo</span
-            >
+            <span class="text-text-secondary font-medium">/mo</span>
           </div>
 
-          <div class="w-full space-y-3 mb-12">
+          <div class="w-full space-y-3 flex-1">
             {
               [
-                "AI-Powered Doc Generation",
+                "6 Smart Document Generation",
                 "Multiple Workspaces",
-                "Unlimited Documentation",
+                "20 Documents",
               ].map((feature) => (
                 <div class="flex items-center gap-4 text-text-secondary">
                   <TickIcon class="w-5 h-5 text-primary flex-shrink-0" />
@@ -59,34 +59,80 @@ import TickIcon from "../assets/svg/tick.astro";
               ))
             }
           </div>
-
-          <a
-            href="https://app.penqwin.com"
-            class="w-full select-none group/anchor py-4 flex items-center justify-center gap-3 bg-text-primary hover:bg-text-primary text-bg-main rounded-2xl font-bold transition-all duration-300 active:scale-[0.98] shadow-xl"
-          >
-            Claim Your Spot
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5 transform group-hover/anchor:translate-x-1 transition-transform duration-300"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </a>
-
-          <p
-            class="mt-6 w-full text-text-secondary text-xs text-center leading-relaxed"
-          >
-            Join the preview and be among the first to try new features.
-          </p>
         </div>
       </div>
+
+      <!-- Pro Card -->
+      <div class="relative z-10 w-full p-8 md:p-10 flex flex-col">
+        <div class="flex flex-col items-start flex-1">
+          <div
+            class="select-none text-text-primary mb-2 text-sm md:text-base font-bold tracking-widest uppercase"
+          >
+            Pro Plan
+          </div>
+          <div
+            class="absolute select-none top-6 right-6 inline-flex items-center justify-center gap-2 px-1 md:px-2 py-0.5 md:py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-[8px] md:text-xs font-medium tracking-widest uppercase"
+          >
+            Early Bird
+          </div>
+
+          <div class="flex items-baseline gap-1 mb-8">
+            <span
+              class="text-4xl md:text-6xl font-serif text-text-muted mr-3 tracking-tighter line-through"
+              >$39</span
+            >
+            <span
+              class="text-4xl md:text-6xl font-serif font-bold text-text-primary tracking-tighter"
+              >$19</span
+            >
+            <span class="text-text-secondary font-medium">/mo</span>
+          </div>
+
+          <div class="w-full space-y-3 flex-1">
+            {
+              [
+                "Unlimited Smart Document Generation",
+                "Multiple Workspaces",
+                "Unlimited Documents",
+                "Team Collaboration",
+              ].map((feature, i) => (
+                <div class="flex items-center gap-4 text-text-secondary">
+                  <TickIcon class="w-5 h-5 text-primary flex-shrink-0" />
+                  <span class="text-sm md:text-base">{feature}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CTA -->
+    <div class="w-full mt-12">
+      <a
+        href="https://app.penqwin.com"
+        class="w-fit mx-auto select-none group/anchor py-4 px-8 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-text-primary rounded-full font-bold transition-all duration-300 active:scale-[0.98] shadow-xl"
+      >
+        Claim Your Spot
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5 transform group-hover/anchor:translate-x-1 transition-transform duration-300"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </a>
+
+      <p
+        class="mt-6 w-full text-text-secondary text-xs text-center leading-relaxed"
+      >
+        Get started with the free features right away.
+      </p>
     </div>
   </div>
 
@@ -103,33 +149,6 @@ import TickIcon from "../assets/svg/tick.astro";
   .pricing-card {
     transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
 </style>
 
-<script>
-  const pricingObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          pricingObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
 
-  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
-    pricingObserver.observe(el);
-  });
-</script>

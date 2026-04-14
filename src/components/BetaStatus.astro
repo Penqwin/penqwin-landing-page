@@ -2,7 +2,7 @@
 
 ---
 
-<div class="max-w-4xl mx-auto px-6 reveal-on-scroll">
+<div class="max-w-4xl mx-auto px-6">
   <div
     class="relative p-8 md:p-12 bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[2.5rem] overflow-hidden text-center group"
   >
@@ -35,33 +35,4 @@
 
 <style>
   @reference "../styles/global.css";
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
 </style>
-
-<script>
-  const footerObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          footerObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
-
-  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
-    footerObserver.observe(el);
-  });
-</script>

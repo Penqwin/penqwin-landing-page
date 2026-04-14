@@ -12,7 +12,7 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
   class="w-full py-16 md:py-32 bg-bg-main relative overflow-hidden"
 >
   <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-20 animate-fade-in-up">
+    <div class="text-center mb-20">
       <h2
         class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight mb-4"
       >
@@ -42,7 +42,6 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
         step="02"
         title="Process"
         description="Code changes analyzed to surface real engineering impact."
-        class="delay-150"
       >
         <AiGenerateIcon slot="icon" class="w-8 h-8" />
       </WorkflowCard>
@@ -51,7 +50,6 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
         step="03"
         title="Output"
         description="Produces engineering documentation, ready for review and personalization."
-        class="delay-300"
       >
         <DocumentIcon slot="icon" class="w-8 h-8" />
       </WorkflowCard>
@@ -65,26 +63,4 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
   </div>
 </section>
 
-<style>
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
 
-  .delay-150 {
-    animation-delay: 0.15s;
-  }
-  .delay-300 {
-    animation-delay: 0.3s;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>

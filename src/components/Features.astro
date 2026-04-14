@@ -10,7 +10,7 @@ import WorkspaceIcon from "../assets/svg/workspace.astro";
   class="w-full py-16 md:py-32 bg-bg-main relative overflow-hidden"
 >
   <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-24 reveal-on-scroll">
+    <div class="text-center mb-24">
       <h2
         class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-6"
       >
@@ -33,7 +33,6 @@ import WorkspaceIcon from "../assets/svg/workspace.astro";
       <FeatureCard
         title="Developer-First Editor"
         description="A high-performance writing experience designed for technical content, featuring native code block support and a minimalist interface."
-        class="delay-150"
       >
         <CodeIcon slot="icon" class="w-7 h-7" />
       </FeatureCard>
@@ -41,7 +40,6 @@ import WorkspaceIcon from "../assets/svg/workspace.astro";
       <FeatureCard
         title="Workspace-Centric Docs"
         description="No more 'lost files.' Group your documentation by project, team, or internal hierarchy so everyone finds exactly what they need, instantly."
-        class="delay-300"
       >
         <WorkspaceIcon slot="icon" class="w-7 h-7" />
       </FeatureCard>
@@ -69,33 +67,4 @@ import WorkspaceIcon from "../assets/svg/workspace.astro";
   .feature-card:hover {
     transform: translateY(-8px);
   }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
 </style>
-
-<script>
-  const featureObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          featureObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
-
-  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
-    featureObserver.observe(el);
-  });
-</script>
