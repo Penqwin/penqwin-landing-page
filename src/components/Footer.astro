@@ -1,5 +1,6 @@
 ---
 import SnowflakeIcon from "../assets/svg/snowflake.astro";
+import ArrowIcon from "../assets/svg/arrow.astro";
 ---
 
 <footer class="w-full bg-bg-main relative pt-24 pb-12 overflow-hidden">
@@ -27,6 +28,35 @@ import SnowflakeIcon from "../assets/svg/snowflake.astro";
       <!-- Links -->
       <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
         <a
+          href="/about"
+          class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
+          >About</a
+        >
+        <div class="relative" id="footer-resources-container">
+          <button
+            id="footer-resources-btn"
+            class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200 flex items-center gap-1 cursor-pointer"
+          >
+            Resources
+            <ArrowIcon
+              id="footer-resources-icon"
+              class="w-4 h-4 transition-transform"
+              style="transform: rotate(270deg);"
+            />
+          </button>
+          <div
+            id="footer-resources-dropdown"
+            class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 invisible transition-all duration-200 bg-bg-secondary border border-white/10 rounded-xl shadow-2xl p-2 min-w-[160px] flex flex-col z-50"
+          >
+            <a
+              href="/notion-alternative"
+              class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors text-center whitespace-nowrap"
+            >
+              Notion comparison
+            </a>
+          </div>
+        </div>
+        <a
           href="/privacy"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
           >Privacy</a
@@ -35,11 +65,6 @@ import SnowflakeIcon from "../assets/svg/snowflake.astro";
           href="/terms"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
           >Terms</a
-        >
-        <a
-          href="/about"
-          class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
-          >About</a
         >
         <span class="hidden md:block border-r border-border h-4"></span>
         <!-- <a
@@ -80,3 +105,37 @@ import SnowflakeIcon from "../assets/svg/snowflake.astro";
   >
   </div>
 </footer>
+
+<script>
+  const btn = document.getElementById("footer-resources-btn");
+  const dropdown = document.getElementById("footer-resources-dropdown");
+  const icon = document.getElementById("footer-resources-icon");
+
+  if (btn && dropdown && icon) {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.contains("opacity-100");
+
+      if (isOpen) {
+        dropdown.classList.remove("opacity-100", "visible");
+        dropdown.classList.add("opacity-0", "invisible");
+        icon.classList.remove("rotate-180");
+      } else {
+        dropdown.classList.remove("opacity-0", "invisible");
+        dropdown.classList.add("opacity-100", "visible");
+        icon.classList.add("rotate-180");
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        !btn.contains(e.target as Node) &&
+        !dropdown.contains(e.target as Node)
+      ) {
+        dropdown.classList.remove("opacity-100", "visible");
+        dropdown.classList.add("opacity-0", "invisible");
+        icon.classList.remove("rotate-180");
+      }
+    });
+  }
+</script>

@@ -1,0 +1,328 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ArrowIcon from "../assets/svg/arrow.astro";
+import Tick from "../assets/svg/tick.astro";
+import Cross from "../assets/svg/cross.astro";
+import penqwinWebp from "../assets/images/penqwin-icon.webp";
+import penqwinPng from "../assets/images/penqwin-icon.png";
+---
+
+<Layout
+  title="Notion Alternative for Engineering Teams | Penqwin"
+  description="Stop manually writing and maintaining documentation. Penqwin is the Notion alternative for engineers that turns your code changes into technical documentation automatically."
+>
+  <Header />
+
+  <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
+    <!-- Main Article for SEO -->
+    <article class="max-w-3xl mx-auto px-6 lg:px-8 space-y-32">
+      <!-- 1. Hero Section -->
+      <section class="space-y-8 pt-16 text-center animate-fade-in">
+        <h1
+          class="font-serif text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.1]"
+        >
+          Notion for engineers, but your
+          <span class="text-primary italic">docs write themselves.</span>
+        </h1>
+        <p
+          class="text-text-secondary text-md md:text-xl leading-relaxed max-w-2xl mx-auto"
+        >
+          Stop manually writing and maintaining documentation. Penqwin turns
+          your code changes into technical documentation automatically.
+        </p>
+        <div class="pt-8 flex justify-center">
+          <a
+            href="https://app.penqwin.com"
+            class="inline-flex group items-center justify-center gap-3 px-8 py-4 bg-text-primary text-lg text-bg-main rounded-full font-bold transition-all duration-300 active:scale-95"
+          >
+            <span>Turn your code into docs</span>
+            <ArrowIcon
+              class="w-5 group-hover:translate-x-1 transition-transform"
+            />
+          </a>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
+
+      <!-- 3. Solution Section -->
+      <section
+        class="space-y-8 relative before:absolute before:-inset-8 before:bg-white/[0.01] before:rounded-3xl before:-z-10 before:border before:border-white/[0.02]"
+      >
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Documentation, directly from your code.
+        </h2>
+        <p
+          class="text-text-secondary font-regular text-lg md:text-xl font-light mb-8"
+        >
+          No more writing docs from scratch.
+        </p>
+        <div class="grid gap-6 text-lg sm:text-xl">
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50">01</span>
+            <span class="text-text-primary">Add your PR or commit</span>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50">02</span>
+            <span class="text-text-primary"
+              >Penqwin generates structured documentation</span
+            >
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50">03</span>
+            <span class="text-text-primary">Review, edit, and store it</span>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50">04</span>
+            <span class="text-text-primary"
+              >Everything stays searchable forever</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. How It Works -->
+      <section class="grid md:grid-cols-12 gap-12 lg:gap-16">
+        <div class="md:col-span-5 lg:col-span-6">
+          <h2
+            class="font-serif text-3xl md:text-4xl font-medium tracking-tight md:sticky md:top-32"
+          >
+            How It Works
+          </h2>
+        </div>
+        <div class="md:col-span-7 lg:col-span-6">
+          <div class="ml-4 md:ml-0 pl-10 pt-2">
+            <div class="relative pb-16">
+              <div
+                class="absolute -left-[41px] top-[14px] bottom-[-6px] w-[1px] bg-white/10"
+              >
+              </div>
+              <span
+                class="absolute -left-[45px] top-1.5 w-2 h-2 rounded-full bg-white/20 ring-4 ring-bg-main"
+              ></span>
+              <span
+                class="font-mono text-sm text-text-secondary/50 block mb-2 uppercase tracking-wider"
+                >Step 01</span
+              >
+              <h3 class="font-medium text-text-primary mb-2 text-2xl">Input</h3>
+              <p class="text-text-secondary text-lg">
+                Add your GitHub PR / commit
+              </p>
+            </div>
+            <div class="relative pb-16">
+              <div
+                class="absolute -left-[41px] top-[14px] bottom-[-6px] w-[1px] bg-white/10"
+              >
+              </div>
+              <span
+                class="absolute -left-[45px] top-1.5 w-2 h-2 rounded-full bg-white/20 ring-4 ring-bg-main"
+              ></span>
+              <span
+                class="font-mono text-sm text-text-secondary/50 block mb-2 uppercase tracking-wider"
+                >Step 02</span
+              >
+              <h3 class="font-medium text-text-primary mb-2 text-2xl">
+                Generate
+              </h3>
+              <p class="text-text-secondary text-lg">
+                AI generates documentation
+              </p>
+            </div>
+            <div class="relative pb-16">
+              <div
+                class="absolute -left-[41px] top-[14px] bottom-[-6px] w-[1px] bg-white/10"
+              >
+              </div>
+              <span
+                class="absolute -left-[45px] top-1.5 w-2 h-2 rounded-full bg-white/20 ring-4 ring-bg-main"
+              ></span>
+              <span
+                class="font-mono text-sm text-text-secondary/50 block mb-2 uppercase tracking-wider"
+                >Step 03</span
+              >
+              <h3 class="font-medium text-text-primary mb-2 text-2xl">
+                Refine
+              </h3>
+              <p class="text-text-secondary text-lg">
+                Review & refine the output
+              </p>
+            </div>
+            <div class="relative group">
+              <span
+                class="absolute -left-[45px] top-1.5 w-2 h-2 rounded-full bg-white/20 ring-4 ring-bg-main"
+              ></span>
+              <span
+                class="font-mono text-sm text-text-secondary/50 block mb-2 uppercase tracking-wider"
+                >Step 04</span
+              >
+              <h3 class="font-medium text-text-primary mb-2 text-2xl">
+                Maintain
+              </h3>
+              <p class="text-text-secondary text-lg">
+                Search and find anytime later
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Comparison Section -->
+      <section class="space-y-10">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Penqwin vs Notion
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr>
+                <th
+                  class="py-4 pr-6 text-text-secondary font-medium font-serif border-b border-white/10 text-lg"
+                  >Feature</th
+                >
+                <th
+                  class="py-4 px-6 flex items-center gap-2 text-text-primary font-medium font-serif border-b border-white/10 text-lg"
+                  ><picture>
+                    <source srcset={penqwinWebp.src} type="image/webp" />
+                    <img
+                      src={penqwinPng.src}
+                      alt="Penqwin Logo"
+                      class="w-5 h-auto rounded-md"
+                    />
+                  </picture>Penqwin</th
+                >
+                <th
+                  class="py-4 pl-6 text-text-secondary font-medium font-serif border-b border-white/10 text-lg"
+                  >Notion</th
+                >
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-lg">
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >AI document generation</td
+                >
+                <td class="py-5 px-6"><Tick class="w-5 h-5" /></td>
+                <td class="py-5 pl-6 text-text-secondary"
+                  ><Cross class="w-5 h-5" /></td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Manual writing needed</td
+                >
+                <td class="py-5 px-6 text-text-primary">Minimal</td>
+                <td class="py-5 pl-6 text-text-secondary">High</td>
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Always up-to-date</td
+                >
+                <td class="py-5 px-6 text-text-primary">Yes</td>
+                <td class="py-5 pl-6 text-text-secondary">No</td>
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Built for engineers</td
+                >
+                <td class="py-5 px-6 text-text-primary">Yes</td>
+                <td class="py-5 pl-6 text-text-secondary">No</td>
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium">Pricing</td>
+                <td class="py-5 px-6 text-success"
+                  >$19/month <br />(no user limits)</td
+                >
+                <td class="py-5 pl-6 text-danger/50"
+                  >$50+/month<br />(for 5 users)</td
+                >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6. Use Cases -->
+      <section class="space-y-10">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Built for modern technical teams.
+        </h2>
+        <div class="flex flex-col gap-12 pt-4">
+          <div class="flex flex-col space-y-3 cursor-default group">
+            <h3 class="text-2xl text-text-primary font-medium">
+              For fast-moving startups
+            </h3>
+            <p
+              class="text-text-secondary text-xl font-light group-hover:text-text-primary/70 transition-colors"
+            >
+              Keep docs in sync without slowing down shipping.
+            </p>
+          </div>
+          <div class="flex flex-col space-y-3 cursor-default group">
+            <h3 class="text-2xl text-text-primary font-medium">
+              For engineering teams
+            </h3>
+            <p
+              class="text-text-secondary text-xl font-light group-hover:text-text-primary/70 transition-colors"
+            >
+              Maintain context across PRs and features.
+            </p>
+          </div>
+          <div class="flex flex-col space-y-3 cursor-default group">
+            <h3 class="text-2xl text-text-primary font-medium">
+              For onboarding
+            </h3>
+            <p
+              class="text-text-secondary text-xl font-light group-hover:text-text-primary/70 transition-colors"
+            >
+              New devs understand changes faster.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
+
+      <!-- 7. Key Value Statement -->
+      <section class="text-center py-8">
+        <p
+          class="font-serif text-3xl md:text-4xl text-text-secondary leading-normal"
+        >
+          Your code already has the knowledge.<br />
+          <span class="text-text-primary italic mt-2 block"
+            >Penqwin makes it usable.</span
+          >
+        </p>
+      </section>
+
+      <!-- 8. CTA Section -->
+      <section class="text-center space-y-8 pt-8 pb-16">
+        <h2 class="font-serif text-4xl md:text-5xl font-medium tracking-tight">
+          Stop writing docs. <span class="text-text-secondary italic"
+            >Start syncing them.</span
+          >
+        </h2>
+        <div class="pt-6">
+          <a
+            href="https://app.penqwin.com"
+            class="inline-flex group items-center justify-center gap-3 px-10 py-5 bg-text-primary text-bg-main rounded-full font-bold text-lg transition-transform active:scale-[0.98]"
+          >
+            <span>Try Penqwin</span>
+            <ArrowIcon
+              class="w-5 group-hover:translate-x-1 transition-transform"
+            />
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @reference "../styles/global.css";
+</style>
