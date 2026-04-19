@@ -46,17 +46,23 @@ import ArrowIcon from "../assets/svg/arrow.astro";
           </button>
           <div
             id="footer-resources-dropdown"
-            class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 invisible transition-all duration-200 bg-bg-secondary border border-white/10 rounded-xl shadow-2xl p-2 min-w-[160px] flex flex-col z-50"
+            class="absolute bottom-full mb-2 opacity-0 invisible transition-all duration-200 bg-bg-secondary border border-white/10 rounded-xl shadow-2xl p-2 min-w-[160px] flex flex-col z-50"
           >
             <a
+              href="/features"
+              class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+            >
+              Features
+            </a>
+            <a
               href="/notion-alternative"
-              class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors text-center whitespace-nowrap"
+              class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
             >
               Notion comparison
             </a>
             <a
               href="/gitbook-alternative"
-              class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors text-center whitespace-nowrap"
+              class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
             >
               GitBook comparison
             </a>
@@ -73,6 +79,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
           >Terms</a
         >
         <span class="hidden md:block border-r border-border h-4"></span>
+        <br class="md:hidden" />
         <!-- <a
           href="https://x.com/penqwinai"
           target="_blank"

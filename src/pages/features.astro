@@ -1,0 +1,509 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+import aiDocImg from "../assets/images/features/ai_doc_generation.png";
+import globalSearchImg from "../assets/images/features/global_search.png";
+import workspaceImg from "../assets/images/features/workspace.png";
+import knowledgebaseImg from "../assets/images/features/knowledgebase.png";
+import teamCollabImg from "../assets/images/features/team_collaboration.png";
+import ArrowIcon from "../assets/svg/arrow.astro";
+import Tick from "../assets/svg/tick.astro";
+---
+
+<Layout
+  title="Features | Penqwin"
+  description="Technical documentation, reimagined for engineering teams. Penqwin turns code changes into living technical docs — automatically."
+>
+  <Header />
+
+  <main class="relative pt-32 pb-24 overflow-hidden">
+    <!-- Hero -->
+    <div class="max-w-7xl mx-auto px-6">
+      <section class="mb-32 pt-12 md:pt-20 max-w-4xl mx-auto">
+        <!-- Content -->
+        <div class="flex flex-col items-center w-full text-center">
+          <h1
+            class="text-5xl md:text-7xl font-serif text-white mb-8 tracking-tight leading-tight"
+          >
+            Technical documentation
+            <span class="text-primary italic">reimagined</span> for software teams
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-text-secondary leading-relaxed font-light mb-10"
+          >
+            Penqwin turns code changes into living technical docs automatically.
+            Knowledgebase search, shared workspaces, and team collaboration
+            built for the way engineering teams actually work.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="https://app.penqwin.com"
+              class="inline-flex group items-center justify-center gap-3 px-8 py-3 bg-text-primary text-bg-main rounded-full font-bold text-lg transition-transform active:scale-[0.98]"
+            >
+              <span>Get started</span>
+              <ArrowIcon
+                class="w-5 group-hover:translate-x-1 transition-transform"
+              />
+            </a>
+            <a
+              href="#features-list"
+              class="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-colors"
+            >
+              Explore all features
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Features List -->
+    <div
+      id="features-list"
+      class="max-w-7xl md:max-w-[85%] mx-auto px-6 space-y-36 md:space-y-48"
+    >
+      <!-- 01 — AI Documentation (image left) -->
+      <section class="relative feature-section">
+        <!-- Two-col: image left, content right -->
+        <div
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+        >
+          <!-- Image (left) -->
+          <div class="w-full feature-img-frame">
+            <Image
+              src={aiDocImg}
+              alt="AI Documentation generation screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+          <!-- Content -->
+          <div class="relative">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >01</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                AI Documentation
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                Technical docs that write themselves from code changes
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Stop writing technical documentation by hand. Paste a GitHub
+                  PR or commit link. Penqwin generates accurate technical
+                  documentation, API docs, and engineering documentation - ready
+                  to review in seconds.
+                </p>
+                <ul class="space-y-4 mt-8">
+                  {
+                    [
+                      "Generates technical docs from PR diffs using AI - no templates, no manual input",
+                      "Perfect for feature documentation, PR reviews, code reviews, and release notes",
+                      "Developer-first documentation editor",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "technical documentation",
+                      "api documentation",
+                      "code documentation",
+                      "ai tools",
+                      "pull request",
+                      "github pull requests",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 — Engineering Knowledgebase (image right) -->
+      <section class="relative feature-section">
+        <!-- Two-col: content left, image right -->
+        <div
+          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
+        >
+          <!-- Content -->
+          <div class="relative">
+            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >02</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Engineering Knowledge-Base
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                Your team's engineering knowledge, organized and always current
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Penqwin turns any GitHub PR or commit into a structured
+                  engineering knowledgebase entry - architecture decisions,
+                  feature docs, code review summaries, and onboarding guides.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "Visualise code architecture, tabular representation of code data and metrics",
+                      "PR review summaries generated and saved to your knowledgebase",
+                      "Keep your knowledgebase current, add new entries from any PR in one click",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "engineering documentation",
+                      "pr review",
+                      "technical documentation",
+                      "documentation tools",
+                      "github documentation",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image (right) -->
+          <div class="w-full feature-img-frame">
+            <Image
+              src={knowledgebaseImg}
+              alt="Engineering Knowledgebase feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 — Multiple Workspaces (image left) -->
+      <section class="relative feature-section">
+        <!-- Two-col: image left, content right -->
+        <div
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+        >
+          <!-- Image (left) -->
+          <div class="w-full feature-img-frame">
+            <Image
+              src={workspaceImg}
+              alt="Multiple Workspaces feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+          <!-- Content -->
+          <div class="relative">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >03</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Multiple Workspaces
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                One platform. Every team, every project, every scope
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Structure your technical documentation the way your
+                  engineering org actually works. Separate workspaces for each
+                  product, squad, or client. No more scattered docs, no more
+                  context-switching.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "Unlimited workspaces to isolate by team, product line, or environment",
+                      "Switch context instantly - all workspaces accessible from one sidebar",
+                      "Workspace centric documentation",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "technical documentation",
+                      "engineering documentation",
+                      "work flow",
+                      "notebook digital",
+                      "doc s",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 — Global Search (image right) -->
+      <section class="relative feature-section">
+        <!-- Two-col: content left, image right -->
+        <div
+          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
+        >
+          <!-- Content -->
+          <div class="relative">
+            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >04</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Global Search
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                Find any doc, spec, or decision in seconds
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Penqwin's global search indexes every piece of technical
+                  documentation, engineering documentation, and API
+                  documentation across your workspace.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "Full-text semantic search across documentations",
+                      "Instant previews - no page loads, no tab switching",
+                      "Keyboard-first - open from anywhere and navigate with ease",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "technical docs",
+                      "documentation tools",
+                      "work flow",
+                      "docs github",
+                      "github docs",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image (right) -->
+          <div class="w-full feature-img-frame">
+            <Image
+              src={globalSearchImg}
+              alt="Global Search feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 — Team Collaboration (image left) -->
+      <section class="relative feature-section">
+        <!-- Two-col: image left, content right -->
+        <div
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+        >
+          <!-- Image (left) -->
+          <div class="w-full feature-img-frame">
+            <Image
+              src={teamCollabImg}
+              alt="Team Collaboration feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+          <!-- Content -->
+          <div class="relative">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >05</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Team Collaboration
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                Technical documentation as a team sport
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Penqwin makes technical docs a shared, living resource, not a
+                  graveyard that one person maintains. Review the documentation
+                  with the same energy as your best PR reviews.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "Join the workspace and collaborate on documentation together",
+                      "Granular permissions: read-only, read-write, admin per workspace",
+                      "Request access to a workspace, admins approve or restrict with one click",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "pr review",
+                      "work flow",
+                      "technical documentation",
+                      "engineering documentation",
+                      "ai tools",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex justify-center mt-30">
+      <a
+        href="https://app.penqwin.com"
+        class="inline-flex group items-center justify-center gap-3 px-10 py-5 bg-text-primary text-bg-main rounded-full font-bold text-lg transition-transform active:scale-[0.98]"
+      >
+        <span>Get started</span>
+        <ArrowIcon class="w-5 group-hover:translate-x-1 transition-transform" />
+      </a>
+    </div>
+  </main>
+  <Footer />
+
+  <style>
+    /* ── Image frame ────────────────────────────────────── */
+    .feature-img-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 10, 22, 0.4);
+      box-shadow:
+        0 0 0 1px rgba(139, 92, 246, 0.1),
+        0 20px 40px -10px rgba(0, 0, 0, 0.5),
+        0 0 60px -15px rgba(139, 92, 246, 0.15);
+    }
+
+    /* ── Animations ─────────────────────────────────────── */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    main {
+      animation: fade-in-up 0.8s ease-out forwards;
+    }
+
+    .feature-section {
+      opacity: 0;
+      animation: fade-in-up 0.8s ease-out forwards;
+    }
+    .feature-section:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    .feature-section:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    .feature-section:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    .feature-section:nth-child(4) {
+      animation-delay: 0.5s;
+    }
+    .feature-section:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+  </style>
+</Layout>
