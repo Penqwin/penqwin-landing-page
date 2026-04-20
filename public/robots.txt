@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://penqwin.com/sitemap-index.xml
+Sitemap: https://www.penqwin.com/sitemap-index.xml

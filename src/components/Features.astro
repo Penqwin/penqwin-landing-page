@@ -44,27 +44,46 @@ import WorkspaceIcon from "../assets/svg/workspace.astro";
         <WorkspaceIcon slot="icon" class="w-7 h-7" />
       </FeatureCard>
     </div>
+    <div class="flex justify-center w-full mt-12">
+      <a
+        href="/features"
+        class="inline-flex group items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 transition-all active:scale-[0.98]"
+      >
+        <span>Explore all features</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Decorative Accents -->
+    <div
+      class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 opacity-20 pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 opacity-20 pointer-events-none"
+    >
+    </div>
   </div>
 
-  <!-- Decorative Accents -->
-  <div
-    class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 opacity-20 pointer-events-none"
-  >
-  </div>
-  <div
-    class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 opacity-20 pointer-events-none"
-  >
-  </div>
+  <style>
+    @reference "../styles/global.css";
+
+    .feature-card {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+  </style>
 </section>
-
-<style>
-  @reference "../styles/global.css";
-
-  .feature-card {
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .feature-card:hover {
-    transform: translateY(-8px);
-  }
-</style>
