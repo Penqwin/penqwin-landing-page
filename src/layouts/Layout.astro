@@ -96,25 +96,9 @@ const siteName = "Penqwin";
           const target = e.target.closest("a, button");
           if (!target || !("vibrate" in navigator)) return;
 
-          // Heuristic: CTAs have background colors and padding or are full-width
-          const classList = target.classList;
-          const className =
-            typeof target.className === "string" ? target.className : "";
-
-          const isCTA =
-            classList.contains("bg-text-primary") ||
-            classList.contains("bg-primary") ||
-            className.includes("bg-white/") ||
-            (className.includes("bg-") &&
-              (className.includes("px-") ||
-                className.includes("py-") ||
-                classList.contains("w-full")));
-
-          if (isCTA) {
-            navigator.vibrate(30);
-          } else {
-            navigator.vibrate(10);
-          }
+          // Standardize vibration to a subtle "tick" for all interactions
+          // matching the internal direction feel.
+          navigator.vibrate(10);
         },
         { passive: true },
       );
