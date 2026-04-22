@@ -9,6 +9,7 @@ import globalSearchImg from "../assets/images/features/global_search.png";
 import workspaceImg from "../assets/images/features/workspace.png";
 import knowledgebaseImg from "../assets/images/features/knowledgebase.png";
 import teamCollabImg from "../assets/images/features/team_collaboration.png";
+import chromeExtensionImg from "../assets/images/features/chrome_extension.png";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import Tick from "../assets/svg/tick.astro";
 ---
@@ -44,9 +45,7 @@ import Tick from "../assets/svg/tick.astro";
               class="inline-flex group items-center justify-center gap-3 px-8 py-3 bg-text-primary text-bg-main rounded-full font-bold text-lg transition-transform active:scale-[0.98]"
             >
               <span>Get started</span>
-              <ArrowRight
-                class="w-5 group-hover:translate-x-1"
-              />
+              <ArrowRight class="w-5 group-hover:translate-x-1" />
             </a>
             <a
               href="#features-list"
@@ -65,12 +64,10 @@ import Tick from "../assets/svg/tick.astro";
       class="max-w-7xl md:max-w-[85%] mx-auto px-6 space-y-36 md:space-y-48"
     >
       <!-- 01 — AI Documentation (image left) -->
-      <section class="relative feature-section">
-        <!-- Two-col: image left, content right -->
+      <section id="feature-ai-documentation" class="relative feature-section">
         <div
           class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
         >
-          <!-- Image (left) -->
           <div class="w-full feature-img-frame">
             <Image
               src={aiDocImg}
@@ -79,7 +76,6 @@ import Tick from "../assets/svg/tick.astro";
               class="w-full h-auto block rounded-2xl"
             />
           </div>
-          <!-- Content -->
           <div class="relative">
             <div
               class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
@@ -128,7 +124,6 @@ import Tick from "../assets/svg/tick.astro";
                       "code documentation",
                       "ai tools",
                       "pull request",
-                      "github pull requests",
                     ].map((tag) => (
                       <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
                         {tag}
@@ -142,17 +137,111 @@ import Tick from "../assets/svg/tick.astro";
         </div>
       </section>
 
-      <!-- 02 — Engineering Knowledgebase (image right) -->
-      <section class="relative feature-section">
-        <!-- Two-col: content left, image right -->
+      <!-- 02 — Chrome Extension (image right) -->
+      <section id="feature-chrome-extension" class="relative feature-section">
         <div
           class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
         >
-          <!-- Content -->
           <div class="relative">
             <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
               <span class="text-8xl md:text-[140px] font-serif leading-none"
                 >02</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Chrome Extension
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                Generate and edit technical documentation right from your
+                browser
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Install the Penqwin Chrome extension and get an instant
+                  AI-powered summary on any GitHub pull request or commit -
+                  update your documentation as your codebase evolves.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "One-click AI summary on any public or private GitHub PR",
+                      "Engineering knowledge base that grows with your codebase",
+                      "Secure: code is processed in memory and never stored on our servers",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+
+                <div class="mt-8 mb-4">
+                  <a
+                    href="https://chromewebstore.google.com/detail/aoledhaebebijfljkcjcbdfjkbciekcm"
+                    target="_blank"
+                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-colors"
+                  >
+                    Add to Chrome
+                  </a>
+                </div>
+
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "chrome extension",
+                      "ai tools",
+                      "github pull request",
+                      "code review",
+                      "code summary",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full feature-img-frame">
+            <Image
+              src={chromeExtensionImg}
+              alt="Chrome Extension feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 — Engineering Knowledgebase (image left) -->
+      <section
+        id="feature-engineering-knowledgebase"
+        class="relative feature-section"
+      >
+        <div
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+        >
+          <div class="w-full feature-img-frame">
+            <Image
+              src={knowledgebaseImg}
+              alt="Engineering Knowledgebase feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >03</span
               >
             </div>
             <div class="relative z-10 pt-8 md:pt-16">
@@ -204,102 +293,14 @@ import Tick from "../assets/svg/tick.astro";
               </div>
             </div>
           </div>
-          <!-- Image (right) -->
-          <div class="w-full feature-img-frame">
-            <Image
-              src={knowledgebaseImg}
-              alt="Engineering Knowledgebase feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- 03 — Multiple Workspaces (image left) -->
-      <section class="relative feature-section">
-        <!-- Two-col: image left, content right -->
-        <div
-          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
-        >
-          <!-- Image (left) -->
-          <div class="w-full feature-img-frame">
-            <Image
-              src={workspaceImg}
-              alt="Multiple Workspaces feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
-          </div>
-          <!-- Content -->
-          <div class="relative">
-            <div
-              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
-            >
-              <span class="text-8xl md:text-[140px] font-serif leading-none"
-                >03</span
-              >
-            </div>
-            <div class="relative z-10 pt-8 md:pt-16">
-              <div
-                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
-              >
-                Multiple Workspaces
-              </div>
-              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
-                One platform. Every team, every project, every scope
-              </h2>
-              <div class="space-y-6 text-text-secondary leading-relaxed">
-                <p class="text-base md:text-lg">
-                  Structure your technical documentation the way your
-                  engineering org actually works. Separate workspaces for each
-                  product, squad, or client. No more scattered docs, no more
-                  context-switching.
-                </p>
-                <ul class="space-y-4 mt-6">
-                  {
-                    [
-                      "Unlimited workspaces to isolate by team, product line, or environment",
-                      "Switch context instantly - all workspaces accessible from one sidebar",
-                      "Workspace centric documentation",
-                    ].map((item) => (
-                      <li class="flex items-start gap-3">
-                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))
-                  }
-                </ul>
-                <div
-                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
-                >
-                  {
-                    [
-                      "technical documentation",
-                      "engineering documentation",
-                      "work flow",
-                      "notebook digital",
-                      "doc s",
-                    ].map((tag) => (
-                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
-                        {tag}
-                      </span>
-                    ))
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       <!-- 04 — Global Search (image right) -->
-      <section class="relative feature-section">
-        <!-- Two-col: content left, image right -->
+      <section id="feature-global-search" class="relative feature-section">
         <div
           class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
         >
-          <!-- Content -->
           <div class="relative">
             <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
               <span class="text-8xl md:text-[140px] font-serif leading-none"
@@ -355,7 +356,6 @@ import Tick from "../assets/svg/tick.astro";
               </div>
             </div>
           </div>
-          <!-- Image (right) -->
           <div class="w-full feature-img-frame">
             <Image
               src={globalSearchImg}
@@ -368,12 +368,10 @@ import Tick from "../assets/svg/tick.astro";
       </section>
 
       <!-- 05 — Team Collaboration (image left) -->
-      <section class="relative feature-section">
-        <!-- Two-col: image left, content right -->
+      <section id="feature-team-collaboration" class="relative feature-section">
         <div
           class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
         >
-          <!-- Image (left) -->
           <div class="w-full feature-img-frame">
             <Image
               src={teamCollabImg}
@@ -382,7 +380,6 @@ import Tick from "../assets/svg/tick.astro";
               class="w-full h-auto block rounded-2xl"
             />
           </div>
-          <!-- Content -->
           <div class="relative">
             <div
               class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
@@ -439,6 +436,78 @@ import Tick from "../assets/svg/tick.astro";
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 — Multiple Workspaces (image right) -->
+      <section id="feature-workspaces" class="relative feature-section">
+        <div
+          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
+        >
+          <div class="relative">
+            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >06</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Multiple Workspaces
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                One platform. Every team, every project, every scope
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Structure your technical documentation the way your
+                  engineering org actually works. Separate workspaces for each
+                  product, squad, or client. No more scattered docs, no more
+                  context-switching.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "Unlimited workspaces to isolate by team, product line, or environment",
+                      "Switch context instantly - all workspaces accessible from one sidebar",
+                      "Workspace centric documentation",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "technical documentation",
+                      "engineering documentation",
+                      "work flow",
+                      "notebook digital",
+                      "doc s",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full feature-img-frame">
+            <Image
+              src={workspaceImg}
+              alt="Multiple Workspaces feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
           </div>
         </div>
       </section>
