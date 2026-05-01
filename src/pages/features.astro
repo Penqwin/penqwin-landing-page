@@ -15,8 +15,8 @@ import Tick from "../assets/svg/tick.astro";
 ---
 
 <Layout
-  title="Penqwin AI Features | Automated Technical & API Documentation"
-  description="Explore Penqwin's AI features for engineering teams. Automatically turn GitHub PRs and commits into structured technical documentation, API docs, and searchable knowledgebases."
+  title="Penqwin Features | Autonomous Repository Documentation"
+  description="Explore Penqwin's agentic features for engineering teams. Bootstrap your entire codebase documentation and let AI agents keep it in sync with every code change."
 >
   <Header />
 
@@ -29,15 +29,15 @@ import Tick from "../assets/svg/tick.astro";
           <h1
             class="text-4xl md:text-7xl font-serif text-white mb-8 tracking-tight leading-tight"
           >
-            Technical documentation
+            Autonomous documentation
             <span class="text-primary italic">reimagined</span> for software teams
           </h1>
           <p
             class="text-lg md:text-xl text-text-secondary leading-relaxed font-light mb-10"
           >
-            Penqwin turns code changes into living technical docs automatically.
-            Knowledgebase search, shared workspaces, and team collaboration
-            built for the way engineering teams actually work.
+            Penqwin bootstraps your entire repository documentation in minutes,
+            and keeps it perfectly in sync with every code change. Zero
+            maintenance, 100% accuracy, built for the way modern teams work.
           </p>
           <div class="flex flex-wrap gap-4 justify-center">
             <a
@@ -91,21 +91,21 @@ import Tick from "../assets/svg/tick.astro";
                 AI Documentation
               </div>
               <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
-                Technical docs that write themselves from code changes
+                Documentation that evolves at the speed of your code
               </h2>
               <div class="space-y-6 text-text-secondary leading-relaxed">
                 <p class="text-base md:text-lg">
-                  Stop writing technical documentation by hand. Paste a GitHub
-                  PR or commit link. Penqwin generates accurate technical
-                  documentation, API docs, and engineering documentation - ready
-                  to review in seconds.
+                  Stop writing technical documentation by hand. Penqwin analyzes
+                  your entire GitHub repository to build a complete doc suite,
+                  then uses agents to surgically update relevant sections as
+                  code changes.
                 </p>
                 <ul class="space-y-4 mt-8">
                   {
                     [
-                      "Generates technical docs from PR diffs using AI - no templates, no manual input",
-                      "Perfect for feature documentation, PR reviews, code reviews, and release notes",
-                      "Developer-first documentation editor",
+                      "Automated repository bootstrapping - map your entire system in minutes",
+                      "Agentic sync: sync your docs with every code change",
+                      "Surgical updates: only the relevant sections are modified, preserving your custom edits",
                     ].map((item) => (
                       <li class="flex items-start gap-3">
                         <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -155,14 +155,13 @@ import Tick from "../assets/svg/tick.astro";
                 Chrome Extension
               </div>
               <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
-                Generate and edit technical documentation right from your
-                browser
+                Sync docs in one-click from your browser
               </h2>
               <div class="space-y-6 text-text-secondary leading-relaxed">
                 <p class="text-base md:text-lg">
-                  Install the Penqwin Chrome extension and get an instant
-                  AI-powered summary on any GitHub pull request or commit -
-                  update your documentation as your codebase evolves.
+                  Install the Penqwin Chrome extension and sync code changes to
+                  documentation in one click. Changeset summary is generated
+                  right away.
                 </p>
                 <ul class="space-y-4 mt-6">
                   {

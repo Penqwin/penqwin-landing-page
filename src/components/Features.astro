@@ -4,6 +4,10 @@ import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
 import FeatureCard from "./FeatureCard.astro";
 import WorkspaceIcon from "../assets/svg/workspace.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
+import AutoRenew from "../assets/svg/autoRenew.astro";
+import Storage from "../assets/svg/storage.astro";
+import AllInclusive from "../assets/svg/allInclusive.astro";
+import Loop from "../assets/svg/loop.astro";
 ---
 
 <section
@@ -25,24 +29,24 @@ import ArrowRight from "../assets/svg/arrow-right.astro";
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <FeatureCard
-        title="Smart Doc Generation"
-        description="Transform your codebase or raw ideas into structured documentation. Let AI handle the heavy lifting of drafting technical guides."
+        title="Repository Bootstrapping"
+        description="Connect your repo and watch Penqwin map out your entire system. Get a full documentation suite in minutes."
       >
-        <AiGenerateIcon slot="icon" class="w-7 h-7" />
+        <Storage slot="icon" class="w-7 h-7" />
       </FeatureCard>
 
       <FeatureCard
-        title="Developer-First Editor"
-        description="A high-performance writing experience designed for technical content, featuring native code block support and a minimalist interface."
+        title="Agentic Sync"
+        description="AI agents surgically update your docs with every code change. No more stale READMEs or outdated API references."
       >
-        <CodeIcon slot="icon" class="w-7 h-7" />
+        <Loop slot="icon" class="w-7 h-7 rotate-90" />
       </FeatureCard>
 
       <FeatureCard
-        title="Workspace-Centric Docs"
-        description="No more 'lost files.' Group your documentation by project, team, or internal hierarchy so everyone finds exactly what they need, instantly."
+        title="Zero-Maintenance Docs"
+        description="Documentation that evolves on autopilot. Bridge the gap between your code and your team with docs that are always up-to-date."
       >
-        <WorkspaceIcon slot="icon" class="w-7 h-7" />
+        <AllInclusive slot="icon" class="w-7 h-7" />
       </FeatureCard>
     </div>
     <div class="flex justify-center w-full mt-12">
