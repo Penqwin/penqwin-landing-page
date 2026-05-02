@@ -16,6 +16,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         >
           Made with &nbsp;<SnowflakeIcon
             class="w-3.5 h-3.5 inline-block"
+            aria-hidden="true"
           />&nbsp; for the engineering community.
         </p>
         <p
@@ -30,18 +31,23 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         <a
           href="/about"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
+          aria-label="About Penqwin"
           >About</a
         >
         <div class="relative" id="footer-resources-container">
           <button
             id="footer-resources-btn"
             class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200 flex items-center gap-1 cursor-pointer"
+            aria-label="Resources menu"
+            aria-haspopup="true"
+            aria-expanded="false"
           >
             Resources
             <ArrowIcon
               id="footer-resources-icon"
               class="w-4 h-4 transition-transform"
               style="transform: rotate(270deg);"
+              aria-hidden="true"
             />
           </button>
           <div
@@ -51,18 +57,21 @@ import ArrowIcon from "../assets/svg/arrow.astro";
             <a
               href="/features"
               class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+              aria-label="Explore Features"
             >
               Explore Features
             </a>
             <a
               href="/notion-alternative"
               class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+              aria-label="Notion comparison"
             >
               Notion comparison
             </a>
             <a
               href="/gitbook-alternative"
               class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+              aria-label="GitBook comparison"
             >
               GitBook comparison
             </a>
@@ -71,6 +80,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
               rel="noopener noreferrer"
               href="https://chromewebstore.google.com/detail/aoledhaebebijfljkcjcbdfjkbciekcm"
               class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+              aria-label="Chrome Extension"
             >
               Chrome Extension
             </a>
@@ -79,11 +89,13 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         <a
           href="/privacy"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
+          aria-label="Privacy Policy"
           >Privacy</a
         >
         <a
           href="/terms"
           class="text-xs sm:text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
+          aria-label="Terms of Service"
           >Terms</a
         >
         <span class="hidden md:block border-r border-border h-4"></span>
@@ -135,10 +147,12 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         dropdown.classList.remove("opacity-100", "visible");
         dropdown.classList.add("opacity-0", "invisible");
         icon.classList.remove("rotate-180");
+        btn.setAttribute("aria-expanded", "false");
       } else {
         dropdown.classList.remove("opacity-0", "invisible");
         dropdown.classList.add("opacity-100", "visible");
         icon.classList.add("rotate-180");
+        btn.setAttribute("aria-expanded", "true");
       }
     });
 
@@ -150,6 +164,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         dropdown.classList.remove("opacity-100", "visible");
         dropdown.classList.add("opacity-0", "invisible");
         icon.classList.remove("rotate-180");
+        btn.setAttribute("aria-expanded", "false");
       }
     });
   }
