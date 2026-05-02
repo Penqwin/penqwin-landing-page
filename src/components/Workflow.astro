@@ -1,10 +1,8 @@
 ---
 import WorkflowCard from "./WorkflowCard.astro";
 import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
-import DocumentIcon from "../assets/svg/document.astro";
-import CodeIcon from "../assets/svg/text-formatting/code.astro";
-import GitCommitIcon from "../assets/svg/gitCommit.astro";
-import AddLinkIcon from "../assets/svg/addLink.astro";
+import AddLink from "../assets/svg/addLink.astro";
+import Assistant from "../assets/svg/assistant.astro";
 ---
 
 <section
@@ -19,7 +17,7 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
         Documentation <span class="text-primary italic">reimagined</span>
       </h2>
       <p class="text-text-secondary text-lg max-w-xl mx-auto">
-        Technical writing is no more a second thought.
+        Documentation that's never out of date.
       </p>
     </div>
 
@@ -32,26 +30,26 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
 
       <WorkflowCard
         step="01"
-        title="Input"
-        description="Paste a pull request or commit URL to let the system analyze the changes."
+        title="Connect"
+        description="Connect your GitHub repository. Penqwin analyzes your codebase and generates initial documentation."
       >
-        <AddLinkIcon slot="icon" class="w-8 h-8" />
+        <AddLink slot="icon" class="w-10 h-10" />
       </WorkflowCard>
 
       <WorkflowCard
         step="02"
-        title="Process"
-        description="Code changes analyzed to surface real engineering impact."
+        title="Monitor"
+        description="Our AI agents monitor every commit and PR, understanding the impact of every change in real-time."
       >
-        <AiGenerateIcon slot="icon" class="w-8 h-8" />
+        <Assistant slot="icon" class="w-8 h-8" />
       </WorkflowCard>
 
       <WorkflowCard
         step="03"
-        title="Output"
-        description="Produces engineering documentation, ready for review and personalization."
+        title="Evolve"
+        description="Documentation is surgically updated by agents, ensuring your technical guides evolve alongside your code."
       >
-        <DocumentIcon slot="icon" class="w-8 h-8" />
+        <AiGenerateIcon slot="icon" class="w-8 h-8" />
       </WorkflowCard>
     </div>
   </div>
@@ -62,5 +60,3 @@ import AddLinkIcon from "../assets/svg/addLink.astro";
   >
   </div>
 </section>
-
-

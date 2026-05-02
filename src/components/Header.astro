@@ -11,7 +11,7 @@ import ArrowRight from "../assets/svg/arrow-right.astro";
   <nav
     class="w-full max-w-5xl px-6 py-3 flex items-center justify-between pointer-events-auto bg-bg-secondary/40 backdrop-blur-xl border border-white/5 rounded-2xl shadow-2xl"
   >
-    <a href="/" class="flex items-center gap-2">
+    <a href="/" class="flex items-center gap-2" aria-label="Penqwin Home">
       <picture>
         <source srcset={penqwinWebp.src} type="image/webp" />
         <img src={penqwinPng.src} alt="Penqwin Logo" class="w-16 h-auto" />
@@ -45,10 +45,12 @@ import ArrowRight from "../assets/svg/arrow-right.astro";
       <a
         href="https://app.penqwin.com"
         class="group select-none px-4 py-2 flex items-center gap-1 bg-text-primary text-bg-main rounded-xl text-sm font-semibold hover:bg-white transition-all duration-300 shadow-sm active:scale-95"
+        aria-label="Go to Dashboard"
       >
         Dashboard
         <ArrowRight
           class="w-4 inline-block group-hover:translate-x-1"
+          aria-hidden="true"
         />
       </a>
     </div>
