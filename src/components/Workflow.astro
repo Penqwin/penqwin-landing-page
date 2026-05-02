@@ -1,8 +1,8 @@
 ---
 import WorkflowCard from "./WorkflowCard.astro";
 import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
-import Loop from "../assets/svg/loop.astro";
-import Source from "../assets/svg/source.astro";
+import AddLink from "../assets/svg/addLink.astro";
+import Assistant from "../assets/svg/assistant.astro";
 ---
 
 <section
@@ -17,7 +17,7 @@ import Source from "../assets/svg/source.astro";
         Documentation <span class="text-primary italic">reimagined</span>
       </h2>
       <p class="text-text-secondary text-lg max-w-xl mx-auto">
-        Technical writing is no more a second thought.
+        Documentation that's never out of date.
       </p>
     </div>
 
@@ -30,10 +30,10 @@ import Source from "../assets/svg/source.astro";
 
       <WorkflowCard
         step="01"
-        title="Bootstrap"
-        description="Connect your GitHub repository. Penqwin analyzes your entire codebase to generate a comprehensive documentation skeleton."
+        title="Connect"
+        description="Connect your GitHub repository. Penqwin analyzes your codebase and generates initial documentation."
       >
-        <Source slot="icon" class="w-10 h-10" />
+        <AddLink slot="icon" class="w-10 h-10" />
       </WorkflowCard>
 
       <WorkflowCard
@@ -41,7 +41,7 @@ import Source from "../assets/svg/source.astro";
         title="Monitor"
         description="Our AI agents monitor every commit and PR, understanding the impact of every change in real-time."
       >
-        <AiGenerateIcon slot="icon" class="w-8 h-8" />
+        <Assistant slot="icon" class="w-8 h-8" />
       </WorkflowCard>
 
       <WorkflowCard
@@ -49,7 +49,7 @@ import Source from "../assets/svg/source.astro";
         title="Evolve"
         description="Documentation is surgically updated by agents, ensuring your technical guides evolve alongside your code."
       >
-        <Loop slot="icon" class="w-8 h-8" />
+        <AiGenerateIcon slot="icon" class="w-8 h-8" />
       </WorkflowCard>
     </div>
   </div>

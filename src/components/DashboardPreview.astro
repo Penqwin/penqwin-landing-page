@@ -2,9 +2,8 @@
 import ArrowIcon from "../assets/svg/arrow.astro";
 import DocumentIcon from "../assets/svg/document.astro";
 import FolderIcon from "../assets/svg/folder.astro";
-import SettingsIcon from "../assets/svg/settings.astro";
 import SaveIcon from "../assets/svg/save.astro";
-import AiGenerateIcon from "../assets/svg/aiGenerate.astro";
+import AutoAwsomeIcon from "../assets/svg/autoAwsome.astro";
 import SearchIcon from "../assets/svg/search.astro";
 // text formatting icons
 import BoldIcon from "../assets/svg/text-formatting/bold.astro";
@@ -45,115 +44,205 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
     <div class="w-full h-full text-text-primary flex">
       <!-- sidebar -->
       <div
-        class="px-6 py-4 bg-bg-secondary w-1/4 h-full flex flex-col items-start justify-start select-none"
+        class="bg-bg-secondary w-1/4 h-full flex flex-col select-none relative"
       >
-        <picture>
-          <source srcset={penqwinWebp.src} type="image/webp" />
-          <img
-            src={penqwinPng.src}
-            alt="Penqwin - Professional Engineering Documentation Platform"
-            class="w-8 h-auto opacity-80"
-          />
-        </picture>
-        <h3
-          class="mt-4 text-text-primary text-[9.5px] flex gap-1 items-center justify-center font-semibold tracking-wide opacity-70"
-        >
-          Acme Corp <ArrowIcon
-            class="w-auto h-2 rotate-90 text-text-secondary"
-          />
-        </h3>
-
-        <!-- Search bar -->
-        <div
-          class="border border-border/50 hover:border-border px-2 py-1.5 rounded-full w-full mt-2 flex items-center justify-between text-text-muted hover:text-text-secondary transition-colors cursor-pointer"
-        >
-          <div class="flex items-center gap-2">
-            <SearchIcon class="w-auto h-2.5" />
-            <span class="text-[8px]">Global Search</span>
-          </div>
-          <span class="text-[8px]">⌘ + K</span>
-        </div>
-
-        <!-- sidebar entities -->
-        <div class="mt-3 w-full flex flex-col text-[9px] tracking-tight">
-          <div
-            class="text-text-secondary flex gap-2 pb-2 items-center hover:text-text-primary cursor-pointer transition-colors"
+        <!-- sidebar content (scrollable) -->
+        <div class="flex-1 overflow-y-auto custom-scrollbar px-6 pt-4 pb-2">
+          <picture>
+            <source srcset={penqwinWebp.src} type="image/webp" />
+            <img
+              src={penqwinPng.src}
+              alt="Penqwin - Professional Engineering Documentation Platform"
+              class="w-8 h-auto opacity-80"
+            />
+          </picture>
+          <h3
+            class="mt-4 text-text-primary text-[9.5px] flex gap-1 items-center justify-start font-semibold tracking-wide opacity-70"
           >
-            <DocumentIcon class="w-auto h-2.5" /> Overview
-          </div>
-          <div
-            class="text-text-secondary flex gap-2 pb-2 items-center hover:text-text-primary cursor-pointer transition-colors"
-          >
-            <DocumentIcon class="w-auto h-2.5" /> Quick Start
-          </div>
+            Acme Corp <ArrowIcon
+              class="w-auto h-2 rotate-90 text-text-secondary"
+            />
+          </h3>
 
-          <!-- api references -->
+          <!-- Search bar -->
           <div
-            class="text-text-secondary w-full flex justify-between gap-2 pb-1 items-center hover:text-text-primary cursor-pointer transition-colors"
+            class="border border-border/50 hover:border-border px-2 py-1.5 rounded-full w-full mt-2 flex items-center justify-between text-text-muted hover:text-text-secondary transition-colors cursor-pointer"
           >
             <div class="flex items-center gap-2">
-              <FolderIcon class="w-auto h-3" /> API references
+              <SearchIcon class="w-auto h-2.5" />
+              <span class="text-[8px]">Global Search</span>
             </div>
-            <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
-          </div>
-          <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary cursor-pointer transition-colors"
-          >
-            <DocumentIcon class="w-auto h-2.5" /> Endpoints
-          </div>
-          <div
-            class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pb-1 hover:text-text-primary cursor-pointer transition-colors"
-          >
-            <DocumentIcon class="w-auto h-2.5" /> Webhooks
+            <span class="text-[8px]">⌘ + K</span>
           </div>
 
-          <!-- features -->
-          <div
-            class="text-text-secondary w-full flex justify-between gap-2 pt-2 pb-1 items-center hover:text-text-primary cursor-pointer transition-colors"
-          >
-            <div class="flex items-center gap-2">
-              <FolderIcon class="w-auto h-3" /> Features
-            </div>
-            <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
-          </div>
-          <div
-            class="text-primary w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-primary/20 pt-1 pb-2"
-          >
+          <!-- sidebar entities -->
+          <div class="mt-3 w-full flex flex-col text-[9px] tracking-tight">
+            <!-- changeset summary -->
             <div
-              class="bg-primary/10 px-1.5 py-1 w-full rounded-md flex items-center justify-start gap-2 font-medium"
+              class="text-text-secondary w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary cursor-pointer transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <FolderIcon class="w-auto h-3" /> Changeset Summary
+              </div>
+              <ArrowIcon class="w-auto h-2.5 rotate-90 text-text-secondary" />
+            </div>
+
+            <!-- code references -->
+            <div
+              class="text-text-secondary w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary cursor-pointer transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <FolderIcon class="w-auto h-3" /> Code Reference
+              </div>
+              <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
+            </div>
+
+            <!-- src folder (expanded) -->
+            <div
+              class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <FolderIcon class="w-auto h-2.5" /> src
+              </div>
+              <ArrowIcon class="w-auto h-2 -rotate-90 text-text-secondary" />
+            </div>
+
+            <!-- src content -->
+            <div class="ml-1.5 pl-2 border-l border-solid border-white/5">
+              <!-- app folder (expanded) -->
+              <div
+                class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+              >
+                <div class="flex items-center gap-2">
+                  <FolderIcon class="w-auto h-2.5" /> app
+                </div>
+                <ArrowIcon class="w-auto h-2 -rotate-90 text-text-secondary" />
+              </div>
+
+              <!-- app content -->
+              <div class="ml-1.5 pl-2 border-l border-solid border-white/5">
+                <div
+                  class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+                >
+                  <div class="flex items-center gap-2">
+                    <FolderIcon class="w-auto h-2.5" /> auth
+                  </div>
+                  <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
+                </div>
+
+                <!-- api folder (expanded) -->
+                <div
+                  class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+                >
+                  <div class="flex items-center gap-2">
+                    <FolderIcon class="w-auto h-2.5" /> api
+                  </div>
+                  <ArrowIcon
+                    class="w-auto h-2 -rotate-90 text-text-secondary"
+                  />
+                </div>
+                <!-- api content -->
+                <div
+                  class="text-primary w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-primary/20 pt-1 pb-1"
+                >
+                  <div
+                    class="bg-primary/10 px-1.5 py-1 w-full rounded-md flex items-center justify-start gap-2 font-medium"
+                  >
+                    <DocumentIcon class="w-auto h-2.5" /> API & Endpoints
+                  </div>
+                </div>
+                <div
+                  class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+                >
+                  <div class="flex items-center gap-2">
+                    <FolderIcon class="w-auto h-2.5" /> core
+                  </div>
+                  <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
+                </div>
+              </div>
+
+              <!-- rest of src -->
+              <div
+                class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+              >
+                <div class="flex items-center gap-2">
+                  <FolderIcon class="w-auto h-2.5" /> services
+                </div>
+                <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
+              </div>
+              <div
+                class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+              >
+                <div class="flex items-center gap-2">
+                  <FolderIcon class="w-auto h-2.5" /> store
+                </div>
+                <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
+              </div>
+            </div>
+
+            <!-- database folder -->
+            <div
+              class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary cursor-pointer transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <FolderIcon class="w-auto h-2.5" /> database
+              </div>
+              <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
+            </div>
+
+            <!-- guides -->
+            <div
+              class="text-text-secondary w-full flex justify-between gap-2 pt-2 pb-1 items-center hover:text-text-primary cursor-pointer transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <FolderIcon class="w-auto h-3" /> Guides
+              </div>
+              <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary" />
+            </div>
+            <div
+              class="text-text-secondary flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary cursor-pointer transition-colors"
             >
               <DocumentIcon class="w-auto h-2.5" /> Authentication
             </div>
-          </div>
-          <div
-            class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pb-1 hover:text-text-primary cursor-pointer transition-colors"
-          >
-            <div class="flex items-center gap-2">
-              <FolderIcon class="w-auto h-2.5" /> Monetization
+            <div
+              class="text-text-secondary flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pb-1 hover:text-text-primary cursor-pointer transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <FolderIcon class="w-auto h-2.5" /> Agentic AI
+              </div>
+              <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
             </div>
-            <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary" />
           </div>
         </div>
 
+        <!-- sidebar actions (fixed at bottom) -->
         <div
-          class="absolute bottom-4 flex items-center justify-center gap-1.5 text-[9px] font-medium text-text-secondary hover:text-text-primary cursor-pointer transition-colors"
+          class="absolute mb-10 bottom-0 left-0 w-full px-6 py-4 flex flex-col gap-2 bg-bg-secondary"
         >
-          <SettingsIcon class="w-2.5 h-2.5" />
-          Settings
+          <div
+            class="w-full bg-white/5 hover:bg-white/10 transition-colors py-2 rounded-lg flex items-center justify-center gap-2 font-regular text-text-secondary cursor-pointer border border-white/5 text-[10px]"
+          >
+            <span class="text-xs">+</span> Create
+          </div>
+          <div
+            class="w-full bg-primary hover:bg-primary/90 transition-colors py-2 rounded-lg flex items-center justify-center gap-2 text-[10px] font-semibold text-text-primary cursor-pointer shadow-lg shadow-primary/20"
+          >
+            <AutoAwsomeIcon class="w-3 h-3" /> Update Docs
+          </div>
         </div>
       </div>
 
       <!-- editor -->
       <div
-        class="bg-bg-main w-3/4 h-full flex flex-col border-l border-white/5"
+        class="bg-bg-main pt-2 w-3/4 h-full flex flex-col border-l border-white/5"
       >
         <!-- editor actions -->
-        <div class="h-10 px-6 flex items-center justify-between select-none">
-          <div
+        <div class="px-6 flex items-center justify-end select-none">
+          <!-- <div
             class="bg-bg-secondary hover:bg-white/5 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-secondary text-[9px] font-medium cursor-pointer"
           >
-            <AiGenerateIcon class="w-2.5 h-2.5" />Generate Doc
-          </div>
+            <AiGenerateIcon class="w-2.5 h-2.5" />Regenerate Doc
+          </div> -->
           <div
             class="bg-primary hover:bg-primary/90 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-primary text-[9px] font-semibold cursor-pointer shadow-sm shadow-primary/20"
           >
@@ -162,7 +251,7 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
         </div>
 
         <!-- editor content -->
-        <div class="flex-1 px-10 py-8 custom-scrollbar">
+        <div class="flex-1 px-10 py-8 custom-scrollbar group/editor">
           <div
             class="text-editor w-full h-full max-w-2xl text-[10px] text-text-primary leading-relaxed"
           >
@@ -170,33 +259,32 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
               <h3
                 class="text-sm font-semibold mb-3 text-text-primary tracking-tight"
               >
-                High-Level Flow
+                Authentication & Authorization
               </h3>
-              <ol class="space-y-1.5 list-decimal pl-4">
-                <li>User submits authentication credentials.</li>
-                <li>Authentication Service validates credentials.</li>
-                <li>User identity is retrieved from the User Store.</li>
-                <li>Token Service generates authentication tokens.</li>
-                <li>Client uses issued tokens to access protected services.</li>
-              </ol>
-            </div>
-
-            <div class="section mb-6">
+              <p class="mb-4">
+                Security is enforced at the route level through server-side
+                session validation. Most endpoints utilize the <code>
+                  createClient</code
+                > utility to interact with database, ensuring that data access respects
+                the authenticated user's permissions.
+              </p>
               <h4
                 class="text-[11px] font-semibold mb-3 text-text-primary tracking-tight"
               >
-                4. User Identity Model
+                Administrative Access
               </h4>
-
-              <div class="flex inline-flex items-center flex-wrap mb-4">
-                Each authenticated user in ACME’s platform is represented by a
-                &nbsp;
+              <p class="inline">
+                For operations that require cross-workspace visibility, state
+                transitions that bypass standard RLS (e.g., join requests), or
+                high-level configuration changes (e.g., repository mapping
+                discovery), the system utilizes <code>superiorClient</code
+                >.&nbsp;
                 <div
-                  class="text-text-primary font-semibold relative group-hover:bg-accent flex items-center justify-center"
+                  class="relative inline-flex items-center text-text-primary font-semibold group-hover/editor:bg-accent transition-colors cursor-default"
                 >
-                  User Identity record
+                  Authorization
                   <div
-                    class="floating-menu select-none absolute -top-10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary backdrop-blur-md text-text-secondary px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-999"
+                    class="floating-menu select-none absolute -top-10 left-1/2 -translate-x-1/2 scale-90 opacity-0 group-hover/editor:opacity-100 group-hover/editor:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary backdrop-blur-md text-text-secondary px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-[999]"
                   >
                     <div
                       class="border border-white/5 pl-2 pr-1 py-0.5 text-[8px] rounded-md flex items-center gap-1 font-medium bg-white/5"
@@ -246,34 +334,107 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
                       </div>
                     </div>
                   </div>
-                  .
                 </div>
+                &nbsp;is further refined by <code>checkRole</code>, which
+                distinguishes between <code>admin</code>, <code
+                  >read and write</code
+                >, and <code>read only</code> roles within a workspace.
+              </p>
+            </div>
 
-                <div class="section mt-2">
-                  <p>
-                    <code>user_id</code> - Unique identifier for the user.
-                  </p>
+            <div class="section mb-8">
+              <h3
+                class="text-sm font-semibold mb-4 text-text-primary tracking-tight"
+              >
+                API Reference
+              </h3>
 
-                  <p><code>email</code> - Primary login identifier.</p>
+              <h4 class="text-[11px] font-semibold mb-2 text-text-primary/80">
+                User & Profile
+              </h4>
+              <table class="w-full border-collapse text-[9px] mb-6">
+                <thead>
+                  <tr
+                    class="border-b border-white/10 text-text-secondary text-left"
+                  >
+                    <th class="py-2 font-medium">Method</th>
+                    <th class="py-2 font-medium">Endpoint</th>
+                    <th class="py-2 font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="text-text-secondary">
+                  <tr class="border-b border-white/5">
+                    <td class="py-2"
+                      ><span
+                        class="px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono text-[8px]"
+                        >GET</span
+                      ></td
+                    >
+                    <td class="py-2"><code>/api/user/profile</code></td>
+                    <td class="py-2"
+                      >Returns user data, member workspaces, and their active
+                      subscription states.</td
+                    >
+                  </tr>
+                </tbody>
+              </table>
 
-                  <p>
-                    <code>password_hash</code> - Securely hashed password stored by
-                    the system.
-                  </p>
-
-                  <p>
-                    <code>account_status</code> - Current state (active, locked, suspended).
-                  </p>
-
-                  <p>
-                    <code>tenant_id</code> - Organization associated with the user.
-                  </p>
-
-                  <p>
-                    <code>mfa_enabled</code> - Indicates if MFA is active.
-                  </p>
-                </div>
-              </div>
+              <h4 class="text-[11px] font-semibold mb-2 text-text-primary/80">
+                Member & Request Management
+              </h4>
+              <table class="w-full border-collapse text-[9px]">
+                <thead>
+                  <tr
+                    class="border-b border-white/10 text-text-secondary text-left"
+                  >
+                    <th class="py-2 font-medium">Method</th>
+                    <th class="py-2 font-medium">Endpoint</th>
+                    <th class="py-2 font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="text-text-secondary">
+                  <tr class="border-b border-white/5">
+                    <td class="py-2"
+                      ><span
+                        class="px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono text-[8px]"
+                        >GET</span
+                      ></td
+                    >
+                    <td class="py-2"><code>/api/members</code></td>
+                    <td class="py-2"
+                      >Lists all members with enriched user profile data.</td
+                    >
+                  </tr>
+                  <tr class="border-b border-white/5">
+                    <td class="py-2"
+                      ><span
+                        class="px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono text-[8px]"
+                        >PATCH</span
+                      ></td
+                    >
+                    <td class="py-2">
+                      <code>/api/members/&#123;memberId&#125;</code>
+                    </td>
+                    <td class="py-2"
+                      >Updates a member's role (<code>admin</code>, <code
+                        >read and write</code
+                      >, <code>read only</code>).</td
+                    >
+                  </tr>
+                  <tr class="border-b border-white/5">
+                    <td class="py-2"
+                      ><span
+                        class="px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono text-[8px]"
+                        >DELETE</span
+                      ></td
+                    >
+                    <td class="py-2"
+                      ><code>/api/members/&#123;memberId&#125;</code></td
+                    >
+                    <td class="py-2">Removes a member from the workspace.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
