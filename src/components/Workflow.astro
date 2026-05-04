@@ -21,7 +21,7 @@ import Assistant from "../assets/svg/assistant.astro";
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
       <!-- Connecting Lines (Desktop) -->
       <div
         class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 z-0"
@@ -39,7 +39,7 @@ import Assistant from "../assets/svg/assistant.astro";
       <WorkflowCard
         step="02"
         title="Monitor"
-        description="Our AI agents monitor every commit and PR, understanding the impact of every change in real-time."
+        description="Our AI agent analyzes the PRs and commits, understanding the impact of code changes."
       >
         <Assistant slot="icon" class="w-8 h-8" />
       </WorkflowCard>
@@ -47,7 +47,7 @@ import Assistant from "../assets/svg/assistant.astro";
       <WorkflowCard
         step="03"
         title="Evolve"
-        description="Documentation is surgically updated by agents, ensuring your technical guides evolve alongside your code."
+        description="Documentation that keeps up. Human supervised AI that syncs your technical guides to your codebase."
       >
         <AiGenerateIcon slot="icon" class="w-8 h-8" />
       </WorkflowCard>
