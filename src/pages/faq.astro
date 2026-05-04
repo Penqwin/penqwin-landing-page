@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FAQ from "../components/FAQ.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+
+const faqItems = [
+  {
+    question: "How much time will Penqwin actually save my team?",
+    answer:
+      "Most engineering teams spend 20-30% of their time writing and updating documentation. Penqwin reclaims those hours by automating the 'what' and 'how' of your code, allowing your developers to focus on building features rather than explaining them.",
+  },
+  {
+    question: "Can Penqwin handle complex or 'messy' legacy codebases?",
+    answer:
+      "Absolutely. In fact, that's where Penqwin shines. Our agents don't just look at code; they understand architectural patterns. Penqwin brings clarity to even the most complex systems by automatically mapping out dependencies and logic that might have been lost to time.",
+  },
+  {
+    question: "Will this disrupt our existing development workflow?",
+    answer:
+      "Zero friction. Penqwin operates its own engineering documentation platform. The documentation in that platform is automatically updated as per the GitHub code changes, keeping your team in sync without changing your development habits.",
+  },
+  {
+    question: "How secure is our source code?",
+    answer:
+      "Security isn't an afterthought; it's our foundation. We use enterprise-grade encryption and only process the metadata and logic required to generate your docs. We never store your full source code permanently, ensuring your IP remains strictly yours.",
+  },
+  {
+    question: "How soon will we see a 'fully documented' repository?",
+    answer:
+      "Within minutes of connecting your repo. Unlike manual documentation projects that take weeks to plan and months to execute, Penqwin's 'Repository Bootstrapping' generates a complete technical suite almost instantly.",
+  },
+  {
+    question: "Can we still edit or customize the auto-generated content?",
+    answer:
+      "Yes, and we encourage it. Penqwin provides the high-quality first draft (the 90%), letting your team add the 'Why' and the business context (the 10%) in our specialized documentation workspace. It's the perfect partnership between AI speed and human insight.",
+  },
+  {
+    question: "Is Penqwin a replacement for technical writers?",
+    answer:
+      "Not at all. Penqwin is a force multiplier for anyone responsible for documentation. It removes the tedious manual labor of tracking code changes, freeing up your team to focus on high-level strategy and user education.",
+  },
+];
+
+// Generate JSON-LD for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<Layout
+  title="FAQ | Penqwin - Stop Writing Manual Documentation"
+  description="Find out how Penqwin reclaims your engineering hours by automating technical documentation. Get answers on security, workflow integration, and instant repo bootstrapping."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <Header />
+
+  <main class="relative pt-32 pb-24 overflow-hidden">
+    <!-- Background Decor -->
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none -z-10"
+    >
+      <div
+        class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full opacity-30 animate-pulse-slow"
+      >
+      </div>
+      <div
+        class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/5 blur-[100px] rounded-full opacity-20"
+      >
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6">
+      <section class="mb-16">
+        <h1
+          class="text-5xl md:text-7xl font-serif text-white mb-6 tracking-tight leading-tight"
+        >
+          FAQ
+        </h1>
+        <p
+          class="text-xl text-text-secondary leading-relaxed font-light max-w-xl"
+        >
+          Everything you need to know about Penqwin and how it transforms your
+          engineering documentation workflow.
+        </p>
+      </section>
+
+      <section>
+        <FAQ items={faqItems} />
+      </section>
+
+      <section
+        class="mt-24 bg-bg-secondary/30 border border-white/5 p-12 rounded-3xl text-center relative overflow-hidden group"
+      >
+        <div class="relative z-10">
+          <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">
+            Ready to reclaim your engineering hours?
+          </h2>
+          <p class="text-text-secondary mb-8 max-w-lg mx-auto">
+            Join forward-thinking teams using Penqwin to eliminate manual
+            documentation forever. Connect your first repo in under 60 seconds.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="https://app.penqwin.com"
+              class="w-fit sm:w-auto inline-flex group/get-started items-center justify-center gap-3 px-8 py-4 text-sm font-semibold text-bg-main bg-white rounded-full transition-all duration-300 shadow-lg active:scale-95"
+            >
+              <span>Get Started for Free</span>
+              <ArrowRight
+                class="w-5 group-hover/get-started:translate-x-1 transition-transform"
+                aria-hidden="true"
+              />
+            </a>
+            <!-- <a
+              href="mailto:doopstech@gmail.com"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300"
+            >
+              Contact Support
+            </a> -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  main {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  section {
+    opacity: 0;
+    animation: fade-in-up 1s ease-out forwards;
+  }
+
+  section:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  section:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+</style>
