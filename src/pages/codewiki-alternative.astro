@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AlternativeBottomSection from "../components/AlternativeBottomSection.astro";
+import AlternativeFeatures from "../components/AlternativeFeatures.astro";
+import TargetAudienceSection from "../components/TargetAudienceSection.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+import Tick from "../assets/svg/tick.astro";
+import Cross from "../assets/svg/cross.astro";
+import penqwinWebp from "../assets/images/Penqwin-icon.webp";
+import penqwinPng from "../assets/images/Penqwin-icon.png";
+---
+
+<Layout
+  title="Google Codewiki Alternative | Penqwin"
+  description="The modern Google Codewiki alternative. Sync your GitHub repos, support private repositories, and keep docs updated with every code change autonomously."
+  image="/og/codewiki-alt.png"
+>
+  <Header />
+
+  <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
+    <!-- Main Article for SEO -->
+    <article class="max-w-3xl mx-auto px-6 lg:px-8 space-y-32">
+      <!-- Hero Section -->
+      <section class="space-y-8 pt-16 text-center animate-fade-in">
+        <h1
+          class="font-serif text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.1]"
+        >
+          Codewiki for your
+          <span class="text-primary italic block mt-2"
+            >private repositories.</span
+          >
+        </h1>
+        <p
+          class="text-text-secondary text-md md:text-xl leading-relaxed max-w-2xl mx-auto"
+        >
+          Move beyond manual wikis. Connect all GitHub repositories <em>
+            (public & private)</em
+          > and let Penqwin keep your documentation in sync with every code change.
+        </p>
+        <div class="pt-8 flex justify-center">
+          <a
+            href="https://app.penqwin.com"
+            class="inline-flex group items-center justify-center gap-3 px-8 py-4 bg-text-primary text-lg text-bg-main rounded-full font-bold transition-all duration-300 active:scale-95"
+          >
+            <span>Connect GitHub Repo</span>
+            <ArrowRight
+              class="w-5 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </a>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
+
+      <!-- Features & How It Works -->
+      <AlternativeFeatures />
+
+      <!-- Comparison Section -->
+      <section class="space-y-10">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Penqwin vs Google Codewiki
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr>
+                <th
+                  class="py-4 pr-6 text-text-secondary font-medium font-serif border-b border-white/10 text-lg"
+                  >Feature</th
+                >
+                <th
+                  class="py-4 px-6 flex items-center gap-2 text-text-primary font-medium font-serif border-b border-white/10 text-lg"
+                  ><picture class="hidden md:block">
+                    <source srcset={penqwinWebp.src} type="image/webp" />
+                    <img
+                      src={penqwinPng.src}
+                      alt="Penqwin Logo"
+                      class="w-5 h-auto rounded-md"
+                    />
+                  </picture>Penqwin</th
+                >
+                <th
+                  class="py-4 pl-6 text-text-secondary font-medium font-serif border-b border-white/10 text-lg"
+                  >Google Codewiki</th
+                >
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-lg">
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Availability</td
+                >
+                <td class="py-5 px-6">All GitHub Repos</td>
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Limited open source only</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Private repo support</td
+                >
+                <td class="py-5 px-6"
+                  ><Tick aria-label="Yes" role="img" class="w-5 h-5" /></td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  ><Cross aria-label="No" role="img" class="w-5 h-5" /></td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Syncs with code changes</td
+                >
+                <td class="py-5 px-6"
+                  ><Tick aria-label="Yes" role="img" class="w-5 h-5" /></td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  ><Tick aria-label="Yes" role="img" class="w-5 h-5" /></td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Manual effort needed</td
+                >
+                <td class="py-5 px-6 text-text-primary">Minimal</td>
+                <td class="py-5 pl-6 text-text-secondary">Minimal</td>
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium">Pricing</td>
+                <td class="py-5 px-6 text-success">$19/month</td>
+                <td class="py-5 pl-6 text-text-secondary">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Target Audience -->
+      <TargetAudienceSection />
+
+      <!-- Key Value Statement & CTA Section -->
+      <AlternativeBottomSection />
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @reference "../styles/global.css";
+</style>
