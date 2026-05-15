@@ -1,4 +1,6 @@
 ---
+import Arrow from "../assets/svg/arrow.astro";
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -19,18 +21,8 @@ const { items } = Astro.props;
           <span class="text-lg md:text-xl font-serif text-text-primary transition-colors">
             {item.question}
           </span>
-          <span class="relative flex-shrink-0 ml-4 w-5 h-5 transition-transform duration-300 group-open:rotate-180">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="w-full h-full text-text-secondary group-open:text-primary"
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
+          <span class="relative flex-shrink-0 ml-4 w-5 h-5 transition-transform duration-300 rotate-90 group-open:rotate-270">
+            <Arrow class="w-5 h-5 text-text-secondary group-open:text-text-primary" />
           </span>
         </summary>
         <div class="px-6 pb-6 text-text-secondary leading-relaxed max-w-2xl">

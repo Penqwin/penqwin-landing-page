@@ -11,14 +11,18 @@ import ArrowRight from "../assets/svg/arrow-right.astro";
   <nav
     class="w-full max-w-5xl px-6 py-3 flex items-center justify-between pointer-events-auto bg-bg-secondary/40 backdrop-blur-xl border border-white/5 rounded-2xl shadow-2xl"
   >
-    <a href="/" class="flex items-center gap-2" aria-label="Penqwin Home">
+    <a
+      href="/"
+      class="flex items-center gap-2 select-none"
+      aria-label="Penqwin Home"
+    >
       <picture>
         <source srcset={penqwinWebp.src} type="image/webp" />
         <img src={penqwinPng.src} alt="Penqwin Logo" class="w-16 h-auto" />
       </picture>
     </a>
 
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden md:flex items-center gap-8 select-none">
       <a
         href="/features"
         class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
