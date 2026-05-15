@@ -1,23 +1,29 @@
 ---
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Workflow from "../components/Workflow.astro";
-import Features from "../components/Features.astro";
+import Problem from "../components/Problem.astro";
+import RepoBootstrap from "../components/RepoBootstrap.astro";
+import AgenticSync from "../components/AgenticSync.astro";
+import EngineeringContinuity from "../components/EngineeringContinuity.astro";
+import Trust from "../components/Trust.astro";
 import Pricing from "../components/Pricing.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="Penqwin | Autonomous Engineering Documentation"
-  description="Bootstrap your entire repository documentation in seconds. Penqwin uses AI agents to analyze your codebase and keep documentation perfectly in sync with every code change."
-  image="/og/landing.png"
+  title="Penqwin — AI Code Wiki & Engineering Knowledge Base for GitHub Repositories"
+  description="Penqwin bootstraps GitHub repositories into structured engineering documentation and keeps docs updated automatically as code evolves. Build a self-updating engineering knowledge base from pull requests and code changes."
+  image="/og/og-image.png"
 >
   <Header />
   <main>
     <Hero />
-    <Workflow />
-    <Features />
+    <Problem />
+    <RepoBootstrap />
+    <AgenticSync />
+    <EngineeringContinuity />
+    <Trust />
     <Pricing />
   </main>
   <Footer />

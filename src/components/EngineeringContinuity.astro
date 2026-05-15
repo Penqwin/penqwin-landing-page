@@ -1,0 +1,66 @@
+---
+import TickIcon from "../assets/svg/tick.astro";
+---
+
+<section
+  id="engineering-continuity"
+  class="w-full py-20 md:py-32 bg-bg-main relative overflow-hidden"
+>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="text-left mb-16 md:mb-20">
+      <h2
+        class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight mb-6"
+      >
+        Built for <span class="text-primary italic">engineering continuity</span
+        >.
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl">
+        Penqwin is built around the real operational challenges that agencies
+        and scaling teams face every day.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {
+        [
+          {
+            heading: "Onboard developers faster",
+            body: "New engineers understand your codebase from day one — without relying on the one person who built it.",
+          },
+          {
+            heading: "Preserve engineering context",
+            body: "Decisions, architecture rationale, and system knowledge live in your docs — not in someone's head.",
+          },
+          {
+            heading: "Maintain long-term client projects",
+            body: "Hand off or revisit projects months later with documentation that reflects the actual state of the codebase.",
+          },
+          {
+            heading: "Reduce tribal knowledge dependency",
+            body: "Teams move faster when critical context isn't locked behind a single team member's institutional memory.",
+          },
+        ].map((item) => (
+          <div class="flex gap-5 p-7 bg-white/[0.02] border border-white/5 rounded-[2rem]">
+            <div class="flex-shrink-0 mt-0.5 w-4 h-4 sm:w-8 sm:h-8 rounded-xl sm:bg-primary/10 sm:border sm:border-primary/15 flex items-center justify-center">
+              <TickIcon class="w-4 h-4 text-primary" />
+            </div>
+            <div>
+              <h3 class="text-text-primary text-xl font-medium mb-2 flex">
+                {item.heading}
+              </h3>
+              <p class="text-text-secondary text-base leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Background glow -->
+  <div
+    class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-40"
+  >
+  </div>
+</section>
