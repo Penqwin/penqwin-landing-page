@@ -1,0 +1,101 @@
+---
+import ShieldIcon from "../assets/svg/shield.astro";
+import EyeIcon from "../assets/svg/eye.astro";
+import TickIcon from "../assets/svg/tick.astro";
+---
+
+<section
+  id="trust"
+  class="w-full py-20 md:py-32 bg-bg-main relative overflow-hidden"
+>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <!-- Header -->
+    <div class="text-left mb-16 md:mb-20">
+      <!-- <div
+        class="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-white/5 border border-white/10 text-text-secondary text-xs font-mono tracking-widest uppercase"
+      >
+        <ShieldIcon class="w-3.5 h-3.5 text-primary" />
+        Security & Privacy
+      </div> -->
+      <h2
+        class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight mb-6"
+      >
+        Built with <span class="text-primary italic">developer trust</span> in mind.
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl">
+        Penqwin only accesses repositories explicitly authorized by users.
+        Repository data is processed securely and never used to train public AI
+        models.
+      </p>
+    </div>
+
+    <!-- Trust Points -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <!-- GitHub Permissions -->
+      <div
+        class="p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] flex flex-col items-start gap-5"
+      >
+        <div
+          class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0"
+        >
+          <EyeIcon class="w-5 h-5 text-primary" />
+        </div>
+        <div>
+          <h3 class="text-text-primary font-medium mb-2 text-lg">
+            GitHub permission transparency
+          </h3>
+          <p class="text-text-secondary text-base leading-relaxed">
+            We request only the minimum permissions required. You always control
+            which repositories Penqwin can read.
+          </p>
+        </div>
+      </div>
+
+      <!-- Secure Processing -->
+      <div
+        class="p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] flex flex-col items-start gap-5"
+      >
+        <div
+          class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0"
+        >
+          <ShieldIcon class="w-5 h-5 text-primary" />
+        </div>
+        <div>
+          <h3 class="text-text-primary font-medium mb-2 text-lg">
+            Secure data processing
+          </h3>
+          <p class="text-text-secondary text-base leading-relaxed">
+            Your code is processed in an isolated environment. We do not store
+            raw source files beyond what's needed to generate documentation.
+          </p>
+        </div>
+      </div>
+
+      <!-- No Training -->
+      <div
+        class="p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] flex flex-col items-start gap-5"
+      >
+        <div
+          class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0"
+        >
+          <TickIcon class="w-5 h-5 text-primary" />
+        </div>
+        <div>
+          <h3 class="text-text-primary font-medium mb-2 text-lg">
+            Never trained on your code
+          </h3>
+          <p class="text-text-secondary text-base leading-relaxed">
+            Your repository data is never used to train public AI models. Your
+            intellectual property stays yours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background glow -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-primary/4 blur-[130px] rounded-full pointer-events-none opacity-30"
+  >
+  </div>
+</section>

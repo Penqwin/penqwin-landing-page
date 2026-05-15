@@ -1,0 +1,81 @@
+---
+import Source from "../assets/svg/source.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+---
+
+<section
+  id="repo-bootstrap"
+  class="w-full py-20 md:py-32 bg-bg-main relative overflow-hidden"
+>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <!-- Left: Content -->
+      <div>
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-white/5 border border-white/10 text-text-secondary text-xs font-mono tracking-widest uppercase"
+        >
+          <Source class="w-3.5 h-3.5 text-primary" />
+          Repository Bootstrapping
+        </div>
+
+        <h2
+          class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight mb-6 leading-[1.1]"
+        >
+          Understand your codebase from <span class="text-primary italic"
+            >day one</span
+          >.
+        </h2>
+
+        <p class="text-text-secondary text-lg leading-relaxed mb-8">
+          Connect your repository and Penqwin builds a structured knowledge
+          layer across your architecture, APIs, modules, workflows, and
+          technical systems.
+        </p>
+
+        <a
+          href="https://app.penqwin.com"
+          class="inline-flex items-center gap-2 text-base text-primary hover:text-primary-light transition-colors duration-200 group"
+        >
+          <span>Get started free</span>
+          <ArrowRight
+            class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+          />
+        </a>
+      </div>
+
+      <!-- Right: Visual -->
+      <div class="relative">
+        <div
+          class="p-8 bg-white/[0.02] border border-white/5 rounded-[2.5rem] space-y-4"
+        >
+          {
+            [
+              { label: "API & Endpoints", status: "synced" },
+              { label: "Frontend & UI", status: "synced" },
+              { label: "Utilities & Helpers", status: "synced" },
+              { label: "Business Logic", status: "synced" },
+              { label: "Database & Models", status: "synced" },
+            ].map((item) => (
+              <div class="flex items-center justify-between gap-4 py-4 border-b border-white/5 last:border-0">
+                <div class="flex items-center gap-3">
+                  <div class="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                  <span class="text-text-secondary text-base">
+                    {item.label}
+                  </span>
+                </div>
+                <span class="text-xs font-mono tracking-widest uppercase text-primary/60 bg-primary/5 border border-primary/10 px-2.5 py-1 rounded-full">
+                  {item.status}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+        <!-- Decorative glow behind card -->
+        <div
+          class="absolute -inset-8 bg-primary/5 blur-[60px] rounded-full pointer-events-none -z-10"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

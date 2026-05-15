@@ -1,0 +1,102 @@
+---
+import AutoAwsome from "../assets/svg/autoAwsome.astro";
+import Loop from "../assets/svg/loop.astro";
+---
+
+<section
+  id="agentic-sync"
+  class="w-full py-20 md:py-32 bg-bg-main relative overflow-hidden"
+>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <!-- Left: Visual (reversed layout) -->
+      <div class="relative order-2 lg:order-1">
+        <div
+          class="p-8 bg-white/[0.02] border border-white/5 rounded-[2.5rem] space-y-0"
+        >
+          <!-- Simulated PR/commit activity stream -->
+          {
+            [
+              {
+                type: "PR",
+                label: "Merged: Refactor auth middleware",
+                doc: "Authentication updated",
+              },
+              {
+                type: "COMMIT",
+                label: "Fix: Request handling updates",
+                doc: "Business Logic updated",
+              },
+              {
+                type: "PR",
+                label: "Merged: New billing endpoints",
+                doc: "API & Endpoints updated",
+              },
+              {
+                type: "COMMIT",
+                label: "Chore: Update DB schema",
+                doc: "Database & Models updated",
+              },
+            ].map((item) => (
+              <div class="flex items-start gap-4 py-4 border-b border-white/5 last:border-0">
+                <span
+                  class={`flex-shrink-0 mt-0.5 text-[10px] font-mono font-bold tracking-widest px-2 py-0.5 rounded ${item.type === "PR" ? "text-primary bg-primary/10 border border-primary/20" : "text-text-muted bg-white/5 border border-white/10"}`}
+                >
+                  {item.type}
+                </span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-text-secondary text-base truncate">
+                    {item.label}
+                  </p>
+                  <p class="text-primary/70 text-sm mt-1 flex items-center gap-1.5">
+                    <span class="w-1 h-1 rounded-full bg-primary/60 inline-block" />
+                    {item.doc}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+          <div
+            class="pt-4 flex items-center gap-2 text-text-muted text-sm font-mono"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block"
+            ></span>
+            Generating...
+          </div>
+        </div>
+        <div
+          class="absolute -inset-8 bg-primary/5 blur-[60px] rounded-full pointer-events-none -z-10"
+        >
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="order-1 lg:order-2">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-white/5 border border-white/10 text-text-secondary text-xs font-mono tracking-widest uppercase"
+        >
+          <Loop class="w-3.5 h-3.5 text-primary rotate-90" />
+          Auto-sync
+        </div>
+
+        <h2
+          class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight mb-6 leading-[1.1]"
+        >
+          Documentation that evolves with your <span class="text-primary italic"
+            >repository</span
+          >.
+        </h2>
+
+        <p class="text-text-secondary text-lg leading-relaxed mb-4">
+          Penqwin continuously tracks pull requests and code changes to keep
+          documentation aligned with the actual state of your system.
+        </p>
+
+        <p class="text-text-secondary text-base leading-relaxed font-medium">
+          No stale docs. No manual maintenance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
