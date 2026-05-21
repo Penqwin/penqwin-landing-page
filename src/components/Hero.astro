@@ -2,13 +2,15 @@
 import DashboardPreview from "./DashboardPreview.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import PlayIcon from "../assets/svg/play.astro";
-import bootstrapVideo from "../assets/images/tutorials/bootstrap_repo.mp4";
+import bootstrapVideo from "../assets/videos/bootstrap_repo.mp4";
+import updateDocsVideo from "../assets/videos/update_docs.mp4";
 import Cross from "../assets/svg/cross.astro";
+import ArrowIcon from "../assets/svg/arrow.astro";
 ---
 
 <section
   id="hero"
-  class="relative w-full min-h-screen bg-bg-main flex flex-col items-center justify-center overflow-hidden"
+  class="relative z-30 w-full min-h-screen bg-bg-main flex flex-col items-center justify-center"
 >
   <!-- Background Effects -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -35,7 +37,7 @@ import Cross from "../assets/svg/cross.astro";
     </div>
   </div>
 
-  <div class="relative z-10 max-w-4xl px-6 mt-32 md:mt-48 text-center">
+  <div class="relative z-20 max-w-4xl px-6 mt-32 md:mt-48 text-center">
     <!-- H1 – keyword-rich, benefit-led -->
     <h1
       class="font-serif text-4xl md:text-7xl text-text-primary tracking-tight leading-[1.5] md:leading-[1.1] mb-6"
@@ -55,14 +57,45 @@ import Cross from "../assets/svg/cross.astro";
     <div
       class="flex flex-col-reverse sm:flex-row items-center justify-center gap-4 my-10 md:my-8"
     >
-      <button
-        id="watch-tutorial-btn"
-        class="inline-flex select-none group items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 transition-all active:scale-[0.98] cursor-pointer"
-        aria-label="Watch Tutorial"
-      >
-        <PlayIcon class="w-5 h-5 group-hover:text-white transition-colors" />
-        <span>Watch Tutorial</span>
-      </button>
+      <!-- Video Dropdown -->
+      <div class="relative inline-block text-left" id="tutorial-dropdown">
+        <button
+          id="watch-tutorial-btn"
+          class="inline-flex select-none group items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 transition-all active:scale-[0.98] cursor-pointer"
+          aria-label="Watch Tutorial"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span>Watch Tutorial</span>
+          <ArrowIcon id="chevron-icon" class="w-5 h-5 rotate-90 transition-transform duration-200" />
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div
+          id="dropdown-menu"
+          class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl bg-bg-secondary border border-border p-2 shadow-2xl z-50 transition-all duration-200 origin-top scale-95 opacity-0"
+        >
+          <button
+            class="dropdown-item w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer"
+            data-video-src={bootstrapVideo}
+          >
+          <PlayIcon class="w-4 h-4 group-hover:text-white transition-colors" />
+            <div class="flex flex-col">
+              <span class="font-medium text-text-primary">Repository Bootstrapping</span>
+            </div>
+          </button>
+          <button
+            class="dropdown-item w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer mt-1"
+            data-video-src={updateDocsVideo}
+          >
+            <PlayIcon class="w-4 h-4 group-hover:text-white transition-colors" />
+            <div class="flex flex-col">
+              <span class="font-medium text-text-primary">Auto-sync Docs</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
       <a
         id="hero-cta-primary"
         href="https://app.penqwin.com"
@@ -99,7 +132,7 @@ import Cross from "../assets/svg/cross.astro";
         <Cross class="w-5 h-5" />
       </button>
       <video id="tutorial-video" class="w-full h-full object-contain" controls>
-        <source src={bootstrapVideo} type="video/mp4" />
+        <source id="tutorial-video-source" src="" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -131,20 +164,87 @@ import Cross from "../assets/svg/cross.astro";
 
 <script>
   const watchBtn = document.getElementById("watch-tutorial-btn");
+  const chevron = document.getElementById("chevron-icon");
+  const menu = document.getElementById("dropdown-menu");
+  const dropdownItems = document.querySelectorAll(".dropdown-item");
+
   const modal = document.getElementById("tutorial-modal") as HTMLDialogElement;
   const closeBtn = document.getElementById("close-tutorial");
   const video = document.getElementById("tutorial-video") as HTMLVideoElement;
+  const videoSource = document.getElementById("tutorial-video-source") as HTMLSourceElement;
 
-  if (watchBtn && modal && closeBtn && video) {
-    watchBtn.addEventListener("click", () => {
-      modal.showModal();
-      video.play();
+  if (watchBtn && menu && chevron) {
+    const toggleDropdown = (show?: boolean) => {
+      const isVisible = show !== undefined ? show : menu.classList.contains("hidden");
+      if (isVisible) {
+        menu.classList.remove("hidden");
+        // Force reflow for transitions
+        void menu.offsetHeight;
+        menu.classList.remove("scale-95", "opacity-0");
+        menu.classList.add("scale-100", "opacity-100");
+        chevron.classList.add("rotate-270");
+        chevron.classList.remove("rotate-90");
+        watchBtn.setAttribute("aria-expanded", "true");
+      } else {
+        menu.classList.add("scale-95", "opacity-0");
+        menu.classList.remove("scale-100", "opacity-100");
+        chevron.classList.remove("rotate-270");
+        chevron.classList.add("rotate-90");
+        watchBtn.setAttribute("aria-expanded", "false");
+        
+        // Wait for animation to finish
+        setTimeout(() => {
+          if (watchBtn.getAttribute("aria-expanded") === "false") {
+            menu.classList.add("hidden");
+          }
+        }, 200);
+      }
+    };
+
+    watchBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleDropdown();
     });
 
-    closeBtn.addEventListener("click", () => {
+    // Close on clicking anywhere outside
+    document.addEventListener("click", () => {
+      toggleDropdown(false);
+    });
+    
+    // Close on pressing Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        toggleDropdown(false);
+      }
+    });
+
+    dropdownItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleDropdown(false);
+
+        const videoSrc = item.getAttribute("data-video-src");
+        if (videoSrc && modal && video && videoSource) {
+          videoSource.src = videoSrc;
+          video.load();
+          modal.showModal();
+          video.play().catch((err) => {
+            console.error("Error playing video:", err);
+          });
+        }
+      });
+    });
+  }
+
+  if (modal && closeBtn && video && videoSource) {
+    const handleClose = () => {
       modal.close();
       video.pause();
-    });
+      videoSource.removeAttribute("src");
+      video.load();
+    };
+
+    closeBtn.addEventListener("click", handleClose);
 
     // Close on click outside
     modal.addEventListener("click", (e) => {
@@ -155,8 +255,7 @@ import Cross from "../assets/svg/cross.astro";
         e.clientY < dialogDimensions.top ||
         e.clientY > dialogDimensions.bottom
       ) {
-        modal.close();
-        video.pause();
+        handleClose();
       }
     });
   }
