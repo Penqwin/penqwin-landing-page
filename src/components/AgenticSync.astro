@@ -1,6 +1,13 @@
 ---
 import AutoAwsome from "../assets/svg/autoAwsome.astro";
 import Loop from "../assets/svg/loop.astro";
+import PlayIcon from "../assets/svg/play.astro";
+
+interface Props {
+  videoUrl?: string;
+}
+
+const { videoUrl } = Astro.props;
 ---
 
 <section
@@ -93,9 +100,18 @@ import Loop from "../assets/svg/loop.astro";
           documentation aligned with the actual state of your system.
         </p>
 
-        <p class="text-text-secondary text-base leading-relaxed font-medium">
-          No stale docs. No manual maintenance.
-        </p>
+
+        {
+          videoUrl && (
+            <button
+              class="watch-video-btn inline-flex items-center gap-2 text-base text-text-secondary hover:text-text-primary transition-colors duration-200 cursor-pointer group"
+              data-video-src={videoUrl}
+            >
+              <PlayIcon class="w-4 h-4 text-text-secondary group-hover:text-primary transition-colors duration-200" />
+              <span>Watch video</span>
+            </button>
+          )
+        }
       </div>
     </div>
   </div>

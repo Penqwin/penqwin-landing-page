@@ -1,6 +1,13 @@
 ---
+import PlayIcon from "../assets/svg/play.astro";
 import Source from "../assets/svg/source.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
+
+interface Props {
+  videoUrl?: string;
+}
+
+const { videoUrl } = Astro.props;
 ---
 
 <section
@@ -32,15 +39,28 @@ import ArrowRight from "../assets/svg/arrow-right.astro";
           technical systems.
         </p>
 
-        <a
-          href="https://app.penqwin.com"
-          class="inline-flex items-center gap-2 text-base text-primary hover:text-primary-light transition-colors duration-200 group"
-        >
-          <span>Get started free</span>
-          <ArrowRight
-            class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
-          />
-        </a>
+        <div class="flex items-center gap-6">
+          {
+            videoUrl && (
+              <button
+                class="watch-video-btn inline-flex items-center gap-2 text-base text-text-secondary hover:text-text-primary transition-colors duration-200 cursor-pointer group"
+                data-video-src={videoUrl}
+              >
+                <PlayIcon class="w-4 h-4 text-text-secondary group-hover:text-primary transition-colors duration-200" />
+                <span>Watch video</span>
+              </button>
+            )
+          }
+          <a
+            href="https://app.penqwin.com"
+            class="inline-flex items-center gap-2 text-base text-primary hover:text-primary-light transition-colors duration-200 group"
+          >
+            <span>Get started free</span>
+            <ArrowRight
+              class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+            />
+          </a>
+        </div>
       </div>
 
       <!-- Right: Visual -->
