@@ -10,6 +10,7 @@ import workspaceImg from "../assets/images/features/workspace.png";
 import knowledgebaseImg from "../assets/images/features/knowledgebase.png";
 import teamCollabImg from "../assets/images/features/team_collaboration.png";
 import chromeExtensionImg from "../assets/images/features/chrome_extension.png";
+import reviewChangesImg from "../assets/images/features/review_changes.png";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import Tick from "../assets/svg/tick.astro";
 ---
@@ -137,8 +138,8 @@ import Tick from "../assets/svg/tick.astro";
         </div>
       </section>
 
-      <!-- 02 — Chrome Extension (image right) -->
-      <section id="feature-chrome-extension" class="relative feature-section">
+      <!-- 02 — Review Changes (image right) -->
+      <section id="feature-review-changes" class="relative feature-section">
         <div
           class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
         >
@@ -146,6 +147,88 @@ import Tick from "../assets/svg/tick.astro";
             <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
               <span class="text-8xl md:text-[140px] font-serif leading-none"
                 >02</span
+              >
+            </div>
+            <div class="relative z-10 pt-8 md:pt-16">
+              <div
+                class="inline-flex items-center gap-2 px-3 text-xs font-medium text-primary mb-6"
+              >
+                Review Documentation Changes
+              </div>
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">
+                Review doc updates like GitHub code reviews
+              </h2>
+              <div class="space-y-6 text-text-secondary leading-relaxed">
+                <p class="text-base md:text-lg">
+                  Before accepting AI-generated documentation updates, review
+                  every change with GitHub-style diffs. See exactly what was
+                  added and removed, then approve or reject changes with
+                  confidence.
+                </p>
+                <ul class="space-y-4 mt-6">
+                  {
+                    [
+                      "GitHub-style diff interface for documentation changes",
+                      "Doc-wise change listings with preview for efficient review",
+                      "Accept or reject changes with confidence, just like code reviews",
+                    ].map((item) => (
+                      <li class="flex items-start gap-3">
+                        <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+                <div
+                  class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5"
+                >
+                  {
+                    [
+                      "documentation review",
+                      "ai tools",
+                      "code diff",
+                      "pull request review",
+                      "quality control",
+                    ].map((tag) => (
+                      <span class="text-xs text-text-muted px-2 py-1 bg-white/[0.02] rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full feature-img-frame">
+            <Image
+              src={reviewChangesImg}
+              alt="Review Changes feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 — Chrome Extension (image left) -->
+      <section id="feature-chrome-extension" class="relative feature-section">
+        <div
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+        >
+          <div class="w-full feature-img-frame">
+            <Image
+              src={chromeExtensionImg}
+              alt="Chrome Extension feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
+              <span class="text-8xl md:text-[140px] font-serif leading-none"
+                >03</span
               >
             </div>
             <div class="relative z-10 pt-8 md:pt-16">
@@ -208,39 +291,21 @@ import Tick from "../assets/svg/tick.astro";
               </div>
             </div>
           </div>
-          <div class="w-full feature-img-frame">
-            <Image
-              src={chromeExtensionImg}
-              alt="Chrome Extension feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
-          </div>
         </div>
       </section>
 
-      <!-- 03 — Engineering Knowledgebase (image left) -->
+      <!-- 04 — Engineering Knowledgebase (image right) -->
       <section
         id="feature-engineering-knowledgebase"
         class="relative feature-section"
       >
         <div
-          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
         >
-          <div class="w-full feature-img-frame">
-            <Image
-              src={knowledgebaseImg}
-              alt="Engineering Knowledgebase feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
-          </div>
           <div class="relative">
-            <div
-              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
-            >
+            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
               <span class="text-8xl md:text-[140px] font-serif leading-none"
-                >03</span
+                >04</span
               >
             </div>
             <div class="relative z-10 pt-8 md:pt-16">
@@ -292,18 +357,36 @@ import Tick from "../assets/svg/tick.astro";
               </div>
             </div>
           </div>
+          <div class="w-full feature-img-frame">
+            <Image
+              src={knowledgebaseImg}
+              alt="Engineering Knowledgebase feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
         </div>
       </section>
 
-      <!-- 04 — Global Search (image right) -->
+      <!-- 05 — Global Search (image left) -->
       <section id="feature-global-search" class="relative feature-section">
         <div
-          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
         >
+          <div class="w-full feature-img-frame">
+            <Image
+              src={globalSearchImg}
+              alt="Global Search feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
           <div class="relative">
-            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
               <span class="text-8xl md:text-[140px] font-serif leading-none"
-                >04</span
+                >05</span
               >
             </div>
             <div class="relative z-10 pt-8 md:pt-16">
@@ -355,36 +438,18 @@ import Tick from "../assets/svg/tick.astro";
               </div>
             </div>
           </div>
-          <div class="w-full feature-img-frame">
-            <Image
-              src={globalSearchImg}
-              alt="Global Search feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
-          </div>
         </div>
       </section>
 
-      <!-- 05 — Team Collaboration (image left) -->
+      <!-- 06 — Team Collaboration (image right) -->
       <section id="feature-team-collaboration" class="relative feature-section">
         <div
-          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
+          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
         >
-          <div class="w-full feature-img-frame">
-            <Image
-              src={teamCollabImg}
-              alt="Team Collaboration feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
-          </div>
           <div class="relative">
-            <div
-              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
-            >
+            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
               <span class="text-8xl md:text-[140px] font-serif leading-none"
-                >05</span
+                >06</span
               >
             </div>
             <div class="relative z-10 pt-8 md:pt-16">
@@ -436,18 +501,36 @@ import Tick from "../assets/svg/tick.astro";
               </div>
             </div>
           </div>
+          <div class="w-full feature-img-frame">
+            <Image
+              src={teamCollabImg}
+              alt="Team Collaboration feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
         </div>
       </section>
 
-      <!-- 06 — Multiple Workspaces (image right) -->
+      <!-- 07 — Multiple Workspaces (image left) -->
       <section id="feature-workspaces" class="relative feature-section">
         <div
-          class="flex flex-col lg:grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center"
+          class="flex flex-col-reverse lg:grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-16 items-center"
         >
+          <div class="w-full feature-img-frame">
+            <Image
+              src={workspaceImg}
+              alt="Multiple Workspaces feature screenshot"
+              loading="lazy"
+              class="w-full h-auto block rounded-2xl"
+            />
+          </div>
           <div class="relative">
-            <div class="absolute -left-4 top-0 text-primary/10 select-none z-0">
+            <div
+              class="absolute -left-4 md:-right-4 top-0 text-primary/10 select-none z-0 text-right"
+            >
               <span class="text-8xl md:text-[140px] font-serif leading-none"
-                >06</span
+                >07</span
               >
             </div>
             <div class="relative z-10 pt-8 md:pt-16">
@@ -499,14 +582,6 @@ import Tick from "../assets/svg/tick.astro";
                 </div>
               </div>
             </div>
-          </div>
-          <div class="w-full feature-img-frame">
-            <Image
-              src={workspaceImg}
-              alt="Multiple Workspaces feature screenshot"
-              loading="lazy"
-              class="w-full h-auto block rounded-2xl"
-            />
           </div>
         </div>
       </section>
@@ -572,6 +647,12 @@ import Tick from "../assets/svg/tick.astro";
     }
     .feature-section:nth-child(5) {
       animation-delay: 0.6s;
+    }
+    .feature-section:nth-child(6) {
+      animation-delay: 0.7s;
+    }
+    .feature-section:nth-child(7) {
+      animation-delay: 0.8s;
     }
   </style>
 </Layout>
