@@ -13,8 +13,8 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
 ---
 
 <Layout
-  title="Google Codewiki Alternative | Penqwin"
-  description="The modern Google Codewiki alternative. Sync your GitHub repos, support private repositories, and keep docs updated with every code change autonomously."
+  title="Code Wiki for Private Repositories | Penqwin"
+  description="Google CodeWiki for private repositories. Discover Penqwin: the ultimate AI code wiki designed for private and public repositories."
   image="/og/codewiki-alt.png"
 >
   <Header />
@@ -27,7 +27,7 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
         <h1
           class="font-serif text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.1]"
         >
-          Codewiki for your
+          Google Code Wiki for
           <span class="text-primary italic block mt-2"
             >private repositories.</span
           >
@@ -35,9 +35,9 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
         <p
           class="text-text-secondary text-md md:text-xl leading-relaxed max-w-2xl mx-auto"
         >
-          Move beyond manual wikis. Connect all GitHub repositories <em>
-            (public & private)</em
-          > and let Penqwin keep your documentation in sync with every code change.
+          Looking for Google Code Wiki for private repositories? Penqwin lets
+          you build and sync an AI code wiki for both public and private GitHub
+          repositories instantly.
         </p>
         <div class="pt-8 flex justify-center">
           <a
@@ -58,6 +58,28 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
 
       <!-- Features & How It Works -->
       <AlternativeFeatures />
+
+      <!-- Explanation Section / Context -->
+      <section class="space-y-6">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Why Google Code Wiki isn't for private repos
+        </h2>
+        <div
+          class="text-text-secondary text-lg leading-relaxed space-y-4 font-light"
+        >
+          <p>
+            Google Code Wiki only supports <strong
+              >limited open-source projects</strong
+            >.
+          </p>
+
+          <p>
+            If your team needs a secure, cloud-native AI code wiki for private
+            repositories, Penqwin offers full private repo support out of the
+            box with zero infrastructure to manage.
+          </p>
+        </div>
+      </section>
 
       <!-- Comparison Section -->
       <section class="space-y-10">
@@ -127,6 +149,56 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
                 >
                 <td class="py-5 px-6 text-text-primary">Minimal</td>
                 <td class="py-5 pl-6 text-text-secondary">Minimal</td>
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Manual editor</td
+                >
+                <td class="py-5 px-6">
+                  <div class="flex items-center gap-2 text-text-primary">
+                    <Tick
+                      aria-label="Yes"
+                      role="img"
+                      class="w-5 h-5 flex-shrink-0"
+                    />
+                    <span>(built-in editor)</span>
+                  </div>
+                </td>
+                <td class="py-5 pl-6 text-text-secondary">
+                  <div class="flex items-center gap-2">
+                    <Cross
+                      aria-label="No"
+                      role="img"
+                      class="w-5 h-5 flex-shrink-0"
+                    />
+                    <span>(read-only)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Team Collaboration</td
+                >
+                <td class="py-5 px-6">
+                  <div class="flex items-center gap-2 text-text-primary">
+                    <Tick
+                      aria-label="Yes"
+                      role="img"
+                      class="w-5 h-5 flex-shrink-0"
+                    />
+                    <span>(team features)</span>
+                  </div>
+                </td>
+                <td class="py-5 pl-6 text-text-secondary">
+                  <div class="flex items-center gap-2">
+                    <Cross
+                      aria-label="No"
+                      role="img"
+                      class="w-5 h-5 flex-shrink-0"
+                    />
+                    <span>(single-user focus)</span>
+                  </div>
+                </td>
               </tr>
               <tr class="group hover:bg-white/[0.01] transition-colors">
                 <td class="py-5 pr-6 text-text-primary font-medium">Pricing</td>

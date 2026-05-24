@@ -67,7 +67,10 @@ import ArrowIcon from "../assets/svg/arrow.astro";
           aria-expanded="false"
         >
           <span>Watch Tutorial</span>
-          <ArrowIcon id="chevron-icon" class="w-5 h-5 rotate-90 transition-transform duration-200" />
+          <ArrowIcon
+            id="chevron-icon"
+            class="w-5 h-5 rotate-90 transition-transform duration-200"
+          />
         </button>
 
         <!-- Dropdown Menu -->
@@ -79,18 +82,26 @@ import ArrowIcon from "../assets/svg/arrow.astro";
             class="dropdown-item w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer"
             data-video-src={bootstrapVideo}
           >
-          <PlayIcon class="w-4 h-4 group-hover:text-white transition-colors" />
+            <PlayIcon
+              class="w-4 h-4 group-hover:text-white transition-colors"
+            />
             <div class="flex flex-col">
-              <span class="font-medium text-text-primary">Repository Bootstrapping</span>
+              <span class="font-medium text-text-primary"
+                >Repository Bootstrapping</span
+              >
             </div>
           </button>
           <button
             class="dropdown-item w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer mt-1"
             data-video-src={updateDocsVideo}
           >
-            <PlayIcon class="w-4 h-4 group-hover:text-white transition-colors" />
+            <PlayIcon
+              class="w-4 h-4 group-hover:text-white transition-colors"
+            />
             <div class="flex flex-col">
-              <span class="font-medium text-text-primary">Auto-sync Docs</span>
+              <span class="font-medium text-text-primary"
+                >Review & Sync Docs</span
+              >
             </div>
           </button>
         </div>
@@ -171,11 +182,14 @@ import ArrowIcon from "../assets/svg/arrow.astro";
   const modal = document.getElementById("tutorial-modal") as HTMLDialogElement;
   const closeBtn = document.getElementById("close-tutorial");
   const video = document.getElementById("tutorial-video") as HTMLVideoElement;
-  const videoSource = document.getElementById("tutorial-video-source") as HTMLSourceElement;
+  const videoSource = document.getElementById(
+    "tutorial-video-source",
+  ) as HTMLSourceElement;
 
   if (watchBtn && menu && chevron) {
     const toggleDropdown = (show?: boolean) => {
-      const isVisible = show !== undefined ? show : menu.classList.contains("hidden");
+      const isVisible =
+        show !== undefined ? show : menu.classList.contains("hidden");
       if (isVisible) {
         menu.classList.remove("hidden");
         // Force reflow for transitions
@@ -191,7 +205,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
         chevron.classList.remove("rotate-270");
         chevron.classList.add("rotate-90");
         watchBtn.setAttribute("aria-expanded", "false");
-        
+
         // Wait for animation to finish
         setTimeout(() => {
           if (watchBtn.getAttribute("aria-expanded") === "false") {
@@ -210,7 +224,7 @@ import ArrowIcon from "../assets/svg/arrow.astro";
     document.addEventListener("click", () => {
       toggleDropdown(false);
     });
-    
+
     // Close on pressing Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
