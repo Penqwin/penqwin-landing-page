@@ -1,0 +1,190 @@
+---
+import PlayIcon from "../assets/svg/play.astro";
+import Cross from "../assets/svg/cross.astro";
+import ArrowIcon from "../assets/svg/arrow.astro";
+import bootstrapVideo from "../assets/videos/bootstrap_repo.mp4";
+import updateDocsVideo from "../assets/videos/update_docs.mp4";
+
+interface Props {
+  /** Label shown on the trigger button */
+  label?: string;
+  /** Extra classes applied to the trigger button */
+  class?: string;
+}
+
+const { label = "Watch Tutorial", class: className = "" } = Astro.props;
+
+// Unique ID per instance so multiple dropdowns on one page don't collide
+const uid = Math.random().toString(36).slice(2, 8);
+---
+
+<div class="relative inline-block text-left" id={`vd-wrapper-${uid}`}>
+  <!-- Trigger button -->
+  <button
+    id={`vd-btn-${uid}`}
+    class:list={[
+      "inline-flex select-none group items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 transition-all cursor-pointer",
+      className,
+    ]}
+    aria-label={label}
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <span>{label}</span>
+    <ArrowIcon
+      id={`vd-chevron-${uid}`}
+      class="w-5 h-5 rotate-90 transition-transform duration-200"
+    />
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    id={`vd-menu-${uid}`}
+    class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl bg-bg-secondary border border-border p-2 shadow-2xl z-50 transition-all duration-200 origin-top scale-95 opacity-0"
+  >
+    <button
+      class={`vd-item-${uid} w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer`}
+      data-video-src={bootstrapVideo}
+    >
+      <PlayIcon class="w-4 h-4 transition-colors" />
+      <div class="flex flex-col">
+        <span class="font-medium text-text-primary">Repository Bootstrapping</span>
+      </div>
+    </button>
+    <button
+      class={`vd-item-${uid} w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer mt-1`}
+      data-video-src={updateDocsVideo}
+    >
+      <PlayIcon class="w-4 h-4 transition-colors" />
+      <div class="flex flex-col">
+        <span class="font-medium text-text-primary">Review &amp; Sync Docs</span>
+      </div>
+    </button>
+  </div>
+</div>
+
+<!-- Video Dialog (one per instance) -->
+<dialog
+  id={`vd-modal-${uid}`}
+  class="backdrop:bg-black/80 backdrop:backdrop-blur-sm bg-transparent border-none w-full max-w-5xl p-4 m-auto rounded-xl shadow-2xl"
+>
+  <div
+    class="relative w-full bg-black rounded-xl overflow-hidden border border-border-light/50"
+  >
+    <button
+      id={`vd-close-${uid}`}
+      class="absolute select-none cursor-pointer top-4 right-4 z-50 p-2 bg-black/50 hover:bg-black text-text-secondary hover:text-text-primary rounded-full transition-colors"
+      aria-label="Close video"
+    >
+      <Cross class="w-5 h-5" />
+    </button>
+    <video id={`vd-video-${uid}`} class="w-full h-full object-contain" controls>
+      <source id={`vd-src-${uid}`} src="" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+  }
+  dialog[open] {
+    display: flex;
+    animation: vd-fade-in 0.3s ease-out;
+  }
+  @keyframes vd-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+</style>
+
+<script define:vars={{ uid }}>
+  const btn = document.getElementById(`vd-btn-${uid}`);
+  const chevron = document.getElementById(`vd-chevron-${uid}`);
+  const menu = document.getElementById(`vd-menu-${uid}`);
+  const modal = document.getElementById(`vd-modal-${uid}`);
+  const closeBtn = document.getElementById(`vd-close-${uid}`);
+  const video = document.getElementById(`vd-video-${uid}`);
+  const videoSource = document.getElementById(`vd-src-${uid}`);
+  const items = document.querySelectorAll(`.vd-item-${uid}`);
+
+  if (btn && menu && chevron) {
+    const toggleDropdown = (show) => {
+      const isVisible = show !== undefined ? show : menu.classList.contains("hidden");
+      if (isVisible) {
+        menu.classList.remove("hidden");
+        void menu.offsetHeight; // force reflow
+        menu.classList.remove("scale-95", "opacity-0");
+        menu.classList.add("scale-100", "opacity-100");
+        chevron.classList.add("rotate-270");
+        chevron.classList.remove("rotate-90");
+        btn.setAttribute("aria-expanded", "true");
+      } else {
+        menu.classList.add("scale-95", "opacity-0");
+        menu.classList.remove("scale-100", "opacity-100");
+        chevron.classList.remove("rotate-270");
+        chevron.classList.add("rotate-90");
+        btn.setAttribute("aria-expanded", "false");
+        setTimeout(() => {
+          if (btn.getAttribute("aria-expanded") === "false") {
+            menu.classList.add("hidden");
+          }
+        }, 200);
+      }
+    };
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    document.addEventListener("click", () => toggleDropdown(false));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggleDropdown(false);
+    });
+
+    items.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleDropdown(false);
+        const src = item.getAttribute("data-video-src");
+        if (src && modal && video && videoSource) {
+          videoSource.src = src;
+          video.load();
+          modal.showModal();
+          video.play().catch((err) => console.error("Error playing video:", err));
+        }
+      });
+    });
+  }
+
+  if (modal && closeBtn && video && videoSource) {
+    const handleClose = () => {
+      modal.close();
+      video.pause();
+      videoSource.removeAttribute("src");
+      video.load();
+    };
+    closeBtn.addEventListener("click", handleClose);
+    modal.addEventListener("click", (e) => {
+      const rect = modal.getBoundingClientRect();
+      if (
+        e.clientX < rect.left ||
+        e.clientX > rect.right ||
+        e.clientY < rect.top ||
+        e.clientY > rect.bottom
+      ) {
+        handleClose();
+      }
+    });
+  }
+</script>

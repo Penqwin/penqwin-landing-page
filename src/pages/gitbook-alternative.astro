@@ -2,63 +2,120 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import AlternativeBottomSection from "../components/AlternativeBottomSection.astro";
-import AlternativeFeatures from "../components/AlternativeFeatures.astro";
-import TargetAudienceSection from "../components/TargetAudienceSection.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import Tick from "../assets/svg/tick.astro";
 import penqwinWebp from "../assets/images/Penqwin-icon.webp";
 import penqwinPng from "../assets/images/Penqwin-icon.png";
+import VideoDropdown from "../components/VideoDropdown.astro";
 ---
 
 <Layout
   title="GitBook Alternative for Engineering Teams | Penqwin"
-  description="Stop maintaining docs. Bootstrap your repo and let AI agents handle the rest. Penqwin is the GitBook alternative for teams that ship fast."
+  description="GitBook forces teams into complex two-way sync environments. Penqwin is the on-demand, code-first alternative—generating docs directly from your PR or commit URLs, only when you trigger it."
   image="/og/gitbook-alt.png"
 >
   <Header />
 
   <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
-    <!-- Main Article for SEO -->
-    <article class="max-w-3xl mx-auto px-6 lg:px-8 space-y-32">
-      <!-- Hero Section -->
+    <article class="max-w-5xl mx-auto px-6 lg:px-8 space-y-32">
+      <!-- ─── 1. Hero ─────────────────────────────────────────────────────── -->
       <section class="space-y-8 pt-16 text-center animate-fade-in">
         <h1
           class="font-serif text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.1]"
         >
-          GitBook Alternative,
-          <span class="text-primary italic block mt-2"
-            >Built for Teams That Ship Fast.</span
+          Top GitBook Alternative for <span class="text-primary italic mt-2"
+            >Software Teams in 2026.</span
           >
         </h1>
         <p
           class="text-text-secondary text-md md:text-xl leading-relaxed max-w-2xl mx-auto"
         >
-          Stop manually writing documentation. Bootstrap your repo in minutes
-          and let Penqwin keep your docs in sync with every change.
+          Penqwin is the on-demand documentation engine for engineering teams.
+          It analyzes code changes and generates documentation directly from
+          your PR or commit URLs only when you trigger it. No background creep,
+          no broken syncs, just precise documentation when you need it.
         </p>
-        <div class="pt-8 flex justify-center">
+        <div
+          class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
           <a
             href="https://app.penqwin.com"
+            id="hero-cta-primary"
             class="select-none cursor-pointer inline-flex group items-center justify-center gap-3 px-8 py-4 bg-text-primary text-lg text-bg-main rounded-full font-bold transition-all duration-300 active:scale-95"
           >
-            <span>Start capturing</span>
+            <span>Get Started for Free</span>
             <ArrowRight
-              class="w-5 group-hover:translate-x-1"
+              class="w-5 group-hover:translate-x-1 transition-transform"
               aria-hidden="true"
             />
           </a>
+          <VideoDropdown label="See How It Works" />
         </div>
       </section>
 
       <!-- Divider -->
       <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
 
-      <!-- Features & How It Works -->
-      <AlternativeFeatures />
+      <!-- ─── 2. Paradigm Shift ───────────────────────────────────────────── -->
+      <section
+        id="how-it-works"
+        class="space-y-8 relative before:absolute before:-inset-8 before:bg-white/[0.01] before:rounded-3xl before:-z-10 before:border before:border-white/[0.02]"
+      >
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Why teams look for a GitBook alternative.
+        </h2>
+        <p class="text-text-secondary text-lg md:text-xl font-light">
+          The GitBook Problem, and what Penqwin does differently.
+        </p>
 
-      <!-- Comparison Section -->
-      <section class="space-y-10">
+        <!-- Problem / Solution cards -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div
+            class="space-y-4 p-6 rounded-2xl border border-white/[0.06] bg-white/[0.01]"
+          >
+            <span
+              class="font-mono text-xs text-text-secondary/50 uppercase tracking-widest"
+              >GitBook</span
+            >
+            <h3
+              class="font-serif text-xl font-medium text-text-primary leading-snug"
+            >
+              A heavy platform split between two worlds.
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed">
+              GitBook has evolved into a block-based WYSIWYG editor and Git
+              synchronization that often conflict. Configuring navigation,
+              domain settings, or structural changes forces engineers out of
+              their IDEs and into a web dashboard, resulting in layout
+              mismatches, broken formatting blocks, and navigation conflicts.
+            </p>
+          </div>
+
+          <div
+            class="space-y-4 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025]"
+          >
+            <span
+              class="font-mono text-xs text-text-secondary/80 uppercase tracking-widest"
+              >Penqwin</span
+            >
+            <h3
+              class="font-serif text-xl font-medium text-text-primary leading-snug"
+            >
+              An on-demand AI documentation engine.
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed">
+              Penqwin introduces a clean, user-triggered workflow. You provide
+              the Pull Request or commit URL, and Penqwin extracts the
+              structural intent to generate exact, updated documentation. No
+              background creep, no continuous ingestion, just precise docs when
+              you ask.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 3. Comparison Matrix ───────────────────────────────────────── -->
+      <section class="space-y-10" id="comparison">
         <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
           Feature comparison
         </h2>
@@ -72,15 +129,17 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
                 >
                 <th
                   class="py-4 px-6 flex items-center gap-2 text-text-primary font-medium font-serif border-b border-white/10 text-lg"
-                  ><picture class="hidden md:block">
+                >
+                  <picture class="hidden md:block">
                     <source srcset={penqwinWebp.src} type="image/webp" />
                     <img
                       src={penqwinPng.src}
                       alt="Penqwin Logo"
                       class="w-5 h-auto rounded-md"
                     />
-                  </picture>Penqwin</th
-                >
+                  </picture>
+                  Penqwin
+                </th>
                 <th
                   class="py-4 pl-6 text-text-secondary font-medium font-serif border-b border-white/10 text-lg"
                   >GitBook</th
@@ -90,39 +149,46 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
             <tbody class="divide-y divide-white/5 text-lg">
               <tr class="group hover:bg-white/[0.01] transition-colors">
                 <td class="py-5 pr-6 text-text-primary font-medium"
-                  >AI Document Generation</td
+                  >Workflow Trigger</td
+                >
+                <td class="py-5 px-6 text-text-primary">On-demand</td>
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Continuous SaaS sync</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Control Layer</td
                 >
                 <td class="py-5 px-6 text-text-primary"
-                  ><Tick aria-label="Yes" role="img" class="w-5 h-5" /></td
-                >
-                <td class="py-5 pl-6 text-text-secondary">Limited</td>
-              </tr>
-              <tr class="group hover:bg-white/[0.01] transition-colors">
-                <td class="py-5 pr-6 text-text-primary font-medium"
-                  >Writing effort</td
-                >
-                <td class="py-5 px-6 text-text-primary">Minimal</td>
-                <td class="py-5 pl-6 text-text-secondary">High</td>
-              </tr>
-              <tr class="group hover:bg-white/[0.01] transition-colors">
-                <td class="py-5 pr-6 text-text-primary font-medium"
-                  >Workflow alignment</td
-                >
-                <td class="py-5 px-6 text-text-primary">Developer-first</td>
-                <td class="py-5 pl-6 text-text-secondary">General-purpose</td>
-              </tr>
-              <tr class="group hover:bg-white/[0.01] transition-colors">
-                <td class="py-5 pr-6 text-text-primary font-medium"
-                  >Always up-to-date</td
-                >
-                <td class="py-5 px-6 text-text-primary"
-                  ><Tick aria-label="Yes" role="img" class="w-5 h-5" /></td
+                  >Code-First &amp; Developer Controlled</td
                 >
                 <td class="py-5 pl-6 text-text-secondary"
-                  ><Tick aria-label="Yes" role="img" class="w-5 h-5" /></td
+                  >Two-way Git sync (requires UI)</td
                 >
               </tr>
-
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >AI Integration</td
+                >
+                <td class="py-5 px-6 text-text-primary"
+                  >Context-aware code diff analysis</td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Block-level editor assistant</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Documentation Maintenance</td
+                >
+                <td class="py-5 px-6 text-text-primary"
+                  >Automated AI generation from code</td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Manual or heavy SaaS dependency</td
+                >
+              </tr>
               <tr class="group hover:bg-white/[0.01] transition-colors">
                 <td class="py-5 pr-6 text-text-primary font-medium">Pricing</td>
                 <td class="py-5 px-6 text-success">$19/month</td>
@@ -133,11 +199,244 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
         </div>
       </section>
 
-      <!-- Who Penqwin is for & What you get -->
-      <TargetAudienceSection />
+      <!-- ─── 4. Deep-Dive Feature Confrontation ────────────────────────── -->
+      <section class="space-y-10">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          How the two approaches differ.
+        </h2>
+        <div class="grid gap-8 text-lg">
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >01</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >On-demand vs. continuous overhead</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                Penqwin is built on an explicit invocation model. By feeding a
+                specific PR or commit URL, it isolates the exact delta of your
+                code changes, ensuring zero background creep or unintended
+                out-of-sync docs.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >02</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >True docs-as-code vs. the hybrid illusion</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                GitBook promises Git sync but suffers from a "split
+                personality." Penqwin keeps code as the absolute source of
+                truth, documentation is generated dynamically from explicit code
+                deltas without heavy visual configurations or platform-specific
+                custom blocks.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >03</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >Purpose-built AI architecture</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                GitBook uses AI as a text processor, rewriting paragraphs or
+                summarizing blocks. Penqwin's AI engine is engineered to
+                comprehend code structural shifts, parsing the logic behind your
+                pull requests to author precise, up-to-date technical summaries,
+                implementation guides, and dependency updates.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >04</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >Clean, portable output</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                Penqwin produces elegant, standard-compliant technical
+                documentation optimized for both human reading and ingestion by
+                downstream AI systems.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <!-- Key Value Statement & CTA Section -->
-      <AlternativeBottomSection />
+      <!-- ─── 5. Who is switching ────────────────────────────────────────── -->
+      <section class="space-y-8">
+        <h2 class="font-serif text-3xl font-medium tracking-tight">
+          Who is switching to Penqwin?
+        </h2>
+        <ul class="flex flex-col gap-6 text-lg text-text-secondary font-normal">
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Fast-moving product engineers</span
+              >
+              <span class="text-text-secondary text-base"
+                >Developers tired of jumping between an IDE and a complex
+                documentation UI just to update a sidebar navigation tree.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Modern development teams</span
+              >
+              <span class="text-text-secondary text-base"
+                >Teams that treat code changes as the source of truth and want a
+                documentation tool that honors that exact lifecycle.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >AI-first software organizations</span
+              >
+              <span class="text-text-secondary text-base"
+                >Companies that need their technical documents to remain
+                hyper-accurate so that developers get perfect context every
+                single time.</span
+              >
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ─── 6. What you get ────────────────────────────────────────────── -->
+      <section class="space-y-8">
+        <h2 class="font-serif text-3xl font-medium tracking-tight">
+          What you get
+        </h2>
+        <ul class="flex flex-col gap-6 text-lg text-text-secondary font-normal">
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Zero integration friction</span
+              >
+              <span class="text-text-secondary text-base"
+                >No complex bidirectional repository setups or sweeping
+                structural write permissions across your entire historical
+                archive.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >PR / Commit driven generation</span
+              >
+              <span class="text-text-secondary text-base"
+                >When a feature ships or a branch merges, drop the URL into
+                Penqwin to immediately capture the engineering context.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Update docs with confidence</span
+              >
+              <span class="text-text-secondary text-base"
+                >You can see exactly what was added and removed, then approve or
+                reject changes with confidence.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Compounding knowledge over time</span
+              >
+              <span class="text-text-secondary text-base"
+                >Every documented PR builds a structured engineering knowledge
+                base your entire team can rely on.</span
+              >
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ─── 7. Bottom CTA ──────────────────────────────────────────────── -->
+      <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
+
+      <section class="text-center py-8 space-y-8 pb-16">
+        <p
+          class="font-serif text-3xl md:text-4xl text-text-secondary leading-normal"
+        >
+          Stop managing sync pipelines.<br />
+          <span class="text-text-primary italic mt-2 block"
+            >Start generating on-demand docs.</span
+          >
+        </p>
+        <p class="text-text-secondary text-lg max-w-xl mx-auto leading-relaxed">
+          Experience how clean code-driven documentation can be when it is built
+          explicitly around your PR and commit lifecycles.
+        </p>
+        <div class="pt-4">
+          <a
+            href="https://app.penqwin.com"
+            id="bottom-cta"
+            class="select-none cursor-pointer inline-flex group items-center justify-center gap-3 px-10 py-5 bg-text-primary text-bg-main rounded-full font-bold text-lg transition-transform active:scale-[0.98]"
+            aria-label="Try Penqwin Free"
+          >
+            <span>Try Penqwin Free</span>
+            <ArrowRight
+              class="w-5 group-hover:translate-x-1 transition-transform"
+              aria-hidden="true"
+            />
+          </a>
+        </div>
+      </section>
     </article>
   </main>
 
