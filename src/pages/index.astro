@@ -35,19 +35,23 @@ import updateDocsVideo from "../assets/videos/update_docs.mp4";
   <!-- Video Dialog for Section Videos -->
   <dialog
     id="section-video-modal"
-    class="backdrop:bg-black/80 backdrop:backdrop-blur-sm bg-transparent border-none w-full max-w-5xl p-4 m-auto rounded-xl shadow-2xl"
+    class="backdrop:bg-main/80 backdrop:backdrop-blur-sm bg-transparent border-none w-full max-w-5xl p-4 m-auto rounded-xl shadow-2xl"
   >
     <div
       class="relative w-full bg-black rounded-xl overflow-hidden border border-white/10"
     >
       <button
         id="close-section-video"
-        class="absolute select-none cursor-pointer top-4 right-4 z-50 p-2 bg-black/50 hover:bg-black text-text-secondary hover:text-text-primary rounded-full transition-colors"
+        class="absolute select-none cursor-pointer top-4 right-4 z-50 p-1 hover:bg-bg-secondary/10 text-bg-secondary/50 hover:text-bg-secondary rounded-full transition-colors"
         aria-label="Close video"
       >
         <Cross class="w-5 h-5" />
       </button>
-      <video id="section-video-player" class="w-full h-full object-contain" controls>
+      <video
+        id="section-video-player"
+        class="w-full h-full object-contain"
+        controls
+      >
         <source id="section-video-source" src="" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -56,7 +60,7 @@ import updateDocsVideo from "../assets/videos/update_docs.mp4";
 
   <style>
     dialog::backdrop {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(242, 245, 243, 0.8);
       backdrop-filter: blur(4px);
     }
 
@@ -79,10 +83,16 @@ import updateDocsVideo from "../assets/videos/update_docs.mp4";
 
   <script>
     const watchBtns = document.querySelectorAll(".watch-video-btn");
-    const modal = document.getElementById("section-video-modal") as HTMLDialogElement;
+    const modal = document.getElementById(
+      "section-video-modal",
+    ) as HTMLDialogElement;
     const closeBtn = document.getElementById("close-section-video");
-    const video = document.getElementById("section-video-player") as HTMLVideoElement;
-    const videoSource = document.getElementById("section-video-source") as HTMLSourceElement;
+    const video = document.getElementById(
+      "section-video-player",
+    ) as HTMLVideoElement;
+    const videoSource = document.getElementById(
+      "section-video-source",
+    ) as HTMLSourceElement;
 
     if (modal && closeBtn && video && videoSource) {
       watchBtns.forEach((btn) => {

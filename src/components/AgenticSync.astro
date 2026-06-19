@@ -26,23 +26,23 @@ const { videoUrl } = Astro.props;
             [
               {
                 type: "PR",
-                label: "Merged: Refactor auth middleware",
-                doc: "Authentication updated",
-              },
-              {
-                type: "COMMIT",
                 label: "Fix: Request handling updates",
                 doc: "Business Logic updated",
               },
               {
+                type: "COMMIT",
+                label: "Merged: Refactor auth middleware",
+                doc: "Authentication updated",
+              },
+              {
                 type: "PR",
-                label: "Merged: New billing endpoints",
-                doc: "API & Endpoints updated",
+                label: "Chore: Update DB schema",
+                doc: "Database & Models updated",
               },
               {
                 type: "COMMIT",
-                label: "Chore: Update DB schema",
-                doc: "Database & Models updated",
+                label: "Merged: New billing endpoints",
+                doc: "API & Endpoints updated",
               },
             ].map((item) => (
               <div class="flex items-start gap-4 py-4 border-b border-white/5 last:border-0">
