@@ -23,7 +23,7 @@ const uid = Math.random().toString(36).slice(2, 8);
   <button
     id={`vd-btn-${uid}`}
     class:list={[
-      "inline-flex select-none group items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 transition-all cursor-pointer",
+      "inline-flex select-none group items-center justify-center gap-3 px-8 py-4 bg-bg-secondary/50 border border-border rounded-full text-text-primary font-medium hover:bg-white/10 transition-all cursor-pointer",
       className,
     ]}
     aria-label={label}
@@ -40,24 +40,27 @@ const uid = Math.random().toString(36).slice(2, 8);
   <!-- Dropdown Menu -->
   <div
     id={`vd-menu-${uid}`}
-    class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl bg-bg-secondary border border-border p-2 shadow-2xl z-50 transition-all duration-200 origin-top scale-95 opacity-0"
+    class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl bg-bg-main border border-border p-2 shadow-xl z-50 transition-all duration-200 origin-top scale-95 opacity-0"
   >
     <button
-      class={`vd-item-${uid} w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer`}
+      class={`vd-item-${uid} w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-primary hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-200 cursor-pointer`}
       data-video-src={bootstrapVideo}
     >
       <PlayIcon class="w-4 h-4 transition-colors" />
       <div class="flex flex-col">
-        <span class="font-medium text-text-primary">Repository Bootstrapping</span>
+        <span class="font-medium text-text-primary"
+          >Repository Bootstrapping</span
+        >
       </div>
     </button>
     <button
-      class={`vd-item-${uid} w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-secondary hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 cursor-pointer mt-1`}
+      class={`vd-item-${uid} w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-text-primary hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-200 cursor-pointer mt-1`}
       data-video-src={updateDocsVideo}
     >
       <PlayIcon class="w-4 h-4 transition-colors" />
       <div class="flex flex-col">
-        <span class="font-medium text-text-primary">Review &amp; Sync Docs</span>
+        <span class="font-medium text-text-primary">Review &amp; Sync Docs</span
+        >
       </div>
     </button>
   </div>
@@ -66,14 +69,14 @@ const uid = Math.random().toString(36).slice(2, 8);
 <!-- Video Dialog (one per instance) -->
 <dialog
   id={`vd-modal-${uid}`}
-  class="backdrop:bg-black/80 backdrop:backdrop-blur-sm bg-transparent border-none w-full max-w-5xl p-4 m-auto rounded-xl shadow-2xl"
+  class="backdrop:bg-main/80 backdrop:backdrop-blur-sm bg-transparent border-none w-full max-w-5xl p-4 m-auto rounded-xl shadow-2xl"
 >
   <div
     class="relative w-full bg-black rounded-xl overflow-hidden border border-border-light/50"
   >
     <button
       id={`vd-close-${uid}`}
-      class="absolute select-none cursor-pointer top-4 right-4 z-50 p-2 bg-black/50 hover:bg-black text-text-secondary hover:text-text-primary rounded-full transition-colors"
+      class="absolute select-none cursor-pointer top-4 right-4 z-50 p-1 hover:bg-bg-secondary/10 text-bg-secondary/50 hover:text-bg-secondary rounded-full transition-colors"
       aria-label="Close video"
     >
       <Cross class="w-5 h-5" />
@@ -87,7 +90,7 @@ const uid = Math.random().toString(36).slice(2, 8);
 
 <style>
   dialog::backdrop {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(242, 245, 243, 0.8);
     backdrop-filter: blur(4px);
   }
   dialog[open] {
@@ -118,7 +121,8 @@ const uid = Math.random().toString(36).slice(2, 8);
 
   if (btn && menu && chevron) {
     const toggleDropdown = (show) => {
-      const isVisible = show !== undefined ? show : menu.classList.contains("hidden");
+      const isVisible =
+        show !== undefined ? show : menu.classList.contains("hidden");
       if (isVisible) {
         menu.classList.remove("hidden");
         void menu.offsetHeight; // force reflow
@@ -161,7 +165,9 @@ const uid = Math.random().toString(36).slice(2, 8);
           videoSource.src = src;
           video.load();
           modal.showModal();
-          video.play().catch((err) => console.error("Error playing video:", err));
+          video
+            .play()
+            .catch((err) => console.error("Error playing video:", err));
         }
       });
     });
