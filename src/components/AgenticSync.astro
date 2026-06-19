@@ -19,7 +19,7 @@ const { videoUrl } = Astro.props;
       <!-- Left: Visual (reversed layout) -->
       <div class="relative order-2 lg:order-1">
         <div
-          class="p-8 bg-white/[0.02] border border-white/5 rounded-[2.5rem] space-y-0"
+          class="p-8 bg-primary/[0.02] border border-border/50 rounded-[2.5rem] space-y-0"
         >
           <!-- Simulated PR/commit activity stream -->
           {
@@ -47,7 +47,7 @@ const { videoUrl } = Astro.props;
             ].map((item) => (
               <div class="flex items-start gap-4 py-4 border-b border-white/5 last:border-0">
                 <span
-                  class={`flex-shrink-0 mt-0.5 text-[10px] font-mono font-bold tracking-widest px-2 py-0.5 rounded ${item.type === "PR" ? "text-primary bg-primary/10 border border-primary/20" : "text-text-muted bg-white/5 border border-white/10"}`}
+                  class={`flex-shrink-0 mt-0.5 text-[10px] font-mono font-bold tracking-widest px-2 py-0.5 rounded ${item.type === "PR" ? "text-primary bg-primary/10 border border-primary/20" : "text-text-muted bg-text-primary/5 border border-border/10"}`}
                 >
                   {item.type}
                 </span>
@@ -99,7 +99,6 @@ const { videoUrl } = Astro.props;
           Penqwin continuously tracks pull requests and code changes to keep
           documentation aligned with the actual state of your system.
         </p>
-
 
         {
           videoUrl && (

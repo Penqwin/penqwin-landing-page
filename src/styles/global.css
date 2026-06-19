@@ -12,12 +12,12 @@
     /* font */
     --font-serif: 'Instrument Serif', serif;
 
-    /* colors */
-    --color-primary: var(--primary);
-    --color-primary-light: var(--primary-light);
+    /* colors — current theme */
+    --color-primary: var(--primary-v1);
+    --color-primary-light: var(--primary-light-v1);
     --color-bg-main: var(--bg-main);
     --color-bg-secondary: var(--bg-secondary);
-    --color-border: #1E293B;
+    --color-border: #B6BFB8;
     --color-text-primary: var(--text-primary);
     --color-text-secondary: var(--text-secondary);
     --color-text-muted: #64748B;
@@ -26,6 +26,16 @@
     --color-warning: #F59E0B;
     --color-error: #EF4444;
     --color-danger: #EF4444;
+
+    /* colors — v1 (dark theme) */
+    --color-primary-v1: var(--primary-v1);
+    --color-primary-light-v1: var(--primary-light-v1);
+    --color-bg-main-v1: var(--bg-main-v1);
+    --color-bg-secondary-v1: var(--bg-secondary-v1);
+    --color-border-v1: #1E293B;
+    --color-text-primary-v1: var(--text-primary-v1);
+    --color-text-secondary-v1: var(--text-secondary-v1);
+    --color-text-muted-v1: var(--text-muted-v1);
 }
 
 body::before {
@@ -50,13 +60,20 @@ body {
 }
 
 :root {
-    --primary: #8b5cf6;
-    --primary-light: #a78bfa;
-    --bg-main: #04040d;
-    --bg-secondary: #0a0a16;
-    --text-primary: #ffffff;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748B;
+    --primary-v1: #8b5cf6;
+    --primary: #08872B;
+    --primary-light-v1: #a78bfa;
+    --primary-light: #08872B;
+    --bg-main-v1: #04040d;
+    --bg-main: #F2F5F3;
+    --bg-secondary-v1: #0a0a16;
+    --bg-secondary: #E4EBE6;
+    --text-primary-v1: #ffffff;
+    --text-primary: #101411;
+    --text-secondary-v1: #94a3b8;
+    --text-secondary: #232925;
+    --text-muted-v1: #64748B;
+    --text-muted: #909692;
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -89,7 +106,7 @@ body {
     animation: pulse-slow 8s ease-in-out infinite;
 }
 
-
+/* dashboard preview */
 .text-editor {
     @apply font-sans;
     
@@ -98,19 +115,19 @@ body {
     }
     
     h3 {
-        @apply text-[16px] font-semibold text-text-primary mb-2 tracking-tight;
+        @apply text-[16px] font-semibold text-text-primary-v1 mb-2 tracking-tight;
     }
     
     h4 {
-        @apply text-[14px] font-semibold text-text-primary mb-2 tracking-tight;
+        @apply text-[14px] font-semibold text-text-primary-v1 mb-2 tracking-tight;
     }
     
     p {
-        @apply text-[11px] leading-relaxed text-text-primary mb-2;
+        @apply text-[11px] leading-relaxed text-text-primary-v1 mb-2;
     }
     
     code {
-        @apply bg-bg-secondary text-primary px-1.5 py-0.5 rounded text-[10px] font-mono border border-white/5;
+        @apply bg-bg-secondary-v1 text-primary-v1 px-1.5 py-0.5 rounded text-[10px] font-mono border border-white/5;
     }
     
     ol {
@@ -122,7 +139,7 @@ body {
     }
     
     ol li::marker {
-        @apply text-text-muted font-medium;
+        @apply text-text-muted-v1 font-medium;
     }
 }
 
