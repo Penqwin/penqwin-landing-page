@@ -2,50 +2,56 @@
 import penqwinWebp from "../assets/images/penqwin-primary.webp";
 import penqwinPng from "../assets/images/penqwin-primary.png";
 import ArrowRight from "../assets/svg/arrow-right.astro";
+
+const isMcpPage = Astro.url.pathname.startsWith("/mcp");
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 flex justify-center p-6 pointer-events-none transition-all duration-500 ease-in-out"
+  class="fixed top-0 left-0 right-0 z-50 w-full bg-bg-main border-b border-transparent transition-colors duration-300 ease-in-out"
   id="main-header"
 >
   <nav
-    class="w-full max-w-5xl px-6 py-3 flex items-center justify-between pointer-events-auto bg-bg-main border border-border/50 rounded-2xl"
+    class="w-full max-w-full px-4 md:px-12 pt-5 flex items-center justify-between"
   >
     <a
       href="/"
-      class="flex items-center gap-2 select-none"
+      class="flex items-center pb-4 gap-2 select-none"
       aria-label="Penqwin Home"
     >
       <picture>
         <source srcset={penqwinWebp.src} type="image/webp" />
-        <img src={penqwinPng.src} alt="Penqwin Logo" class="w-16 h-auto" />
+        <img
+          src={penqwinPng.src}
+          alt="Penqwin Logo"
+          class={`w-18 h-auto transition-all duration-300${isMcpPage ? " logo-black" : ""}`}
+        />
       </picture>
     </a>
 
-    <div class="hidden md:flex items-center gap-8 select-none">
-      <a
-        href="/features"
-        class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
-        >Features</a
-      >
-      <a
-        href="/about"
-        class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
-        >About</a
-      >
+    <!-- Pill Toggle Nav -->
+    <div class="hidden md:flex items-center select-none" id="nav-pill-group">
+      <div class="flex items-center gap-6">
+        <a
+          href="/"
+          id="nav-pill-kb"
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
+          >Knowledge Base</a
+        >
+        <a
+          href="/mcp"
+          id="nav-pill-mcp"
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
+          >Context Router MCP</a
+        >
+      </div>
+    </div>
+
+    <div class="flex items-center pb-2 gap-6">
       <a
         href="/#pricing"
         class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
         >Pricing</a
       >
-      <a
-        href="/faq"
-        class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
-        >FAQ</a
-      >
-    </div>
-
-    <div class="flex items-center gap-4">
       <a
         href="https://app.penqwin.com"
         class="group select-none px-4 py-2 flex items-center gap-1 bg-text-primary text-bg-main rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm active:scale-95"
@@ -59,57 +65,111 @@ import ArrowRight from "../assets/svg/arrow-right.astro";
       </a>
     </div>
   </nav>
+
+  <!-- Mobile tab row (visible only below md breakpoint) -->
+  <div
+    class="mobile-tab-row md:hidden flex w-full border-t border-border/20"
+    id="mobile-tab-row"
+  >
+    <a
+      href="/"
+      class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
+      id="mobile-pill-kb">Knowledge Base</a
+    >
+    <a
+      href="/mcp"
+      class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
+      id="mobile-pill-mcp">Context Router MCP</a
+    >
+  </div>
 </header>
 
 <script>
-  let lastScrollY = window.pageYOffset;
-  const header = document.getElementById("main-header");
-  const scrollThreshold = 10; // min scroll amount to trigger logic
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const currentScrollY = window.pageYOffset;
-
-      // Ignore small scrolls
-      if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
-        return;
+  const handleScroll = () => {
+    const header = document.getElementById("main-header");
+    if (header) {
+      const scrollTop =
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        window.scrollY;
+      if (scrollTop > 0) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
+    }
+  };
 
-      if (header) {
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          // Scrolling down - hide
-          header.classList.add("header-hidden");
-        } else {
-          // Scrolling up - show
-          header.classList.remove("header-hidden");
-        }
-      }
+  const updateActivePill = () => {
+    const path = window.location.pathname;
+    const pills = document.querySelectorAll(".nav-pill");
+    pills.forEach((pill) => {
+      const href = pill.getAttribute("href");
+      const isActive =
+        href === "/" ? path === "/" : path.startsWith(href ?? "");
+      pill.classList.toggle("nav-pill--active", isActive);
+    });
+  };
 
-      lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY; // For Mobile or negative scrolling
-    },
-    { passive: true },
-  );
+  // Attach to document with capture:true to intercept scroll from any element
+  document.addEventListener("scroll", handleScroll, {
+    passive: true,
+    capture: true,
+  });
+  document.addEventListener("astro:page-load", () => {
+    handleScroll();
+    updateActivePill();
+  });
+  // Initialize state on load
+  handleScroll();
+  updateActivePill();
 </script>
 
 <style>
   #main-header {
-    transform: translateY(0);
-    will-change: transform;
+    will-change: border-color;
   }
 
-  .header-hidden {
-    transform: translateY(-100%) !important;
+  /* Black logo variant for the MCP page */
+  .logo-black {
+    filter: brightness(0);
+    opacity: 75%;
+  }
+  #main-header.scrolled {
+    border-bottom-color: color-mix(
+      in srgb,
+      var(--color-border) 50%,
+      transparent
+    );
   }
 
-  /* Subtle glow effect on hover for the nav */
-  nav {
-    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
+  /* Pill nav */
+  .nav-pill {
+    color: var(--text-secondary);
+    border-bottom: 2.5px solid transparent;
   }
-  nav:hover {
-    border-color: rgba(139, 92, 246, 0.2);
-    box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.1);
+  .nav-pill:hover {
+    color: var(--text-primary);
+  }
+  .nav-pill--active {
+    color: var(--text-primary);
+    font-weight: 600;
+    border-bottom-color: var(--color-primary);
+  }
+  /* Mobile tab row */
+  .mobile-tab-row {
+    background: var(--bg-main);
+  }
+  .mobile-tab {
+    /* override the desktop bottom-border pill with a top-border indicator */
+    border-bottom: none;
+    border-top: 2.5px solid transparent;
+    padding-top: calc(
+      0.625rem - 2.5px
+    ); /* compensate for border so height stays consistent */
+  }
+  .mobile-tab.nav-pill--active {
+    border-top-color: var(--color-primary);
+    border-bottom-color: transparent;
   }
 </style>

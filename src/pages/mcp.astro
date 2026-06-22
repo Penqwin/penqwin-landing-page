@@ -1,0 +1,344 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AstGraph from "../components/AstGraph.astro";
+---
+
+<Layout
+  title="Cut AI Token Costs & Speed Up Team Dev | Penqwin"
+  description="Cut AI token costs by 99% and speed up development. Penqwin Context Router MCP syncs codebase structural blueprints instantly for your entire engineering team."
+>
+  <Header />
+
+  <main class="relative pb-24 overflow-hidden">
+    <!-- Hero Section — full viewport, vertically centred (mirrors Hero.astro) -->
+    <section
+      class="relative z-30 w-full min-h-screen flex flex-col items-center justify-center text-center"
+    >
+      <div class="relative max-w-4xl px-6 mt-32 md:mt-48">
+        <h1
+          class="font-serif text-4xl md:text-7xl text-text-primary tracking-tight leading-[1.5] md:leading-[1.1] mb-6"
+        >
+          Cut LLM Token Costs by
+          <em class="text-primary">Routing Code Context</em>
+        </h1>
+        <p
+          class="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
+        >
+          A standardized interface for AI assistants to navigate, understand,
+          and interact with your repository's engineering context.
+        </p>
+      </div>
+
+      <!-- AST Graph Visualization -->
+      <AstGraph />
+
+      <!-- Launching Soon Indicator -->
+      <div class="flex justify-center -mt-12 mb-16 relative z-40">
+        <em class="text-primary font-semibold">Launching Soon...</em>
+      </div>
+    </section>
+
+    <!-- AST Graph + Content below the fold -->
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="space-y-24">
+        <!-- The Problem: The AI Token Tax -->
+        <section class="relative border-t border-border/30 pt-16">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+            <div class="md:col-span-2">
+              <h2
+                class="text-3xl font-serif text-text-primary tracking-tight leading-tight"
+              >
+                The Cost of Codebase Blindness: <br />
+                <em class="text-primary not-italic">The Token Tax</em>
+              </h2>
+            </div>
+            <div
+              class="md:col-span-3 space-y-4 text-text-secondary leading-relaxed text-base md:text-lg"
+            >
+              <p>
+                AI coding agents are incredibly powerful, but they operate
+                blind. When asked a simple question like
+                <code
+                  class="px-1.5 py-0.5 rounded bg-bg-secondary text-primary font-mono text-sm border border-border/20"
+                  >"what functions call ProcessPayment?"</code
+                >, agents typically traverse your repository file-by-file.
+              </p>
+              <p>
+                They grep across files, read entire modules, and follow imports
+                sequentially. This raw document exploration can easily burn <strong
+                  >40,000+ tokens</strong
+                > on a single simple query. Over a development session, this "token
+                tax" leads to runaway API costs, slow response times, and frequent
+                context limit exhaustion.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- The Solution: Precise Code Skeleton Routing -->
+        <section class="relative border-t border-border/30 pt-16">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+            <div class="md:col-span-2">
+              <h2
+                class="text-3xl font-serif text-text-primary tracking-tight leading-tight"
+              >
+                A Structural Map for <br />
+                <em class="text-primary not-italic">AI Coding Agents</em>
+              </h2>
+            </div>
+            <div
+              class="md:col-span-3 space-y-5 text-text-secondary leading-relaxed"
+            >
+              <p class="text-base md:text-lg">
+                The Context Router MCP solves token bloat by mapping your
+                repository's skeletal structure, classes, functions, imports,
+                exports, and relationships. It exposes this schema directly to
+                your AI agent, allowing it to navigate code boundaries
+                instantly.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div
+                  class="p-5 bg-white/[0.02] border border-border/30 rounded-2xl"
+                >
+                  <h3
+                    class="font-mono text-xs uppercase tracking-wider text-text-muted mb-2"
+                  >
+                    Structural Navigation
+                  </h3>
+                  <p class="text-sm">
+                    Instead of guessing filenames or reading entire directories,
+                    the agent queries codebase skeletons to trace definitions,
+                    imports, and cross-references.
+                  </p>
+                </div>
+                <div
+                  class="p-5 bg-white/[0.02] border border-border/30 rounded-2xl"
+                >
+                  <h3
+                    class="font-mono text-xs uppercase tracking-wider text-text-muted mb-2"
+                  >
+                    Context Compression
+                  </h3>
+                  <p class="text-sm">
+                    The agent retrieves only the relevant code signatures and
+                    boundaries, stripping out unnecessary implementation details
+                    to keep payloads compact and fast.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Benchmarks Section -->
+        <section class="relative border-t border-border/30 pt-16">
+          <div class="mb-10 text-center md:text-left">
+            <h2
+              class="text-3xl font-serif text-text-primary tracking-tight mb-2"
+            >
+              Benchmarks: Graph vs. File-by-File Search
+            </h2>
+            <p
+              class="text-text-secondary max-w-2xl text-sm md:text-base leading-relaxed"
+            >
+              Transitioning from blind file crawling to structural context
+              routing reduces token usage by <strong>99.2%</strong> on average.
+            </p>
+          </div>
+
+          <div
+            class="overflow-x-auto border border-border/30 rounded-2xl bg-white/[0.01]"
+          >
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr
+                  class="border-b border-border/30 bg-bg-secondary/40 text-xs font-mono uppercase tracking-wider text-text-muted"
+                >
+                  <th class="p-4 md:p-5 font-semibold">Query Type</th>
+                  <th class="p-4 md:p-5 font-semibold text-right"
+                    >Penqwin Context Router</th
+                  >
+                  <th class="p-4 md:p-5 font-semibold text-right"
+                    >File-by-File Search</th
+                  >
+                  <th class="p-4 md:p-5 font-semibold text-right text-primary"
+                    >Savings</th
+                  >
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border/20 text-sm">
+                <tr
+                  class="hover:bg-bg-secondary/10 transition-colors duration-200"
+                >
+                  <td class="p-4 md:p-5 font-medium text-text-primary"
+                    >Find function by pattern</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-text-secondary"
+                    >~200 tokens</td
+                  >
+                  <td class="p-4 md:p-5 font-mono text-right text-text-muted"
+                    >~45,000 tokens</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-primary font-bold"
+                    >225x savings</td
+                  >
+                </tr>
+                <tr
+                  class="hover:bg-bg-secondary/10 transition-colors duration-200"
+                >
+                  <td class="p-4 md:p-5 font-medium text-text-primary"
+                    >Trace call chain (depth 3)</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-text-secondary"
+                    >~800 tokens</td
+                  >
+                  <td class="p-4 md:p-5 font-mono text-right text-text-muted"
+                    >~120,000 tokens</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-primary font-bold"
+                    >150x savings</td
+                  >
+                </tr>
+                <tr
+                  class="hover:bg-bg-secondary/10 transition-colors duration-200"
+                >
+                  <td class="p-4 md:p-5 font-medium text-text-primary"
+                    >Dead code detection</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-text-secondary"
+                    >~500 tokens</td
+                  >
+                  <td class="p-4 md:p-5 font-mono text-right text-text-muted"
+                    >~85,000 tokens</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-primary font-bold"
+                    >170x savings</td
+                  >
+                </tr>
+                <tr
+                  class="hover:bg-bg-secondary/10 transition-colors duration-200"
+                >
+                  <td class="p-4 md:p-5 font-medium text-text-primary"
+                    >List all HTTP routes</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-text-secondary"
+                    >~400 tokens</td
+                  >
+                  <td class="p-4 md:p-5 font-mono text-right text-text-muted"
+                    >~62,000 tokens</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-primary font-bold"
+                    >155x savings</td
+                  >
+                </tr>
+                <tr
+                  class="hover:bg-bg-secondary/10 transition-colors duration-200"
+                >
+                  <td class="p-4 md:p-5 font-medium text-text-primary"
+                    >Architecture overview</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-text-secondary"
+                    >~1,500 tokens</td
+                  >
+                  <td class="p-4 md:p-5 font-mono text-right text-text-muted"
+                    >~100,000 tokens</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-primary font-bold"
+                    >67x savings</td
+                  >
+                </tr>
+                <tr class="bg-primary/[0.02] font-semibold text-text-primary">
+                  <td class="p-4 md:p-5">Total Session Average</td>
+                  <td class="p-4 md:p-5 font-mono text-right text-primary"
+                    >~3,400 tokens</td
+                  >
+                  <td class="p-4 md:p-5 font-mono text-right text-text-muted"
+                    >~412,000 tokens</td
+                  >
+                  <td
+                    class="p-4 md:p-5 font-mono text-right text-primary font-extrabold text-base"
+                    >120x reduction</td
+                  >
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Scale, Performance & Privacy -->
+        <section class="relative border-t border-border/30 pt-16">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+            <div class="md:col-span-2">
+              <h2
+                class="text-3xl font-serif text-text-primary tracking-tight leading-tight"
+              >
+                Designed for <br />
+                <em class="text-primary not-italic">Engineering Teams</em>
+              </h2>
+            </div>
+            <div
+              class="md:col-span-3 space-y-6 text-text-secondary leading-relaxed"
+            >
+              <p class="text-base md:text-lg">
+                The Context Router MCP is engineered for speed and footprint
+                efficiency, easily scaling to compile and route structural
+                blueprints for enterprise-grade repositories.
+              </p>
+
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"
+                  >
+                  </div>
+                  <div>
+                    <strong class="text-text-primary"
+                      >Sub-Second Re-Indexing:</strong
+                    > Average-sized repositories are parsed and indexed in milliseconds,
+                    updating your agent’s memory instantly as you type.
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"
+                  >
+                  </div>
+                  <div>
+                    <strong class="text-text-primary"
+                      >Instant Team-Wide Sync:</strong
+                    > The structural mapping is kept continuously in sync with your
+                    GitHub main branch, making codebase blueprints immediately available
+                    to the entire team without individual re-indexing.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Override primary colour to --primary (green) for the MCP page */
+  :root {
+    --color-primary: var(--primary);
+    --color-primary-light: var(--primary-light);
+  }
+</style>
