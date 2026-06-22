@@ -1,0 +1,465 @@
+<section
+  class="mb-24 w-full flex items-center justify-center"
+  aria-hidden="true"
+>
+  <canvas id="ast-graph" class="w-full" style="height: 340px; max-width: 900px;"
+  ></canvas>
+</section>
+
+<script>
+  (function () {
+    const canvas = document.getElementById("ast-graph") as HTMLCanvasElement;
+    if (!canvas) return;
+
+    // Resolve color dynamically from Tailwind CSS theme variable
+    function getThemeColorWithAlpha(
+      variableName: string,
+      alpha: number,
+      defaultHex: string,
+    ): string {
+      const hex =
+        getComputedStyle(document.documentElement)
+          .getPropertyValue(variableName)
+          .trim() || defaultHex;
+      let r = 4,
+        g = 4,
+        b = 13;
+      if (hex.startsWith("#")) {
+        const cleanHex = hex.substring(1);
+        if (cleanHex.length === 3) {
+          r = parseInt(cleanHex[0] + cleanHex[0], 16);
+          g = parseInt(cleanHex[1] + cleanHex[1], 16);
+          b = parseInt(cleanHex[2] + cleanHex[2], 16);
+        } else if (cleanHex.length === 6) {
+          r = parseInt(cleanHex.substring(0, 2), 16);
+          g = parseInt(cleanHex.substring(2, 4), 16);
+          b = parseInt(cleanHex.substring(4, 6), 16);
+        }
+      }
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    const NODE_COLOR = getThemeColorWithAlpha(
+      "--bg-secondary-v1",
+      1,
+      "#04040d",
+    );
+    const NODE_GLOW_COLOR = getThemeColorWithAlpha(
+      "--bg-secondary-v1",
+      0.3,
+      "#04040d",
+    );
+    const EDGE_COLOR = getThemeColorWithAlpha(
+      "--bg-secondary-v1",
+      0.6,
+      "#04040d",
+    );
+
+    // Define layers: each layer has same horizontal circle footprint (cylinder)
+    const layers = [
+      [0, 1, 2], // 3 nodes
+      [3, 4, 5, 6, 7], // 5 nodes
+      [8, 9, 10, 11, 12, 13], // 6 nodes
+      [14, 15, 16, 17, 18, 19], // 6 nodes
+      [20, 21, 22, 23, 24], // 5 nodes
+    ];
+    const totalNodes = 25;
+
+    const labels = [
+      // Layer 0 — module root (3)
+      "FileSkeleton",
+      "filePath",
+      "language",
+      // Layer 1 — high-level collections & constructs (5)
+      "imports",
+      "exports",
+      "ImportEntry",
+      "ExportEntry",
+      "MemberEntry",
+      // Layer 2 — specific kinds & keys (6)
+      "source",
+      "function",
+      "class",
+      "interface",
+      "method",
+      "property",
+      // Layer 3 — member & annotation details (6)
+      "signature",
+      "jsdoc",
+      "constructor",
+      "bases",
+      "decorator",
+      "typeParams",
+      // Layer 4 — terminal attributes (5)
+      "visibility",
+      "isDefault",
+      "isStatic",
+      "alias",
+      "isWildcard",
+    ];
+
+    type Node = {
+      index: number;
+      x3d: number;
+      y3d: number;
+      z3d: number;
+      phase: number;
+      speed: number;
+      radius: number;
+      screenX: number;
+      screenY: number;
+      depth: number;
+    };
+
+    let nodes: Node[] = [];
+    const edges: [number, number][] = [
+      // Layer 0 to 1
+      [0, 3],
+      [0, 4],
+      [1, 5],
+      [1, 6],
+      [2, 7],
+      // Layer 1 to 2
+      [3, 8],
+      [4, 9],
+      [4, 10],
+      [5, 10],
+      [6, 11],
+      [7, 12],
+      [7, 13],
+      // Layer 2 to 3
+      [8, 14],
+      [9, 14],
+      [9, 15],
+      [10, 16],
+      [11, 17],
+      [12, 18],
+      [13, 19],
+      // Layer 3 to 4
+      [14, 20],
+      [15, 21],
+      [16, 22],
+      [17, 22],
+      [18, 23],
+      [19, 24],
+      // Horizontal / cross connections to retain cylinder shape while remaining sparse
+      [3, 4],
+      [6, 7],
+      [10, 11],
+      [12, 13],
+      [15, 16],
+      [18, 19],
+      [23, 24],
+    ];
+
+    function buildBasePositions(W: number, H: number) {
+      const padY = H * 0.22;
+      const usableH = H - padY * 2;
+      const R = Math.min(W * 0.35, 220); // Cylinder radius
+
+      nodes = [];
+      layers.forEach((layer, li) => {
+        const y = padY + (li / (layers.length - 1)) * usableH;
+        layer.forEach((nodeIdx, ni) => {
+          const theta = (ni / layer.length) * Math.PI * 2;
+          nodes.push({
+            index: nodeIdx,
+            x3d: R * Math.cos(theta),
+            y3d: y - H / 2, // Center vertically
+            z3d: R * Math.sin(theta),
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.4 + Math.random() * 0.6,
+            radius:
+              li === 0
+                ? 8.5
+                : li === 1
+                  ? 7.0
+                  : li === 2
+                    ? 5.8
+                    : li === 3
+                      ? 4.5
+                      : 3.2,
+            screenX: 0,
+            screenY: 0,
+            depth: 0,
+          });
+        });
+      });
+    }
+
+    let W = 0,
+      H = 0;
+    let dpr = 1;
+    let animId: number;
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      W = rect.width;
+      H = rect.height;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      buildBasePositions(W, H);
+    }
+
+    // --- Context-routing path highlight ---
+    const ROUTE_COLOR = getThemeColorWithAlpha(
+      "--primary-light",
+      0.6,
+      "#08872B",
+    );
+    const ROUTE_DURATION = 2400; // ms the highlight animation runs
+    const ROUTE_PAUSE = 3200; // ms of normal graph between highlights
+    const ROUTE_INTERVAL = ROUTE_DURATION + ROUTE_PAUSE; // 5600ms total cycle
+
+    // Build adjacency list (undirected) from edges
+    const adj: number[][] = Array.from({ length: totalNodes }, () => []);
+    edges.forEach(([a, b]) => {
+      adj[a].push(b);
+      adj[b].push(a);
+    });
+
+    // Find a random root-to-leaf path via DFS with randomised neighbour order
+    function findRandomPath(): number[] {
+      const roots = layers[0]; // start from top layer
+      const start = roots[Math.floor(Math.random() * roots.length)];
+      const path: number[] = [start];
+      const visited = new Set<number>([start]);
+      let cur = start;
+
+      // Walk downward through ~4 steps (root-to-leaf depth)
+      for (let step = 0; step < 4; step++) {
+        const neighbours = [...adj[cur]].filter((n) => !visited.has(n));
+        if (!neighbours.length) break;
+        // Shuffle to pick random
+        const next = neighbours[Math.floor(Math.random() * neighbours.length)];
+        path.push(next);
+        visited.add(next);
+        cur = next;
+      }
+      return path;
+    }
+
+    // Route state
+    type RouteState = {
+      path: number[]; // node indices in order
+      edgeKeys: Set<string>; // canonical "a-b" keys for O(1) lookup
+      nodeSet: Set<number>;
+      startTime: number;
+      duration: number; // ms for full traverse + hold
+      intervalMs: number; // ms between route changes
+    };
+
+    let route: RouteState = {
+      path: [],
+      edgeKeys: new Set(),
+      nodeSet: new Set(),
+      startTime: 0,
+      duration: ROUTE_DURATION,
+      intervalMs: ROUTE_INTERVAL,
+    };
+    let lastRouteSwitch = -Infinity;
+
+    function pickNewRoute(t: number) {
+      const path = findRandomPath();
+      const edgeKeys = new Set<string>();
+      for (let i = 0; i < path.length - 1; i++) {
+        const a = Math.min(path[i], path[i + 1]);
+        const b = Math.max(path[i], path[i + 1]);
+        edgeKeys.add(`${a}-${b}`);
+      }
+      route = {
+        path,
+        edgeKeys,
+        nodeSet: new Set(path),
+        startTime: t,
+        duration: ROUTE_DURATION,
+        intervalMs: ROUTE_INTERVAL,
+      };
+      lastRouteSwitch = t;
+    }
+
+    function draw(t: number) {
+      const ctx = canvas.getContext("2d")!;
+      ctx.save();
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, W, H);
+
+      const R = Math.min(W * 0.35, 220);
+
+      // Pitch/Tilt cylinder slightly forward to see top/bottom rings (18 degrees)
+      const tiltAngle = 0.3;
+      const cosTilt = Math.cos(tiltAngle);
+      const sinTilt = Math.sin(tiltAngle);
+
+      // 1. Calculate projected coordinates and depth for all nodes
+      nodes.forEach((n) => {
+        // No cycling (rotation around Y-axis), keep static cylindrical profile with floating
+        const rx = n.x3d;
+        const rz = n.z3d;
+
+        // Subtle organic float in 3D (drift)
+        const driftY = Math.sin(t * 0.0009 * n.speed + n.phase) * 8;
+        const driftX = Math.cos(t * 0.0007 * n.speed + n.phase) * 4;
+
+        const rxFinal = rx + driftX;
+        const ryFinal = n.y3d + driftY;
+
+        // Tilt projected space
+        n.screenX = W / 2 + rxFinal;
+        n.screenY = H / 2 + (ryFinal * cosTilt - rz * sinTilt);
+        n.depth = ryFinal * sinTilt + rz * cosTilt;
+      });
+
+      // Switch route periodically
+      if (t - lastRouteSwitch > route.intervalMs) {
+        pickNewRoute(t);
+      }
+
+      // Route animation progress: 0→1 over duration
+      const routeRaw = Math.min(1, (t - route.startTime) / route.duration);
+      // Ease in-out
+      const routeProgress =
+        routeRaw < 0.5
+          ? 2 * routeRaw * routeRaw
+          : 1 - Math.pow(-2 * routeRaw + 2, 2) / 2;
+      // Fade: full brightness in first 60%, fade out in last 40%
+      const routeAlpha =
+        routeRaw < 0.6 ? routeRaw / 0.6 : 1 - (routeRaw - 0.6) / 0.4;
+
+      // 2. Draw base edges (always — highlight is layered on top)
+      ctx.lineWidth = 1.0;
+      edges.forEach(([a, b]) => {
+        const na = nodes[a];
+        const nb = nodes[b];
+        const avgDepth = (na.depth + nb.depth) / 2;
+        const depthRatio = Math.max(0, Math.min(1, (avgDepth + R) / (2 * R)));
+        const alpha = 0.05 + depthRatio * 0.35;
+        ctx.strokeStyle = EDGE_COLOR;
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+        ctx.moveTo(na.screenX, na.screenY);
+        ctx.lineTo(nb.screenX, nb.screenY);
+        ctx.stroke();
+      });
+
+      // 3. Draw highlighted route edges
+      if (route.path.length > 1) {
+        const segCount = route.path.length - 1;
+        route.edgeKeys.forEach((key) => {
+          const [a, b] = key.split("-").map(Number);
+          const na = nodes[a];
+          const nb = nodes[b];
+          const avgDepth = (na.depth + nb.depth) / 2;
+          const depthRatio = Math.max(0, Math.min(1, (avgDepth + R) / (2 * R)));
+          // Highlighted edge: thicker, green, glowing
+          ctx.globalAlpha = routeAlpha * (0.35 + depthRatio * 0.45);
+          ctx.strokeStyle = ROUTE_COLOR;
+          ctx.lineWidth = 2.0;
+          ctx.beginPath();
+          ctx.moveTo(na.screenX, na.screenY);
+          ctx.lineTo(nb.screenX, nb.screenY);
+          ctx.stroke();
+        });
+
+        // 4. Traveling signal dot along the path
+        const totalSegs = segCount;
+        const dotProgress = routeProgress * totalSegs;
+        const segIdx = Math.min(Math.floor(dotProgress), totalSegs - 1);
+        const segFrac = dotProgress - segIdx;
+        const dotA = route.path[segIdx];
+        const dotB = route.path[segIdx + 1];
+        if (dotA !== undefined && dotB !== undefined) {
+          const na = nodes[dotA];
+          const nb = nodes[dotB];
+          const dotX = na.screenX + (nb.screenX - na.screenX) * segFrac;
+          const dotY = na.screenY + (nb.screenY - na.screenY) * segFrac;
+
+          // Outer halo
+          ctx.globalAlpha = routeAlpha * 0.25;
+          ctx.fillStyle = ROUTE_COLOR;
+          ctx.beginPath();
+          ctx.arc(dotX, dotY, 6, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Core dot
+          ctx.globalAlpha = routeAlpha * 0.9;
+          ctx.fillStyle = ROUTE_COLOR;
+          ctx.beginPath();
+          ctx.arc(dotX, dotY, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.lineWidth = 1.0;
+      }
+
+      // 5. Sort nodes by depth (back to front) and draw
+      const sortedNodes = [...nodes].sort((a, b) => a.depth - b.depth);
+
+      sortedNodes.forEach((n) => {
+        const depthRatio = Math.max(0, Math.min(1, (n.depth + R) / (2 * R)));
+        const scale = 0.65 + depthRatio * 0.55;
+        const alpha = 0.25 + depthRatio * 0.75;
+        const isOnRoute = route.nodeSet.has(n.index);
+
+        const r = n.radius * scale;
+
+        if (isOnRoute) {
+          // Bright green glow for route nodes
+          ctx.globalAlpha = routeAlpha * 0.3;
+          ctx.fillStyle = ROUTE_COLOR;
+          ctx.beginPath();
+          ctx.arc(n.screenX, n.screenY, r + 7, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Outer glow
+        ctx.globalAlpha = alpha * 0.15;
+        ctx.fillStyle = NODE_GLOW_COLOR;
+        ctx.beginPath();
+        ctx.arc(n.screenX, n.screenY, r + 4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Solid node — always draw base, blend green on top when on route
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = NODE_COLOR;
+        ctx.beginPath();
+        ctx.arc(n.screenX, n.screenY, r, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (isOnRoute && routeAlpha > 0) {
+          ctx.globalAlpha = alpha * routeAlpha;
+          ctx.fillStyle = ROUTE_COLOR;
+          ctx.beginPath();
+          ctx.arc(n.screenX, n.screenY, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Text label — always visible at base alpha, brightened green on route
+        ctx.font = "400 8.5px monospace, ui-monospace, Courier New";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = NODE_COLOR;
+        ctx.globalAlpha = alpha * 0.45;
+        ctx.fillText(labels[n.index], n.screenX + r + 6, n.screenY + 0.5);
+
+        if (isOnRoute && routeAlpha > 0) {
+          ctx.fillStyle = ROUTE_COLOR;
+          ctx.globalAlpha = routeAlpha * 0.75;
+          ctx.fillText(labels[n.index], n.screenX + r + 6, n.screenY + 0.5);
+        }
+      });
+
+      ctx.restore();
+      animId = requestAnimationFrame(draw);
+    }
+
+    resize();
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(animId);
+      resize();
+      animId = requestAnimationFrame(draw);
+    });
+    pickNewRoute(0);
+    animId = requestAnimationFrame(draw);
+  })();
+</script>
