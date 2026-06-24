@@ -4,7 +4,10 @@ import penqwinPng from "../assets/images/penqwin-primary.png";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 
 const isMcpPage = Astro.url.pathname.startsWith("/mcp");
-const showSubMenu = Astro.url.pathname === "/" || Astro.url.pathname === "/mcp" || Astro.url.pathname === "/mcp/";
+const showSubMenu =
+  Astro.url.pathname === "/" ||
+  Astro.url.pathname === "/mcp" ||
+  Astro.url.pathname === "/mcp/";
 ---
 
 <header
@@ -30,24 +33,22 @@ const showSubMenu = Astro.url.pathname === "/" || Astro.url.pathname === "/mcp" 
     </a>
 
     <!-- Pill Toggle Nav -->
-    {showSubMenu && (
-      <div class="hidden md:flex items-center select-none" id="nav-pill-group">
-        <div class="flex items-center gap-6">
-          <a
-            href="/"
-            id="nav-pill-kb"
-            class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
-            >Knowledge Base</a
-          >
-          <a
-            href="/mcp"
-            id="nav-pill-mcp"
-            class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
-            >Context Router MCP</a
-          >
-        </div>
+    <div class="hidden md:flex items-center select-none" id="nav-pill-group">
+      <div class="flex items-center gap-6">
+        <a
+          href="/"
+          id="nav-pill-kb"
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
+          >Knowledge Base</a
+        >
+        <a
+          href="/mcp"
+          id="nav-pill-mcp"
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
+          >Context Router MCP</a
+        >
       </div>
-    )}
+    </div>
 
     <div class="flex items-center pb-2 gap-6">
       <a
@@ -70,25 +71,29 @@ const showSubMenu = Astro.url.pathname === "/" || Astro.url.pathname === "/mcp" 
   </nav>
 
   <!-- Mobile tab row (visible only below md breakpoint) -->
-  {showSubMenu && (
-    <div
-      class="mobile-tab-row md:hidden flex w-full border-t border-border/20"
-      id="mobile-tab-row"
-    >
-      <a
-        href="/"
-        class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
-        id="mobile-pill-kb"
-        >Knowledge Base</a
+  {
+    showSubMenu && (
+      <div
+        class="mobile-tab-row md:hidden flex w-full border-t border-border/20"
+        id="mobile-tab-row"
       >
-      <a
-        href="/mcp"
-        class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
-        id="mobile-pill-mcp"
-        >Context Router MCP</a
-      >
-    </div>
-  )}
+        <a
+          href="/"
+          class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
+          id="mobile-pill-kb"
+        >
+          Knowledge Base
+        </a>
+        <a
+          href="/mcp"
+          class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
+          id="mobile-pill-mcp"
+        >
+          Context Router MCP
+        </a>
+      </div>
+    )
+  }
 </header>
 
 <script>
