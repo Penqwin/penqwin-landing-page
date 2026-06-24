@@ -626,47 +626,5 @@ import Tick from "../assets/svg/tick.astro";
         0 20px 40px -10px rgba(0, 0, 0, 0.5),
         0 0 60px -15px rgba(139, 92, 246, 0.15); */
     }
-
-    /* ── Animations ─────────────────────────────────────── */
-    @keyframes fade-in-up {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    main {
-      animation: fade-in-up 0.8s ease-out forwards;
-    }
-
-    .feature-section {
-      opacity: 0;
-      animation: fade-in-up 0.8s ease-out forwards;
-    }
-    .feature-section:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-    .feature-section:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-    .feature-section:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    .feature-section:nth-child(4) {
-      animation-delay: 0.5s;
-    }
-    .feature-section:nth-child(5) {
-      animation-delay: 0.6s;
-    }
-    .feature-section:nth-child(6) {
-      animation-delay: 0.7s;
-    }
-    .feature-section:nth-child(7) {
-      animation-delay: 0.8s;
-    }
   </style>
 </Layout>
