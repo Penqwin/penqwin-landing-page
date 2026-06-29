@@ -2,18 +2,24 @@
 import penqwinWebp from "../assets/images/penqwin-primary.webp";
 import penqwinPng from "../assets/images/penqwin-primary.png";
 import ArrowRight from "../assets/svg/arrow-right.astro";
+import Hamburger from "../assets/svg/hamburger.astro";
 
 const isMcpPage = Astro.url.pathname.startsWith("/mcp");
-const showSubMenu =
-  Astro.url.pathname === "/" ||
-  Astro.url.pathname === "/mcp" ||
-  Astro.url.pathname === "/mcp/";
 ---
 
 <header
   class="fixed top-0 left-0 right-0 z-50 w-full bg-bg-main border-b border-transparent transition-colors duration-300 ease-in-out"
   id="main-header"
 >
+  <!-- Calendly link widget assets -->
+  <link
+    href="https://assets.calendly.com/assets/external/widget.css"
+    rel="stylesheet"
+  />
+  <script
+    src="https://assets.calendly.com/assets/external/widget.js"
+    type="text/javascript"
+    async></script>
   <nav
     class="w-full max-w-full px-4 md:px-12 pt-5 flex items-center justify-between"
   >
@@ -50,7 +56,13 @@ const showSubMenu =
       </div>
     </div>
 
-    <div class="flex items-center pb-2 gap-6">
+    <div class="hidden md:flex items-center pb-2 gap-6">
+      <a
+        href=""
+        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sarinmsari/30min'});return false;"
+        class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200 cursor-pointer"
+        >Book a Demo</a
+      >
       <a
         href="/#pricing"
         class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
@@ -68,32 +80,56 @@ const showSubMenu =
         />
       </a>
     </div>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex items-center justify-center p-2 pb-4 text-text-secondary hover:text-text-primary transition-colors focus:outline-none select-none"
+      aria-label="Toggle Menu"
+      aria-expanded="false"
+    >
+      <Hamburger class="w-6 h-6" />
+    </button>
   </nav>
 
-  <!-- Mobile tab row (visible only below md breakpoint) -->
-  {
-    showSubMenu && (
-      <div
-        class="mobile-tab-row md:hidden flex w-full border-t border-border/20"
-        id="mobile-tab-row"
-      >
-        <a
-          href="/"
-          class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
-          id="mobile-pill-kb"
-        >
-          Knowledge Base
-        </a>
-        <a
-          href="/mcp"
-          class="nav-pill mobile-tab flex-1 py-2.5 text-xs font-medium text-center transition-all duration-200"
-          id="mobile-pill-mcp"
-        >
-          Context Router MCP
-        </a>
-      </div>
-    )
-  }
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden w-full bg-bg-main border-t border-border/20 px-6 py-6 flex flex-col gap-4"
+  >
+    <a
+      href="/"
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
+      >Knowledge Base</a
+    >
+    <a
+      href="/mcp"
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
+      >Context Router MCP</a
+    >
+    <a
+      href=""
+      onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sarinmsari/30min'});return false;"
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+      >Book a Demo</a
+    >
+    <a
+      href="/#pricing"
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
+      >Pricing</a
+    >
+    <a
+      href="https://app.penqwin.com"
+      class="w-full mt-2 group select-none py-3 flex items-center justify-center gap-1 bg-text-primary text-bg-main rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm active:scale-95"
+      aria-label="Go to Dashboard"
+    >
+      Dashboard
+      <ArrowRight
+        class="w-4 inline-block group-hover:translate-x-1"
+        aria-hidden="true"
+      />
+    </a>
+  </div>
 </header>
 
 <script>
@@ -121,6 +157,62 @@ const showSubMenu =
         href === "/" ? path === "/" : path.startsWith(href ?? "");
       pill.classList.toggle("nav-pill--active", isActive);
     });
+
+    const mobileLinks = document.querySelectorAll(".mobile-menu-link");
+    mobileLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "" || href.includes("#")) {
+        return;
+      }
+      const isActive =
+        href === "/" ? path === "/" : path.startsWith(href ?? "");
+      if (isActive) {
+        link.classList.add("text-text-primary", "font-semibold");
+        link.classList.remove("text-text-secondary");
+      } else {
+        link.classList.remove("text-text-primary", "font-semibold");
+        link.classList.add("text-text-secondary");
+      }
+    });
+  };
+
+  const setupMobileMenu = () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuToggle && mobileMenu && !menuToggle.dataset.initialized) {
+      menuToggle.dataset.initialized = "true";
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+        if (isOpen) {
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.classList.add("open");
+        } else {
+          mobileMenu.classList.remove("open");
+          setTimeout(() => {
+            if (!menuToggle.classList.contains("open")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }, 300);
+        }
+      });
+
+      const links = mobileMenu.querySelectorAll("a");
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          mobileMenu.classList.remove("open");
+          setTimeout(() => {
+            if (!menuToggle.classList.contains("open")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }, 300);
+        });
+      });
+    }
   };
 
   // Attach to document with capture:true to intercept scroll from any element
@@ -131,10 +223,12 @@ const showSubMenu =
   document.addEventListener("astro:page-load", () => {
     handleScroll();
     updateActivePill();
+    setupMobileMenu();
   });
   // Initialize state on load
   handleScroll();
   updateActivePill();
+  setupMobileMenu();
 </script>
 
 <style>
@@ -168,20 +262,41 @@ const showSubMenu =
     font-weight: 600;
     border-bottom-color: var(--color-primary);
   }
-  /* Mobile tab row */
-  .mobile-tab-row {
-    background: var(--bg-main);
+  /* Hamburger button transitions */
+  :global(.line-1),
+  :global(.line-2),
+  :global(.line-3) {
+    transform-origin: 12px 12px;
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
   }
-  .mobile-tab {
-    /* override the desktop bottom-border pill with a top-border indicator */
-    border-bottom: none;
-    border-top: 2.5px solid transparent;
-    padding-top: calc(
-      0.625rem - 2.5px
-    ); /* compensate for border so height stays consistent */
+  #menu-toggle.open :global(.line-1) {
+    transform: rotate(45deg) translateY(6px);
   }
-  .mobile-tab.nav-pill--active {
-    border-top-color: var(--color-primary);
-    border-bottom-color: transparent;
+  #menu-toggle.open :global(.line-2) {
+    opacity: 0;
+  }
+  #menu-toggle.open :global(.line-3) {
+    transform: rotate(-45deg) translateY(-6px);
+  }
+
+  /* Mobile menu dropdown */
+  #mobile-menu {
+    display: none;
+  }
+  #mobile-menu.open {
+    display: flex;
+    animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
