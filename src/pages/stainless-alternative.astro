@@ -1,0 +1,555 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+import Tick from "../assets/svg/tick.astro";
+import penqwinWebp from "../assets/images/Penqwin-icon.webp";
+import penqwinPng from "../assets/images/Penqwin-icon.png";
+import VideoDropdown from "../components/VideoDropdown.astro";
+---
+
+<Layout
+  title="Stainless Alternative: Code-First Context for Engineering Velocity | Penqwin"
+  description="Ditch static OpenAPI spec pipelines and documentation drift. Penqwin is the code-first context engine that connects to your live GitHub environment to keep internal wikis, MCP servers, and LLM context always in sync."
+  image="/og/stainless-alt.png"
+>
+  <Header />
+
+  <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
+    <article class="max-w-5xl mx-auto px-6 lg:px-8 space-y-32">
+      <!-- ─── 1. Hero ─────────────────────────────────────────────────────── -->
+      <section class="space-y-8 pt-16 text-center animate-fade-in">
+        <h1
+          class="font-serif text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[1.1]"
+        >
+          A Better Way to Scale Engineering Velocity: <em
+            class="block inline text-primary"
+          >
+            Why Teams Are Shifting from Stainless to Penqwin
+          </em>
+        </h1>
+        <p
+          class="text-text-secondary text-md md:text-xl leading-relaxed max-w-2xl mx-auto"
+        >
+          Why write static specs for client library wrappers when you can have
+          live codebase intelligence? Penqwin is the code-first knowledge engine
+          that indexes codebases in real-time, eliminating manual updates and
+          documentation drift.
+        </p>
+        <div
+          class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="https://app.penqwin.com"
+            id="hero-cta-primary"
+            class="select-none cursor-pointer inline-flex group items-center justify-center gap-3 px-8 py-4 bg-text-primary text-lg text-bg-main rounded-full font-bold transition-all duration-300 active:scale-95"
+          >
+            <span>Get Started for Free</span>
+            <ArrowRight
+              class="w-5 group-hover:translate-x-1 transition-transform"
+              aria-hidden="true"
+            />
+          </a>
+          <VideoDropdown label="See How It Works" />
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
+
+      <!-- ─── 2. Paradigm Shift ───────────────────────────────────────────── -->
+      <section
+        id="how-it-works"
+        class="space-y-8 relative before:absolute before:-inset-8 before:bg-white/[0.01] before:rounded-3xl before:-z-10 before:border before:border-white/[0.02]"
+      >
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          How the paradigms stack up.
+        </h2>
+        <p class="text-text-secondary text-lg md:text-xl font-light">
+          Compare the workflow: Top-down spec compilation vs. bottom-up codebase
+          intelligence.
+        </p>
+
+        <!-- Problem / Solution cards -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div
+            class="space-y-4 p-6 rounded-2xl border border-white/[0.06] bg-white/[0.01]"
+          >
+            <span
+              class="font-mono text-xs text-text-secondary/50 uppercase tracking-widest"
+              >Stainless (Legacy Paradigm)</span
+            >
+            <h3
+              class="font-serif text-xl font-medium text-text-primary leading-snug"
+            >
+              Static Spec-First Code Gen
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed">
+              Stainless is robust for generating public API client wrappers, but
+              it relies entirely on a static OpenAPI/Swagger spec. If the spec
+              doesn't match the living codebase, your generated SDKs break, and
+              you're stuck maintaining complex schemas and manual CI/CD update
+              runs.
+            </p>
+          </div>
+
+          <div
+            class="space-y-4 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.025]"
+          >
+            <span
+              class="font-mono text-xs text-text-secondary/80 uppercase tracking-widest"
+              >Penqwin (Modern Paradigm)</span
+            >
+            <h3
+              class="font-serif text-xl font-medium text-text-primary leading-snug"
+            >
+              Autonomous Code-First Context
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed">
+              Penqwin starts from the bottom-up, hooking directly into your
+              actual codebase. It extracts architecture intent, core models, and
+              data mapping dynamically. No rigid configurations or upstream
+              bottleneck, just a living knowledge base updated in real time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 4. Comparison Matrix ───────────────────────────────────────── -->
+      <section class="space-y-10" id="comparison">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          Stainless vs. Penqwin
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr>
+                <th
+                  class="py-4 pr-6 text-text-secondary font-medium font-serif border-b border-border/50 text-lg"
+                  >Operational Focus</th
+                >
+                <th
+                  class="py-4 px-6 flex items-center gap-2 text-text-primary font-medium font-serif border-b border-border/50 text-lg"
+                >
+                  <picture class="hidden md:block">
+                    <source srcset={penqwinWebp.src} type="image/webp" />
+                    <img
+                      src={penqwinPng.src}
+                      alt="Penqwin Logo"
+                      class="w-5 h-auto rounded-md"
+                    />
+                  </picture>
+                  Penqwin
+                </th>
+                <th
+                  class="py-4 pl-6 text-text-secondary font-medium font-serif border-b border-border/50 text-lg"
+                  >Stainless</th
+                >
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-lg">
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Primary Input</td
+                >
+                <td class="py-5 px-6 text-text-primary font-normal"
+                  >Living GitHub repository workspaces</td
+                >
+                <td class="py-5 pl-6 text-text-secondary font-normal"
+                  >Static OpenAPI / Swagger JSON specs</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Primary Output</td
+                >
+                <td class="py-5 px-6 text-text-primary font-normal"
+                  >System-wide Code Wikis, context blueprints, &amp; automated
+                  internal guides</td
+                >
+                <td class="py-5 pl-6 text-text-secondary font-normal"
+                  >Multi-language SDKs (Client-Facing focus)</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Sync Trigger</td
+                >
+                <td class="py-5 px-6 text-text-primary font-normal"
+                  >Automated doc updation with human validation</td
+                >
+                <td class="py-5 pl-6 text-text-secondary font-normal"
+                  >Manualy triggered or CI/CD spec changes</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >AI Native Readiness</td
+                >
+                <td class="py-5 px-6 text-text-primary font-normal"
+                  >Sub-second workspace re-indexing for external LLMs &amp;
+                  coding assistants</td
+                >
+                <td class="py-5 pl-6 text-text-secondary font-normal"
+                  >Derived Model Context Protocol (MCP) servers</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Core Architecture</td
+                >
+                <td class="py-5 px-6 text-text-primary font-normal"
+                  >Bottom-up codebase intelligence</td
+                >
+                <td class="py-5 pl-6 text-text-secondary font-normal"
+                  >Top-down spec compilation</td
+                >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ─── 5. The Four Architectural Advantages ────────────────────────── -->
+      <section class="space-y-10">
+        <h2 class="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+          The Four Architectural Advantages of Penqwin
+        </h2>
+        <div class="grid gap-8 text-lg">
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >01</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >Code-First Knowledge Over Spec-First Code Gen</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                Stainless is only as good as your schema. If your OpenAPI
+                document leaves out implicit behaviors, complex database
+                interactions, or complex service edge cases, your generated
+                tooling fails. Penqwin bypasses the spec bottleneck entirely by
+                hooking directly into your source control repository. Rather
+                than compiling an endpoint list into rigid wrapper libraries,
+                Penqwin builds a comprehensive <strong
+                  class="text-text-primary font-medium"
+                  >AI Code Wiki and Engineering Knowledge Base</strong
+                > for your repository. It dynamically extracts your architecture's
+                intent, core data models, and business logic, providing a deep-level
+                understanding that no static definition file could ever replicate.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >02</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >Eliminating Documentation Drift Autonomously</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                One of the costliest pain points of the legacy SDK workflow is
+                handling breaking changes. If a developer pushes a fast patch to
+                production but fails to sync the upstream spec file, the API
+                behavior and documentation split, causing breaking integration
+                errors for anyone relying on the documentation. Penqwin natively
+                solves documentation drift by integrating with the <strong
+                  class="text-text-primary font-medium"
+                  >Pull Request/Commit workflow</strong
+                >. It watches your source code changes in real time. The moment
+                a branch is merged, Penqwin updates technical reference manuals,
+                architectural diagrams, internal data mapping, and onboarding
+                guides autonomously.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >03</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >Native Agentic Architecture and High-Speed MCP Support</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                While Stainless recognized the shift towards AI-ready
+                infrastructure by generating Model Context Protocol (MCP)
+                servers from specs, its execution remained bound to static
+                compilation blocks. Penqwin elevates this concept with its
+                dedicated <strong class="text-text-primary font-medium"
+                  >Context Router MCP Server</strong
+                >. Instead of requiring developers to explicitly build new
+                interfaces every time an endpoint shifts, Penqwin indexes your
+                actual GitHub repositories in milliseconds. This provides LLMs,
+                internal AI coding agents, and IDE extensions with a perfectly
+                structured, always up-to-date blueprint of the code execution
+                path.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-4">
+            <span class="font-mono text-sm text-text-secondary/50 flex-shrink-0"
+              >04</span
+            >
+            <div class="space-y-1">
+              <span class="text-text-primary font-medium block"
+                >Preserving Crucial Hand-Off and Internal Context</span
+              >
+              <p
+                class="text-text-secondary text-base font-normal leading-relaxed"
+              >
+                Traditional generation tools look outward: they optimize the
+                relationship between an API provider and external consumers.
+                They do not record why a piece of software was engineered a
+                certain way, leaving engineering teams vulnerable to
+                institutional memory loss. Penqwin focuses heavily on continuous
+                internal engineering context. It tracks the evolution of
+                codebases, automatically mapping out why specific architectural
+                trade-offs were made, and where complex legacy structures live.
+                This turns your codebase into secure knowledge base, reducing
+                tribal knowledge dependencies and allowing you to seamlessly
+                hand off long-term projects to external clients or onboard new
+                developers in record time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 6. Tailoring Penqwin to Your Current Workflow ────────────────── -->
+      <section class="space-y-12">
+        <div class="space-y-4">
+          <span
+            class="font-mono text-xs text-primary uppercase tracking-widest block"
+            >Workflow Integration</span
+          >
+          <h2
+            class="font-serif text-3xl md:text-4xl font-medium tracking-tight"
+          >
+            Tailoring Penqwin to Your Current Workflow
+          </h2>
+          <p class="text-text-secondary text-lg max-w-2xl font-light">
+            Depending on your engineering goals, Penqwin can be deployed to
+            solve distinct pipeline bottlenecks:
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Internal DX -->
+          <div
+            class="p-8 rounded-2xl border border-white/[0.06] bg-white/[0.01] hover:border-white/10 transition-colors duration-300 space-y-6"
+          >
+            <h3 class="font-serif text-2xl font-medium text-text-primary">
+              Streamlining Internal Onboarding &amp; DevEx
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed">
+              If your primary friction is team velocity, developers spending
+              hours parsing old READMEs, asking senior staff how components fit
+              together, or manually tracing network dependencies, Penqwin serves
+              as an intelligent internal overlay.
+            </p>
+            <p class="text-text-secondary text-base leading-relaxed">
+              It acts as an always-on technical lead that instantly
+              contextualizes the codebase for any engineer, dramatically
+              slashing ramp-up times for complex enterprise systems.
+            </p>
+          </div>
+
+          <!-- Internal Architecture Mapping -->
+          <div
+            class="p-8 rounded-2xl border border-white/[0.06] bg-white/[0.01] hover:border-white/10 transition-colors duration-300 space-y-6"
+          >
+            <h3 class="font-serif text-2xl font-medium text-text-primary">
+              Mapping Internal Architecture &amp; Service Boundaries
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed">
+              In complex codebases with modular components or service layers,
+              understanding how modules interact is a major hurdle. Penqwin acts
+              as an automated system architect within your repository,
+              continuously tracing internal data flows, module APIs, and
+              component boundaries directly from code changes.
+            </p>
+            <p class="text-text-secondary text-base leading-relaxed">
+              Instead of maintaining static design diagrams or internal
+              interface documentation by hand, Penqwin builds a living blueprint
+              of your repository workspace, ensuring your engineering team
+              maintains perfect structural visibility as the codebase scales.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 7. Who is switching ────────────────────────────────────────── -->
+      <section class="space-y-8">
+        <h2 class="font-serif text-3xl font-medium tracking-tight">
+          Who is switching to Penqwin?
+        </h2>
+        <ul class="flex flex-col gap-6 text-lg text-text-secondary font-normal">
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Teams migrating to agentic architectures</span
+              >
+              <span class="text-text-secondary text-base"
+                >Organizations that recognize the shift toward AI coding
+                assistants and need dynamic codebase indexing over static API
+                wrappers.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Engineering leaders scaling velocity</span
+              >
+              <span class="text-text-secondary text-base"
+                >Leaders who want to eliminate manual API spec maintenance and
+                solve documentation drift autonomously.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >AI-first software organizations</span
+              >
+              <span class="text-text-secondary text-base"
+                >Companies that need their technical context to remain
+                hyper-accurate so that developers and LLM agents get perfect
+                context every single time.</span
+              >
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ─── 8. What you get ────────────────────────────────────────────── -->
+      <section class="space-y-8">
+        <h2 class="font-serif text-3xl font-medium tracking-tight">
+          What you get with Penqwin
+        </h2>
+        <ul class="flex flex-col gap-6 text-lg text-text-secondary font-normal">
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Real-time codebase intelligence</span
+              >
+              <span class="text-text-secondary text-base"
+                >Automatic bottom-up indexing of your actual GitHub repositories
+                instead of static wrapper compile pipelines.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Autonomous PR integration</span
+              >
+              <span class="text-text-secondary text-base"
+                >Documentation, architectural context maps, and knowledge base
+                updated dynamically with human validation.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >High-speed MCP support</span
+              >
+              <span class="text-text-secondary text-base"
+                >Ready-to-use Model Context Protocol servers to feed perfectly
+                structured code context to external LLMs and agents in
+                milliseconds.</span
+              >
+            </div>
+          </li>
+          <li class="flex items-start gap-4 group">
+            <Tick
+              class="w-6 h-6 text-text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            />
+            <div>
+              <span class="text-text-primary font-medium block"
+                >Zero spec maintenance</span
+              >
+              <span class="text-text-secondary text-base"
+                >Ditch manual schema updates. Focus on writing code while
+                Penqwin handles architectural mapping autonomously.</span
+              >
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ─── 9. Bottom CTA ──────────────────────────────────────────────── -->
+      <div class="w-12 h-[1px] bg-white/10 mx-auto"></div>
+
+      <section class="text-center py-8 space-y-8 pb-16">
+        <p
+          class="font-serif text-3xl md:text-4xl text-text-secondary leading-normal"
+        >
+          Stop maintaining static spec files.<br />
+          <span class="text-text-primary italic mt-2 block"
+            >Power your developer velocity with code-first context.</span
+          >
+        </p>
+        <p class="text-text-secondary text-lg max-w-xl mx-auto leading-relaxed">
+          Experience how clean, code-driven documentation can be when it is
+          built explicitly around your living codebase and Git workflows.
+        </p>
+        <div class="pt-4">
+          <a
+            href="https://app.penqwin.com"
+            id="bottom-cta"
+            class="select-none cursor-pointer inline-flex group items-center justify-center gap-3 px-10 py-5 bg-text-primary text-bg-main rounded-full font-bold text-lg transition-all duration-300 active:scale-[0.98]"
+            aria-label="Try Penqwin Free"
+          >
+            <span>Try Penqwin Free</span>
+            <ArrowRight
+              class="w-5 group-hover:translate-x-1 transition-transform"
+              aria-hidden="true"
+            />
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @reference "../styles/global.css";
+</style>
