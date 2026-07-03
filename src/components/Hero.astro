@@ -1,7 +1,18 @@
 ---
-import DashboardPreview from "./DashboardPreview.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import VideoDropdown from "./VideoDropdown.astro";
+import PlayIcon from "../assets/svg/play.astro";
+import tribalKnowledgeSubtitles from "../assets/videos/Tribal_knowledge_ad.vtt";
+
+const tribalKnowledgeVideo =
+  "https://k6yubxqzk4qk5zxb.public.blob.vercel-storage.com/Videos/Tribal_knowledge_ad.mp4";
+
+// SEO metadata for video structured data
+const videoTitle =
+  "The Hidden Cost of Tribal Knowledge in Engineering Teams | Penqwin";
+const videoDescription =
+  "Knowledge silos are one of the biggest challenges for growing engineering teams. When critical information lives in the minds of a few developers, onboarding slows, collaboration suffers, and software delivery becomes increasingly difficult.";
+const videoUploadDate = "2026-07-04T01:23:00Z";
 ---
 
 <section
@@ -47,8 +58,97 @@ import VideoDropdown from "./VideoDropdown.astro";
     </div>
   </div>
   <div
-    class="hidden md:block w-full md:w-2/3 max-w-5xl mt-12 md:mt-16 mb-20 md:mb-32 px-4 md:px-6 relative z-10"
+    class="w-full max-w-4xl mt-12 md:mt-16 mb-20 md:mb-32 px-4 md:px-6 relative z-10"
   >
-    <DashboardPreview />
+    <div
+      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#161616] shadow-2xl group"
+    >
+      <!-- Main Video Container -->
+      <div
+        class="relative w-full h-full bg-[#161616] rounded-2xl overflow-hidden"
+      >
+        <video
+          id="hero-video"
+          class="w-full h-full object-cover cursor-pointer"
+          src={tribalKnowledgeVideo}
+          preload="metadata"
+          playsinline
+          title={videoTitle}
+          aria-label={videoTitle}
+        >
+          <track
+            src={tribalKnowledgeSubtitles}
+            kind="subtitles"
+            srclang="en"
+            label="English"
+            default
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Video Structured Data (SEO) -->
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: videoTitle,
+            description: videoDescription,
+            uploadDate: videoUploadDate,
+            contentUrl: tribalKnowledgeVideo,
+          })}
+        />
+
+        <!-- Play Button Overlay -->
+        <div
+          id="video-overlay"
+          class="absolute inset-0 flex items-center justify-center bg-black/45 group-hover:bg-black/50 transition-all duration-300 cursor-pointer"
+        >
+          <button
+            class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/90 text-text-primary shadow-2xl transform group-hover:scale-105 transition-all duration-300"
+            aria-label="Play Video"
+          >
+            <PlayIcon
+              class="w-6 h-6 md:w-8 md:h-8 fill-current translate-x-0.5"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  const initHeroVideo = () => {
+    const video = document.getElementById("hero-video") as HTMLVideoElement;
+    const overlay = document.getElementById("video-overlay");
+
+    if (video && overlay) {
+      const playVideo = () => {
+        overlay.classList.add("opacity-0", "pointer-events-none");
+        video.controls = true;
+        video.play().catch((err) => {
+          console.error("Error playing video:", err);
+        });
+      };
+
+      overlay.addEventListener("click", playVideo);
+      video.addEventListener("click", () => {
+        if (video.paused) {
+          playVideo();
+        } else {
+          overlay.classList.remove("opacity-0", "pointer-events-none");
+        }
+      });
+
+      video.addEventListener("ended", () => {
+        video.controls = false;
+        overlay.classList.remove("opacity-0", "pointer-events-none");
+      });
+    }
+  };
+
+  document.addEventListener("astro:page-load", initHeroVideo);
+  // Also run on initial load
+  initHeroVideo();
+</script>

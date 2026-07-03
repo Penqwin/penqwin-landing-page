@@ -1,0 +1,29 @@
+---
+import DashboardPreview from "./DashboardPreview.astro";
+---
+
+<section
+  id="showcase"
+  class="hidden md:block w-full py-16 md:py-24 bg-bg-main relative overflow-hidden"
+>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <!-- Heading -->
+    <div class="mb-12 md:mb-16">
+      <h2
+        class="font-serif text-4xl md:text-5xl text-text-primary tracking-tight leading-[1.2]"
+      >
+        A documentation workspace <span class="text-primary italic"
+          >built for clarity</span
+        >
+      </h2>
+      <p class="text-text-secondary text-lg mt-4 max-w-2xl">
+        Here is what a Penqwin knowledge base looks like in action.
+      </p>
+    </div>
+
+    <!-- Preview Container -->
+    <div class="w-full">
+      <DashboardPreview />
+    </div>
+  </div>
+</section>
