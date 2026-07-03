@@ -4,7 +4,15 @@ import VideoDropdown from "./VideoDropdown.astro";
 import PlayIcon from "../assets/svg/play.astro";
 import tribalKnowledgeSubtitles from "../assets/videos/Tribal_knowledge_ad.vtt";
 
-const tribalKnowledgeVideo = "https://k6yubxqzk4qk5zxb.public.blob.vercel-storage.com/Videos/Tribal_knowledge_ad.mp4";
+const tribalKnowledgeVideo =
+  "https://k6yubxqzk4qk5zxb.public.blob.vercel-storage.com/Videos/Tribal_knowledge_ad.mp4";
+
+// SEO metadata for video structured data
+const videoTitle =
+  "The Hidden Cost of Tribal Knowledge in Engineering Teams | Penqwin";
+const videoDescription =
+  "Knowledge silos are one of the biggest challenges for growing engineering teams. When critical information lives in the minds of a few developers, onboarding slows, collaboration suffers, and software delivery becomes increasingly difficult.";
+const videoUploadDate = "2026-07-04T01:23:00Z";
 ---
 
 <section
@@ -65,6 +73,8 @@ const tribalKnowledgeVideo = "https://k6yubxqzk4qk5zxb.public.blob.vercel-storag
           src={tribalKnowledgeVideo}
           preload="metadata"
           playsinline
+          title={videoTitle}
+          aria-label={videoTitle}
         >
           <track
             src={tribalKnowledgeSubtitles}
@@ -75,6 +85,19 @@ const tribalKnowledgeVideo = "https://k6yubxqzk4qk5zxb.public.blob.vercel-storag
           />
           Your browser does not support the video tag.
         </video>
+
+        <!-- Video Structured Data (SEO) -->
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: videoTitle,
+            description: videoDescription,
+            uploadDate: videoUploadDate,
+            contentUrl: tribalKnowledgeVideo,
+          })}
+        />
 
         <!-- Play Button Overlay -->
         <div
