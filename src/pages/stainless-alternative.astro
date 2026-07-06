@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import Tick from "../assets/svg/tick.astro";
 import penqwinWebp from "../assets/images/Penqwin-icon.webp";
@@ -14,7 +12,6 @@ import VideoDropdown from "../components/VideoDropdown.astro";
   description="Ditch static OpenAPI spec pipelines and documentation drift. Penqwin is the code-first context engine that connects to your live GitHub environment to keep internal wikis, MCP servers, and LLM context always in sync."
   image="/og/stainless-alt.png"
 >
-  <Header />
 
   <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
     <article class="max-w-5xl mx-auto px-6 lg:px-8 space-y-32">
@@ -546,8 +543,6 @@ import VideoDropdown from "../components/VideoDropdown.astro";
       </section>
     </article>
   </main>
-
-  <Footer />
 </Layout>
 
 <style>

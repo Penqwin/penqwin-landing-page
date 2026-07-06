@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import AlternativeBottomSection from "../components/AlternativeBottomSection.astro";
 import AlternativeFeatures from "../components/AlternativeFeatures.astro";
 import TargetAudienceSection from "../components/TargetAudienceSection.astro";
@@ -17,7 +15,6 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
   description="Google CodeWiki for private repositories. Discover Penqwin: the ultimate AI code wiki designed for private and public repositories."
   image="/og/codewiki-alt.png"
 >
-  <Header />
 
   <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
     <!-- Main Article for SEO -->
@@ -215,8 +212,6 @@ import penqwinPng from "../assets/images/Penqwin-icon.png";
       <AlternativeBottomSection />
     </article>
   </main>
-
-  <Footer />
 </Layout>
 
 <style>

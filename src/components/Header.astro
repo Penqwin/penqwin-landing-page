@@ -8,7 +8,7 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 w-full bg-bg-main border-b border-transparent transition-colors duration-300 ease-in-out"
+  class="sticky top-0 z-50 w-full bg-bg-main border-b border-transparent transition-colors duration-300 ease-in-out"
   id="main-header"
 >
   <!-- Calendly link widget assets -->
@@ -95,7 +95,7 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
   <!-- Mobile Menu Dropdown -->
   <div
     id="mobile-menu"
-    class="md:hidden hidden w-full bg-bg-main border-t border-border/20 px-6 py-6 flex flex-col gap-4"
+    class="md:hidden hidden absolute top-full left-0 right-0 w-full bg-bg-main border-b border-border/10 px-6 py-6 flex flex-col gap-4 shadow-xl z-50"
   >
     <a
       href="/"
@@ -133,13 +133,18 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
 </header>
 
 <script>
-  const handleScroll = () => {
+  const handleScroll = (e?: Event) => {
     const header = document.getElementById("main-header");
     if (header) {
-      const scrollTop =
-        document.documentElement.scrollTop ||
-        document.body.scrollTop ||
-        window.scrollY;
+      let scrollTop = 0;
+      if (e && e.target && e.target instanceof HTMLElement) {
+        scrollTop = e.target.scrollTop;
+      } else {
+        scrollTop =
+          document.documentElement.scrollTop ||
+          document.body.scrollTop ||
+          window.scrollY;
+      }
       if (scrollTop > 0) {
         header.classList.add("scrolled");
       } else {

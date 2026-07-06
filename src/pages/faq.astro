@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import FAQ from "../components/FAQ.astro";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 
@@ -63,8 +61,6 @@ const jsonLd = {
   description="Find out how Penqwin reclaims your engineering hours by automating technical documentation. Get answers on security, workflow integration, and instant repo bootstrapping."
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-  <Header />
 
   <main class="relative pt-32 pb-24 overflow-hidden">
     <!-- Background Decor -->
@@ -135,6 +131,4 @@ const jsonLd = {
       </section>
     </div>
   </main>
-
-  <Footer />
 </Layout>

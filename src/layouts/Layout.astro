@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -105,8 +107,25 @@ const siteName = "Penqwin";
     </script>
     <!-- End Google Tag Manager -->
   </head>
-  <body class="bg-bg-main scroll-smooth">
-    <slot />
+  <body class="bg-bg-main overflow-hidden h-screen flex flex-col">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NH5QCBBK"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+
+    <Header />
+
+    <div class="flex-grow overflow-y-auto scroll-smooth">
+      <slot />
+      <Footer />
+    </div>
+
     <script is:inline>
       document.addEventListener(
         "click",
@@ -121,15 +140,5 @@ const siteName = "Penqwin";
         { passive: true },
       );
     </script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NH5QCBBK"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-        title="Google Tag Manager"></iframe></noscript
-    >
-    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
