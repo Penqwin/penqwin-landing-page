@@ -2,7 +2,8 @@
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import VideoDropdown from "./VideoDropdown.astro";
 import PlayIcon from "../assets/svg/play.astro";
-import tribalKnowledgeSubtitles from "../assets/videos/Tribal_knowledge_ad.vtt";
+import tribalKnowledgeSubtitles from "../assets/videos/tribal-knowledge-ad/SubTitle.vtt";
+import videoThumbnail from "../assets/videos/tribal-knowledge-ad/Thumbnail.png";
 
 const tribalKnowledgeVideo =
   "https://k6yubxqzk4qk5zxb.public.blob.vercel-storage.com/Videos/Tribal%20Knowledge%20ad.mp4";
@@ -73,8 +74,8 @@ const videoUploadDate = "2026-07-04T01:23:00Z";
           src={tribalKnowledgeVideo}
           preload="metadata"
           playsinline
-          title={videoTitle}
           aria-label={videoTitle}
+          poster={videoThumbnail.src}
         >
           <track
             src={tribalKnowledgeSubtitles}
@@ -95,6 +96,7 @@ const videoUploadDate = "2026-07-04T01:23:00Z";
             name: videoTitle,
             description: videoDescription,
             uploadDate: videoUploadDate,
+            thumbnailUrl: new URL(videoThumbnail.src, Astro.site).href,
             contentUrl: tribalKnowledgeVideo,
           })}
         />
