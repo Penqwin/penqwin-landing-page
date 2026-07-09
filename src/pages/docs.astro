@@ -1,0 +1,723 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+import Tick from "../assets/svg/tick.astro";
+import GithubIcon from "../assets/svg/github.astro";
+import AssistantIcon from "../assets/svg/assistant.astro";
+import SettingsIcon from "../assets/svg/settings.astro";
+import DocumentIcon from "../assets/svg/document.astro";
+import PeopleIcon from "../assets/svg/people.astro";
+import LoopIcon from "../assets/svg/loop.astro";
+import ShieldIcon from "../assets/svg/shield.astro";
+
+// JSON-LD for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  name: "Penqwin Documentation & Usage Guides",
+  description:
+    "Learn how to get started, set up GitHub integrations, bootstrap your codebase docs, configure penqwin.json, update documents, and manage teams.",
+  inLanguage: "en",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Penqwin",
+    url: "https://www.penqwin.com",
+  },
+};
+---
+
+<Layout
+  title="Guides & Onboarding | Penqwin - Automate Your Technical Documentation"
+  description="Follow our complete onboarding guides to integrate GitHub, bootstrap your repository, set up auto-updating documents, configure penqwin.json, and collaborate with your team."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <main class="relative min-h-screen bg-bg-main py-24">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <!-- Page Header -->
+      <section class="max-w-3xl mb-24">
+        <h1
+          class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-4"
+        >
+          Welcome to Penqwin
+        </h1>
+        <p class="text-lg md:text-xl text-text-secondary font-light">
+          Everything you need to successfully launch, configure, and scale your
+          autonomous technical documentation with Penqwin.
+        </p>
+      </section>
+
+      <!-- Main Layout Grid -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-16 items-start"
+      >
+        <!-- Sticky Sidebar Navigation -->
+        <aside
+          class="hidden lg:block sticky top-28 self-start max-h-[calc(100vh-140px)] overflow-y-auto pr-4 border-r border-border/30"
+        >
+          <nav
+            class="flex flex-col gap-1 text-sm font-medium"
+            id="guides-sidebar-nav"
+          >
+            <span
+              class="text-xs text-text-muted tracking-wider uppercase font-semibold mb-3 px-3"
+              >Sections</span
+            >
+            <a
+              href="#onboarding"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>01. Onboarding</span>
+            </a>
+            <a
+              href="#github-integration"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>02. GitHub Integration</span>
+            </a>
+            <a
+              href="#bootstrapping"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>03. Repo Bootstrapping</span>
+            </a>
+            <a
+              href="#doc-updation"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>04. Document Updation</span>
+            </a>
+            <a
+              href="#team-collaboration"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>05. Team Collaboration</span>
+            </a>
+          </nav>
+        </aside>
+
+        <!-- Mobile Scroll Navigation (sticky bar at top below header) -->
+        <div
+          class="lg:hidden sticky top-[72px] z-40 w-full overflow-x-auto bg-bg-main/90 backdrop-blur-md border-b border-border/40 py-3 mb-6 scrollbar-none flex gap-2 select-none"
+        >
+          <a
+            href="#onboarding"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-bg-secondary/60 text-text-secondary border border-border/30 hover:border-text-primary transition-all"
+            >01. Onboarding</a
+          >
+          <a
+            href="#github-integration"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-bg-secondary/60 text-text-secondary border border-border/30 hover:border-text-primary transition-all"
+            >02. GitHub</a
+          >
+          <a
+            href="#bootstrapping"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-bg-secondary/60 text-text-secondary border border-border/30 hover:border-text-primary transition-all"
+            >03. Bootstrapping</a
+          >
+          <a
+            href="#doc-updation"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-bg-secondary/60 text-text-secondary border border-border/30 hover:border-text-primary transition-all"
+            >04. Updates</a
+          >
+          <a
+            href="#team-collaboration"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-bg-secondary/60 text-text-secondary border border-border/30 hover:border-text-primary transition-all"
+            >05. Collaboration</a
+          >
+        </div>
+
+        <!-- Right Side: Content Sections -->
+        <div class="space-y-24 max-w-4xl" id="guides-content-container">
+          <!-- Section 01: Onboarding -->
+          <section id="onboarding" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Quick Start &amp; Onboarding
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Welcome to Penqwin! Penqwin makes it seamless to create, manage,
+                and scale engineering documentation directly linked to your
+                source code. Our agentic parser scans code architecture,
+                interprets functional flows, and keeps documents up-to-date
+                automatically.
+              </p>
+
+              <!-- Onboarding Checklist Card -->
+              <div
+                class="bg-bg-secondary/30 border border-border/50 rounded-2xl p-6 md:p-8 space-y-6"
+              >
+                <h3
+                  class="font-serif text-xl font-semibold text-text-primary flex items-center gap-2"
+                >
+                  <AssistantIcon class="w-5 h-5 text-primary" />
+                  Your 60-Second Onboarding Checklist
+                </h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start gap-3">
+                    <div
+                      class="w-5 h-5 rounded-full border border-primary/50 flex items-center justify-center bg-primary/10 shrink-0 mt-0.5"
+                    >
+                      <Tick class="w-3.5 h-3.5 text-primary" />
+                    </div>
+                    <div>
+                      <strong class="text-text-primary">Sign In:</strong> Authenticate
+                      with your GitHub account at <a
+                        href="https://app.penqwin.com"
+                        class="text-primary hover:underline font-semibold"
+                        >app.penqwin.com</a
+                      >.
+                    </div>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <div
+                      class="w-5 h-5 rounded-full border border-primary/50 flex items-center justify-center bg-primary/10 shrink-0 mt-0.5"
+                    >
+                      <Tick class="w-3.5 h-3.5 text-primary" />
+                    </div>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Connect Repositories:</strong
+                      > Install the Penqwin GitHub application and grant read access
+                      to your target codebases.
+                    </div>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <div
+                      class="w-5 h-5 rounded-full border border-primary/50 flex items-center justify-center bg-primary/10 shrink-0 mt-0.5"
+                    >
+                      <Tick class="w-3.5 h-3.5 text-primary" />
+                    </div>
+                    <div>
+                      <strong class="text-text-primary">Bootstrap Docs:</strong> Click
+                      <strong>"Bootstrap Repository"</strong> to kick off the AI indexing
+                      agent, building your base workspace documents in minutes.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Callout: Tip -->
+              <div
+                class="flex gap-4 p-5 bg-primary/5 border border-primary/20 rounded-2xl text-text-secondary text-sm"
+              >
+                <div class="shrink-0 mt-0.5">
+                  <AssistantIcon class="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <strong class="text-text-primary block mb-1"
+                    >Developer Tip</strong
+                  >
+                  Make sure you are an administrator or have write access to the GitHub
+                  organization to install app webhooks and connect private repositories.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="border-border/30" />
+
+          <!-- Section 02: GitHub Integration -->
+          <section id="github-integration" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                GitHub Integration &amp; Webhooks
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Penqwin leverages a highly secure, event-driven architecture
+                using standard GitHub Apps. This ensures minimal, targeted read
+                permissions and instantaneous synchronization of documentation
+                with your codebase branches.
+              </p>
+
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Least Privilege Security Policy
+              </h3>
+              <p>
+                We value security above everything else. Penqwin is structured
+                to request the minimum permissions needed to generate
+                high-fidelity summaries.
+              </p>
+
+              <!-- Security Points Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <div
+                  class="border border-border/40 rounded-xl p-5 hover:border-primary/40 transition-colors"
+                >
+                  <div
+                    class="flex items-center gap-2 mb-2 text-text-primary font-semibold"
+                  >
+                    <ShieldIcon class="w-5 h-5 text-primary" />
+                    Metadata Access Only
+                  </div>
+                  <p class="text-xs text-text-muted">
+                    We only scan repository structure, paths, and metadata
+                    configuration files (like package.json, Cargo.toml) to map
+                    architecture.
+                  </p>
+                </div>
+                <div
+                  class="border border-border/40 rounded-xl p-5 hover:border-primary/40 transition-colors"
+                >
+                  <div
+                    class="flex items-center gap-2 mb-2 text-text-primary font-semibold"
+                  >
+                    <LoopIcon class="w-5 h-5 text-primary" />
+                    Ephemeral PR Diffs
+                  </div>
+                  <p class="text-xs text-text-muted">
+                    PR code diff contents are evaluated on merge events to
+                    update documentation sections, then promptly purged from
+                    cache.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Setup Steps -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Configuring Integration
+              </h3>
+              <ol class="list-decimal list-outside ml-6 space-y-4">
+                <li>
+                  Go to your Penqwin Dashboard and navigate to <strong
+                    >Settings &gt; Integrations</strong
+                  >.
+                </li>
+                <li>
+                  Click <strong>Install GitHub App</strong>. You will be
+                  redirected to GitHub to select the account or organization.
+                </li>
+                <li>
+                  Choose whether to grant access to <strong
+                    >All repositories</strong
+                  > or specify <strong>Only select repositories</strong>.
+                </li>
+                <li>
+                  Click <strong>Authorize &amp; Install</strong>. The app
+                  configuration will verify automatically.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <hr class="border-border/30" />
+
+          <!-- Section 03: Repo Bootstrapping -->
+          <section id="bootstrapping" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Repository Bootstrapping
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Bootstrapping parses your entire codebase root to produce a
+                comprehensive starter technical workspace. Rather than writing
+                documentation from scratch, our agents map your codebase
+                directory outline, discover API endpoints, and establish
+                architectural modules.
+              </p>
+
+              <!-- How bootstrapping works callout -->
+              <div
+                class="bg-bg-secondary/40 border border-border/50 rounded-2xl p-6 md:p-8 my-6"
+              >
+                <h4
+                  class="font-serif text-lg text-text-primary font-semibold mb-3"
+                >
+                  Customizing with `penqwin.json`
+                </h4>
+                <p class="text-sm text-text-secondary mb-4">
+                  You can control which parts of your project are indexed by
+                  placing a <code>penqwin.json</code> config file in the root directory
+                  of your repository. This lets you exclude build outputs, assets,
+                  or customize prompts for specific paths.
+                </p>
+
+                <div class="relative">
+                  <pre
+                    class="bg-zinc-950 border border-border/20 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-300 overflow-x-auto"><code class="language-json">{`{
+  "version": "1.0",
+  "project": {
+    "name": "My API Gateway",
+    "description": "Enterprise node gateway and proxy routing system."
+  },
+  "exclude": [
+    "dist/**",
+    "tests/**/*.test.js",
+    "public/assets/**"
+  ],
+  "indexing": {
+    "preferSerifFont": true,
+    "hint": "Analyze using Node.js TypeScript guidelines."
+  }
+}`}</code></pre>
+                </div>
+              </div>
+
+              <!-- Steps to bootstrap -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Running Bootstrapping
+              </h3>
+              <p>
+                Once your GitHub connection is ready, click on the repository
+                from your Penqwin dashboard. If the repository is clean and has
+                never been indexed:
+              </p>
+              <ol class="list-decimal list-outside ml-6 space-y-3">
+                <li>Click <strong>Run Bootstrapper</strong>.</li>
+                <li>
+                  Wait 2-4 minutes while the agent indexes directory structures
+                  and builds visual graphs.
+                </li>
+                <li>
+                  Review the generated documents under your project workspace
+                  folder.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <hr class="border-border/30" />
+
+          <!-- Section 04: Document Updation -->
+          <section id="doc-updation" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Document Updation &amp; Sync Loop
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Penqwin operates on a dual-loop synchronization model to balance
+                automated correctness with human intent.
+              </p>
+
+              <!-- Dual Loop Diagram / Mermaid equivalent styling -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div
+                  class="bg-bg-secondary/20 border border-border/30 rounded-2xl p-6"
+                >
+                  <div class="flex items-center gap-2 mb-3">
+                    <div class="p-1.5 bg-primary/10 rounded-lg text-primary">
+                      <LoopIcon class="w-5 h-5" />
+                    </div>
+                    <h4
+                      class="font-serif text-lg text-text-primary font-semibold"
+                    >
+                      1. The Automated Loop
+                    </h4>
+                  </div>
+                  <p class="text-sm text-text-secondary leading-relaxed">
+                    Triggered by merging GitHub Pull Requests. Penqwin
+                    interprets code diffs, identifies modified services or
+                    variables, and drafts edits into the relevant docs
+                    automatically.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-bg-secondary/20 border border-border/30 rounded-2xl p-6"
+                >
+                  <div class="flex items-center gap-2 mb-3">
+                    <div class="p-1.5 bg-primary/10 rounded-lg text-primary">
+                      <DocumentIcon class="w-5 h-5" />
+                    </div>
+                    <h4
+                      class="font-serif text-lg text-text-primary font-semibold"
+                    >
+                      2. The Workspace Loop
+                    </h4>
+                  </div>
+                  <p class="text-sm text-text-secondary leading-relaxed">
+                    Allows your team to refine descriptions directly inside
+                    Penqwin Workspace. Crucially, <strong
+                      >automated loops never overwrite custom human paragraphs</strong
+                    >.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Best Practices -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Best Practices for Perfect Syncs
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>
+                    <strong class="text-text-primary"
+                      >Descriptive PR Descriptions:</strong
+                    > Write clear summary texts in GitHub PRs. Penqwin combines PR
+                    descriptions with actual diff codes to gain maximum context.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <Tick class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>
+                    <strong class="text-text-primary">Label Control:</strong> Use
+                    tags like <code>[no-doc]</code> or <code>skip-penqwin</code> in
+                    commit headlines or PR titles to skip documenting routine chores.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <hr class="border-border/30" />
+
+          <!-- Section 05: Team Collaboration -->
+          <section id="team-collaboration" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Team Management &amp; Collaboration
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Engineering docs are dynamic assets for the whole company.
+                Penqwin makes it straightforward to add, manage, and configure
+                team members with customizable workspace permissions.
+              </p>
+
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Workspace Roles
+              </h3>
+              <div
+                class="border border-border/40 rounded-2xl overflow-hidden my-6"
+              >
+                <table class="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr class="bg-bg-secondary/40 border-b border-border/40">
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Role</th
+                      >
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Permissions</th
+                      >
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-border/20">
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Admin</td
+                      >
+                      <td class="py-3 px-4 text-text-secondary"
+                        >Full workspace control, repo configuration, Billing,
+                        team member invites and deletion.</td
+                      >
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Editor</td
+                      >
+                      <td class="py-3 px-4 text-text-secondary"
+                        >Write and modify workspace pages, trigger manual
+                        synchronizations, add integration webhooks.</td
+                      >
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Viewer</td
+                      >
+                      <td class="py-3 px-4 text-text-secondary"
+                        >Read access to workspace documentation, export
+                        documents, search files and API schemas.</td
+                      >
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Notifications integration -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Notification Integrations
+              </h3>
+              <p>Keep developers updated on doc revisions:</p>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <div
+                    class="shrink-0 mt-0.5 text-primary bg-primary/10 p-1.5 rounded-lg"
+                  >
+                    <SettingsIcon class="w-4 h-4" />
+                  </div>
+                  <div>
+                    <strong class="text-text-primary">Webhook Setup:</strong> Inside
+                    workspace settings, provide a Slack or Discord incoming webhook
+                    URL.
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div
+                    class="shrink-0 mt-0.5 text-primary bg-primary/10 p-1.5 rounded-lg"
+                  >
+                    <LoopIcon class="w-4 h-4" />
+                  </div>
+                  <div>
+                    <strong class="text-text-primary">Automatic Alert:</strong> Every
+                    time a PR merges and docs sync successfully, Penqwin posts a summary
+                    changes card directly into your chat workspace.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Bottom CTA -->
+          <section
+            class="mt-20 bg-bg-secondary/30 border border-border/50 p-10 md:p-12 rounded-3xl text-center relative overflow-hidden group"
+          >
+            <div class="relative z-10">
+              <h2
+                class="text-3xl md:text-4xl font-serif text-text-primary mb-4"
+              >
+                Have specific configuration questions?
+              </h2>
+              <p class="text-text-secondary mb-8 max-w-lg mx-auto">
+                Our support team is always available to help write custom regex
+                paths, troubleshoot enterprise SSO setups, or guide integration.
+              </p>
+              <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4"
+              >
+                <a
+                  href="https://app.penqwin.com"
+                  class="select-none cursor-pointer w-fit sm:w-auto inline-flex group/get-started items-center justify-center gap-3 px-8 py-4 text-sm font-semibold text-white bg-text-primary rounded-full transition-all duration-300 active:scale-95"
+                >
+                  <span>Get Started for Free</span>
+                  <ArrowRight
+                    class="w-5 group-hover/get-started:translate-x-1 transition-transform"
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Highlight active link in sidebar and mobile nav bar based on scroll position
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".guide-section");
+    const sidebarLinks = document.querySelectorAll(".sidebar-link");
+    const mobileChips = document.querySelectorAll(".mobile-nav-chip");
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px", // triggers when section is in the middle of viewport
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+
+          // Update sidebar
+          sidebarLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (href === `#${id}`) {
+              link.classList.add(
+                "bg-bg-secondary",
+                "text-primary",
+                "font-semibold",
+              );
+              link.classList.remove(
+                "text-text-secondary",
+                "hover:text-text-primary",
+                "hover:bg-bg-secondary/40",
+              );
+            } else {
+              link.classList.remove(
+                "bg-bg-secondary",
+                "text-primary",
+                "font-semibold",
+              );
+              link.classList.add(
+                "text-text-secondary",
+                "hover:text-text-primary",
+                "hover:bg-bg-secondary/40",
+              );
+            }
+          });
+
+          // Update mobile nav chips
+          mobileChips.forEach((chip) => {
+            const href = chip.getAttribute("href");
+            if (href === `#${id}`) {
+              chip.classList.add("bg-primary", "text-white", "border-primary");
+              chip.classList.remove(
+                "bg-bg-secondary/60",
+                "text-text-secondary",
+                "border-border/30",
+              );
+              // Scroll the mobile nav container to keep the active chip in view
+              chip.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+            } else {
+              chip.classList.remove(
+                "bg-primary",
+                "text-white",
+                "border-primary",
+              );
+              chip.classList.add(
+                "bg-bg-secondary/60",
+                "text-text-secondary",
+                "border-border/30",
+              );
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>
+
+<style>
+  /* Custom styled scrollbars for mobile chip navigation */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Selection color matching main layout theme */
+  ::selection {
+    background: rgba(8, 135, 43, 0.2);
+    color: var(--text-primary);
+  }
+</style>

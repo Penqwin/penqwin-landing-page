@@ -21,11 +21,11 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
     type="text/javascript"
     async></script>
   <nav
-    class="w-full max-w-full px-4 md:px-12 pt-5 flex items-center justify-between"
+    class="w-full max-w-full px-4 md:px-12 pt-5 flex justify-between md:grid md:grid-cols-[1fr_auto_1fr] items-center"
   >
     <a
       href="/"
-      class="flex items-center pb-4 gap-2 select-none"
+      class="flex items-center pb-4 gap-2 select-none justify-self-start"
       aria-label="Penqwin Home"
     >
       <picture>
@@ -39,7 +39,10 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
     </a>
 
     <!-- Pill Toggle Nav -->
-    <div class="hidden md:flex items-center select-none" id="nav-pill-group">
+    <div
+      class="hidden md:flex items-center select-none justify-self-center"
+      id="nav-pill-group"
+    >
       <div class="flex items-center gap-6">
         <a
           href="/"
@@ -56,12 +59,17 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
       </div>
     </div>
 
-    <div class="hidden md:flex items-center pb-2 gap-6">
-      <a
+    <div class="hidden md:flex items-center pb-2 gap-6 justify-self-end">
+      <!-- <a
         href=""
         onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sarinmsari/30min'});return false;"
         class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200 cursor-pointer"
         >Book a Demo</a
+      > -->
+      <a
+        href="/docs"
+        class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
+        >Documentation</a
       >
       <a
         href="/#pricing"
@@ -84,7 +92,7 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
     <!-- Mobile Hamburger Toggle -->
     <button
       id="menu-toggle"
-      class="md:hidden flex items-center justify-center p-2 pb-4 text-text-secondary hover:text-text-primary transition-colors focus:outline-none select-none"
+      class="md:hidden flex items-center justify-center p-2 pb-4 text-text-secondary hover:text-text-primary transition-colors focus:outline-none select-none justify-self-end"
       aria-label="Toggle Menu"
       aria-expanded="false"
     >
@@ -106,6 +114,11 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
       href="/mcp"
       class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
       >Context Router MCP</a
+    >
+    <a
+      href="/guides"
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
+      >Guides</a
     >
     <a
       href=""
