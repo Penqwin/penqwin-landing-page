@@ -1,0 +1,898 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+import Tick from "../assets/svg/tick.astro";
+import GithubIcon from "../assets/svg/github.astro";
+import AssistantIcon from "../assets/svg/assistant.astro";
+import SettingsIcon from "../assets/svg/settings.astro";
+import DocumentIcon from "../assets/svg/document.astro";
+import PeopleIcon from "../assets/svg/people.astro";
+import LoopIcon from "../assets/svg/loop.astro";
+import ShieldIcon from "../assets/svg/shield.astro";
+import GoogleIcon from "../assets/svg/google.astro";
+import { Image } from "astro:assets";
+import authScreenImg from "../assets/images/docs/auth-screen.png";
+import createOrgImg from "../assets/images/docs/create-org.png";
+import joinOrgImg from "../assets/images/docs/join-org.png";
+import bootstrapRepoVideo from "../assets/videos/bootstrap_repo.mp4";
+import updateDocsVideo from "../assets/videos/update_docs.mp4";
+import PlayIcon from "../assets/svg/play.astro";
+
+// JSON-LD for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  name: "Penqwin Documentation & Usage Guides",
+  description:
+    "Learn how to get started, set up GitHub integrations, bootstrap your codebase docs, update documents, and manage teams.",
+  inLanguage: "en",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Penqwin",
+    url: "https://www.penqwin.com",
+  },
+};
+---
+
+<Layout
+  title="Guides & Onboarding | Penqwin - Automate Your Technical Documentation"
+  description="Follow our complete onboarding guides to integrate GitHub, bootstrap your repository, set up auto-updating documents, and collaborate with your team."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <main class="relative min-h-screen bg-bg-main py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <!-- Page Header -->
+      <section class="max-w-3xl mb-16 md:mb-24">
+        <h1
+          class="font-serif text-4xl md:text-6xl text-text-primary tracking-tight mb-4"
+        >
+          Welcome to Penqwin
+        </h1>
+        <p class="text-lg md:text-xl text-text-secondary font-light">
+          Everything you need to successfully launch, configure, and scale your
+          autonomous technical documentation with Penqwin.
+        </p>
+      </section>
+
+      <!-- Main Layout Grid -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-16 items-start"
+      >
+        <!-- Sticky Sidebar Navigation -->
+        <aside
+          class="hidden lg:block sticky top-28 self-start max-h-[calc(100vh-140px)] overflow-y-auto pr-4 border-r border-border/30"
+        >
+          <nav
+            class="flex flex-col gap-1 text-sm font-medium"
+            id="guides-sidebar-nav"
+          >
+            <span
+              class="text-xs text-text-muted tracking-wider uppercase font-semibold mb-3 px-3"
+              >Sections</span
+            >
+            <a
+              href="#onboarding"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>01. Onboarding</span>
+            </a>
+            <!-- <a
+              href="#github-integration"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>02. GitHub Integration</span>
+            </a> -->
+            <a
+              href="#bootstrapping"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>02. Repo Bootstrapping</span>
+            </a>
+            <a
+              href="#doc-updation"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>03. Document Updation</span>
+            </a>
+            <!-- <a
+              href="#team-collaboration"
+              class="sidebar-link flex items-center gap-2.5 px-3 py-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-bg-secondary/40 transition-all duration-200"
+            >
+              <span>05. Team Collaboration</span>
+            </a> -->
+          </nav>
+        </aside>
+
+        <!-- Mobile Scroll Navigation (sticky bar at top below header) -->
+        <div
+          class="lg:hidden sticky -top-1 z-40 w-full overflow-x-auto bg-bg-main border-b border-border/40 pt-3 mb-6 scrollbar-none flex gap-2 select-none"
+        >
+          <a
+            href="#onboarding"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 text-xs font-semibold text-text-secondary border-b-2 border-transparent transition-all"
+            >01. Onboarding</a
+          >
+          <!-- <a
+            href="#github-integration"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 text-xs font-semibold text-text-secondary border-b-2 border-transparent transition-all"
+            >02. GitHub</a
+          > -->
+          <a
+            href="#bootstrapping"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 text-xs font-semibold text-text-secondary border-b-2 border-transparent transition-all"
+            >02. Bootstrapping</a
+          >
+          <a
+            href="#doc-updation"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 text-xs font-semibold text-text-secondary border-b-2 border-transparent transition-all"
+            >03. Updates</a
+          >
+          <!-- <a
+            href="#team-collaboration"
+            class="mobile-nav-chip shrink-0 px-4 py-1.5 text-xs font-semibold text-text-secondary border-b-2 border-transparent transition-all"
+            >05. Collaboration</a
+          > -->
+        </div>
+
+        <!-- Right Side: Content Sections -->
+        <div class="space-y-24 max-w-4xl" id="guides-content-container">
+          <!-- Section 01: Onboarding -->
+          <section id="onboarding" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Quick Start &amp; Onboarding
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-8">
+              <p class="text-base md:text-lg">
+                Welcome to Penqwin! Penqwin makes it seamless to create, manage,
+                and scale engineering documentation directly linked to your
+                source code. Our agentic parser scans code architecture,
+                interprets functional flows, and keeps documents up-to-date
+                automatically. Follow our step-by-step onboarding guide to set
+                up your workspace and integrate your first repository.
+              </p>
+
+              <!-- Stepper Container -->
+              <div class="relative space-y-16 my-10">
+                <!-- Step 1: Authentication -->
+                <div class="relative pt-8 border-t border-border/20">
+                  <div class="space-y-6">
+                    <div class="space-y-4">
+                      <span
+                        class="text-xs font-semibold text-primary uppercase tracking-wider"
+                        >Step 01</span
+                      >
+                      <h3
+                        class="font-serif text-2xl text-text-primary font-normal tracking-tight"
+                      >
+                        Account Creation &amp; Authentication
+                      </h3>
+                      <p class="text-base text-text-secondary leading-relaxed">
+                        To get started, authenticate with your secure account at <a
+                          href="https://app.penqwin.com"
+                          class="text-primary hover:underline font-semibold"
+                          >app.penqwin.com</a
+                        >. Penqwin offers dual OAuth options tailored to
+                        different workspace roles:
+                      </p>
+
+                      <!-- OAuth Cards Grid -->
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                        <!-- GitHub OAuth Card -->
+                        <div
+                          class="border border-border/40 rounded-2xl p-5 flex flex-col justify-between"
+                        >
+                          <div>
+                            <div class="flex items-center justify-between mb-3">
+                              <div class="flex items-center gap-2">
+                                <div class="text-text-primary">
+                                  <GithubIcon
+                                    class="w-5 h-5 text-text-primary"
+                                  />
+                                </div>
+                                <span
+                                  class="text-text-primary font-semibold text-sm"
+                                  >GitHub OAuth</span
+                                >
+                              </div>
+                              <span
+                                class="text-[10px] bg-bg-secondary text-text-secondary font-semibold px-2 py-0.5 rounded-full"
+                                >Recommended</span
+                              >
+                            </div>
+                            <p
+                              class="text-xs text-text-secondary leading-relaxed"
+                            >
+                              Associates your account with your GitHub profile.
+                              Essential for developers, managers, and admins who
+                              need write access, branch syncs, and PR
+                              documentation generation.
+                            </p>
+                          </div>
+                        </div>
+
+                        <!-- Google OAuth Card -->
+                        <div
+                          class="border border-border/40 rounded-2xl p-5 flex flex-col justify-between"
+                        >
+                          <div>
+                            <div class="flex items-center justify-between mb-3">
+                              <div class="flex items-center gap-2">
+                                <GoogleIcon class="w-5 h-5" />
+                                <span
+                                  class="text-text-primary font-semibold text-sm"
+                                  >Google OAuth</span
+                                >
+                              </div>
+                            </div>
+                            <p
+                              class="text-xs text-text-secondary leading-relaxed"
+                            >
+                              Ideal for product managers, writers, view-only
+                              stakeholders, and team members who only need read
+                              access, workspace navigation, or team
+                              administration.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="mb-10 border border-border/30 rounded-2xl overflow-hidden bg-bg-secondary/10 p-2 max-w-3xl"
+                    >
+                      <Image
+                        src={authScreenImg}
+                        alt="Authentication Screen Interface"
+                        class="w-full h-auto rounded-xl border border-border/20 block"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 2: Create a New Organization -->
+                <div class="relative pt-8 border-t border-border/20">
+                  <div class="space-y-6">
+                    <div class="space-y-4">
+                      <span
+                        class="text-xs font-semibold text-primary uppercase tracking-wider"
+                        >Step 02</span
+                      >
+                      <h3
+                        class="font-serif text-2xl text-text-primary font-normal tracking-tight"
+                      >
+                        Create a New Organization
+                      </h3>
+                      <p class="text-base text-text-secondary leading-relaxed">
+                        If you are setting up Penqwin for your company, team, or
+                        personal projects for the first time, you will start by
+                        creating a new Organization. Organizations serve as the
+                        top-level home for your documents.
+                      </p>
+                      <div
+                        class="mb-10 border border-border/30 rounded-2xl overflow-hidden bg-bg-secondary/10 p-2 max-w-3xl"
+                      >
+                        <Image
+                          src={createOrgImg}
+                          alt="Create Organization Form Interface"
+                          class="w-full h-auto rounded-xl border border-border/20 block"
+                        />
+                      </div>
+                      <p class="text-base text-text-secondary">
+                        <strong>To create an organization:</strong>
+                      </p>
+                      <ol
+                        class="list-decimal list-outside ml-6 space-y-2 text-base text-text-secondary"
+                      >
+                        <li>
+                          Navigate to the <strong>"Create new"</strong> section on
+                          workspace setup page.
+                        </li>
+                        <li>Upload workspace logo and enter workspace name.</li>
+                        <li>Enter workspace handle, it should be unique.</li>
+                        <li>
+                          Click <strong>"Launch Dashboard"</strong> to initialize
+                          your workspace. Once initialized, you can begin connecting
+                          your source code repositories.
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 3: Join an Existing Organization -->
+                <div class="relative pt-8 border-t border-border/20">
+                  <div class="space-y-6">
+                    <div class="space-y-4">
+                      <span
+                        class="text-xs font-semibold text-primary uppercase tracking-wider"
+                        >Step 03</span
+                      >
+                      <h3
+                        class="font-serif text-2xl text-text-primary font-normal tracking-tight"
+                      >
+                        Join an Existing Organization
+                      </h3>
+                      <p class="text-base text-text-secondary leading-relaxed">
+                        If your team or company has already set up a Penqwin
+                        workspace, you do not need to create a new organization.
+                        Instead, you can join the existing organization to
+                        access shared code documentation.
+                      </p>
+                      <div
+                        class="border mb-10 border-border/30 rounded-2xl overflow-hidden bg-bg-secondary/10 p-2 max-w-3xl"
+                      >
+                        <Image
+                          src={joinOrgImg}
+                          alt="Join Organization Interface"
+                          class="w-full h-auto rounded-xl border border-border/20 block"
+                        />
+                      </div>
+                      <p class="text-base text-text-secondary">
+                        <strong>To join an organization:</strong>
+                      </p>
+                      <ol
+                        class="list-decimal list-outside ml-6 space-y-2 text-base text-text-secondary"
+                      >
+                        <li>
+                          Search for your <strong>workspace handle</strong>.
+                        </li>
+                        <li>
+                          Click the <strong>Request to Join</strong> button.
+                        </li>
+                        <li>
+                          The workspace admin receives your join request. once
+                          approved, you will be able to access the workspace.
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="border-border/30" />
+
+          <!-- Hidden: Section 02: GitHub Integration -->
+          <section
+            id="github-integration"
+            class="hidden guide-section scroll-mt-36"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                GitHub Integration &amp; Security
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Penqwin leverages a highly secure, event-driven architecture
+                using native GitHub Apps. This ensures minimal, targeted read
+                permissions and instantaneous synchronization of documentation
+                with your codebase branches.
+              </p>
+
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Least Privilege Security Policy
+              </h3>
+              <p>
+                We value security above everything else. Penqwin is structured
+                to request the minimum permissions needed to generate
+                high-fidelity summaries.
+              </p>
+
+              <!-- Security Points Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <div
+                  class="border border-border/40 rounded-xl p-5 hover:border-primary/40 transition-colors"
+                >
+                  <div
+                    class="flex items-center gap-2 mb-2 text-text-primary font-semibold"
+                  >
+                    <ShieldIcon class="w-5 h-5 text-primary" />
+                    Metadata Access Only
+                  </div>
+                  <p class="text-xs text-text-muted">
+                    We only scan repository structure, paths, and metadata
+                    configuration files (like package.json, Cargo.toml) to map
+                    architecture.
+                  </p>
+                </div>
+                <div
+                  class="border border-border/40 rounded-xl p-5 hover:border-primary/40 transition-colors"
+                >
+                  <div
+                    class="flex items-center gap-2 mb-2 text-text-primary font-semibold"
+                  >
+                    <LoopIcon class="w-5 h-5 text-primary" />
+                    Ephemeral PR Diffs
+                  </div>
+                  <p class="text-xs text-text-muted">
+                    PR code diff contents are evaluated on merge events to
+                    update documentation sections, then promptly purged from
+                    cache.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Integration Scope -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Requested Permissions &amp; Access Details
+              </h3>
+              <div
+                class="border border-border/40 rounded-2xl overflow-hidden my-6"
+              >
+                <table
+                  class="w-full text-left border-collapse text-sm md:text-base"
+                >
+                  <thead>
+                    <tr class="bg-bg-secondary/40 border-b border-border/40">
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Permission</th
+                      >
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Type</th
+                      >
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Reason</th
+                      >
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-border/20 text-text-secondary">
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Repository Metadata</td
+                      >
+                      <td class="py-3 px-4">Read-only</td>
+                      <td class="py-3 px-4"
+                        >Used to discover folder structures, file structures,
+                        and detect config files.</td
+                      >
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Pull Requests</td
+                      >
+                      <td class="py-3 px-4">Read &amp; Write</td>
+                      <td class="py-3 px-4"
+                        >Used to detect pull request events, view branch
+                        changes, and post PR comments/updates.</td
+                      >
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Callout: Tip -->
+            <div
+              class="flex gap-4 p-5 bg-primary/5 border border-primary/20 rounded-2xl text-text-secondary text-sm"
+            >
+              <div class="shrink-0 mt-0.5">
+                <AssistantIcon class="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <strong class="text-text-primary block mb-1"
+                  >Developer Tip</strong
+                >
+                Ensure you are an administrator of the GitHub organization or have
+                permission to approve integrations. If you are not an owner, your
+                request to install the GitHub App will be sent to the organization
+                administrator for approval.
+              </div>
+            </div>
+          </section>
+
+          <hr class="border-border/30 hidden" />
+
+          <!-- Section 03: Repo Bootstrapping -->
+          <section id="bootstrapping" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Repository Bootstrapping
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Bootstrapping parses your entire codebase root to produce a
+                comprehensive starter technical workspace. Rather than writing
+                documentation from scratch, our agents map your codebase
+                directory outline, discover API endpoints, and establish
+                architectural modules.
+              </p>
+
+              <div
+                class="my-8 relative w-full rounded-2xl overflow-hidden border border-border/30 shadow-lg bg-bg-secondary/10 p-2 max-w-3xl group"
+              >
+                <!-- Main Video Container -->
+                <div class="relative w-full h-full rounded-xl overflow-hidden">
+                  <video
+                    id="bootstrap-repo-video"
+                    class="w-full h-full object-cover cursor-pointer"
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src={bootstrapRepoVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  <!-- Play Button Overlay -->
+                  <div
+                    id="bootstrap-repo-video-overlay"
+                    class="absolute inset-0 flex items-center justify-center bg-black/45 group-hover:bg-black/50 transition-all duration-300 cursor-pointer"
+                  >
+                    <button
+                      class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/90 text-text-primary shadow-2xl transform group-hover:scale-105 transition-all duration-300"
+                      aria-label="Play Video"
+                    >
+                      <PlayIcon
+                        class="w-6 h-6 md:w-8 md:h-8 fill-current translate-x-0.5"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Steps to bootstrap -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Running Bootstrapping
+              </h3>
+              <!-- <p>
+                Once your GitHub connection is ready, click on the repository
+                from your Penqwin dashboard. If the repository is clean and has
+                never been indexed:
+              </p> -->
+              <ol class="list-decimal list-outside ml-6 space-y-3">
+                <li>Navigate to the settings &rarr; Integrations tab.</li>
+                <li>Select the repository you want to bootstrap.</li>
+                <li>Click on <strong>Bootstrap Repo</strong> button.</li>
+                <li>
+                  The agent indexes your entire codebase root to produce the
+                  structured engineering documents.
+                </li>
+                <li>
+                  Once the initial bootstrapping is done, you can review the
+                  updated documents in the sidebar under
+                  <strong>Code Reference</strong> folder.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <hr class="border-border/30" />
+
+          <!-- Section 04: Document Updation -->
+          <section id="doc-updation" class="guide-section scroll-mt-36">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Document Updation &amp; Sync Loop
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Ensure your engineering documentation stays in sync with your
+                codebase evolution. Penqwin analyzes pull request diffs, parses
+                modified files, and drafts surgical updates to your documents,
+                allowing you to review and accept or reject adjustments before
+                they are applied.
+              </p>
+
+              <div
+                class="my-8 relative w-full rounded-2xl overflow-hidden border border-border/30 shadow-lg bg-bg-secondary/10 p-2 max-w-3xl group"
+              >
+                <!-- Main Video Container -->
+                <div class="relative w-full h-full rounded-xl overflow-hidden">
+                  <video
+                    id="update-docs-video"
+                    class="w-full h-full object-cover cursor-pointer"
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src={updateDocsVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  <!-- Play Button Overlay -->
+                  <div
+                    id="update-docs-video-overlay"
+                    class="absolute inset-0 flex items-center justify-center bg-black/45 group-hover:bg-black/50 transition-all duration-300 cursor-pointer"
+                  >
+                    <button
+                      class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/90 text-text-primary shadow-2xl transform group-hover:scale-105 transition-all duration-300"
+                      aria-label="Play Video"
+                    >
+                      <PlayIcon
+                        class="w-6 h-6 md:w-8 md:h-8 fill-current translate-x-0.5"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Steps to bootstrap -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Sync docs
+              </h3>
+              <ol class="list-decimal list-outside ml-6 space-y-3">
+                <li>
+                  Click the <strong>Update Docs</strong> button in sidebar.
+                </li>
+                <li>Enter the code change (pull request/merge) url.</li>
+                <li>Click on <strong>Generate</strong> button.</li>
+                <li>
+                  The agent processes the code changes and surgically updates
+                  the relevant sections of the engineering documents for review.
+                </li>
+                <li>
+                  Once the doc generation is done, you can review the changes
+                  and <strong>accept</strong> or <strong>reject</strong> them.
+                </li>
+                <li>
+                  On accepting, the changes are applied to the documentation.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <hr class="hidden border-border/30" />
+
+          <!-- Hidden: Section 05: Team Collaboration -->
+          <section
+            id="team-collaboration"
+            class="hidden guide-section scroll-mt-36"
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="font-serif text-3xl md:text-4xl text-text-primary">
+                Team Management &amp; Collaboration
+              </h2>
+            </div>
+
+            <div class="prose text-text-secondary leading-relaxed space-y-6">
+              <p class="text-base md:text-lg">
+                Engineering docs are dynamic assets for the whole company.
+                Penqwin makes it straightforward to add, manage, and configure
+                team members with customizable workspace permissions.
+              </p>
+
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Workspace Roles
+              </h3>
+              <div
+                class="border border-border/40 rounded-2xl overflow-hidden my-6"
+              >
+                <table class="w-full text-left border-collapse text-base">
+                  <thead>
+                    <tr class="bg-bg-secondary/40 border-b border-border/40">
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Role</th
+                      >
+                      <th
+                        class="py-3 px-4 font-serif text-text-primary font-semibold"
+                        >Permissions</th
+                      >
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-border/20">
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Admin</td
+                      >
+                      <td class="py-3 px-4 text-text-secondary"
+                        >Full workspace control, repo configuration, Billing,
+                        team member invites and deletion.</td
+                      >
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Editor</td
+                      >
+                      <td class="py-3 px-4 text-text-secondary"
+                        >Write and modify workspace pages, trigger manual
+                        synchronizations, add integration webhooks.</td
+                      >
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold text-text-primary"
+                        >Viewer</td
+                      >
+                      <td class="py-3 px-4 text-text-secondary"
+                        >Read access to workspace documentation, export
+                        documents, search files and API schemas.</td
+                      >
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Notifications integration -->
+              <h3
+                class="font-serif text-xl font-semibold text-text-primary mt-8"
+              >
+                Notification Integrations
+              </h3>
+              <p>Keep developers updated on doc revisions:</p>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <div
+                    class="shrink-0 mt-0.5 text-primary bg-primary/10 p-1.5 rounded-lg"
+                  >
+                    <SettingsIcon class="w-4 h-4" />
+                  </div>
+                  <div>
+                    <strong class="text-text-primary">Webhook Setup:</strong> Inside
+                    workspace settings, provide a Slack or Discord incoming webhook
+                    URL.
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div
+                    class="shrink-0 mt-0.5 text-primary bg-primary/10 p-1.5 rounded-lg"
+                  >
+                    <LoopIcon class="w-4 h-4" />
+                  </div>
+                  <div>
+                    <strong class="text-text-primary">Automatic Alert:</strong> Every
+                    time a PR merges and docs sync successfully, Penqwin posts a summary
+                    changes card directly into your chat workspace.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Highlight active link in sidebar and mobile nav bar based on scroll position
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".guide-section");
+    const sidebarLinks = document.querySelectorAll(".sidebar-link");
+    const mobileChips = document.querySelectorAll(".mobile-nav-chip");
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px", // triggers when section is in the middle of viewport
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+
+          // Update sidebar
+          sidebarLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (href === `#${id}`) {
+              link.classList.add(
+                "bg-bg-secondary",
+                "text-primary",
+                "font-semibold",
+              );
+              link.classList.remove(
+                "text-text-secondary",
+                "hover:text-text-primary",
+                "hover:bg-bg-secondary/40",
+              );
+            } else {
+              link.classList.remove(
+                "bg-bg-secondary",
+                "text-primary",
+                "font-semibold",
+              );
+              link.classList.add(
+                "text-text-secondary",
+                "hover:text-text-primary",
+                "hover:bg-bg-secondary/40",
+              );
+            }
+          });
+
+          // Update mobile nav chips
+          mobileChips.forEach((chip) => {
+            const href = chip.getAttribute("href");
+            if (href === `#${id}`) {
+              chip.classList.remove("border-transparent");
+              chip.classList.add("border-primary");
+              // Scroll the mobile nav container to keep the active chip in view
+              chip.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+            } else {
+              chip.classList.remove("border-primary");
+              chip.classList.add("border-transparent");
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>
+
+<style>
+  /* Custom styled scrollbars for mobile chip navigation */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Selection color matching main layout theme */
+  ::selection {
+    background: rgba(8, 135, 43, 0.2);
+    color: var(--text-primary);
+  }
+</style>
+
+<script>
+  const initDocsVideos = () => {
+    const videoConfigs = [
+      {
+        videoId: "bootstrap-repo-video",
+        overlayId: "bootstrap-repo-video-overlay",
+      },
+      { videoId: "update-docs-video", overlayId: "update-docs-video-overlay" },
+    ];
+
+    videoConfigs.forEach(({ videoId, overlayId }) => {
+      const video = document.getElementById(videoId) as HTMLVideoElement;
+      const overlay = document.getElementById(overlayId);
+
+      if (video && overlay) {
+        const playVideo = () => {
+          overlay.classList.add("opacity-0", "pointer-events-none");
+          video.controls = true;
+          video.play().catch((err) => {
+            console.error("Error playing video:", err);
+          });
+        };
+
+        overlay.addEventListener("click", playVideo);
+        video.addEventListener("click", () => {
+          if (video.paused) {
+            playVideo();
+          } else {
+            overlay.classList.remove("opacity-0", "pointer-events-none");
+          }
+        });
+
+        video.addEventListener("ended", () => {
+          video.controls = false;
+          overlay.classList.remove("opacity-0", "pointer-events-none");
+        });
+      }
+    });
+  };
+
+  document.addEventListener("astro:page-load", initDocsVideos);
+  // Also run on initial load
+  initDocsVideos();
+</script>
