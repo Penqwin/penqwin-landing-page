@@ -1,6 +1,43 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 import AstGraph from "../components/AstGraph.astro";
+import External from "../assets/svg/external.astro";
+
+const claudeConfig = `{
+  "mcpServers": {
+    "penqwin": {
+      "command": "npx",
+      "args": ["-y", "@penqwin/mcp"],
+      "env": {
+        "PENQWIN_API_KEY": "YOUR_API_KEY",
+        "PENQWIN_ORG_ID": "YOUR_ORG_ID",
+        "PENQWIN_REPO": "owner/repo_name",
+        "PENQWIN_API_URL": "https://app.penqwin.com"
+      }
+    }
+  }
+}`;
+
+const cursorConfig = `PENQWIN_API_KEY="YOUR_API_KEY"
+PENQWIN_ORG_ID="YOUR_ORG_ID"
+PENQWIN_REPO="owner/repo_name"
+PENQWIN_API_URL="https://app.penqwin.com"`;
+
+const antigravityConfig = `{
+  "mcpServers": {
+    "penqwin": {
+      "command": "npx",
+      "args": ["-y", "@penqwin/mcp"],
+      "env": {
+        "PENQWIN_API_KEY": "YOUR_API_KEY",
+        "PENQWIN_ORG_ID": "YOUR_ORG_ID",
+        "PENQWIN_REPO": "owner/repo_name",
+        "PENQWIN_API_URL": "https://app.penqwin.com"
+      }
+    }
+  }
+}`;
 ---
 
 <Layout
@@ -8,7 +45,6 @@ import AstGraph from "../components/AstGraph.astro";
   description="Cut AI token costs by 99% and speed up development. Penqwin Context Router MCP syncs codebase structural blueprints instantly for your entire engineering team."
   image="/og/mcp.png"
 >
-
   <main class="relative pb-24 overflow-hidden">
     <!-- Hero Section — full viewport, vertically centred (mirrors Hero.astro) -->
     <section
@@ -32,9 +68,29 @@ import AstGraph from "../components/AstGraph.astro";
       <!-- AST Graph Visualization -->
       <AstGraph />
 
-      <!-- Launching Soon Indicator -->
-      <div class="flex justify-center -mt-12 mb-16 relative z-40">
-        <em class="text-primary font-semibold">Launching Soon...</em>
+      <!-- Action Buttons -->
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 my-10 md:my-8 relative z-40 w-full px-6"
+      >
+        <a
+          href="https://www.npmjs.com/package/@penqwin/mcp"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex select-none group items-center justify-center gap-3 px-8 py-4 bg-bg-secondary/50 border border-border rounded-full text-text-primary font-medium hover:bg-white/10 transition-all cursor-pointer"
+        >
+          View on npm
+          <External class="w-4 h-4 inline-block ml-1" aria-hidden="true" />
+        </a>
+        <a
+          href="#setup"
+          class="group select-none relative inline-flex items-center active:scale-95 justify-center gap-3 px-8 py-4 bg-text-primary text-white rounded-full font-bold transition-all duration-300 cursor-pointer"
+        >
+          Setup Config
+          <!-- <ArrowRight
+            class="w-5 inline-block group-hover:translate-x-1"
+            aria-hidden="true"
+          /> -->
+        </a>
       </div>
     </section>
 
@@ -240,6 +296,165 @@ import AstGraph from "../components/AstGraph.astro";
           </div>
         </section>
 
+        <!-- IDE Integration & Configuration -->
+        <section class="relative border-t border-border/30 pt-16" id="setup">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+            <div class="md:col-span-2">
+              <h2
+                class="text-3xl font-serif text-text-primary tracking-tight leading-tight"
+              >
+                IDE Setup & <br />
+                <em class="text-primary not-italic">Configuration</em>
+              </h2>
+              <p class="text-text-secondary text-sm mt-4 leading-relaxed">
+                Connect the Penqwin Context Router to your favorite AI assistant
+                in seconds using the standard Model Context Protocol (MCP).
+                <br /><br />
+                Your <code
+                  class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono text-xs"
+                  >PENQWIN_ORG_ID</code
+                > and <code
+                  class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono text-xs"
+                  >PENQWIN_API_KEY</code
+                > can be retrieved from the <a
+                  href="https://app.penqwin.com/settings"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary hover:underline font-semibold"
+                  >app.penqwin.com/settings</a
+                > &rarr; <strong>integrations</strong> tab.
+              </p>
+            </div>
+            <div class="md:col-span-3 space-y-6">
+              <!-- Tab Headers -->
+              <div class="flex border-b border-border/30 gap-6 text-sm">
+                <button
+                  class="mcp-tab-btn active pb-3 font-medium border-b-2 border-primary text-text-primary focus:outline-none cursor-pointer"
+                  data-tab="claude"
+                >
+                  Claude Desktop
+                </button>
+                <button
+                  class="mcp-tab-btn pb-3 font-medium border-b-2 border-transparent text-text-muted hover:text-text-primary focus:outline-none cursor-pointer"
+                  data-tab="cursor"
+                >
+                  Cursor
+                </button>
+                <button
+                  class="mcp-tab-btn pb-3 font-medium border-b-2 border-transparent text-text-muted hover:text-text-primary focus:outline-none cursor-pointer"
+                  data-tab="antigravity"
+                >
+                  Antigravity / Gemini
+                </button>
+              </div>
+
+              <!-- Tab Contents -->
+              <div
+                class="relative bg-bg-secondary/30 border border-border/30 rounded-2xl p-6"
+              >
+                <!-- Claude Tab -->
+                <div class="mcp-tab-content block space-y-4" id="tab-claude">
+                  <p class="text-sm text-text-secondary">
+                    Add the server setup to your Claude Desktop configuration
+                    file.
+                    <br />
+                    <span class="text-xs text-text-muted"
+                      >Path: <code
+                        class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono select-all"
+                        >%APPDATA%\Claude\claude_desktop_config.json</code
+                      ></span
+                    >
+                  </p>
+                  <div class="relative">
+                    <pre
+                      class="bg-black/5 text-text-primary font-mono text-xs p-4 rounded-xl overflow-x-auto border border-border/20 max-h-[300px]"><code id="code-claude">{claudeConfig}</code></pre>
+                    <button
+                      class="copy-btn absolute top-3 right-3 px-3 py-1.5 text-xs bg-bg-secondary hover:bg-bg-secondary/80 border border-border/30 rounded-lg text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium"
+                      data-target="code-claude"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Cursor Tab -->
+                <div class="mcp-tab-content hidden space-y-4" id="tab-cursor">
+                  <p class="text-sm text-text-secondary">
+                    Open Cursor and navigate to <strong>Settings</strong> &rarr; <strong
+                      >Features</strong
+                    > &rarr; <strong>MCP</strong>. Click <strong
+                      >+ Add New MCP Server</strong
+                    >:
+                  </p>
+                  <ul
+                    class="text-sm text-text-secondary space-y-2 list-disc list-inside"
+                  >
+                    <li>
+                      <strong>Name</strong>: <code
+                        class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono select-all"
+                        >penqwin</code
+                      >
+                    </li>
+                    <li>
+                      <strong>Type</strong>: <code
+                        class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono"
+                        >command</code
+                      >
+                    </li>
+                    <li>
+                      <strong>Command</strong>: <code
+                        class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono select-all"
+                        >npx -y @penqwin/mcp</code
+                      >
+                    </li>
+                  </ul>
+                  <p class="text-sm text-text-secondary">
+                    Then define these environment variables in the settings
+                    interface:
+                  </p>
+                  <div class="relative">
+                    <pre
+                      class="bg-black/5 text-text-primary font-mono text-xs p-4 rounded-xl overflow-x-auto border border-border/20"><code id="code-cursor">{cursorConfig}</code></pre>
+                    <button
+                      class="copy-btn absolute top-3 right-3 px-3 py-1.5 text-xs bg-bg-secondary hover:bg-bg-secondary/80 border border-border/30 rounded-lg text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium"
+                      data-target="code-cursor"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Antigravity Tab -->
+                <div
+                  class="mcp-tab-content hidden space-y-4"
+                  id="tab-antigravity"
+                >
+                  <p class="text-sm text-text-secondary">
+                    Add the server setup to your user-level Gemini config file.
+                    <br />
+                    <span class="text-xs text-text-muted"
+                      >Path: <code
+                        class="bg-bg-secondary px-1.5 py-0.5 rounded text-text-primary font-mono select-all"
+                        >~/.gemini/mcp_config.json</code
+                      ></span
+                    >
+                  </p>
+                  <div class="relative">
+                    <pre
+                      class="bg-black/5 text-text-primary font-mono text-xs p-4 rounded-xl overflow-x-auto border border-border/20 max-h-[300px]"><code id="code-antigravity">{antigravityConfig}</code></pre>
+                    <button
+                      class="copy-btn absolute top-3 right-3 px-3 py-1.5 text-xs bg-bg-secondary hover:bg-bg-secondary/80 border border-border/30 rounded-lg text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium"
+                      data-target="code-antigravity"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Scale, Performance & Privacy -->
         <section class="relative border-t border-border/30 pt-16">
           <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
@@ -294,6 +509,59 @@ import AstGraph from "../components/AstGraph.astro";
     </div>
   </main>
 </Layout>
+
+<script>
+  // Handle tab switching
+  const tabs = document.querySelectorAll(".mcp-tab-btn");
+  const tabContents = document.querySelectorAll(".mcp-tab-content");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetTab = tab.getAttribute("data-tab");
+
+      tabs.forEach((t) => {
+        t.classList.remove("active", "border-primary", "text-text-primary");
+        t.classList.add("border-transparent", "text-text-muted");
+      });
+      tab.classList.add("active", "border-primary", "text-text-primary");
+      tab.classList.remove("border-transparent", "text-text-muted");
+
+      tabContents.forEach((content) => {
+        if (content.id === `tab-${targetTab}`) {
+          content.classList.remove("hidden");
+          content.classList.add("block");
+        } else {
+          content.classList.remove("block");
+          content.classList.add("hidden");
+        }
+      });
+    });
+  });
+
+  // Handle copying
+  const copyButtons = document.querySelectorAll(".copy-btn");
+  copyButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      if (targetId) {
+        const codeElement = document.getElementById(targetId);
+        if (codeElement) {
+          navigator.clipboard
+            .writeText(codeElement.textContent || "")
+            .then(() => {
+              const originalText = btn.textContent;
+              btn.textContent = "Copied!";
+              btn.classList.add("text-primary");
+              setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove("text-primary");
+              }, 2000);
+            });
+        }
+      }
+    });
+  });
+</script>
 
 <style>
   /* Override primary colour to --primary (green) for the MCP page */
