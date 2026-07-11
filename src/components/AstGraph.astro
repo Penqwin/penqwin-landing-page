@@ -1,5 +1,5 @@
 <section
-  class="mb-24 w-full flex items-center justify-center"
+  class="mb-0 w-full flex items-center justify-center"
   aria-hidden="true"
 >
   <canvas id="ast-graph" class="w-full" style="height: 340px; max-width: 900px;"
@@ -66,36 +66,36 @@
     const totalNodes = 25;
 
     const labels = [
-      // Layer 0 — module root (3)
-      "FileSkeleton",
-      "filePath",
-      "language",
-      // Layer 1 — high-level collections & constructs (5)
-      "imports",
-      "exports",
-      "ImportEntry",
-      "ExportEntry",
-      "MemberEntry",
-      // Layer 2 — specific kinds & keys (6)
-      "source",
-      "function",
-      "class",
-      "interface",
-      "method",
-      "property",
-      // Layer 3 — member & annotation details (6)
-      "signature",
-      "jsdoc",
-      "constructor",
-      "bases",
-      "decorator",
-      "typeParams",
-      // Layer 4 — terminal attributes (5)
-      "visibility",
-      "isDefault",
-      "isStatic",
-      "alias",
-      "isWildcard",
+      // Layer 0 — Core Entrypoints & Core (3)
+      "AuthService",
+      "Database",
+      "APIGateway",
+      // Layer 1 — Major Services & Infrastructure (5)
+      "Billing",
+      "FileStorage",
+      "SearchIndex",
+      "WorkerQueue",
+      "UserDirectory",
+      // Layer 2 — APIs, Protocols, & Middleware (6)
+      "REST_Routes",
+      "GraphQL",
+      "WebSockets",
+      "CacheStore",
+      "Telemetry",
+      "Alerts",
+      // Layer 3 — Client-side / Frontend Layer (6)
+      "StateStore",
+      "UI_Library",
+      "ClientRouter",
+      "FormEngine",
+      "ThemeConfig",
+      "Localization",
+      // Layer 4 — Operations, Testing & DevOps (5)
+      "CI_Pipeline",
+      "DockerFiles",
+      "UnitTests",
+      "ErrorLogs",
+      "SystemConfig",
     ];
 
     type Node = {
