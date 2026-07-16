@@ -1,0 +1,82 @@
+---
+// Highlights.astro
+// Bento-style border grid section displaying key stats and capabilities in a minimal layout.
+import SupportedLanguages from "./SupportedLanguages.astro";
+---
+
+<section id="highlights" class="w-full py-16 md:py-24 bg-bg-main relative">
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <!-- Grid Outer Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Left Column (divided into Top Row and Bottom Row) -->
+      <div class="flex flex-col gap-6">
+        <!-- Top Row (Divided into Card 1 and Card 2) -->
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-6">
+          <!-- Card 1: Connect in under 2 minutes -->
+          <div
+            class="col-span-1 sm:col-span-3 p-8 sm:p-10 flex flex-col justify-between min-h-[200px] border border-border/30 rounded-2xl bg-white/40 backdrop-blur-md"
+          >
+            <span
+              class="text-[10px] font-mono uppercase tracking-wider text-text-muted"
+              >Onboarding</span
+            >
+            <h3
+              class="font-serif text-2xl text-text-primary mt-6 leading-tight"
+            >
+              Connect in under 2 minutes.
+            </h3>
+          </div>
+
+          <!-- Card 2: Thousands of files analysed -->
+          <div
+            class="col-span-1 sm:col-span-2 p-8 sm:p-10 flex flex-col justify-between min-h-[200px] border border-primary/15 rounded-2xl bg-primary/5 backdrop-blur-md"
+          >
+            <span
+              class="text-[10px] font-mono uppercase tracking-wider text-text-muted"
+              >Scale</span
+            >
+            <h3 class="font-serif text-xl text-text-primary mt-6 leading-tight">
+              Thousands of files analysed.
+            </h3>
+          </div>
+        </div>
+
+        <!-- Bottom Row (Card 3: Works for private and public repositories) -->
+        <div
+          class="p-8 sm:p-10 flex flex-col justify-between min-h-[200px] border border-primary/15 rounded-2xl bg-primary/5 backdrop-blur-md"
+        >
+          <span
+            class="text-[10px] font-mono uppercase tracking-wider text-text-muted"
+            >Coverage</span
+          >
+          <h3
+            class="font-serif text-2xl sm:text-3xl text-text-primary mt-6 leading-tight"
+          >
+            Works for private and public repositories.
+          </h3>
+        </div>
+      </div>
+
+      <!-- Right Column (Card 4: Supports 20+ programming languages) -->
+      <div
+        class="p-8 sm:p-10 flex flex-col justify-between min-h-[350px] lg:min-h-full border border-border/30 rounded-2xl bg-white/40 backdrop-blur-md"
+      >
+        <div class="flex flex-col gap-2">
+          <span
+            class="text-[10px] font-mono uppercase tracking-wider text-text-muted"
+            >Compatibility</span
+          >
+          <h3
+            class="font-serif text-3xl sm:text-4xl text-text-primary mt-4 leading-tight"
+          >
+            Supports 20+ programming languages.
+          </h3>
+        </div>
+
+        <div class="py-4">
+          <SupportedLanguages isMinimal={true} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

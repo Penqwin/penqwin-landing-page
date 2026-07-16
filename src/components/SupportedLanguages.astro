@@ -1,0 +1,125 @@
+---
+// SupportedLanguages.astro
+// Static, horizontally centered row of programming language brand logos.
+// Displays in color by default. Sizes increase towards the center and taper off to the ends.
+const languages = [
+  {
+    name: "Ruby",
+    slug: "ruby",
+    color: "CC342D",
+    sizeClass: "h-2 sm:h-2.5 md:h-3 lg:h-4",
+    opacityClass: "opacity-50",
+  },
+  {
+    name: "Kotlin",
+    slug: "kotlin",
+    color: "7F52FF",
+    sizeClass: "h-2.5 sm:h-3 md:h-3.5 lg:h-5",
+    opacityClass: "opacity-60",
+  },
+  {
+    name: "PHP",
+    slug: "php",
+    color: "777BB4",
+    sizeClass: "h-3 sm:h-3.5 md:h-4 lg:h-6",
+    opacityClass: "opacity-70",
+  },
+  {
+    name: "Python",
+    slug: "python",
+    color: "3776AB",
+    sizeClass: "h-3.5 sm:h-4 md:h-5 lg:h-7",
+    opacityClass: "opacity-95",
+  },
+  {
+    name: "TypeScript",
+    slug: "typescript",
+    color: "3178C6",
+    sizeClass: "h-4 sm:h-5 md:h-6 lg:h-8",
+    opacityClass: "opacity-100",
+  },
+  {
+    name: "Go",
+    slug: "go",
+    color: "00ADD8",
+    sizeClass: "h-3.5 sm:h-4 md:h-5 lg:h-7",
+    opacityClass: "opacity-95",
+  },
+  {
+    name: "Rust",
+    slug: "rust",
+    color: "F24E1E",
+    sizeClass: "h-2.5 sm:h-3 md:h-3.5 lg:h-5",
+    opacityClass: "opacity-80",
+  },
+  {
+    name: "JavaScript",
+    slug: "javascript",
+    color: "F7DF1E",
+    sizeClass: "h-2 sm:h-2.5 md:h-3 lg:h-4",
+    opacityClass: "opacity-60",
+  },
+];
+
+interface Props {
+  class?: string;
+  isMinimal?: boolean;
+}
+
+const { class: className, isMinimal = false } = Astro.props;
+
+const displayedLanguages = languages;
+---
+
+{
+  isMinimal ? (
+    <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-5 py-4 w-full">
+      {displayedLanguages.map((lang) => (
+        <div class="flex items-center justify-center">
+          <img
+            src={`https://cdn.simpleicons.org/${lang.slug}/909692`}
+            alt={lang.name}
+            class={`w-auto object-contain ${lang.sizeClass} ${lang.opacityClass}`}
+            loading="lazy"
+          />
+        </div>
+      ))}
+      <div class="text-[10px] sm:text-xs md:text-sm font-medium text-text-muted opacity-50 whitespace-nowrap self-center ml-1 sm:ml-2">
+        & more...
+      </div>
+    </div>
+  ) : (
+    <section
+      id="languages"
+      class={`w-full pb-8 sm:pb-12 md:pb-16 bg-bg-main relative overflow-hidden ${className || ""}`}
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <!-- Centered symmetrical layout of language logos -->
+        <div
+          class="flex justify-center items-center gap-3 sm:gap-5 md:gap-7 lg:gap-9 py-2"
+        >
+          {displayedLanguages.map((lang) => (
+            <div class="flex items-center justify-center">
+              <img
+                src={`https://cdn.simpleicons.org/${lang.slug}/909692`}
+                alt={lang.name}
+                class={`w-auto object-contain ${lang.sizeClass} ${lang.opacityClass}`}
+                loading="lazy"
+              />
+            </div>
+          ))}
+          <div
+            class="text-[10px] sm:text-xs md:text-sm font-medium text-text-muted opacity-50 whitespace-nowrap self-center ml-1 sm:ml-2"
+          >
+            & more...
+          </div>
+        </div>
+      </div>
+
+      <!-- Background subtle glow -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-primary/2 blur-[80px] rounded-full pointer-events-none opacity-20"
+      />
+    </section>
+  )
+}
