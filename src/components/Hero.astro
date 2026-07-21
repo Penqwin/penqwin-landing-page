@@ -4,8 +4,7 @@ import PlayIcon from "../assets/svg/play.astro";
 import tribalKnowledgeSubtitles from "../assets/videos/tribal-knowledge-ad/SubTitle.vtt";
 import videoThumbnail from "../assets/videos/tribal-knowledge-ad/Thumbnail.png";
 
-const tribalKnowledgeVideo =
-  "https://k6yubxqzk4qk5zxb.public.blob.vercel-storage.com/Videos/Tribal%20Knowledge%20ad.mp4";
+import tribalKnowledgeVideo from "../assets/videos/tribal-knowledge-ad/Tribal_Knowledge.mp4";
 
 // SEO metadata for video structured data
 const videoTitle =
@@ -74,7 +73,7 @@ const videoUploadDate = "2026-07-04T01:23:00Z";
           id="hero-video"
           class="w-full h-full object-cover cursor-pointer"
           src={tribalKnowledgeVideo}
-          preload="metadata"
+          preload="none"
           playsinline
           aria-label={videoTitle}
           poster={videoThumbnail.src}
