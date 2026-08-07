@@ -1,22 +1,12 @@
 ---
 import ArrowRight from "../assets/svg/arrow-right.astro";
-import PlayIcon from "../assets/svg/play.astro";
-import tribalKnowledgeSubtitles from "../assets/videos/tribal-knowledge-ad/SubTitle.vtt";
-import videoThumbnail from "../assets/videos/tribal-knowledge-ad/Thumbnail.png";
-
-import tribalKnowledgeVideo from "../assets/videos/tribal-knowledge-ad/Tribal_Knowledge.mp4";
-
-// SEO metadata for video structured data
-const videoTitle =
-  "The Hidden Cost of Tribal Knowledge in Engineering Teams | Penqwin";
-const videoDescription =
-  "Knowledge silos are one of the biggest challenges for growing engineering teams. When critical information lives in the minds of a few developers, onboarding slows, collaboration suffers, and software delivery becomes increasingly difficult.";
-const videoUploadDate = "2026-07-04T01:23:00Z";
+import GitHubIcon from "../assets/svg/github.astro";
+import DashboardPreview from "./DashboardPreview.astro";
 ---
 
 <section
   id="hero"
-  class="relative z-30 w-full min-h-screen bg-bg-main flex flex-col items-center justify-center"
+  class="relative z-30 w-full md:min-h-screen bg-bg-main flex flex-col items-center justify-center"
 >
   <div class="relative z-20 max-w-4xl px-6 mt-32 md:mt-48 text-center">
     <h1
@@ -35,123 +25,35 @@ const videoUploadDate = "2026-07-04T01:23:00Z";
 
     <!-- Primary CTA -->
     <div
-      class="flex flex-row-reverse sm:flex-row text-sm items-center justify-center gap-4 my-10 md:my-8"
+      class="flex flex-row text-sm items-center justify-center gap-4 my-10 md:my-8"
     >
+      <a
+        href="https://github.com/Penqwin/Penqwin"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex select-none group items-center justify-center gap-2.5 px-4 md:px-8 py-4 bg-bg-secondary/50 border border-border rounded-xl text-text-primary font-medium hover:bg-white/10 transition-all cursor-pointer"
+      >
+        <GitHubIcon class="w-5 h-5 fill-current" aria-hidden="true" />
+        <span>Star on GitHub</span>
+      </a>
+
       <a
         id="hero-cta-primary"
         href="https://app.penqwin.com"
         class="group select-none relative inline-flex items-center active:scale-95 justify-center gap-3 px-4 md:px-8 py-4 bg-text-primary text-white rounded-xl font-bold transition-all duration-300"
-        aria-label="Connect GitHub"
+        aria-label="Get Started"
       >
-        <span>Connect GitHub</span>
+        <span>Get Started</span>
         <ArrowRight
           class="w-5 inline-block group-hover:translate-x-1"
           aria-hidden="true"
         />
       </a>
-
-      <a
-        href=""
-        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sarinmsari/30min'});return false;"
-        class="inline-flex select-none group items-center justify-center gap-3 px-4 md:px-8 py-4 bg-bg-secondary/50 border border-border rounded-xl text-text-primary font-medium hover:bg-white/10 transition-all cursor-pointer"
-      >
-        Book a Demo
-      </a>
     </div>
   </div>
   <div
-    class="w-full max-w-4xl mt-12 md:mt-16 mb-20 md:mb-32 px-4 md:px-6 relative z-10"
+    class="hidden md:block w-full max-w-5xl mt-12 md:mt-16 mb-20 md:mb-32 px-4 md:px-6 relative z-10"
   >
-    <div
-      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#161616] shadow-2xl group"
-    >
-      <!-- Main Video Container -->
-      <div
-        class="relative w-full h-full bg-[#161616] rounded-2xl overflow-hidden"
-      >
-        <video
-          id="hero-video"
-          class="w-full h-full object-cover cursor-pointer"
-          src={tribalKnowledgeVideo}
-          preload="none"
-          playsinline
-          aria-label={videoTitle}
-          poster={videoThumbnail.src}
-        >
-          <track
-            src={tribalKnowledgeSubtitles}
-            kind="subtitles"
-            srclang="en"
-            label="English"
-            default
-          />
-          Your browser does not support the video tag.
-        </video>
-
-        <!-- Video Structured Data (SEO) -->
-        <script
-          type="application/ld+json"
-          set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            name: videoTitle,
-            description: videoDescription,
-            uploadDate: videoUploadDate,
-            thumbnailUrl: new URL(videoThumbnail.src, Astro.site).href,
-            contentUrl: tribalKnowledgeVideo,
-          })}
-        />
-
-        <!-- Play Button Overlay -->
-        <div
-          id="video-overlay"
-          class="absolute inset-0 flex items-center justify-center bg-black/45 group-hover:bg-black/50 transition-all duration-300 cursor-pointer"
-        >
-          <button
-            class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/90 text-text-primary shadow-2xl transform group-hover:scale-105 transition-all duration-300"
-            aria-label="Play Video"
-          >
-            <PlayIcon
-              class="w-6 h-6 md:w-8 md:h-8 fill-current translate-x-0.5"
-            />
-          </button>
-        </div>
-      </div>
-    </div>
+    <DashboardPreview />
   </div>
 </section>
-
-<script>
-  const initHeroVideo = () => {
-    const video = document.getElementById("hero-video") as HTMLVideoElement;
-    const overlay = document.getElementById("video-overlay");
-
-    if (video && overlay) {
-      const playVideo = () => {
-        overlay.classList.add("opacity-0", "pointer-events-none");
-        video.controls = true;
-        video.play().catch((err) => {
-          console.error("Error playing video:", err);
-        });
-      };
-
-      overlay.addEventListener("click", playVideo);
-      video.addEventListener("click", () => {
-        if (video.paused) {
-          playVideo();
-        } else {
-          overlay.classList.remove("opacity-0", "pointer-events-none");
-        }
-      });
-
-      video.addEventListener("ended", () => {
-        video.controls = false;
-        overlay.classList.remove("opacity-0", "pointer-events-none");
-      });
-    }
-  };
-
-  document.addEventListener("astro:page-load", initHeroVideo);
-  // Also run on initial load
-  initHeroVideo();
-</script>

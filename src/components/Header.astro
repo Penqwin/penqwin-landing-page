@@ -71,11 +71,11 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
         class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
         >Documentation</a
       >
-      <a
+      <!-- <a
         href="/#pricing"
         class="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
         >Pricing</a
-      >
+      > -->
       <a
         href="https://app.penqwin.com"
         class="group select-none px-4 py-2 flex items-center gap-1 bg-text-primary text-bg-main rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm active:scale-95"
@@ -121,16 +121,17 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
       >Documentation</a
     >
     <a
-      href=""
-      onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sarinmsari/30min'});return false;"
+      href="https://github.com/Penqwin"
+      target="_blank"
+      rel="noopener noreferrer"
       class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-      >Book a Demo</a
+      >Star on GitHub</a
     >
-    <a
+    <!-- <a
       href="/#pricing"
       class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
       >Pricing</a
-    >
+    > -->
     <a
       href="https://app.penqwin.com"
       class="w-full mt-2 group select-none py-3 flex items-center justify-center gap-1 bg-text-primary text-bg-main rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm active:scale-95"
