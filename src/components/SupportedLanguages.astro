@@ -73,9 +73,9 @@ const displayedLanguages = languages;
 
 {
   isMinimal ? (
-    <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-5 py-4 w-full">
+    <div class="flex flex-nowrap justify-between items-center gap-2 sm:gap-3 py-4 w-full overflow-x-auto no-scrollbar">
       {displayedLanguages.map((lang) => (
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center shrink-0">
           <img
             src={`https://cdn.simpleicons.org/${lang.slug}/909692`}
             alt={lang.name}
@@ -84,7 +84,7 @@ const displayedLanguages = languages;
           />
         </div>
       ))}
-      <div class="text-[10px] sm:text-xs md:text-sm font-medium text-text-muted opacity-50 whitespace-nowrap self-center ml-1 sm:ml-2">
+      <div class="text-[10px] sm:text-xs font-medium text-text-muted opacity-50 whitespace-nowrap self-center shrink-0 ml-1">
         & more...
       </div>
     </div>

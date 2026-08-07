@@ -63,7 +63,7 @@ const { videoUrl } = Astro.props;
       <!-- Right: Visual -->
       <div class="relative">
         <div
-          class="p-8 bg-primary/[0.02] border border-border/50 rounded-[2.5rem] space-y-4"
+          class="p-8 bg-primary/5 border border-border/50 rounded-[2.5rem] space-y-4"
         >
           {
             [
@@ -80,7 +80,7 @@ const { videoUrl } = Astro.props;
                     {item.label}
                   </span>
                 </div>
-                <span class="text-xs font-mono tracking-widest uppercase text-primary/60 bg-primary/5 border border-primary/10 px-2.5 py-1 rounded-full">
+                <span class="text-xs font-mono tracking-widest uppercase text-primary bg-primary/5 border border-primary/10 px-2.5 py-1 rounded-full">
                   {item.status}
                 </span>
               </div>
@@ -88,10 +88,10 @@ const { videoUrl } = Astro.props;
           }
         </div>
         <!-- Decorative glow behind card -->
-        <div
+        <!-- <div
           class="absolute -inset-8 bg-primary/5 blur-[60px] rounded-full pointer-events-none -z-10"
         >
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
