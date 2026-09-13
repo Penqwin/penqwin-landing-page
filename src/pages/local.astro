@@ -1,0 +1,506 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FAQ from "../components/FAQ.astro";
+import ArrowRight from "../assets/svg/arrow-right.astro";
+import Tick from "../assets/svg/tick.astro";
+import DashboardPreview from "../components/DashboardPreview.astro";
+import GithubIcon from "../assets/svg/github.astro";
+import DownloadIcon from "../assets/svg/download.astro";
+import ComputerIcon from "../assets/svg/computer.astro";
+import TeamIcon from "../assets/svg/team.astro";
+
+const faqs = [
+  {
+    question:
+      "Does the Local Knowledge Base send my code to Penqwin's servers?",
+    answer:
+      "No. The app reads your git repository and files directly from local disk. Documentation is generated and stored locally using your own AI provider API key.",
+  },
+  {
+    question: "Do I need an internet connection to use it?",
+    answer:
+      "Only when generating or updating documentation via AI. Browsing, searching, and editing existing docs work fully offline.",
+  },
+  {
+    question:
+      "Can multiple people on my team use the same local knowledge base?",
+    answer:
+      "The local app is designed for single-machine use. Teams that need shared, multi-user documentation should use Penqwin's cloud Knowledge Base instead.",
+  },
+  {
+    question: "What AI provider does it use?",
+    answer:
+      "Documentation generation is powered by Google Gemini. You provide your own API key, which is stored locally.",
+  },
+];
+---
+
+<Layout
+  title="Penqwin - Local AI Code Wiki & Engineering Knowledge Base"
+  description="Penqwin bootstraps local git repositories into structured engineering documentation and keeps docs updated automatically as code evolves, directly on your machine. Offline, private, and AI-powered."
+>
+  <main class="w-full bg-bg-main text-text-primary py-24 md:py-32">
+    <!-- Main Article for SEO -->
+    <article class="max-w-5xl mx-auto px-6 lg:px-8 space-y-32">
+      <!-- Hero Section -->
+      <section class="space-y-8 pt-16 text-center animate-fade-in">
+        <h1
+          class="font-serif text-4xl md:text-6xl tracking-tight leading-[1.1]"
+        >
+          Documentation that stays in sync<br class="hidden md:block" />
+          with your local git repository.
+        </h1>
+        <p
+          class="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+        >
+          Point Penqwin at your local git repository and automatically generate
+          documentation you can trust, without your code ever leaving your
+          machine.
+        </p>
+        <div
+          class="flex flex-col-reverse md:flex-row text-sm items-center justify-center gap-4 pt-8"
+        >
+          <a
+            href="https://github.com/Penqwin/desktop-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex select-none group items-center justify-center gap-2.5 px-4 md:px-8 py-4 bg-bg-secondary/50 border border-border rounded-xl text-text-primary font-medium hover:bg-white/10 transition-all cursor-pointer"
+          >
+            <GithubIcon class="w-5 h-5 opacity-80" />
+            <span>Star on GitHub</span>
+          </a>
+          <a
+            href="https://github.com/Penqwin/desktop-app/releases"
+            id="hero-windows-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group select-none relative inline-flex items-center active:scale-95 justify-center gap-3 px-4 md:px-8 py-4 bg-text-primary text-white rounded-xl font-bold transition-all duration-300"
+          >
+            <DownloadIcon class="w-5 h-5 opacity-90" />
+            <span>Download for Windows</span>
+          </a>
+          <a
+            href="https://github.com/Penqwin/desktop-app/releases"
+            id="hero-mac-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group select-none relative hidden items-center active:scale-95 justify-center gap-3 px-4 md:px-8 py-4 bg-text-primary text-white rounded-xl font-bold transition-all duration-300"
+          >
+            <DownloadIcon class="w-5 h-5 opacity-90" />
+            <span>Download for Mac</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Dashboard Preview -->
+      <div class="hidden md:block w-full max-w-5xl mx-auto relative z-10">
+        <DashboardPreview />
+      </div>
+
+      <!-- Intro Section -->
+      <section class="max-w-3xl mx-auto text-center space-y-6">
+        <p class="text-text-secondary text-lg leading-relaxed">
+          Penqwin's Local Knowledge Base is a desktop application that reads
+          your git history and file structure directly from disk, generates full
+          engineering documentation using AI, and stores everything locally in
+          an embedded database. There is no backend, no account required to use
+          the core product, and no code ever leaves your computer.
+        </p>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="space-y-12">
+        <div class="text-center space-y-4">
+          <h2
+            class="font-serif text-3xl md:text-4xl font-medium tracking-tight"
+          >
+            How It Works
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="bg-white/[0.02] border border-white/[0.05] p-8 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+          >
+            <h3 class="text-xl font-medium text-text-primary font-serif">
+              1. Connect Your Repository
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              Point the app at any local git repository. No cloud connection,
+              GitHub integration, or remote access required — it works entirely
+              from what's already on your disk.
+            </p>
+          </div>
+          <div
+            class="bg-white/[0.02] border border-white/[0.05] p-8 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+          >
+            <h3 class="text-xl font-medium text-text-primary font-serif">
+              2. Bootstrap Your Repository
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              Understand your codebase from day one. The app scans your
+              repository structure and organizes it into documentation for your
+              architecture, APIs, modules, and business logic using AI.
+            </p>
+          </div>
+          <div
+            class="bg-white/[0.02] border border-white/[0.05] p-8 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+          >
+            <h3 class="text-xl font-medium text-text-primary font-serif">
+              3. Evolve with Code Changes
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              Documentation that evolves with your repository. The app tracks
+              your local commits to calculate diffs, keeping documentation
+              aligned with the actual state of your system without redundant
+              work.
+            </p>
+          </div>
+          <div
+            class="bg-white/[0.02] border border-white/[0.05] p-8 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+          >
+            <h3 class="text-xl font-medium text-text-primary font-serif">
+              4. Organize by Workspace
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              Manage multiple projects side by side. Each workspace is fully
+              isolated, so documentation for one repository never mixes with
+              another.
+            </p>
+          </div>
+          <div
+            class="bg-white/[0.02] border border-white/[0.05] p-8 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+          >
+            <h3 class="text-xl font-medium text-text-primary font-serif">
+              5. Search Instantly, Offline
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              A built-in full-text search engine indexes titles and rich content
+              locally, with live highlighting — no internet connection required.
+            </p>
+          </div>
+          <div
+            class="bg-white/[0.02] border border-white/[0.05] p-8 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+          >
+            <h3 class="text-xl font-medium text-text-primary font-serif">
+              6. Edit Alongside the AI
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              A rich text editor (tables, code blocks, markdown,
+              drag-to-reorder) lets your team refine AI-generated content
+              directly, without switching tools.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Local-First Matters -->
+      <section class="space-y-12">
+        <div class="text-center space-y-4">
+          <h2
+            class="font-serif text-3xl md:text-4xl font-medium tracking-tight"
+          >
+            Why Local-First Matters
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="flex gap-4">
+            <div
+              class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary"
+            >
+              <Tick class="w-4 h-4" />
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-text-primary font-serif mb-2">
+                Your Code Stays on Your Machine
+              </h3>
+              <p class="text-text-secondary leading-relaxed">
+                There's no upload step. Documentation generation happens by
+                reading files and git history directly from local disk — nothing
+                is transmitted to a remote server for storage.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div
+              class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary"
+            >
+              <Tick class="w-4 h-4" />
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-text-primary font-serif mb-2">
+                Works Fully Offline
+              </h3>
+              <p class="text-text-secondary leading-relaxed">
+                Once bootstrapped, search, editing, and organization all work
+                without an internet connection. Only AI generation calls require
+                connectivity.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div
+              class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary"
+            >
+              <Tick class="w-4 h-4" />
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-text-primary font-serif mb-2">
+                No Infrastructure to Manage
+              </h3>
+              <p class="text-text-secondary leading-relaxed">
+                There's no database to provision, no server to patch, and no
+                uptime to monitor. It's a desktop application — install it and
+                it runs.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div
+              class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary"
+            >
+              <Tick class="w-4 h-4" />
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-text-primary font-serif mb-2">
+                Built for Regulated and Air-Gapped Environments
+              </h3>
+              <p class="text-text-secondary leading-relaxed">
+                Teams under strict data-handling requirements — finance,
+                healthcare, defense, and government contractors — can generate
+                and maintain documentation without violating data residency or
+                network isolation policies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Who It's For -->
+      <section
+        class="bg-white/[0.02] border border-white/[0.05] rounded-3xl p-8 md:p-12"
+      >
+        <h2
+          class="font-serif text-3xl md:text-4xl font-medium tracking-tight mb-8 text-center"
+        >
+          Who It's For
+        </h2>
+        <ul class="space-y-4 max-w-3xl mx-auto">
+          <li class="flex gap-4 items-start">
+            <div
+              class="mt-1 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 rounded-full bg-text-primary"></div>
+            </div>
+            <p class="text-lg text-text-secondary">
+              <strong class="text-text-primary font-medium"
+                >Solo developers and indie teams</strong
+              > who want documentation without paying for or managing a hosted service.
+            </p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <div
+              class="mt-1 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 rounded-full bg-text-primary"></div>
+            </div>
+            <p class="text-lg text-text-secondary">
+              <strong class="text-text-primary font-medium"
+                >Security-conscious engineering teams</strong
+              > that can't send proprietary code to third-party servers.
+            </p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <div
+              class="mt-1 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 rounded-full bg-text-primary"></div>
+            </div>
+            <p class="text-lg text-text-secondary">
+              <strong class="text-text-primary font-medium"
+                >Consultants and contractors</strong
+              > managing multiple isolated client codebases on one machine.
+            </p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <div
+              class="mt-1 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 rounded-full bg-text-primary"></div>
+            </div>
+            <p class="text-lg text-text-secondary">
+              <strong class="text-text-primary font-medium"
+                >Teams in regulated industries</strong
+              > where compliance rules restrict where code and derived data can be
+              processed.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Comparison Section -->
+      <section class="space-y-10">
+        <div class="text-center space-y-4">
+          <h2
+            class="font-serif text-3xl md:text-4xl font-medium tracking-tight"
+          >
+            Personal vs. Team
+          </h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse max-w-4xl mx-auto">
+            <thead>
+              <tr>
+                <th
+                  class="py-4 pr-6 text-text-secondary font-medium font-serif border-b border-border/50 text-lg w-1/3"
+                ></th>
+                <th
+                  class="py-4 px-6 text-text-primary font-medium font-serif border-b border-border/50 text-lg w-1/3"
+                >
+                  <div class="flex items-center gap-2">
+                    <ComputerIcon class="w-5 h-5" />
+                    <span>Personal</span>
+                  </div>
+                </th>
+                <th
+                  class="py-4 pl-6 text-text-secondary font-medium font-serif border-b border-border/50 text-lg w-1/3"
+                >
+                  <div class="flex items-center gap-2">
+                    <TeamIcon class="w-5 h-5" />
+                    <span>Team</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-lg">
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Where data lives</td
+                >
+                <td class="py-5 px-6 text-text-secondary">Your local machine</td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Penqwin's managed infrastructure</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium">Setup</td>
+                <td class="py-5 px-6 text-text-secondary"
+                  >Install the desktop app</td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Connect your GitHub org</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Team collaboration</td
+                >
+                <td class="py-5 px-6 text-text-secondary"
+                  >Single-user, per machine</td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Multi-user, shared workspaces</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium">Best for</td
+                >
+                <td class="py-5 px-6 text-text-secondary"
+                  >Privacy-sensitive, offline, solo use</td
+                >
+                <td class="py-5 pl-6 text-text-secondary"
+                  >Teams needing shared, always-on docs</td
+                >
+              </tr>
+              <tr class="group hover:bg-white/[0.01] transition-colors">
+                <td class="py-5 pr-6 text-text-primary font-medium"
+                  >Internet required</td
+                >
+                <td class="py-5 px-6 text-text-secondary"
+                  >Only for AI generation calls</td
+                >
+                <td class="py-5 pl-6 text-text-secondary">Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="max-w-3xl mx-auto space-y-10">
+        <div class="text-center space-y-4">
+          <h2
+            class="font-serif text-3xl md:text-4xl font-medium tracking-tight"
+          >
+            Frequently Asked Questions
+          </h2>
+        </div>
+        <FAQ items={faqs} />
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<script>
+  async function fetchLatestReleaseUrls() {
+    try {
+      const response = await fetch(
+        "https://api.github.com/repos/Penqwin/desktop-app/releases/latest",
+      );
+      const data = await response.json();
+
+      const winBtn = document.getElementById("hero-windows-btn");
+      const macBtn = document.getElementById("hero-mac-btn");
+
+      if (data.assets) {
+        const winAsset = data.assets.find((asset: any) =>
+          asset.name.endsWith(".exe"),
+        );
+        const macAsset = data.assets.find(
+          (asset: any) =>
+            asset.name.endsWith(".dmg") || asset.name.endsWith(".pkg"),
+        );
+
+        if (winAsset && winBtn)
+          winBtn.setAttribute("href", winAsset.browser_download_url);
+        if (macAsset && macBtn)
+          macBtn.setAttribute("href", macAsset.browser_download_url);
+      }
+    } catch (error) {
+      console.error("Failed to fetch latest release:", error);
+    }
+  }
+
+  function updateDownloadButtons() {
+    const isMac = navigator.userAgent.toLowerCase().includes("mac");
+    if (isMac) {
+      const winBtn = document.getElementById("hero-windows-btn");
+      const macBtn = document.getElementById("hero-mac-btn");
+
+      if (winBtn && macBtn) {
+        winBtn.classList.remove("inline-flex");
+        winBtn.classList.add("hidden");
+
+        macBtn.classList.remove("hidden");
+        macBtn.classList.add("inline-flex");
+      }
+    }
+
+    // Fetch the direct URLs in the background
+    fetchLatestReleaseUrls();
+  }
+
+  // Run on page load and view transition
+  document.addEventListener("astro:page-load", updateDownloadButtons);
+  updateDownloadButtons();
+</script>
+
+<style>
+  /* Override primary colour to --primary (green) for the MCP page */
+  :root {
+    --color-primary: var(--primary-v2);
+    --color-primary-light: var(--primary-light-v2);
+  }
+</style>

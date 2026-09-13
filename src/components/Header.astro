@@ -1,10 +1,18 @@
 ---
 import penqwinWebp from "../assets/images/penqwin-primary.webp";
 import penqwinPng from "../assets/images/penqwin-primary.png";
+import penqwinWebpv1 from "../assets/images/penqwin-primary-v1.webp";
+import penqwinPngv1 from "../assets/images/penqwin-primary-v1.png";
+import penqwinWebpV2 from "../assets/images/penqwin-primary-v2.webp";
+import penqwinPngV2 from "../assets/images/penqwin-primary-v2.png";
 import ArrowRight from "../assets/svg/arrow-right.astro";
 import Hamburger from "../assets/svg/hamburger.astro";
+import ComputerIcon from "../assets/svg/computer.astro";
+import TeamIcon from "../assets/svg/team.astro";
+import HubIcon from "../assets/svg/hub.astro";
 
 const isMcpPage = Astro.url.pathname.startsWith("/mcp");
+const isLocalPage = Astro.url.pathname.startsWith("/local");
 ---
 
 <header
@@ -29,11 +37,14 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
       aria-label="Penqwin Home"
     >
       <picture>
-        <source srcset={penqwinWebp.src} type="image/webp" />
+        <source
+          srcset={isLocalPage ? penqwinWebpV2.src : isMcpPage ? penqwinWebp.src : penqwinWebpv1.src}
+          type="image/webp"
+        />
         <img
-          src={penqwinPng.src}
+          src={isLocalPage ? penqwinPngV2.src : isMcpPage ? penqwinPng.src : penqwinPngv1.src}
           alt="Penqwin Logo"
-          class={`w-18 h-auto transition-all duration-300${isMcpPage ? " logo-black" : ""}`}
+          class={`w-18 h-auto transition-all duration-300`}
         />
       </picture>
     </a>
@@ -45,16 +56,22 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
     >
       <div class="flex items-center gap-6">
         <a
+          href="/local"
+          id="nav-pill-local-kb"
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200 flex items-center gap-1.5"
+          ><ComputerIcon class="w-4 h-4" /> Personal</a
+        >
+        <a
           href="/"
           id="nav-pill-kb"
-          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
-          >Knowledge Base</a
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200 flex items-center gap-1.5"
+          ><TeamIcon class="w-4 h-4" /> Team</a
         >
         <a
           href="/mcp"
           id="nav-pill-mcp"
-          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200"
-          >Context Router MCP</a
+          class="nav-pill px-1 pt-1.5 pb-4 text-sm font-medium transition-all duration-200 flex items-center gap-1.5"
+          ><HubIcon class="w-4 h-4" /> Context Router</a
         >
       </div>
     </div>
@@ -101,14 +118,19 @@ const isMcpPage = Astro.url.pathname.startsWith("/mcp");
     class="md:hidden hidden absolute top-full left-0 right-0 w-full bg-bg-main border-b border-border/10 px-6 py-6 flex flex-col gap-4 shadow-xl z-50"
   >
     <a
+      href="/local"
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2"
+      ><ComputerIcon class="w-5 h-5" /> Personal</a
+    >
+    <a
       href="/"
-      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
-      >Knowledge Base</a
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2"
+      ><TeamIcon class="w-5 h-5" /> Team</a
     >
     <a
       href="/mcp"
-      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors"
-      >Context Router MCP</a
+      class="mobile-menu-link py-2 text-base font-medium text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2"
+      ><HubIcon class="w-5 h-5" /> Context Router MCP</a
     >
     <a
       href="https://github.com/Penqwin"
