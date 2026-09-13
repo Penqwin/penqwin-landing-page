@@ -204,7 +204,7 @@
 
     // --- Context-routing path highlight ---
     const ROUTE_COLOR = getThemeColorWithAlpha(
-      "--primary-light",
+      "--color-primary-light",
       0.6,
       "#08872B",
     );
@@ -298,9 +298,9 @@
         const rx = n.x3d;
         const rz = n.z3d;
 
-        // Subtle organic float in 3D (drift)
-        const driftY = Math.sin(t * 0.0009 * n.speed + n.phase) * 8;
-        const driftX = Math.cos(t * 0.0007 * n.speed + n.phase) * 4;
+        // Subtle organic float in 3D (drift) - disabled per request
+        const driftY = 0;
+        const driftX = 0;
 
         const rxFinal = rx + driftX;
         const ryFinal = n.y3d + driftY;

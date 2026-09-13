@@ -12,8 +12,8 @@ import ItalicIcon from "../assets/svg/text-formatting/italic.astro";
 import UnderlineIcon from "../assets/svg/text-formatting/underline.astro";
 import StrikethroughIcon from "../assets/svg/text-formatting/strikethrough.astro";
 import CodeIcon from "../assets/svg/text-formatting/code.astro";
-import penqwinWebp from "../assets/images/penqwin-primary.webp";
-import penqwinPng from "../assets/images/penqwin-primary.png";
+import penqwinWebpV2 from "../assets/images/penqwin-primary-v2.webp";
+import penqwinPngV2 from "../assets/images/penqwin-primary-v2.png";
 import Bullet from "../assets/svg/text-formatting/bullet.astro";
 import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
 ---
@@ -50,9 +50,9 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
         <!-- sidebar content (scrollable) -->
         <div class="flex-1 overflow-y-auto custom-scrollbar px-6 pt-4 pb-2">
           <picture>
-            <source srcset={penqwinWebp.src} type="image/webp" />
+            <source srcset={penqwinWebpV2.src} type="image/webp" />
             <img
-              src={penqwinPng.src}
+              src={penqwinPngV2.src}
               alt="Penqwin - Professional Engineering Documentation Platform"
               class="w-8 h-auto opacity-80"
             />
@@ -463,3 +463,9 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
     </div>
   </div>
 </div>
+
+<style>
+  .dashboard-preview {
+    --color-primary-v1: var(--color-primary);
+  }
+</style>

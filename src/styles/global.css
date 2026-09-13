@@ -60,20 +60,22 @@ body {
 }
 
 :root {
-    --primary-v1: #8b5cf6;
     --primary: #08872B;
-    --primary-light-v1: #a78bfa;
+    --primary-v1: #8b5cf6;
+    --primary-v2: #8a5a44;
     --primary-light: #08872B;
-    --bg-main-v1: #04040d;
+    --primary-light-v1: #a78bfa;
+    --primary-light-v2: #9d6b53;
     --bg-main: #F2F5F3;
-    --bg-secondary-v1: #0a0a16;
+    --bg-main-v1: #04040d;
     --bg-secondary: #E4EBE6;
-    --text-primary-v1: #ffffff;
+    --bg-secondary-v1: #0a0a16;
     --text-primary: #101411;
-    --text-secondary-v1: #94a3b8;
+    --text-primary-v1: #ffffff;
     --text-secondary: #232925;
-    --text-muted-v1: #64748B;
+    --text-secondary-v1: #94a3b8;
     --text-muted: #909692;
+    --text-muted-v1: #64748B;
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
