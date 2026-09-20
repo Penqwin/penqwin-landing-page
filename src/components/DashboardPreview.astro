@@ -16,6 +16,23 @@ import penqwinWebpV2 from "../assets/images/penqwin-primary-v2.webp";
 import penqwinPngV2 from "../assets/images/penqwin-primary-v2.png";
 import Bullet from "../assets/svg/text-formatting/bullet.astro";
 import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
+
+interface Props {
+  /** 'changelog' – Changeset Summary expanded with changelog entries;
+   *  default – Code Reference view (original behaviour) */
+  variant?: "changelog" | "default";
+}
+const { variant = "default" } = Astro.props;
+const isChangelog = variant === "changelog";
+
+const changelogEntries = [
+  { label: "Changelog Generation & DB Stability", active: true },
+  { label: "Fix: TipTap Typing Glitch", active: false },
+  { label: "Enhanced Code Reference Sync", active: false },
+  { label: "Improved Navigation System", active: false },
+  { label: "Editor Table Interactions", active: false },
+  { label: "Refined Changelog Prompting", active: false },
+];
 ---
 
 <!-- Dashboard Showcase -->
@@ -78,157 +95,153 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
 
           <!-- sidebar entities -->
           <div class="mt-3 w-full flex flex-col text-[9px] tracking-tight">
-            <!-- changeset summary -->
-            <div
-              class="text-text-secondary-v1 w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <div class="flex items-center gap-2">
-                <FolderIcon class="w-auto h-3" /> Changeset Summary
-              </div>
-              <ArrowIcon
-                class="w-auto h-2.5 rotate-90 text-text-secondary-v1"
-              />
-            </div>
+            {
+              isChangelog ? (
+                <>
+                  {/* ── CHANGELOG VARIANT ── */}
 
-            <!-- code references -->
-            <div
-              class="text-text-secondary-v1 w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <div class="flex items-center gap-2">
-                <FolderIcon class="w-auto h-3" /> Code Reference
-              </div>
-              <ArrowIcon
-                class="w-auto h-2.5 -rotate-90 text-text-secondary-v1"
-              />
-            </div>
-
-            <!-- src folder (expanded) -->
-            <div
-              class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <div class="flex items-center gap-2">
-                <FolderIcon class="w-auto h-2.5" /> src
-              </div>
-              <ArrowIcon class="w-auto h-2 -rotate-90 text-text-secondary-v1" />
-            </div>
-
-            <!-- src content -->
-            <div class="ml-1.5 pl-2 border-l border-solid border-white/5">
-              <!-- app folder (expanded) -->
-              <div
-                class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-              >
-                <div class="flex items-center gap-2">
-                  <FolderIcon class="w-auto h-2.5" /> app
-                </div>
-                <ArrowIcon
-                  class="w-auto h-2 -rotate-90 text-text-secondary-v1"
-                />
-              </div>
-
-              <!-- app content -->
-              <div class="ml-1.5 pl-2 border-l border-solid border-white/5">
-                <div
-                  class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-                >
-                  <div class="flex items-center gap-2">
-                    <FolderIcon class="w-auto h-2.5" /> auth
+                  {/* Changeset Summary — EXPANDED */}
+                  <div class="text-text-primary-v1 w-full flex justify-between gap-2 py-1 items-center cursor-pointer">
+                    <div class="flex items-center gap-2 font-semibold">
+                      <FolderIcon class="w-auto h-3" /> Changeset Summary
+                    </div>
+                    <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary-v1" />
                   </div>
-                  <ArrowIcon
-                    class="w-auto h-2 rotate-90 text-text-secondary-v1"
-                  />
-                </div>
 
-                <!-- api folder (expanded) -->
-                <div
-                  class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-                >
-                  <div class="flex items-center gap-2">
-                    <FolderIcon class="w-auto h-2.5" /> api
+                  {/* Changelog entries list */}
+                  <div class="ml-1.5 pl-2 border-l border-solid border-white/5 flex flex-col gap-0.5 pb-2">
+                    {changelogEntries.map((entry) => (
+                      <div
+                        class={`w-full flex items-center gap-2 pl-1 rounded-md py-1 cursor-pointer transition-colors ${
+                          entry.active
+                            ? "text-primary-v1 bg-primary-v1/10 font-medium"
+                            : "text-text-secondary-v1 hover:text-text-primary-v1"
+                        }`}
+                      >
+                        <DocumentIcon class="w-auto h-2.5 flex-shrink-0" />
+                        <span class="truncate">{entry.label}</span>
+                      </div>
+                    ))}
                   </div>
-                  <ArrowIcon
-                    class="w-auto h-2 -rotate-90 text-text-secondary-v1"
-                  />
-                </div>
-                <!-- api content -->
-                <div
-                  class="text-primary-v1 w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-primary-v1/20 pt-1 pb-1"
-                >
-                  <div
-                    class="bg-primary-v1/10 px-1.5 py-1 w-full rounded-md flex items-center justify-start gap-2 font-medium"
-                  >
-                    <DocumentIcon class="w-auto h-2.5" /> API & Endpoints
+
+                  {/* Code Reference — COLLAPSED */}
+                  <div class="text-text-secondary-v1 w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-3" /> Code Reference
+                    </div>
+                    <ArrowIcon class="w-auto h-2.5 rotate-90 text-text-secondary-v1" />
                   </div>
-                </div>
-                <div
-                  class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-                >
-                  <div class="flex items-center gap-2">
-                    <FolderIcon class="w-auto h-2.5" /> core
+
+                  {/* Guides — collapsed */}
+                  <div class="text-text-secondary-v1 w-full flex justify-between gap-2 pt-2 pb-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-3" /> Guides
+                    </div>
+                    <ArrowIcon class="w-auto h-2.5 rotate-90 text-text-secondary-v1" />
                   </div>
-                  <ArrowIcon
-                    class="w-auto h-2 rotate-90 text-text-secondary-v1"
-                  />
-                </div>
-              </div>
+                </>
+              ) : (
+                <>
+                  {/* ── DEFAULT VARIANT ── */}
 
-              <!-- rest of src -->
-              <div
-                class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-              >
-                <div class="flex items-center gap-2">
-                  <FolderIcon class="w-auto h-2.5" /> services
-                </div>
-                <ArrowIcon
-                  class="w-auto h-2 rotate-90 text-text-secondary-v1"
-                />
-              </div>
-              <div
-                class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-              >
-                <div class="flex items-center gap-2">
-                  <FolderIcon class="w-auto h-2.5" /> store
-                </div>
-                <ArrowIcon
-                  class="w-auto h-2 rotate-90 text-text-secondary-v1"
-                />
-              </div>
-            </div>
+                  {/* changeset summary — collapsed */}
+                  <div class="text-text-secondary-v1 w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-3" /> Changeset Summary
+                    </div>
+                    <ArrowIcon class="w-auto h-2.5 rotate-90 text-text-secondary-v1" />
+                  </div>
 
-            <!-- database folder -->
-            <div
-              class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <div class="flex items-center gap-2">
-                <FolderIcon class="w-auto h-2.5" /> database
-              </div>
-              <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
-            </div>
+                  {/* code references — expanded */}
+                  <div class="text-text-secondary-v1 w-full flex justify-between gap-2 py-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-3" /> Code Reference
+                    </div>
+                    <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary-v1" />
+                  </div>
 
-            <!-- guides -->
-            <div
-              class="text-text-secondary-v1 w-full flex justify-between gap-2 pt-2 pb-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <div class="flex items-center gap-2">
-                <FolderIcon class="w-auto h-3" /> Guides
-              </div>
-              <ArrowIcon
-                class="w-auto h-2.5 -rotate-90 text-text-secondary-v1"
-              />
-            </div>
-            <div
-              class="text-text-secondary-v1 flex items-center gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <DocumentIcon class="w-auto h-2.5" /> Authentication
-            </div>
-            <div
-              class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors"
-            >
-              <div class="flex items-center gap-2">
-                <FolderIcon class="w-auto h-2.5" /> Agentic AI
-              </div>
-              <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
-            </div>
+                  {/* src folder (expanded) */}
+                  <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-2.5" /> src
+                    </div>
+                    <ArrowIcon class="w-auto h-2 -rotate-90 text-text-secondary-v1" />
+                  </div>
+
+                  {/* src content */}
+                  <div class="ml-1.5 pl-2 border-l border-solid border-white/5">
+                    {/* app folder (expanded) */}
+                    <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                      <div class="flex items-center gap-2">
+                        <FolderIcon class="w-auto h-2.5" /> app
+                      </div>
+                      <ArrowIcon class="w-auto h-2 -rotate-90 text-text-secondary-v1" />
+                    </div>
+
+                    {/* app content */}
+                    <div class="ml-1.5 pl-2 border-l border-solid border-white/5">
+                      <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-2">
+                          <FolderIcon class="w-auto h-2.5" /> auth
+                        </div>
+                        <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
+                      </div>
+
+                      {/* api folder (expanded) */}
+                      <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-2">
+                          <FolderIcon class="w-auto h-2.5" /> api
+                        </div>
+                        <ArrowIcon class="w-auto h-2 -rotate-90 text-text-secondary-v1" />
+                      </div>
+                      {/* api content */}
+                      <div class="text-primary-v1 w-full flex items-center gap-2 pl-1 ml-1.5 border-l border-solid border-primary-v1/20 pt-1 pb-1">
+                        <div class="bg-primary-v1/10 px-1.5 py-1 w-full rounded-md flex items-center justify-start gap-2 font-medium">
+                          <DocumentIcon class="w-auto h-2.5" /> API &amp;
+                          Endpoints
+                        </div>
+                      </div>
+                      <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-2">
+                          <FolderIcon class="w-auto h-2.5" /> core
+                        </div>
+                        <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
+                      </div>
+                    </div>
+
+                    {/* rest of src */}
+                    <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                      <div class="flex items-center gap-2">
+                        <FolderIcon class="w-auto h-2.5" /> services
+                      </div>
+                      <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
+                    </div>
+                    <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-1 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                      <div class="flex items-center gap-2">
+                        <FolderIcon class="w-auto h-2.5" /> store
+                      </div>
+                      <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
+                    </div>
+                  </div>
+
+                  {/* database folder */}
+                  <div class="text-text-secondary-v1 flex items-center justify-between gap-2 pl-2 ml-1.5 border-l border-solid border-white/5 pt-1 pb-2 hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-2.5" /> database
+                    </div>
+                    <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
+                  </div>
+
+                  {/* guides */}
+                  <div class="text-text-secondary-v1 w-full flex justify-between gap-2 pt-2 pb-1 items-center hover:text-text-primary-v1 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-2">
+                      <FolderIcon class="w-auto h-3" /> Guides
+                    </div>
+                    <ArrowIcon class="w-auto h-2.5 -rotate-90 text-text-secondary-v1" />
+                  </div>
+                </>
+              )
+            }
           </div>
         </div>
 
@@ -253,211 +266,420 @@ import MoreVert from "../assets/svg/text-formatting/moreVert.astro";
       <div
         class="bg-bg-main-v1 pt-2 w-3/4 h-full flex flex-col border-l border-white/5"
       >
-        <!-- editor actions -->
-        <div class="px-6 flex items-center justify-between select-none">
-          <div
-            class="bg-border-v1/50 hover:bg-border-v1 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-secondary-v1 hover:text-text-primary-v1 text-[9px] font-medium cursor-pointer"
-          >
-            <AiGenerateIcon class="w-2.5 h-2.5" />Regenerate Doc
-          </div>
-          <div
-            class="bg-primary-v1 hover:bg-primary-v1/90 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-primary-v1 text-[9px] font-semibold cursor-pointer shadow-sm shadow-primary-v1/20"
-          >
-            <SaveIcon class="w-2.5 h-2.5" />Save
-          </div>
+        <!-- editor actions / DocNavbar -->
+        <div
+          class="px-4 flex items-center justify-end select-none border-b border-white/5 pb-2"
+        >
+          {
+            isChangelog ? (
+              <>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <div class="bg-border-v1/50 hover:bg-border-v1 transition-colors rounded-md px-2 py-1 flex items-center gap-1 text-text-secondary-v1 text-[8px] font-medium cursor-pointer">
+                    <AiGenerateIcon class="w-2 h-2" />
+                    Regenerate
+                  </div>
+                  <div class="bg-primary-v1 hover:bg-primary-v1/90 transition-colors rounded-md px-2 py-1 flex items-center gap-1 text-text-primary-v1 text-[8px] font-semibold cursor-pointer">
+                    <SaveIcon class="w-2 h-2" />
+                    Save
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div class="bg-border-v1/50 hover:bg-border-v1 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-secondary-v1 hover:text-text-primary-v1 text-[9px] font-medium cursor-pointer">
+                  <AiGenerateIcon class="w-2.5 h-2.5" />
+                  Regenerate Doc
+                </div>
+                <div class="bg-primary-v1 hover:bg-primary-v1/90 transition-colors rounded-md px-2.5 py-1 flex items-center gap-1.5 text-text-primary-v1 text-[9px] font-semibold cursor-pointer">
+                  <SaveIcon class="w-2.5 h-2.5" />
+                  Save
+                </div>
+              </>
+            )
+          }
         </div>
 
-        <!-- editor content -->
-        <div class="flex-1 px-10 py-8 custom-scrollbar group/editor">
-          <div
-            class="text-editor w-full h-full max-w-2xl text-[10px] text-text-primary-v1 leading-relaxed"
-          >
-            <div class="section mb-6">
-              <h3
-                class="text-sm font-semibold mb-3 text-text-primary-v1 tracking-tight"
-              >
-                Authentication & Authorization
-              </h3>
-              <p class="mb-4">
-                Security is enforced at the route level through server-side
-                session validation. Most endpoints utilize the <code>
-                  createClient</code
-                > utility to interact with database, ensuring that data access respects
-                the authenticated user's permissions.
-              </p>
-              <h4
-                class="text-[11px] font-semibold mb-3 text-text-primary-v1 tracking-tight"
-              >
-                Administrative Access
-              </h4>
-              <p class="inline">
-                For operations that require cross-workspace visibility, state
-                transitions that bypass high-level configuration changes (e.g.,
-                repository mapping discovery), the system utilizes <code
-                  >superiorClient</code
-                >.&nbsp;
-                <div
-                  class="relative inline-flex items-center text-text-primary-v1 font-semibold group-hover/editor:bg-accent transition-colors cursor-default"
-                >
-                  Authorization
-                  <div
-                    class="floating-menu select-none absolute -top-10 left-1/2 -translate-x-1/2 scale-90 opacity-0 group-hover/editor:opacity-100 group-hover/editor:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary-v1 backdrop-blur-md text-text-secondary-v1 px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-[999]"
-                  >
-                    <div
-                      class="border border-white/5 pl-2 pr-1 py-0.5 text-[8px] rounded-md flex items-center gap-1 font-medium bg-white/5"
-                    >
-                      Paragraph <ArrowIcon
-                        class="w-auto h-2 rotate-90 text-text-secondary-v1"
-                      />
+        <!-- editor content (Tiptap-style prose editor) -->
+        <div class="flex-1 flex min-h-0 overflow-hidden">
+          {
+            isChangelog ? (
+              /* ── CHANGESET SUMMARY — real Penqwin release notes ── */
+              <>
+                {/* Main prose editor area */}
+                <div class="flex-1 px-8 py-5 overflow-y-auto custom-scrollbar">
+                  <div class="max-w-xl text-[10px] text-text-primary-v1 leading-relaxed space-y-4">
+                    <div class="flex items-center gap-1.5 text-[8px] text-text-muted-v1">
+                      <span class="text-[12px] font-bold text-text-primary-v1 truncate">
+                        Changelog Generation &amp; DB Stability
+                      </span>
                     </div>
 
-                    <div
-                      class="flex gap-2 items-center px-1 border-l border-white/5"
-                    >
-                      <div
-                        class="text-text-primary-v1 transition-colors cursor-pointer"
-                      >
-                        <BoldIcon class="w-2.5 h-2.5" />
-                      </div>
-                      <div
-                        class="hover:text-text-primary-v1 transition-colors cursor-pointer"
-                      >
-                        <ItalicIcon class="w-2.5 h-2.5" />
-                      </div>
-                      <div
-                        class="hover:text-text-primary-v1 transition-colors cursor-pointer"
-                      >
-                        <UnderlineIcon class="w-2.5 h-2.5" />
-                      </div>
-                      <div
-                        class="hover:text-text-primary-v1 transition-colors cursor-pointer"
-                      >
-                        <StrikethroughIcon class="w-2.5 h-2.5" />
-                      </div>
-                      <div
-                        class="hover:text-text-primary-v1 transition-colors cursor-pointer"
-                      >
-                        <CodeIcon class="w-2.5 h-2.5" />
-                      </div>
-                      <div
-                        class="hover:text-text-primary-v1 transition-colors cursor-pointer"
-                      >
-                        <Bullet class="w-2.5 h-2.5" />
-                      </div>
-                      <div
-                        class="hover:text-text-primary-v1 transition-colors cursor-pointer border border-border-v1 rounded-sm w-3 h-3 flex items-center justify-center"
-                      >
-                        <MoreVert class="w-2 h-2" />
-                      </div>
+                    {/* Intro paragraph */}
+                    <p class="text-text-secondary-v1 leading-relaxed">
+                      This release focuses on enhancing the stability,
+                      reliability, and documentation generation capabilities of
+                      Penqwin, including a new feature for generating
+                      user-facing changelogs.
+                    </p>
+
+                    {/* Added */}
+                    <div>
+                      <h2 class="text-[12px] font-bold text-text-primary-v1 mb-3">
+                        Added
+                      </h2>
+                      <ul class="space-y-3 text-text-secondary-v1">
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Changelog Generation:
+                            </strong>{" "}
+                            You can now generate a user-facing Changelog
+                            directly from selected Git commits. This new feature
+                            creates a dedicated "Changelog" folder in your
+                            sidebar, with documents summarizing the changes.
+                            Documents within this folder are automatically
+                            sorted with the newest entries first.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Fixed */}
+                    <div>
+                      <h2 class="text-[12px] font-bold text-text-primary-v1 mb-3 mt-6">
+                        Fixed
+                      </h2>
+                      <ul class="space-y-3 text-text-secondary-v1">
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Critical Database Stability:
+                            </strong>{" "}
+                            Addressed underlying IndexedDB corruption issues
+                            (e.g.,{" "}
+                            <code class="px-1 py-0.5 rounded bg-white/5 text-primary-v1 font-mono text-[9px]">
+                              IDB QuotaManager crash
+                            </code>
+                            ) that could lead to data loss or application
+                            instability. The system now includes automatic
+                            database repair mechanisms and migrates to a more
+                            resilient database version, significantly improving
+                            data persistence and overall application
+                            reliability.
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Editor Typing Glitches:
+                            </strong>{" "}
+                            Resolved severe typing glitches and cursor jumps
+                            that could occur within the document editor,
+                            particularly when interacting with tables (e.g., on
+                            Enter or Space key presses). This provides a
+                            smoother and more reliable editing experience.
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Resolved UI/Behavioral Quirks:
+                            </strong>{" "}
+                            Removed React StrictMode to prevent potential
+                            conflicts with certain third-party libraries or
+                            development behaviors, contributing to a more stable
+                            overall application experience.
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Minor Image Path Correction:
+                            </strong>{" "}
+                            Corrected internal asset paths to ensure all
+                            application images load reliably.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Changed */}
+                    <div>
+                      <h2 class="text-[12px] font-bold text-text-primary-v1 mb-3 mt-6">
+                        Changed
+                      </h2>
+                      <ul class="space-y-3 text-text-secondary-v1">
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Improved Navigation System:
+                            </strong>{" "}
+                            Refactored internal routing and navigation to use a
+                            centralized system of constants. This makes the
+                            application's navigation more robust, consistent,
+                            and easier to maintain. An alias for{" "}
+                            <code class="px-1 py-0.5 rounded bg-white/5 text-primary-v1 font-mono text-[9px]">
+                              /dashboard
+                            </code>{" "}
+                            has been added to automatically redirect to the home
+                            page (
+                            <code class="px-1 py-0.5 rounded bg-white/5 text-primary-v1 font-mono text-[9px]">
+                              /
+                            </code>
+                            ).
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Enhanced Code Reference Sync:
+                            </strong>{" "}
+                            The process for synchronizing code references after
+                            documentation generation has been improved,
+                            including better handling of file exclusion and more
+                            detailed progress reporting during the bootstrap
+                            process.
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <strong class="text-text-primary-v1">
+                              Refined Changelog Prompting:
+                            </strong>{" "}
+                            The AI model's instructions for generating
+                            changelogs have been updated to explicitly request
+                            the inclusion of commit details, ensuring more
+                            comprehensive and informative release notes.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Commits */}
+                    <div>
+                      <h2 class="text-[12px] font-bold text-text-primary-v1 mb-3 mt-6">
+                        Commits in this Release
+                      </h2>
+                      <ul class="space-y-2 mb-12 text-text-secondary-v1 font-mono text-[9px]">
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <code class="px-1 py-0.5 rounded bg-white/5 text-primary-v1 font-mono text-[9px]">
+                              acd2020
+                            </code>{" "}
+                            - Fix TipTap typing glitch and remove React
+                            StrictMode
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <code class="px-1 py-0.5 rounded bg-white/5 text-primary-v1 font-mono text-[9px]">
+                              9b18420
+                            </code>{" "}
+                            - Merge branch 'main' of
+                            github.com:Penqwin/desktop-app into
+                            feature/setup-build-and-ui
+                          </div>
+                        </li>
+                        <li class="flex gap-2">
+                          <span class="text-text-muted-v1/50 flex-shrink-0">
+                            •
+                          </span>
+                          <div>
+                            <code class="px-1 py-0.5 rounded bg-white/5 text-primary-v1 font-mono text-[9px]">
+                              613f501
+                            </code>{" "}
+                            - commit details in changelog doc
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-                &nbsp;is further refined by <code>checkRole</code>, which
-                distinguishes between <code>admin</code>, <code
-                  >read and write</code
-                >, and <code>read only</code> roles within a workspace.
-              </p>
-            </div>
+              </>
+            ) : (
+              /* ── DEFAULT / CODE REFERENCE CONTENT ── */
+              <div class="text-editor group/editor w-full h-full max-w-2xl text-[10px] text-text-primary-v1 leading-relaxed">
+                <div class="section mb-6">
+                  <h3 class="text-sm font-semibold mb-3 text-text-primary-v1 tracking-tight">
+                    Authentication &amp; Authorization
+                  </h3>
+                  <p class="mb-4">
+                    Security is enforced at the route level through server-side
+                    session validation. Most endpoints utilize the{" "}
+                    <code>createClient</code> utility to interact with database,
+                    ensuring that data access respects the authenticated user's
+                    permissions.
+                  </p>
+                  <h4 class="text-[11px] font-semibold mb-3 text-text-primary-v1 tracking-tight">
+                    Administrative Access
+                  </h4>
+                  <p class="inline">
+                    For operations that require cross-workspace visibility,
+                    state transitions that bypass high-level configuration
+                    changes (e.g., repository mapping discovery), the system
+                    utilizes <code>superiorClient</code>.&nbsp;
+                    <div class="relative inline-flex items-center text-text-primary-v1 font-semibold group-hover/editor:bg-accent transition-colors cursor-default">
+                      Authorization
+                      <div class="floating-menu select-none absolute -top-10 left-1/2 -translate-x-1/2 scale-90 opacity-0 group-hover/editor:opacity-100 group-hover/editor:scale-100 transition-all pointer-events-none group-hover:pointer-events-auto w-fit h-fit flex flex-shrink-0 items-center gap-2 bg-bg-secondary-v1 backdrop-blur-md text-text-secondary-v1 px-2 py-1.5 border border-white/10 rounded-xl shadow-xl z-[999]">
+                        <div class="border border-white/5 pl-2 pr-1 py-0.5 text-[8px] rounded-md flex items-center gap-1 font-medium bg-white/5">
+                          Paragraph{" "}
+                          <ArrowIcon class="w-auto h-2 rotate-90 text-text-secondary-v1" />
+                        </div>
 
-            <div class="section mb-8">
-              <h3
-                class="text-sm font-semibold mb-4 text-text-primary-v1 tracking-tight"
-              >
-                API Reference
-              </h3>
+                        <div class="flex gap-2 items-center px-1 border-l border-white/5">
+                          <div class="text-text-primary-v1 transition-colors cursor-pointer">
+                            <BoldIcon class="w-2.5 h-2.5" />
+                          </div>
+                          <div class="hover:text-text-primary-v1 transition-colors cursor-pointer">
+                            <ItalicIcon class="w-2.5 h-2.5" />
+                          </div>
+                          <div class="hover:text-text-primary-v1 transition-colors cursor-pointer">
+                            <UnderlineIcon class="w-2.5 h-2.5" />
+                          </div>
+                          <div class="hover:text-text-primary-v1 transition-colors cursor-pointer">
+                            <StrikethroughIcon class="w-2.5 h-2.5" />
+                          </div>
+                          <div class="hover:text-text-primary-v1 transition-colors cursor-pointer">
+                            <CodeIcon class="w-2.5 h-2.5" />
+                          </div>
+                          <div class="hover:text-text-primary-v1 transition-colors cursor-pointer">
+                            <Bullet class="w-2.5 h-2.5" />
+                          </div>
+                          <div class="hover:text-text-primary-v1 transition-colors cursor-pointer border border-border-v1 rounded-sm w-3 h-3 flex items-center justify-center">
+                            <MoreVert class="w-2 h-2" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    &nbsp;is further refined by <code>checkRole</code>, which
+                    distinguishes between <code>admin</code>,{" "}
+                    <code>read and write</code>, and <code>read only</code>{" "}
+                    roles within a workspace.
+                  </p>
+                </div>
 
-              <h4
-                class="text-[11px] font-semibold mb-2 text-text-primary-v1/80"
-              >
-                User & Profile
-              </h4>
-              <table class="w-full border-collapse text-[9px] mb-6">
-                <thead>
-                  <tr
-                    class="border-b border-white/10 text-text-secondary-v1 text-left"
-                  >
-                    <th class="py-2 font-medium">Method</th>
-                    <th class="py-2 font-medium">Endpoint</th>
-                    <th class="py-2 font-medium">Description</th>
-                  </tr>
-                </thead>
-                <tbody class="text-text-secondary-v1">
-                  <tr class="border-b border-white/5">
-                    <td class="py-2"
-                      ><span
-                        class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]"
-                        >GET</span
-                      ></td
-                    >
-                    <td class="py-2"><code>/api/user/profile</code></td>
-                    <td class="py-2"
-                      >Returns user data, member workspaces, and their active
-                      subscription states.</td
-                    >
-                  </tr>
-                </tbody>
-              </table>
+                <div class="section mb-8">
+                  <h3 class="text-sm font-semibold mb-4 text-text-primary-v1 tracking-tight">
+                    API Reference
+                  </h3>
 
-              <h4
-                class="text-[11px] font-semibold mb-2 text-text-primary-v1/80"
-              >
-                Member & Request Management
-              </h4>
-              <table class="w-full border-collapse text-[9px]">
-                <thead>
-                  <tr
-                    class="border-b border-white/10 text-text-secondary-v1 text-left"
-                  >
-                    <th class="py-2 font-medium">Method</th>
-                    <th class="py-2 font-medium">Endpoint</th>
-                    <th class="py-2 font-medium">Description</th>
-                  </tr>
-                </thead>
-                <tbody class="text-text-secondary-v1">
-                  <tr class="border-b border-white/5">
-                    <td class="py-2"
-                      ><span
-                        class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]"
-                        >GET</span
-                      ></td
-                    >
-                    <td class="py-2"><code>/api/members</code></td>
-                    <td class="py-2"
-                      >Lists all members with enriched user profile data.</td
-                    >
-                  </tr>
-                  <tr class="border-b border-white/5">
-                    <td class="py-2"
-                      ><span
-                        class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]"
-                        >PATCH</span
-                      ></td
-                    >
-                    <td class="py-2">
-                      <code>/api/members/&#123;memberId&#125;</code>
-                    </td>
-                    <td class="py-2"
-                      >Updates a member's role (<code>admin</code>, <code
-                        >read and write</code
-                      >, <code>read only</code>).</td
-                    >
-                  </tr>
-                  <tr class="border-b border-white/5">
-                    <td class="py-2"
-                      ><span
-                        class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]"
-                        >DELETE</span
-                      ></td
-                    >
-                    <td class="py-2"
-                      ><code>/api/members/&#123;memberId&#125;</code></td
-                    >
-                    <td class="py-2">Removes a member from the workspace.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+                  <h4 class="text-[11px] font-semibold mb-2 text-text-primary-v1/80">
+                    User &amp; Profile
+                  </h4>
+                  <table class="w-full border-collapse text-[9px] mb-6">
+                    <thead>
+                      <tr class="border-b border-white/10 text-text-secondary-v1 text-left">
+                        <th class="py-2 font-medium">Method</th>
+                        <th class="py-2 font-medium">Endpoint</th>
+                        <th class="py-2 font-medium">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-text-secondary-v1">
+                      <tr class="border-b border-white/5">
+                        <td class="py-2">
+                          <span class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]">
+                            GET
+                          </span>
+                        </td>
+                        <td class="py-2">
+                          <code>/api/user/profile</code>
+                        </td>
+                        <td class="py-2">
+                          Returns user data, member workspaces, and their active
+                          subscription states.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h4 class="text-[11px] font-semibold mb-2 text-text-primary-v1/80">
+                    Member &amp; Request Management
+                  </h4>
+                  <table class="w-full border-collapse text-[9px]">
+                    <thead>
+                      <tr class="border-b border-white/10 text-text-secondary-v1 text-left">
+                        <th class="py-2 font-medium">Method</th>
+                        <th class="py-2 font-medium">Endpoint</th>
+                        <th class="py-2 font-medium">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-text-secondary-v1">
+                      <tr class="border-b border-white/5">
+                        <td class="py-2">
+                          <span class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]">
+                            GET
+                          </span>
+                        </td>
+                        <td class="py-2">
+                          <code>/api/members</code>
+                        </td>
+                        <td class="py-2">
+                          Lists all members with enriched user profile data.
+                        </td>
+                      </tr>
+                      <tr class="border-b border-white/5">
+                        <td class="py-2">
+                          <span class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]">
+                            PATCH
+                          </span>
+                        </td>
+                        <td class="py-2">
+                          <code>/api/members/&#123;memberId&#125;</code>
+                        </td>
+                        <td class="py-2">
+                          Updates a member's role (<code>admin</code>,{" "}
+                          <code>read and write</code>, <code>read only</code>).
+                        </td>
+                      </tr>
+                      <tr class="border-b border-white/5">
+                        <td class="py-2">
+                          <span class="px-1.5 py-0.5 rounded bg-primary-v1/10 text-primary-v1 font-mono text-[8px]">
+                            DELETE
+                          </span>
+                        </td>
+                        <td class="py-2">
+                          <code>/api/members/&#123;memberId&#125;</code>
+                        </td>
+                        <td class="py-2">
+                          Removes a member from the workspace.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>

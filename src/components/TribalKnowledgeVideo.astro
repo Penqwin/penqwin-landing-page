@@ -12,14 +12,32 @@ const videoDescription =
 const videoUploadDate = "2026-07-04T01:23:00Z";
 ---
 
-<div
+<section
   id="tribal-knowledge"
-  class="w-full relative z-10"
+  class="w-full py-16 md:py-24 bg-bg-main relative"
 >
   <div
-    class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#161616] shadow-2xl group"
+    class="flex justify-between items-center flex-col md:flex-row max-w-5xl mx-auto gap-6 px-4 md:px-0 relative z-10"
   >
-    <!-- Main Video Container -->
+    <div class="mb-10 text-center md:text-left">
+      <h2
+        class="font-serif text-3xl md:text-5xl text-text-primary tracking-tight leading-[1.2]"
+      >
+        The Hidden Cost of Tribal Knowledge
+      </h2>
+      <p
+        class="text-text-secondary text-base md:text-lg mt-4 max-w-2xl mx-auto"
+      >
+        Learn how undocumented context slows down software delivery and why
+        engineering documentation matters.
+      </p>
+    </div>
+
+    <div class="max-w-xl mx-auto">
+      <div
+        class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#161616] shadow-2xl group"
+      >
+        <!-- Main Video Container -->
         <div
           class="relative w-full h-full bg-[#161616] rounded-2xl overflow-hidden"
         >
@@ -71,8 +89,10 @@ const videoUploadDate = "2026-07-04T01:23:00Z";
             </button>
           </div>
         </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <script>
   const initTribalVideo = () => {
